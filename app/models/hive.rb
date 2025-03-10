@@ -1,4 +1,4 @@
 class Hive < ApplicationRecord
-  belongs_to :User
-  belongs_to :Hexagon
+  belongs_to :user
+  belongs_to :hexagon
 end

@@ -1,0 +1,2 @@
+class HexagonsController < ApplicationController
+end
