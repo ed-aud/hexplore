@@ -32,6 +32,6 @@ class HivesController < ApplicationController
   end
 
   def hive_params
-    params.require(:hives).permit(:name, :notes)
+    params.require(:hive).permit(:name, :notes)
   end
 end
