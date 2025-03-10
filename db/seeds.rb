@@ -20,7 +20,7 @@ new_user_1 = User.create!(first_name: "Tom", last_name: "Jones", email: "tom@gma
 new_user_2 = User.create!(first_name: "Ben", last_name: "Hill", email: "ben@gmail.com", password: "123456")
 puts "#{User.count} users created"
 
-# Below will be deleted after API will be used instead
+# When API is used, delete all below
 
 puts "> Creating Hex Grids"
 hex_grid = HexGrid.create!(min_lat: 51.286760, min_lon: -0.510375, max_lat: 51.691874, max_lon: 51.691874, hexagon_width: 0.4)
