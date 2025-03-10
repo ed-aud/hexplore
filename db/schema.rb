@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_10_153547) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_10_165625) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,10 +45,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_10_153547) do
   create_table "filters", force: :cascade do |t|
     t.string "category"
     t.integer "associated_distance"
-    t.bigint "hexagons_id", null: false
+    t.bigint "hexagon_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hexagons_id"], name: "index_filters_on_hexagons_id"
+    t.index ["hexagon_id"], name: "index_filters_on_hexagon_id"
   end
 
   create_table "hex_grids", force: :cascade do |t|
@@ -63,23 +63,23 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_10_153547) do
   end
 
   create_table "hexagons", force: :cascade do |t|
-    t.bigint "hex_grids_id", null: false
+    t.bigint "hex_grid_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "lat"
     t.float "lon"
-    t.index ["hex_grids_id"], name: "index_hexagons_on_hex_grids_id"
+    t.index ["hex_grid_id"], name: "index_hexagons_on_hex_grid_id"
   end
 
   create_table "hives", force: :cascade do |t|
     t.string "name"
     t.text "notes"
-    t.bigint "users_id", null: false
-    t.bigint "hexagons_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "hexagon_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hexagons_id"], name: "index_hives_on_hexagons_id"
-    t.index ["users_id"], name: "index_hives_on_users_id"
+    t.index ["hexagon_id"], name: "index_hives_on_hexagon_id"
+    t.index ["user_id"], name: "index_hives_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,8 +98,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_10_153547) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "filters", "hexagons", column: "hexagons_id"
-  add_foreign_key "hexagons", "hex_grids", column: "hex_grids_id"
-  add_foreign_key "hives", "hexagons", column: "hexagons_id"
-  add_foreign_key "hives", "users", column: "users_id"
+  add_foreign_key "filters", "hexagons"
+  add_foreign_key "hexagons", "hex_grids"
+  add_foreign_key "hives", "hexagons"
+  add_foreign_key "hives", "users"
 end
