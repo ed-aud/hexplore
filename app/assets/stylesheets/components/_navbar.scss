@@ -1,12 +1,47 @@
-.navbar-lewagon {
+// .navbar-lewagon {
+//   justify-content: space-between;
+//   background: white;
+// }
+
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 0;
+// }
+
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
+// }
+
+.navbar-hexplore {
   justify-content: space-between;
-  background: white;
+  background: $dark-green;
+  height: 70px;
+  padding: 0px 10px;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-hexplore .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-logo {
+  height: 50px;
+}
+
+.navbar-brand:hover {
+  color: white;
+}
+
+.nav-item {
+  padding-right: 20px;
+}
+
+.nav-item:last-child {
+  padding: 0px;
+}
+
+.nav-link {
+  color: $light-green;
+}
+
+.nav-link:hover {
+  color: white;
 }

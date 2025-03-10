@@ -10,3 +10,21 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+// Default styling
+body {
+  position: relative;
+  min-height: 100dvh;
+  font-family: "Inter", Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+}
+
+.body-container {
+  min-height: calc(100dvh - 140px);
+}
+
+.page-body {
+  margin: 30px 20px;
+}
