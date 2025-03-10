@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_10_151710) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_10_153547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,10 +63,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_10_151710) do
   end
 
   create_table "hexagons", force: :cascade do |t|
-    t.string "centre_point"
     t.bigint "hex_grids_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "lat"
+    t.float "lon"
     t.index ["hex_grids_id"], name: "index_hexagons_on_hex_grids_id"
   end
 

@@ -1,3 +1,3 @@
 class Filter < ApplicationRecord
-  belongs_to :Hexagon
+  belongs_to :hexagon
 end
