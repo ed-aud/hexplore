@@ -127,36 +127,6 @@ export default class extends Controller {
 
 
 
-
-
-// async fetchParksInLondon() {
-//   const londonBounds = [-0.489, 51.28, 0.236, 51.686];
-//   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/park.json?bbox=${londonBounds.join(',')}&types=poi&limit=10&access_token=${this.apiKeyValue}`;
-
-//   try {
-//     const response = await fetch(url);
-//     const data = await response.json();
-
-//     console.log(data)
-
-//     // Check if we got any features back
-//     console.log("Total results:", data.features ? data.features.length : 0);
-
-//     // Get all park locations from the response
-//     const parks = data.features;
-
-//     // Output the park locations
-//     parks.forEach(park => {
-//       console.log(`Park: ${park.text}, Coordinates: ${park.geometry.coordinates}`);
-//     });
-
-//     return parks;
-//   } catch (error) {
-//     console.error('Error fetching parks:', error);
-//   }
-// }
-
-
 // OLD CODE - - - - - - - - - - - - - - - - - - - - - -
 
 
