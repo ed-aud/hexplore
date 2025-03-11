@@ -1,0 +1,16 @@
+.hexgrid-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.hexgrid-filters-container {
+  background-color: $light-green;
+  width: 25dvw;
+  height: 100dvh;
+}
+
+.hexgrid-map-container {
+  background-color: grey;
+  width: 75dvw;
+  height: 100dvh;
+}

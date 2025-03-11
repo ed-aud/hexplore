@@ -9,11 +9,11 @@
 #   end
 
 puts "Cleaning Database"
-User.destroy_all
 Hive.destroy_all
+User.destroy_all
+Filter.destroy_all
 Hexagon.destroy_all
 HexGrid.destroy_all
-Filter.destroy_all
 
 puts "> Creating Users"
 new_user_1 = User.create!(first_name: "Tom", last_name: "Jones", email: "tom@gmail.com", password: "123456")
