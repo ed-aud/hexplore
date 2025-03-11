@@ -7,6 +7,7 @@
   <p> <%= hive.name %></p>
   <p> <%= hive.notes %></p>
   <%= link_to 'Details', hive_path(hive) %>
+  <%= link_to 'Edit', edit_hive_path(hive) %>
   <%= link_to hive_path(hive), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
     <i class="fa-solid fa-trash booking-icon"></i>
   <% end %>
