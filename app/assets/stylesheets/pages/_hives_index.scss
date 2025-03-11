@@ -37,3 +37,14 @@
   margin-bottom: 20px;
   margin-top: 50px;
 }
+
+@media only screen and (max-width: 720px) {
+  .hives-cards-containter{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .users-card{
+    min-width: 15%;
+  }
+}
