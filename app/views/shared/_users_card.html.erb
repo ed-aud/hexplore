@@ -1,0 +1,16 @@
+<div class="users-card">
+  <div class="users-card-body">
+     <div class="hexagon-container">
+        <div class="hexagon">
+          <p class = "hexagon-text"><%= current_user.first_name[0] %><%= current_user.last_name[0] %></p>
+        </div>
+      </div>
+    <div class="users-card-content">
+      <h5 class="users-card-title "><%= current_user.first_name %> <%= current_user.last_name  %></h5>
+      <h6 class="users-card-subtitle mb-5 text-body-secondary"><%= current_user.email %></h6>
+    </div>
+    <div class="users-card-button-container">
+      <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary users-card-button" %>
+    </div>
+  </div>
+</div>
