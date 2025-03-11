@@ -1,8 +1,13 @@
-<div class="container chatbot">
-  <h1>Chat with us</h1>
-  <div id="questions">
-    <%= render @questions %>
-  </div>
+<div class="chatbot-container" data-controller="chatbot">
+  <button id="chat-toggle" class="chat-toggle" data-action="click->chatbot#toggle">
+    💬
+  </button>
 
-  <%= render "form", question: @question %>
+  <div class="chatbot hidden" data-chatbot-target="chatbot">
+    <h1>Chat with us</h1>
+    <div id="questions">
+      <%= render @questions %>
+    </div>
+    <%= render "form", question: @question %>
+  </div>
 </div>
