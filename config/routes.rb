@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   resources :hexagons, only: %i[show] do
     resources :hives, only: %i[new create]
   end
-  resources :hex_grids, only: %i[show]
-  resources :hives, only: %i[index show destroy]
+  resources :hex_grids, only: %i[show] do
+    resources :hexagons, only: %i[new create]
+  end
+  resources :hives, only: %i[index show edit update destroy]
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

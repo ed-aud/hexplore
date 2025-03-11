@@ -1,0 +1,7 @@
+<h1>Hi from inside hive edit</h1>
+
+<%= simple_form_for @hive do |f| %>
+  <%= f.input :name, placeholder: "Name" %>
+  <%= f.input :notes, placeholder: "Notes" %>
+  <%= f.submit "Edit", class: "btn btn-primary form-button" %>
+<% end %>

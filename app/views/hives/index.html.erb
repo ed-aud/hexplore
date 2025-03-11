@@ -1,1 +1,15 @@
 <h1>Hi from hives index page</h1>
+<h2>Your hives</h2>
+
+<%= link_to 'Create Hive', hex_grid_path(@hex_grid) %>
+<% @hives.each do |hive| %>
+  <div class="hive-container">
+  <p> <%= hive.name %></p>
+  <p> <%= hive.notes %></p>
+  <%= link_to 'Details', hive_path(hive) %>
+  <%= link_to 'Edit', edit_hive_path(hive) %>
+  <%= link_to hive_path(hive), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+    <i class="fa-solid fa-trash booking-icon"></i>
+  <% end %>
+  </div>
+<% end %>
