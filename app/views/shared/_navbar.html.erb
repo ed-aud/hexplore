@@ -15,10 +15,13 @@
             <%= link_to "My Map", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "My Hives", root_path, class: "nav-link" %>
+            <%= link_to "My Hives", hives_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <%# <%= image_tag "profile.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> %>
+            <% initials = "#{current_user.first_name.first}#{current_user.last_name.first}".upcase %>
+            <div class="avatar dropdown-toggle initials-avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= initials %>
+            </div>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log Out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
