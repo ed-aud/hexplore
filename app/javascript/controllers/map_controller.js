@@ -6,11 +6,16 @@ export default class extends Controller {
     apiKey: String,
   };
 
+  static targets = [
+    "filters",
+    "map"
+  ];
+
   connect() {
     mapboxgl.accessToken = this.apiKeyValue;
 
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: this.mapTarget,
       style: "mapbox://styles/mapbox/streets-v10",
     });
 
@@ -23,6 +28,7 @@ export default class extends Controller {
     this.#boundingBox(londonBounds);
     this.map.on("load", () => {
       this.#generateHexGrid(londonBounds);
+      this.#hexagonClick();
     });
   }
 
@@ -34,8 +40,10 @@ export default class extends Controller {
   // Function to add HexGrid overlay and collect hexagon centre points
   #generateHexGrid(londonBounds) {
     const options = { units: "kilometers" };
-    const hexGrid = turf.hexGrid(londonBounds.flat(), 0.5, options);
-    const hexagonCentres = this.#calculateHexagonCentres(hexGrid);
+    const hexGrid = turf.hexGrid(londonBounds.flat(), 1, options);
+
+    // Assign each hexagon an ID and calculate its centre-point (lat / lon)
+    const hexagonData = this.#calculateHexagonData(hexGrid);
 
     // Add the hexagonal grid to the map and style the layer
     this.map.addSource("hexGrid", {
@@ -54,13 +62,34 @@ export default class extends Controller {
         "fill-outline-color": "#000000",
       },
     });
+
+    this.hexGrid = hexGrid;
   }
 
-  // Function to retrieve the centre points for each hexagon
-  #calculateHexagonCentres(hexGrid) {
-    return hexGrid.features.map(feature => {
+  // Function to retrieve the centre point for each hexagon and assign it an ID
+  #calculateHexagonData(hexGrid) {
+    return hexGrid.features.map((feature, index) => {
       const centre = turf.center(feature);
-      return centre.geometry.coordinates;
+      return {
+        id: index,
+        centre: centre.geometry.coordinates
+      };
+    });
+  }
+
+  toggleFilter(event) {
+    console.log("hello world");
+    console.log(`Checkbox for ${event.target.dataset.mapFilterValue} was ${event.target.checked ? "checked" : "unchecked"}`);
+  }
+
+  // Function to allow a user to click on a hexagon to see initial information
+  #hexagonClick() {
+    this.map.on("click", "hexGridLayer", (event) => {
+      const coordinates = event.lngLat;
+      new mapboxgl.Popup()
+        .setLngLat(coordinates)
+        .setHTML(`<strong>Hexplore Hive</strong><br> ${coordinates.lng.toFixed(5)}, ${coordinates.lat.toFixed(5)}`)
+        .addTo(this.map);
     });
   }
 }
