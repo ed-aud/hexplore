@@ -1,5 +1,5 @@
 class HexagonsController < ApplicationController
   def show
-    @hexagon = Hexagons.find(params[:id])
+    @hexagon = Hexagon.find(params[:id])
   end
 end
