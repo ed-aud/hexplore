@@ -1,0 +1,62 @@
+.form-container {
+  width: 500px;
+  margin: 20px auto;
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-button {
+  width: 120px;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.login-sublinks {
+  text-align: center;
+}
+
+.other-options {
+  text-decoration: none;
+}
+
+.other-options.form-link,
+.form-container a {
+  text-decoration: none;
+  color: rgba(128,128,128,1);
+  position: relative;
+  transition: color 0.3s ease-in-out;
+}
+
+.other-options.form-link:hover,
+.form-container a:hover {
+  color: rgba(128,128,128,0.7);
+}
+
+.other-options.form-link::after,
+.form-container a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 0;
+  height: 1.5px;
+  background-color: grey;
+  transition: all 0.3s ease-out;
+  transform: translateX(-50%);
+}
+
+.other-options.form-link:hover::after,
+.form-container a:hover::after {
+  width: 100%;
+  background-color: rgba(128,128,128,0.6);
+}

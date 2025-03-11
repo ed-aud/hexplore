@@ -1,12 +1,55 @@
-.navbar-lewagon {
+.navbar-hexplore {
   justify-content: space-between;
-  background: white;
+  background: $dark-green;
+  height: 70px;
+  padding: 0px 10px;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-hexplore .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-logo {
+  height: 50px;
+}
+
+.navbar-brand:hover {
+  color: white;
+}
+
+.nav-item {
+  padding-right: 20px;
+}
+
+.nav-item:last-child {
+  padding: 0px;
+}
+
+.nav-link {
+  color: $light-green;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.initials-avatar {
   width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $light-green;
+  color: $dark-green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+}
+
+// Remove default Boostrap arrow next to user initials
+#navbarDropdown::after {
+  display: none !important;
 }

@@ -18,8 +18,14 @@
   </head>
 
   <body>
-    <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render "/shared/navbar" %>
+    <div class="body-container">
+      <%= yield %>
+    </div>
+    <p class="notice mb-0"><%= notice %></p>
+    <p class="alert mb-0"><%= alert %></p>
+    <% unless action_name == "home" %>
+       <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>
