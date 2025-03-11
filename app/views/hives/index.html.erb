@@ -1,6 +1,7 @@
 <h1>Hi from hives index page</h1>
 <h2>Your hives</h2>
 
+<%= link_to 'Create Hive', hex_grid_path(@hex_grid) %>
 <% @hives.each do |hive| %>
   <div class="hive-container">
   <p> <%= hive.name %></p>

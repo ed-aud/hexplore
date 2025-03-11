@@ -2,6 +2,7 @@ class HivesController < ApplicationController
   before_action :set_hive, only: %i[show destroy]
   def index
     @hives = Hive.all
+    @hex_grid = HexGrid.first
   end
   def show
   end
