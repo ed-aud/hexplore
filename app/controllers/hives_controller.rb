@@ -1,7 +1,7 @@
 class HivesController < ApplicationController
   before_action :set_hive, only: %i[show destroy]
   def index
-    @hive = Hive.all
+    @hives = Hive.all
   end
   def show
   end
@@ -25,6 +25,7 @@ class HivesController < ApplicationController
 
   def destroy
     @hive.destroy
+    redirect_to hives_path, status: :see_other
   end
 
   private
