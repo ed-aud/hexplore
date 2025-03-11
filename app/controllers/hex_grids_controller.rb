@@ -1,5 +1,5 @@
 class HexGridsController < ApplicationController
-  def show
-    @hex_grid = HexGrid.find(params[:id])
+  def index
+    @hex_grid = HexGrid.all
   end
 end
