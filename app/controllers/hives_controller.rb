@@ -1,7 +1,7 @@
 class HivesController < ApplicationController
-  before_action :set_hive, only: %i[show]
+  before_action :set_hive, only: %i[show destroy]
   def index
-    @hive = Hive.new
+    @hive = Hive.all
   end
   def show
   end
@@ -14,15 +14,17 @@ class HivesController < ApplicationController
   def create
     @hexagon = Hexagon.find(params[:hexagon_id])
     @hive = Hive.new(hive_params)
-
     @hive.user = current_user
     @hive.hexagon = @hexagon
     if @hive.save
       redirect_to hexagon_path(@hexagon)
     else
-      # raise
       render 'new', status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @hive.destroy
   end
 
   private

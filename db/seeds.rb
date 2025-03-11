@@ -10,9 +10,9 @@
 
 puts "Cleaning Database"
 User.destroy_all
-HexGrid.destroy_all
-Hexagon.destroy_all
 Hive.destroy_all
+Hexagon.destroy_all
+HexGrid.destroy_all
 Filter.destroy_all
 
 puts "> Creating Users"
