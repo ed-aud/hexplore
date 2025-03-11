@@ -1,18 +1,18 @@
 class HivesController < ApplicationController
-  before_action :set_hive, only: %i[show destroy]
+  before_action :set_hive, only: %i[show destroy edit update]
+  before_action :set_hexagon, only: %i[new create]
   def index
-    @hive = Hive.all
+    @hives = Hive.all
+    @hex_grid = HexGrid.first
   end
   def show
   end
 
   def new
-    @hexagon = Hexagon.find(params[:hexagon_id])
     @hive = Hive.new
   end
 
   def create
-    @hexagon = Hexagon.find(params[:hexagon_id])
     @hive = Hive.new(hive_params)
     @hive.user = current_user
     @hive.hexagon = @hexagon
@@ -25,12 +25,28 @@ class HivesController < ApplicationController
 
   def destroy
     @hive.destroy
+    redirect_to hives_path, status: :see_other
+  end
+
+  def edit
+  end
+
+  def update
+    if @hive.update(hive_params)
+      redirect_to hives_path
+    else
+      render 'new', status: :unprocessable_entity
+    end
   end
 
   private
 
   def set_hive
     @hive = Hive.find(params[:id])
+  end
+
+  def set_hexagon
+    @hexagon = Hexagon.find(params[:hexagon_id])
   end
 
   def hive_params

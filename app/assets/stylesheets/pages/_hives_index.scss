@@ -1,0 +1,23 @@
+.hives-container{
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+}
+
+.hives-container .booking-icon{
+  justify-self: end;
+}
+
+.hive-container{
+  border: 1px solid black;
+  margin-bottom: 4px;
+}
+.create-hive-container{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}

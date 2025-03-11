@@ -1,0 +1,8 @@
+
+<h3>Create your hexagon</h3>
+
+<%= simple_form_for [@hex_grid, @hexagon] do |f| %>
+  <%= f.input :lat, placeholder: "Latitude" %>
+  <%= f.input :lon, placeholder: "Longitude" %>
+  <%= f.submit "Create", class: "btn btn-primary form-button" %>
+<% end %>
