@@ -11,45 +11,100 @@ export default class extends Controller {
     "map"
   ];
 
-  parks = [
-    { name: "Victoria Park", lat: 51.5313, lon: -0.0367 },
-    { name: "Mile End Park", lat: 51.5220, lon: -0.0405 },
-    { name: "Hampstead Heath", lat: 51.5560, lon: -0.1630 },
-    { name: "Regent's Park", lat: 51.5316, lon: -0.1537 },
-    { name: "Brunswick Square", lat: 51.5230, lon: -0.1280 },
-    { name: "Putney Lower Common", lat: 51.4464, lon: -0.2150 },
-    { name: "Clissold Park", lat: 51.5656, lon: -0.0973 },
-    { name: "Stepney Green Park", lat: 51.5197, lon: -0.0527 },
-    { name: "St John's Square", lat: 51.5228, lon: -0.1065 },
-    { name: "Russell Square", lat: 51.5243, lon: -0.1267 },
-    { name: "Barbican Estate Gardens", lat: 51.5201, lon: -0.0928 },
-    { name: "Finsbury Park", lat: 51.5656, lon: -0.1018 },
-    { name: "Tower Hamlets Cemetery Park", lat: 51.5228, lon: -0.0295 },
-    { name: "London Fields", lat: 51.5465, lon: -0.0655 },
-    { name: "King's Square Gardens", lat: 51.5225, lon: -0.1005 },
-    { name: "Shoreditch Park", lat: 51.5311, lon: -0.0859 },
-    { name: "Parks and Gardens at the Museum of London", lat: 51.5181, lon: -0.0962 },
-    { name: "Borough Gardens", lat: 51.4949, lon: -0.0878 },
-    { name: "Bethnal Green Gardens", lat: 51.5261, lon: -0.0571 },
-    { name: "Brockwell Park", lat: 51.4482, lon: -0.0980 },
-    { name: "Haggerston Park", lat: 51.5343, lon: -0.0757 },
-    { name: "Peckham Rye Park", lat: 51.4667, lon: -0.0594 },
-    { name: "Exmouth Market Gardens", lat: 51.5244, lon: -0.1064 },
-    { name: "Wapping Green", lat: 51.5073, lon: -0.0653 },
-    { name: "Hackney Downs", lat: 51.5500, lon: -0.0597 },
-    { name: "Mansford Street Park", lat: 51.5225, lon: -0.0625 },
-    { name: "Greenwich Peninsula Ecology Park", lat: 51.4985, lon: 0.0107 },
-    { name: "Epping Forest (north edge)", lat: 51.6667, lon: 0.0399 },
-    { name: "Old Street Garden", lat: 51.5261, lon: -0.0850 },
-    { name: "Redchurch Street Green Space", lat: 51.5223, lon: -0.0711 },
-    { name: "Spitalfields City Farm", lat: 51.5201, lon: -0.0742 },
-    { name: "Bunhill Fields Burial Ground", lat: 51.5249, lon: -0.0890 },
-    { name: "Cannon Street Green", lat: 51.5043, lon: -0.0789 },
-    { name: "Southbank Green Space", lat: 51.5072, lon: -0.1140 },
-    { name: "Paddington Green", lat: 51.5233, lon: -0.1925 }
+  pubs = [
+    { name: "The Gun", lat: 51.5181, lon: -0.0725 },
+    { name: "The Half Moon (JD Wetherspoon)", lat: 51.5247, lon: -0.0532 },
+    { name: "The Hayfield", lat: 51.5281, lon: -0.0431 },
+    { name: "The Black Horse", lat: 51.5290, lon: -0.0500 },
+    { name: "The Old Globe", lat: 51.5239, lon: -0.0496 },
+    { name: "The Angel & Crown Pub", lat: 51.5331, lon: -0.0500 },
+    { name: "The Florist Arms", lat: 51.5258, lon: -0.0504 },
+    { name: "The Camel", lat: 51.5230, lon: -0.0505 },
+    { name: "Mother Kelly's Bethnal Green", lat: 51.5287, lon: -0.0545 },
+    { name: "Salmon & Ball", lat: 51.5290, lon: -0.0606 },
+    { name: "Bethnal Green Tavern", lat: 51.5280, lon: -0.0590 },
+    { name: "The Dundee Arms", lat: 51.5284, lon: -0.0600 },
+    { name: "The Star of Bethnal Green", lat: 51.5274, lon: -0.0606 },
+    { name: "The Kings Arms", lat: 51.5250, lon: -0.0596 },
+    { name: "The Horn of Plenty", lat: 51.5221, lon: -0.0473 },
+    { name: "The Blackfriar", lat: 51.5147, lon: -0.0990 },
+    { name: "The Cheshire Cheese", lat: 51.5139, lon: -0.1102 },
+    { name: "The Ten Bells", lat: 51.5195, lon: -0.0723 },
+    { name: "The Crown and Shuttle", lat: 51.5220, lon: -0.0780 },
+    { name: "The Old Red Cow", lat: 51.5203, lon: -0.0705 },
+    { name: "The Old Globe", lat: 51.5239, lon: -0.0496 },
+    { name: "The Fountain", lat: 51.5221, lon: -0.0462 },
+    { name: "The George Inn", lat: 51.5013, lon: -0.0926 },
+    { name: "The Prince of Wales", lat: 51.5244, lon: -0.0856 },
+    { name: "The Crown", lat: 51.5220, lon: -0.0782 },
+    { name: "The Well and Bucket", lat: 51.5233, lon: -0.0627 },
+    { name: "The Dog & Duck", lat: 51.5145, lon: -0.1345 },
+    { name: "The Royal Oak", lat: 51.5269, lon: -0.0686 },
+    { name: "The George Tavern", lat: 51.5187, lon: -0.0801 },
+    { name: "The Royal Sovereign", lat: 51.5410, lon: -0.1180 },
+    { name: "The Old Red Lion", lat: 51.5266, lon: -0.1047 },
+    { name: "The Crown & Anchor", lat: 51.5180, lon: -0.0710 },
+    { name: "The Angel", lat: 51.5413, lon: -0.1025 },
+    { name: "The Eagle", lat: 51.5274, lon: -0.0632 },
+    { name: "The Boundary", lat: 51.5247, lon: -0.0776 },
+    { name: "The Montague Arms", lat: 51.4791, lon: -0.0463 },
+    { name: "The Falcon", lat: 51.5234, lon: -0.0846 },
+    { name: "The Fox", lat: 51.5219, lon: -0.0820 },
+    { name: "The White Swan", lat: 51.5185, lon: -0.0712 },
+    { name: "The Town of Ramsgate", lat: 51.4876, lon: -0.0976 },
+    { name: "The Star", lat: 51.5522, lon: -0.0126 },
+    { name: "The Bell", lat: 51.5865, lon: -0.0283 }
   ]
 
-  selectedFilters = {}; // Keeps track of selected filters
+  stations = [
+    { name: "Aldgate", lat: 51.5140, lon: -0.0756 },
+    { name: "Aldgate East", lat: 51.5154, lon: -0.0727 },
+    { name: "Angel", lat: 51.5327, lon: -0.1030 },
+    { name: "Bank", lat: 51.5134, lon: -0.0890 },
+    { name: "Bethnal Green", lat: 51.5272, lon: -0.0553 },
+    { name: "Borough", lat: 51.5047, lon: -0.0912 },
+    { name: "Bow Road", lat: 51.5265, lon: -0.0247 },
+    { name: "Cambridge Heath", lat: 51.5305, lon: -0.0559 },
+    { name: "Canary Wharf", lat: 51.5033, lon: -0.0258 },
+    { name: "Camden Town", lat: 51.5419, lon: -0.1448 },
+    { name: "Charing Cross", lat: 51.5074, lon: -0.1276 },
+    { name: "Dalston Junction", lat: 51.5465, lon: -0.0739 },
+    { name: "Dalston Kingsland", lat: 51.5485, lon: -0.0760 },
+    { name: "Devons Road", lat: 51.5207, lon: -0.0167 },
+    { name: "Euston", lat: 51.5290, lon: -0.1337 },
+    { name: "Farringdon", lat: 51.5204, lon: -0.1055 },
+    { name: "Hackney Central", lat: 51.5472, lon: -0.0556 },
+    { name: "Hackney Downs", lat: 51.5480, lon: -0.0600 },
+    { name: "Hackney Wick", lat: 51.5435, lon: -0.0255 },
+    { name: "Hoxton", lat: 51.5312, lon: -0.0767 },
+    { name: "Haggerston", lat: 51.5382, lon: -0.0755 },
+    { name: "Homerton", lat: 51.5477, lon: -0.0429 },
+    { name: "Kings Cross Station", lat: 51.5307, lon: -0.1236 },
+    { name: "Langdon Park", lat: 51.5235, lon: -0.0094 },
+    { name: "Limehouse", lat: 51.5105, lon: -0.0244 },
+    { name: "London Bridge", lat: 51.5074, lon: -0.0877 },
+    { name: "London Fields", lat: 51.5422, lon: -0.0575 },
+    { name: "Liverpool Street", lat: 51.5175, lon: -0.0823 },
+    { name: "Mile End", lat: 51.5251, lon: -0.0334 },
+    { name: "Old Street", lat: 51.5236, lon: -0.0870 },
+    { name: "Pimlico", lat: 51.4913, lon: -0.1267 },
+    { name: "Pudding Mill Lane", lat: 51.5147, lon: -0.0101 },
+    { name: "Shadwell", lat: 51.5122, lon: -0.0569 },
+    { name: "Shoreditch High Street", lat: 51.5235, lon: -0.0755 },
+    { name: "South Quay", lat: 51.5021, lon: -0.0223 },
+    { name: "Stepney Green", lat: 51.5215, lon: -0.0466 },
+    { name: "St. Paul's", lat: 51.5139, lon: -0.0984 },
+    { name: "Tower Hill", lat: 51.5100, lon: -0.0773 },
+    { name: "Vauxhall", lat: 51.4844, lon: -0.1187 },
+    { name: "Wapping", lat: 51.5082, lon: -0.0617 },
+    { name: "Waterloo", lat: 51.5030, lon: -0.1128 },
+    { name: "Whitechapel", lat: 51.5194, lon: -0.0615 }
+  ]
+
+  // Store filters that a user selects
+  selectedFilters = {};
+  // Store which hexagons are shaded green (via their ID) in case a user toggles off a certain filter
+  greenHexagons = [];
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue;
@@ -59,37 +114,37 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10",
     });
 
-    const londonBounds = [
-      [-0.489, 51.28],
-      [0.236, 51.686],
+    const searchBounds = [
+      [-0.0100, 51.5545],
+      [-0.0865, 51.5066],
     ];
 
-    this.#boundingBox(londonBounds);
+    this.#boundingBox(searchBounds);
     this.map.on("load", () => {
-      this.#generateHexGrid(londonBounds);
+      this.#generateHexGrid(searchBounds);
       this.#hexagonClick();
     });
   }
 
-  #boundingBox(londonBounds) {
-    this.map.fitBounds(londonBounds, { padding: 70, maxZoom: 15, duration: 0.3 });
+  // Function to define the outer bounds of the base map
+  #boundingBox(searchBounds) {
+    this.map.fitBounds(searchBounds, { padding: 70, maxZoom: 15, duration: 0.3 });
   }
 
-  #generateHexGrid(londonBounds) {
+  // Function to generate the base Hex Grid, overlaid onto the same outer bounds as the base map
+  #generateHexGrid(searchBounds) {
     const options = { units: "kilometers" };
-    const hexGrid = turf.hexGrid(londonBounds.flat(), 0.5, options);
+    const hexGrid = turf.hexGrid(searchBounds.flat(), 0.4, options);
 
-    // Ensure each hexagon has an 'id' in its properties
+    // Ensure each hexagon has an associated ID stored in its properties and store for later use
     const hexGridWithIds = hexGrid.features.map((feature, index) => {
       feature.properties = feature.properties || {}; // Ensure properties exist
       feature.properties.id = index; // Assign a unique 'id' for each hexagon
       return feature;
     });
-
-    // Store hexGridWithIds in the class instance for later use
     this.hexGrid = hexGridWithIds;
 
-    // Add the hexGrid data to the Mapbox source
+    // Pass the hexagons from the Hex Grid to Turf.js
     this.map.addSource("hexGrid", {
       type: "geojson",
       data: {
@@ -98,7 +153,7 @@ export default class extends Controller {
       }
     });
 
-    // Add the hex grid layer to the map
+    // Overlay the Hex Grid layer on the map
     this.map.addLayer({
       id: "hexGridLayer",
       type: "fill",
@@ -112,10 +167,10 @@ export default class extends Controller {
     });
   }
 
+  // Function to locate each instance of selected filter location and iterate over each hexagon to check if it contains selected location(s)
   checkLocationInHexagon(location) {
     const locationPoint = turf.point([location.lon, location.lat]);
 
-    // Iterate over each hexagon stored in this.hexGrid and check if it contains selected location(s)
     this.hexGrid.forEach((hexagon) => {
       const hexagonPolygon = turf.polygon(hexagon.geometry.coordinates);
       const isInside = turf.booleanPointInPolygon(locationPoint, hexagonPolygon);
@@ -123,10 +178,12 @@ export default class extends Controller {
       if (isInside) {
         console.log(`${location.name} is inside hexagon ${hexagon.properties.id}`);
         this.updateHexagonColor(hexagon.properties.id, "#25a244");
+        this.greenHexagons.push(hexagon.properties.id); // Store the green hexagon id
       }
     });
   }
 
+  // Function to update the colour of any hexagons that do contain location(s) matching selecting filters
   updateHexagonColor(hexagonIds, color) {
     const layer = this.map.getLayer("hexGridLayer");
 
@@ -136,9 +193,9 @@ export default class extends Controller {
       if (source) {
         const hexGridData = source._data.features;
 
-        // Ensure hexagonIds is an array
+        // Ensure matched hexagon IDs are stored as an array
         if (!Array.isArray(hexagonIds)) {
-          hexagonIds = [hexagonIds]; // Wrap the hexagonId in an array if it's not already
+          hexagonIds = [hexagonIds];
         }
 
         // Set colors in the properties of the hexagons
@@ -175,164 +232,51 @@ export default class extends Controller {
     }
   }
 
+  // Function to find each location associated with a given filter and pass each to the function looking for matched Hexagons
   processLocations() {
-    this.parks.forEach((park) => this.checkLocationInHexagon(park));
+    this.stations.forEach((station) => this.checkLocationInHexagon(station));
   }
 
+  // Function to populated the toggledFilters object with all selected options
   toggleFilter(event) {
     const filterValue = event.target.dataset.mapFilterValue;
     const isChecked = event.target.checked;
 
     if (isChecked) {
       this.selectedFilters[filterValue] = true;
+      this.processLocations(); // Recheck stations and highlight them
     } else {
       delete this.selectedFilters[filterValue];
+
+      // Remove green shading from hexagons
+      this.greenHexagons.forEach((hexId) => {
+        this.updateHexagonColor(hexId, "#FFFFFF"); // Set color back to white
+      });
+      this.greenHexagons = []; // Clear the list of green hexagons
     }
 
     console.log("Currently toggled filters:", this.selectedFilters);
-
-    this.processLocations();
   }
 
+  // Function to allow a user to click on a hexagon to see information
   #hexagonClick() {
     this.map.on("click", "hexGridLayer", (event) => {
       const clickedHexagonId = event.features[0].properties.id;
       const coordinates = event.lngLat;
       new mapboxgl.Popup()
         .setLngLat(coordinates)
-        .setHTML(`<strong>Hive ${clickedHexagonId}</strong><br> ${coordinates.lng.toFixed(5)}, ${coordinates.lat.toFixed(5)}`)
+        .setHTML(
+          `<div class="clicked-hexagon">
+            <strong class="hexagon-title">Hive ${clickedHexagonId}</strong>
+            <p>(${coordinates.lng.toFixed(5)}, ${coordinates.lat.toFixed(5)})</p>
+            <button class="btn btn-primary btn-hexagon" onclick="window.location.href='/hexagons/2'">
+              View Hive
+            </button>
+          </div>`)
         .addTo(this.map);
     });
   }
 }
-
-
-
-
-// export default class extends Controller {
-//   static values = {
-//     apiKey: String,
-//   };
-
-//   static targets = [
-//     "filters",
-//     "map"
-//   ];
-
-//   // Empty object to store selected filters
-//   selectedFilters = {};
-
-//   connect() {
-//     mapboxgl.accessToken = this.apiKeyValue;
-
-//     this.map = new mapboxgl.Map({
-//       container: this.mapTarget,
-//       style: "mapbox://styles/mapbox/streets-v10",
-//     });
-
-//     const londonBounds = [
-//       [-0.489, 51.28],
-//       [0.236, 51.686],
-//     ];
-
-//     // Define outer bounds for London and once map is loaded layer on the HexGrid
-//     this.#boundingBox(londonBounds);
-//     this.map.on("load", () => {
-//       this.#generateHexGrid(londonBounds);
-//       this.#hexagonClick();
-//     });
-
-//     this.fetchParksInLondon();
-//   }
-
-//   // Function to load map centered on London bounds
-//   #boundingBox(londonBounds) {
-//     this.map.fitBounds(londonBounds, { padding: 70, maxZoom: 15, duration: 0.3 });
-//   }
-
-//   // Function to add HexGrid overlay and collect hexagon centre points
-//   #generateHexGrid(londonBounds) {
-//     const options = { units: "kilometers" };
-//     const hexGrid = turf.hexGrid(londonBounds.flat(), 1, options);
-
-//     // Assign each hexagon an ID and calculate its centre-point (lat / lon)
-//     const hexagonData = this.#calculateHexagonData(hexGrid);
-
-//     // Add the hexagonal grid to the map and style the layer
-//     this.map.addSource("hexGrid", {
-//       type: "geojson",
-//       data: hexGrid,
-//     });
-
-//     this.map.addLayer({
-//       id: "hexGridLayer",
-//       type: "fill",
-//       source: "hexGrid",
-//       layout: {},
-//       paint: {
-//         "fill-color": "#ffffff",
-//         "fill-opacity": 0.3,
-//         "fill-outline-color": "#000000",
-//       },
-//     });
-
-//     this.hexGrid = hexGrid;
-//   }
-
-//   // Function to retrieve the centre point for each hexagon and assign it an ID
-//   #calculateHexagonData(hexGrid) {
-//     return hexGrid.features.map((feature, index) => {
-//       const centre = turf.center(feature);
-//       return {
-//         id: index,
-//         centre: centre.geometry.coordinates
-//       };
-//     });
-//   }
-
-//   // Function to populated the toggledFilters object with all selected options
-//   toggleFilter(event) {
-//     const filterValue = event.target.dataset.mapFilterValue;
-//     const isChecked = event.target.checked;
-
-//     if (isChecked) {
-//       this.selectedFilters[filterValue] = true;
-//     } else {
-//       delete this.selectedFilters[filterValue];
-//     }
-
-//     console.log("Currently toggled filters:", this.selectedFilters);
-//   }
-
-//   async fetchParksInLondon() {
-//     // const londonBounds = [-0.489, 51.28, 0.236, 51.686];
-//     // const url = `https://api.mapbox.com/search/searchbox/v1/category/park?access_token=${this.apiKeyValue}&language=en&limit=25&bbox=${londonBounds.join(',')}`
-
-//     const bounds = [-0.0892, 51.4965, -0.0532, 51.5325];
-//     const url = `https://api.mapbox.com/search/searchbox/v1/category/park?access_token=${this.apiKeyValue}&language=en&limit=25&bbox=${bounds.join(',')}`
-
-//     try {
-//       const response = await fetch(url);
-//       const data = await response.json();
-
-//       console.log(data)
-
-//     } catch (error) {
-//       console.error('Error fetching parks:', error);
-//     }
-//   }
-
-//   // Function to allow a user to click on a hexagon to see initial information
-//   #hexagonClick() {
-//     this.map.on("click", "hexGridLayer", (event) => {
-//       const coordinates = event.lngLat;
-//       new mapboxgl.Popup()
-//         .setLngLat(coordinates)
-//         .setHTML(`<strong>Hexplore Hive</strong><br> ${coordinates.lng.toFixed(5)}, ${coordinates.lat.toFixed(5)}`)
-//         .addTo(this.map);
-//     });
-//   }
-// }
 
 
 
