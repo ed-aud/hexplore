@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
     if @question.save
       respond_to do |format|
         format.turbo_stream do
-          render turbo_stream: turbo_stream.append(:questions, partial: "questions/question",
+          render turbo_stream: turbo_stream.append(:questions, partial: "shared/question",
             locals: { question: @question })
         end
         format.html { redirect_to questions_path }

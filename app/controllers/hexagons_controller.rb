@@ -7,6 +7,8 @@ class HexagonsController < ApplicationController
       lat: @hexagon.lat,
       lng: @hexagon.lon}]
     @hives = Hive.all
+    @questions = Question.all
+    @question = Question.new
   end
 
   def new
