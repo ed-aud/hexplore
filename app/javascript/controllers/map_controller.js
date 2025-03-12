@@ -13,6 +13,7 @@ export default class extends Controller {
   static targets = [
     "map",
     "filters",
+    "output"
   ];
 
   // Create a default state for filters
@@ -45,8 +46,12 @@ export default class extends Controller {
       this.#generateHexGrid(searchBounds);
       this.#hexagonClick();
     });
+    console.log('hio')
   }
 
+  displayData(){
+    console.log('hio')
+  }
   // Function to define the outer bounds of the base map
   #boundingBox(searchBounds) {
     this.map.fitBounds(searchBounds, { padding: 70, maxZoom: 15, duration: 0.3 });
@@ -100,7 +105,7 @@ export default class extends Controller {
           `<div class="clicked-hexagon">
             <strong class="hexagon-title">Hive ${clickedHexagonId}</strong>
             <p>(${coordinates.lng.toFixed(5)}, ${coordinates.lat.toFixed(5)})</p>
-            <button class="btn btn-primary btn-hexagon" onclick="window.location.href='/hexagons/5'">
+            <button class="btn btn-primary btn-hexagon" onclick="window.location.href='/hexagons'">
               View Hive
             </button>
           </div>`)

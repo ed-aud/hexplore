@@ -1,5 +1,13 @@
 class HexagonsController < ApplicationController
   before_action :set_hex_grid, only: %i[new create]
+  # before_action :set_hexagon, only: %i[index]
+
+  def index
+    @hex_grid = HexGrid.first
+    @hives = Hive.all
+    @questions = Question.all
+    @question = Question.new
+  end
 
   def show
     @hexagon = Hexagon.find(params[:id])
@@ -27,6 +35,10 @@ class HexagonsController < ApplicationController
   end
 
   private
+
+  def set_hexagon
+    @hexagon = Hexagon.find(params[:id])
+  end
 
   def set_hex_grid
     @hex_grid = HexGrid.find(params[:hex_grid_id])

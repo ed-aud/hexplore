@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  resources :hexagons, only: %i[show] do
+  resources :hexagons, only: %i[index show] do
     resources :hives, only: %i[new create]
   end
 
