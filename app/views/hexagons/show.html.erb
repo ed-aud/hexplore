@@ -1,2 +1,30 @@
-<h1>Hi from hexagon show page</h1>
-<p> Hexagon no. : <%= @hexagon.id  %> </p>
+
+<div class="hexagon-container">
+  <div class="hexagon-content-container">
+    <div class="hexagon-title-container">
+      <div class="hexagon-title-text">
+        <h1>Your selected Hexagon</h1>
+        <p> Hexagon no. : <%= @hexagon.id  %> </p>
+      </div>
+      <div class="hexagon-title-button">
+        <%= link_to 'Save', new_hexagon_hive_path(@hexagon), class: "btn btn-primary" %>
+      </div>
+    </div>
+      <div class="hexagon-content-cards">
+        <h2>Matched Locations</h2>
+        <h3>Parks</h3>
+        <%= render "shared/hexagon_cards" %>
+        <h3>Cafes</h3>
+        <%= render "shared/cards_product" %>
+      </div>
+  </div>
+
+  <div class="hexagon-map-container">
+    <div style="width: 100%; height: 400px;"
+      data-controller="hexagonMap"
+      data-hexagonMap-markers-value="<%= @markers.to_json %>"
+      data-hexagonMap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+
+</div>
