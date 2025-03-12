@@ -8,39 +8,80 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-puts "Cleaning Database"
+puts "Cleaning Database..."
 Hive.destroy_all
 User.destroy_all
 Filter.destroy_all
 Hexagon.destroy_all
 HexGrid.destroy_all
+Poi.destroy_all
+puts "Cleaned Database"
 
-puts "> Creating Users"
+puts "> Creating Users..."
 new_user_1 = User.create!(first_name: "Tom", last_name: "Jones", email: "tom@gmail.com", password: "123456")
 new_user_2 = User.create!(first_name: "Ben", last_name: "Hill", email: "ben@gmail.com", password: "123456")
 puts "#{User.count} users created"
 
-
-# When API is used, delete all below
-
-puts "> Creating Hex Grids"
-hex_grid = HexGrid.create!(min_lat: 51.286760, min_lon: -0.510375, max_lat: 51.691874, max_lon: 51.691874, hexagon_width: 0.4)
-# Min and Max coordinates define bounding box
+puts "> Creating Hex Grids..."
+hex_grid = HexGrid.create!(min_lat: 51.2867, min_lon: -0.5103, max_lat: 51.6918, max_lon: 51.6918, hexagon_width: 0.4)
 puts "#{HexGrid.count} users created"
 
-puts "> Creating Hexagons"
+puts "> Creating Hexagons..."
 hexagon = Hexagon.create!(lon: -0.1278, lat: 51.5074, hex_grid: hex_grid)
 puts "#{Hexagon.count} users created"
 
-puts "> Creating Hives"
+puts "> Creating Hives..."
 hive = Hive.create!(name: "Hive Test 01", notes: "Lets see", user: new_user_1, hexagon: hexagon)
 puts "#{Hive.count} users created"
 
-puts "> Creating Filters"
+puts "> Creating Filters..."
 filter = Filter.create!(category: "bar", associated_distance: "4", hexagon: hexagon)
 puts "#{Filter.count} users created"
 
 poi = [
+  { category: "cafe", name: "The Coffee Room", lat: 51.5273, lon: -0.0383 },
+  { category: "cafe", name: "Shoreditch Grind", lat: 51.5260, lon: -0.0884 },
+  { category: "cafe", name: "Ozone Coffee Roasters", lat: 51.5242, lon: -0.0850 },
+  { category: "cafe", name: "Long White Cloud", lat: 51.5291, lon: -0.0633 },
+  { category: "cafe", name: "Kahaila", lat: 51.5216, lon: -0.0711 },
+  { category: "cafe", name: "Caravan", lat: 51.5275, lon: -0.1081 },
+  { category: "cafe", name: "Prufrock Coffee", lat: 51.5192, lon: -0.1080 },
+  { category: "cafe", name: "Fcukoffee", lat: 51.5247, lon: -0.0709 },
+  { category: "cafe", name: "Quarantacinque", lat: 51.5283, lon: -0.0575 },
+  { category: "cafe", name: "Black Sheep Coffee", lat: 51.5121, lon: -0.0738 },
+  { category: "cafe", name: "Exmouth Coffee Company", lat: 51.5151, lon: -0.0708 },
+  { category: "cafe", name: "Hermanos Colombian Coffee Roasters", lat: 51.5115, lon: -0.0702 },
+  { category: "cafe", name: "Phoenix Blend", lat: 51.5171, lon: -0.0765 },
+  { category: "cafe", name: "Starbucks", lat: 51.5144, lon: -0.0789 },
+  { category: "cafe", name: "Starbucks Coffee", lat: 51.5117, lon: -0.0797 },
+  { category: "cafe", name: "The Crepe Shop", lat: 51.5164, lon: -0.0638 },
+  { category: "cafe", name: "Algerian Coffee Stores", lat: 51.5135, lon: -0.1312 },
+  { category: "cafe", name: "Coffee House London", lat: 51.5210, lon: -0.0460 },
+  { category: "cafe", name: "Coffee London", lat: 51.5270, lon: -0.0320 },
+  { category: "cafe", name: "Local Café", lat: 51.5278, lon: -0.0465 },
+  { category: "cafe", name: "Rinkoff Bakeries", lat: 51.5195, lon: -0.0614 },
+  { category: "cafe", name: "Genesis Café", lat: 51.5192, lon: -0.0610 },
+  { category: "cafe", name: "Arts Bar & Café", lat: 51.5246, lon: -0.0730 },
+  { category: "cafe", name: "The Larder Bethnal Green", lat: 51.5270, lon: -0.0490 },
+  { category: "cafe", name: "Hackney Coffee Company", lat: 51.5330, lon: -0.0570 },
+  { category: "cafe", name: "Magus & the Fool - Art Café", lat: 51.5250, lon: -0.0730 },
+  { category: "cafe", name: "Costa Coffee", lat: 51.5150, lon: -0.0710 },
+  { category: "cafe", name: "The Hive", lat: 51.5270, lon: -0.0570 },
+  { category: "cafe", name: "Department of Coffee and Social Affairs", lat: 51.5150, lon: -0.0710 },
+  { category: "cafe", name: "Grain Kitchen", lat: 51.5140, lon: -0.0750 },
+  { category: "cafe", name: "Urban Baristas", lat: 51.5030, lon: -0.0580 },
+  { category: "cafe", name: "Artsadmin Canteen", lat: 51.5170, lon: -0.0720 },
+  { category: "cafe", name: "Saint Espresso", lat: 51.5310, lon: -0.1100 },
+  { category: "cafe", name: "Redemption Roasters", lat: 51.5220, lon: -0.1160 },
+  { category: "cafe", name: "Golden Bee", lat: 51.5260, lon: -0.0855 },
+  { category: "cafe", name: "The Clove Club", lat: 51.5216, lon: -0.0793 },
+  { category: "cafe", name: "Ottolenghi", lat: 51.5174, lon: -0.0770 },
+  { category: "cafe", name: "Happy Days", lat: 51.5160, lon: -0.0750 },
+  { category: "cafe", name: "La Ferme", lat: 51.5230, lon: -0.1080 },
+  { category: "cafe", name: "Pho", lat: 51.5220, lon: -0.1030 },
+  { category: "cafe", name: "La Vietnamese Kitchen", lat: 51.5220, lon: -0.1030 },
+  { category: "cafe", name: "Hummingbird Bakery", lat: 51.5170, lon: -0.0760 },
+  { category: "cafe", name: "Beer & Buns", lat: 51.5200, lon: -0.0830 },
   { category: "gym", name: "Anytime Fitness", lon: -0.0297, lat: 51.5248 },
   { category: "gym", name: "Anytime Fitness Hackney", lon: -0.0471, lat: 51.5497 },
   { category: "gym", name: "Anytime Fitness London Fields", lon: -0.0623, lat: 51.5452 },
@@ -642,61 +683,13 @@ poi = [
   { category: "station", name: "Whitechapel", lat: 51.5194, lon: -0.0615 },
 ]
 
-puts "> Creating POIs"
-
+puts "> Creating POIs..."
 poi.each do |i|
   Poi.create!(i)
 end
-
+puts "> #{Poi.where(category: 'cafe').count} cafes created"
 puts "> #{Poi.where(category: 'gym').count} gyms created"
-puts "> #{Poi.where(category: 'parks').count} gyms created"
-puts "> #{Poi.where(category: 'pubs').count} gyms created"
-puts "> #{Poi.where(category: 'restaurants').count} gyms created"
-puts "> #{Poi.where(category: 'stations').count} gyms created"
-
-
-cafes = [
-  { name: 'The Coffee Room', lat: 51.5273, lon: -0.0383 },
-  { name: 'Shoreditch Grind', lat: 51.5260, lon: -0.0884 },
-  { name: 'Ozone Coffee Roasters', lat: 51.5242, lon: -0.0850 },
-  { name: 'Long White Cloud', lat: 51.5291, lon: -0.0633 },
-  { name: 'Kahaila', lat: 51.5216, lon: -0.0711 },
-  { name: 'Caravan', lat: 51.5275, lon: -0.1081 },
-  { name: 'Prufrock Coffee', lat: 51.5192, lon: -0.1080 },
-  { name: 'Fcukoffee', lat: 51.5247, lon: -0.0709 },
-  { name: 'Quarantacinque', lat: 51.5283, lon: -0.0575 },
-  { name: 'Black Sheep Coffee', lat: 51.5121, lon: -0.0738 },
-  { name: 'Exmouth Coffee Company', lat: 51.5151, lon: -0.0708 },
-  { name: 'Hermanos Colombian Coffee Roasters', lat: 51.5115, lon: -0.0702 },
-  { name: 'Phoenix Blend', lat: 51.5171, lon: -0.0765 },
-  { name: 'Starbucks', lat: 51.5144, lon: -0.0789 },
-  { name: 'Starbucks Coffee', lat: 51.5117, lon: -0.0797 },
-  { name: 'The Crepe Shop', lat: 51.5164, lon: -0.0638 },
-  { name: 'Algerian Coffee Stores', lat: 51.5135, lon: -0.1312 },
-  { name: 'Coffee House London', lat: 51.5210, lon: -0.0460 },
-  { name: 'Coffee London', lat: 51.5270, lon: -0.0320 },
-  { name: 'Local Café', lat: 51.5278, lon: -0.0465 },
-  { name: 'Rinkoff Bakeries', lat: 51.5195, lon: -0.0614 },
-  { name: 'Genesis Café', lat: 51.5192, lon: -0.0610 },
-  { name: 'Arts Bar & Café', lat: 51.5246, lon: -0.0730 },
-  { name: 'The Larder Bethnal Green', lat: 51.5270, lon: -0.0490 },
-  { name: 'Hackney Coffee Company', lat: 51.5330, lon: -0.0570 },
-  { name: 'Magus & the Fool - Art Café', lat: 51.5250, lon: -0.0730 },
-  { name: 'Costa Coffee', lat: 51.5150, lon: -0.0710 },
-  { name: 'The Hive', lat: 51.5270, lon: -0.0570 },
-  { name: 'Department of Coffee and Social Affairs', lat: 51.5150, lon: -0.0710 },
-  { name: 'Grain Kitchen', lat: 51.5140, lon: -0.0750 },
-  { name: 'Urban Baristas', lat: 51.5030, lon: -0.0580 },
-  { name: 'Artsadmin Canteen', lat: 51.5170, lon: -0.0720 },
-  { name: 'Saint Espresso', lat: 51.5310, lon: -0.1100 },
-  { name: 'Redemption Roasters', lat: 51.5220, lon: -0.1160 },
-  { name: 'Golden Bee', lat: 51.5260, lon: -0.0855 },
-  { name: 'The Clove Club', lat: 51.5216, lon: -0.0793 },
-  { name: 'Ottolenghi', lat: 51.5174, lon: -0.0770 },
-  { name: 'Happy Days', lat: 51.5160, lon: -0.0750 },
-  { name: 'La Ferme', lat: 51.5230, lon: -0.1080 },
-  { name: 'Pho', lat: 51.5220, lon: -0.1030 },
-  { name: 'La Vietnamese Kitchen', lat: 51.5220, lon: -0.1030 },
-  { name: 'Hummingbird Bakery', lat: 51.5170, lon: -0.0760 },
-  { name: 'Beer & Buns', lat: 51.5200, lon: -0.0830 }
-]
+puts "> #{Poi.where(category: 'park').count} parks created"
+puts "> #{Poi.where(category: 'pub').count} pubs created"
+puts "> #{Poi.where(category: 'restaurant').count} restaurants created"
+puts "> #{Poi.where(category: 'station').count} stations created"
