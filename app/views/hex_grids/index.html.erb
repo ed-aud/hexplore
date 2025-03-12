@@ -1,6 +1,8 @@
+
 <div class="hexgrid-container"
   data-controller="map"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+  data-map-coordinates-value="<%= @coordinates.to_json %>"
   data-map-gyms-value="<%= @gyms.to_json %>"
   data-map-pubs-value="<%= @pubs.to_json %>"
   data-map-stations-value="<%= @stations.to_json %>">
