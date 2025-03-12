@@ -3,7 +3,6 @@ class HexGridsController < ApplicationController
   end
 end
 
-
 # Code to generate hexagons via Ruby (server-side)
 # def index
 #   @hexagons = generate_hex_grid
