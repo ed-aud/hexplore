@@ -1,0 +1,44 @@
+.hexagon-container{
+  width: 80%;
+  margin: 0 auto;
+  min-height: calc(100dvh - 140px);
+  display: flex;
+}
+
+.hexagon-content-container{
+  margin-top: 32px;
+  padding-right: 16px;
+  width: 100%;
+  min-height: calc(100dvh - 140px);
+  display: flex;
+  flex-direction: column;
+}
+
+.hexagon-title-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.hexagon-title-text{
+  margin-right: 32px;
+}
+
+.hexagon-title-button{
+  width: 20%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.hexagon-content-cards{
+  width: 100%;
+}
+
+.hexagon-map-container{
+  margin-top: 32px;
+  width: 40%;
+  height: 600px;
+}

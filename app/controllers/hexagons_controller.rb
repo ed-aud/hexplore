@@ -3,16 +3,21 @@ class HexagonsController < ApplicationController
 
   def show
     @hexagon = Hexagon.find(params[:id])
+    @markers = [{
+      lat: @hexagon.lat,
+      lng: @hexagon.lon}]
+    @hives = Hive.all
+    @questions = Question.all
+    @question = Question.new
   end
 
   def new
-
     @hexagon = Hexagon.new
   end
 
   def create
     @hexagon = Hexagon.new(hexagon_params)
-    @hexagon.hex_grid= @hex_grid
+    @hexagon.hex_grid = @hex_grid
     # raise
     if @hexagon.save
       redirect_to hexagon_path(@hexagon)
