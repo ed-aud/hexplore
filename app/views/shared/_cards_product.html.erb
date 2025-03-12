@@ -7,7 +7,7 @@
     <div class="buttons-container">
       <div class="details-edit-buttons">
         <%= link_to 'Details', hive_path(hive), class: "btn btn-primary card-product-button" %>
-        <%= link_to 'Edit', edit_hive_path(hive), class: "btn btn-primary card-product-button" %>
+          <%= link_to 'Edit', edit_hive_path(hive), class: "btn btn-primary card-product-button" %>
       </div>
       <%= link_to hive_path(hive), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
         <i class="fa-solid fa-trash booking-icon"></i>

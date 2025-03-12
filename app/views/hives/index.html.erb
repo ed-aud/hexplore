@@ -1,8 +1,13 @@
 
 <div class="hives-container">
 <div class="container create-hive-container">
-<h2>My hives</h2>
+<h2>My Hives</h2>
 <%= link_to 'Create Hive', hex_grid_path(@hex_grid), class: "btn btn-primary home-button" %>
 </div>
-  <%= render "shared/cards_product" %>
+  <div class="hives-cards-containter">
+    <div class="cards-product-container">
+      <%= render "shared/cards_product" %>
+    </div>
+    <%= render "shared/users_card" %>
+  </div>
 </div>
