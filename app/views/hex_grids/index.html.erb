@@ -14,4 +14,9 @@
       data-map-target="map">
     </div>
   </div>
+  <ul>
+  <% @stations.each do |station| %>
+    <li><%= station.name %></li>
+  <% end %>
+  </ul>
 </div>
