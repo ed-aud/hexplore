@@ -34,7 +34,7 @@ class ChatbotJob < ApplicationJob
     results << { role: "system", content: "You are an assistant to help users find locations based on their selected preferences" }
     questions.each do |question|
       results << { role: "user", content: question.user_question }
-      results << { role: "assistant", content: question.ai_answer || "" }
+      vh results << { role: "assistant", content: question.ai_answer || "" }
     end
     return results
   end
