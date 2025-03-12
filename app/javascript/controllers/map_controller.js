@@ -11,6 +11,7 @@ export default class extends Controller {
     "map"
   ];
 
+  // Array storing 'database' of gym instances for bounding box
   gyms = [
     { name: "Anytime Fitness", lon: -0.0297, lat: 51.5248 },
     { name: "Anytime Fitness Hackney", lon: -0.0471, lat: 51.5497 },
@@ -377,7 +378,7 @@ export default class extends Controller {
                 hex.properties.fillColor = "#25a244";
             }
           } else if (this.selectedFilters.pubs && isInsidePub) {
-            hex.properties.fillColor = "#25a244"; // Green for pubs
+            hex.properties.fillColor = "#25a244";
           } else if (this.selectedFilters.stations && isInsideStation) {
             hex.properties.fillColor = "#25a244";
           }
