@@ -20,13 +20,6 @@ new_user_1 = User.create!(first_name: "Tom", last_name: "Jones", email: "tom@gma
 new_user_2 = User.create!(first_name: "Ben", last_name: "Hill", email: "ben@gmail.com", password: "123456")
 puts "#{User.count} users created"
 
-puts "> Creating POIs"
-
-puts "> #{} gyms created"
-puts "> #{} parks created"
-puts "> #{} pubs created"
-puts "> #{} restaurants created"
-puts "> #{} stations created"
 
 # When API is used, delete all below
 
@@ -46,7 +39,6 @@ puts "#{Hive.count} users created"
 puts "> Creating Filters"
 filter = Filter.create!(category: "bar", associated_distance: "4", hexagon: hexagon)
 puts "#{Filter.count} users created"
-
 
 poi = [
   { category: "gym", name: "Anytime Fitness", lon: -0.0297, lat: 51.5248 },
@@ -650,6 +642,17 @@ poi = [
   { category: "station", name: "Whitechapel", lat: 51.5194, lon: -0.0615 },
 ]
 
+puts "> Creating POIs"
+
+poi.each do |i|
+  Poi.create!(i)
+end
+
+puts "> #{Poi.where(category: 'gym').count} gyms created"
+puts "> #{Poi.where(category: 'parks').count} gyms created"
+puts "> #{Poi.where(category: 'pubs').count} gyms created"
+puts "> #{Poi.where(category: 'restaurants').count} gyms created"
+puts "> #{Poi.where(category: 'stations').count} gyms created"
 
 
 cafes = [
