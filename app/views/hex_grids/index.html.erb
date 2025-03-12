@@ -1,10 +1,13 @@
 <div class="hexgrid-container" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   <div class="hexgrid-filters-container">
     <h2>Filters</h2>
-    <label><input type="checkbox" data-action="change->map#toggleFilter" data-map-filter-value="Pub">Pub</label>
-    <label><input type="checkbox" data-action="change->map#toggleFilter" data-map-filter-value="Park">Park</label>
+    <p><em>Select the categories that matter to you. <br> Any hexagons highlighted in green will match your search!</em></p>
+    <div class="map-filter-options">
+      <label><input type="checkbox" data-action="change->map#toggleFilter" data-map-filter-value="pubs">Pub</label>
+      <label><input type="checkbox" data-action="change->map#toggleFilter" data-map-filter-value="stations">Station</label>
+    </div>
   </div>
-  <div class="hexgrid-map-container" data-test="<%= @hexagons_test %>">
+  <div class="hexgrid-map-container">
     <h2>Map</h2>
     <div
       style="width: 90%; height: 100%;"

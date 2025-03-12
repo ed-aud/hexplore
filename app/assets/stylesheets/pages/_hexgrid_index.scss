@@ -7,10 +7,37 @@
   background-color: $light-green;
   width: 25dvw;
   height: 100dvh;
+  padding: 20px;
 }
 
 .hexgrid-map-container {
   background-color: grey;
   width: 75dvw;
   height: 100dvh;
+}
+
+.map-filter-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.clicked-hexagon {
+  text-align: center;
+}
+
+.clicked-hexagon .hexagon-title {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.clicked-hexagon p {
+  font-size: 8px;
+  font-style: italic;
+  margin: 0;
+}
+
+.btn-hexagon {
+  font-size: 12px;
+  margin-top: 10px;
 }
