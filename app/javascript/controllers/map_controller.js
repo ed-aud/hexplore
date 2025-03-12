@@ -4,6 +4,8 @@ import mapboxgl from "mapbox-gl"
 export default class extends Controller {
   static values = {
     apiKey: String,
+    // Added coordinates value
+    coordinates: Array,
   };
 
   static targets = [
@@ -56,7 +58,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
-      style: "mapbox://styles/mapbox/streets-v10",
+      style: "mapbox://styles/mapbox/streets-v10"
     });
 
     const londonBounds = [
@@ -66,6 +68,9 @@ export default class extends Controller {
 
     this.#boundingBox(londonBounds);
     this.map.on("load", () => {
+      // Added 2 lines below
+      this.map.setCenter(this.coordinatesValue);
+      this.map.setZoom(13);
       this.#generateHexGrid(londonBounds);
       this.#hexagonClick();
     });
