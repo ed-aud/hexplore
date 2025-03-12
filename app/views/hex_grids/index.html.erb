@@ -1,14 +1,14 @@
-<div class="hexgrid-container">
+<div class="hexgrid-container" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   <div class="hexgrid-filters-container">
     <h2>Filters</h2>
+    <label><input type="checkbox" data-action="change->map#toggleFilter" data-map-filter-value="Pub">Pub</label>
+    <label><input type="checkbox" data-action="change->map#toggleFilter" data-map-filter-value="Park">Park</label>
   </div>
   <div class="hexgrid-map-container" data-test="<%= @hexagons_test %>">
     <h2>Map</h2>
     <div
       style="width: 90%; height: 100%;"
-      data-controller="map"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      data-map-target="map">
     </div>
   </div>
-  <%= @hexagons_test %>
 </div>
