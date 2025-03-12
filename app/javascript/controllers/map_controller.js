@@ -2,13 +2,17 @@ import { Controller } from "@hotwired/stimulus"
 import mapboxgl from "mapbox-gl"
 
 export default class extends Controller {
+  // Location values are retrieving location objects from seed file via Hex Grid controller & Index page
   static values = {
     apiKey: String,
+    gyms: Array,
+    pubs: Array,
+    stations: Array,
   };
 
   static targets = [
+    "map",
     "filters",
-    "map"
   ];
 
   // Array storing 'database' of gym instances for bounding box
