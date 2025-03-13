@@ -200,40 +200,37 @@ export default class extends Controller {
   // Function to allow a user to click on a hexagon to see an info pop-up
   #hexagonClick() {
     this.map.on("click", "hexGridLayer", (event) => {
+      event.preventDefault();
       const clickedHexagonId = event.features[0].properties.id;
+      console.log(clickedHexagonId);
+      let hexCoords;
+      this.hexGrid.forEach((hexagon) => {
+        if (hexagon.properties.id === clickedHexagonId) {
+          hexCoords = turf.centroid(hexagon)
+          console.log({hexCoords})
+        }
+      })
       const coordinates = event.lngLat;
+      const coordinates1 = hexCoords;
+
+      // console.log(coordinates1.geometry.coordinates[0]);
+
       new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
-          `<div class="clicked-hexagon data-controller = "map hexagonMap" data-map-latitude-value="${coordinates.lat.toFixed(5)}" data-map-longitude-value="${coordinates.lng.toFixed(5)}">
+          `<div class="clicked-hexagon">
             <strong class="hexagon-title">Hive ${clickedHexagonId}</strong>
-            <p>(${coordinates.lng.toFixed(5)}, ${coordinates.lat.toFixed(5)})</p>
-            <button class="btn btn-primary btn-hexagon"   data-action="click->map#sendCoordinates ">
+            <p>(${coordinates1.geometry.coordinates[0]}, ${coordinates1.geometry.coordinates[1]})</p>
+            <button class="btn btn-primary btn-hexagon" >
               View Hive
             </button>
+            <form name="myForm" action="/hexagons" method="post">
+              <input type="text" name="hexagon[lat]" value="${coordinates1.geometry.coordinates[0]}">
+              <input type="text" name="hexagon[lon]" value="${coordinates1.geometry.coordinates[1]}">
+              <input type="submit" name="commit" value="View Hive">
+            </form>
           </div>`)
         .addTo(this.map);
     });
   }
-
-
-  sendCoordinates(){
-    this.map.on("click", (event) => {
-    const coord = event.lngLat;
-    console.log(coord)
-   })
-    console.log('triggered!')
-
-    const requestDetails = {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({"email": emailValue, "password": passwordValue})
-    }
-
-    const response = fetch('http://localhost:3000/highlights',requestDetails).then(response => response.json())
-    .then(data => console.log(data));
-  }
-
 }
-
-//onclick="window.location.href='/hexagon/${hexagonIdValue}'"
