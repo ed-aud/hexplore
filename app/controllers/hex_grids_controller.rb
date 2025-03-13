@@ -8,8 +8,9 @@ class HexGridsController < ApplicationController
     end
 
     # Retrieve the search address from params (pushed from Home) and then retrieve the associated coordinates
-    address = params[:address].gsub(/[^a-zA-Z0-9\s]/, '').gsub(" ", "%20")
-    url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{address}.json?access_token=#{ENV['MAPBOX_API_KEY']}"
+    address = params[:address]
+    address_formatted = address.gsub(/[^a-zA-Z0-9\s]/, '').gsub(" ", "%20")
+    url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{address_formatted}.json?access_token=#{ENV['MAPBOX_API_KEY']}"
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)
     data = JSON.parse(response.body)
