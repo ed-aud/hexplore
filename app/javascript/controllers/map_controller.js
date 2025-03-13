@@ -34,21 +34,28 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
     });
 
-    const searchBounds = [
-      [-0.0100, 51.5545],
-      [-0.0865, 51.5066],
-    ];
+    // Take search coordinates and define a constant Hex Grid & Map load size
+    let centrePoint = []
+    this.coordinatesValue === null ? centrePoint = [-0.1278, 51.5074] : centrePoint = this.coordinatesValue
+    const nwPoint = [(centrePoint[0] + 0.03825), (centrePoint[1] + 0.02395)]
+    const sePoint = [(centrePoint[0] - 0.03825), (centrePoint[1] - 0.02395)]
+    const searchBounds = [nwPoint, sePoint]
 
-    // Ensure that the map loads with the correct bounds
+    // Load the map based on search
     this.#boundingBox(searchBounds);
 
-    // Ensure that Hex Grid (and associated functions) is only generated once the map has loaded
+    // Load the Hex Grid (and associated functions) based on search and once map has loaded
     this.map.on("load", () => {
       this.map.setCenter(this.coordinatesValue);
       this.map.setZoom(13);
       this.#generateHexGrid(searchBounds);
       this.#hexagonClick();
       // this.#sendCoordinates();
+    });
+
+    // Initialise base state for filters
+    Object.keys(this.filtersValue).forEach(filter => {
+      this.selectedFilters[filter] = false;
     });
 
     // Initialise base state for filters
@@ -68,7 +75,7 @@ export default class extends Controller {
         method: 'POST',
         body: {
 
-        }
+        },
         headers: {
           'X-Requested-With': 'XMLHttpRequest'
         },
