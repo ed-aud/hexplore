@@ -3,7 +3,6 @@ import mapboxgl from "mapbox-gl"
 
 export default class extends Controller {
   // Location values are retrieving location objects from seed file via Hex Grid controller & Index page
-  // Added coordinates value
   static values = {
     apiKey: String,
     coordinates: Array,
@@ -12,6 +11,7 @@ export default class extends Controller {
     stations: Array,
     latitude: Number,
     longitude: Number,
+    filters: Object,
   };
 
   static targets = [
@@ -20,17 +20,12 @@ export default class extends Controller {
     "output",
   ];
 
-  // Create a default state for filters
-  selectedFilters = {
-    pubs: false,
-    stations: false
-  };
-  // Array storing Hex Grid data
+  // Array(s) / Object(s) to store key Filter, Hex Grid and Hexagon datas
   hexGrid = [];
-
-  // Array storing all hexagons are shaded green (via their ID) for when a user toggles off a given filter (as we need to reset these)
   greenHexagons = [];
+  selectedFilters = {};
 
+  // Function to load the map and necessary Hex Grid functions on page load
   connect() {
     mapboxgl.accessToken = this.apiKeyValue;
 
@@ -44,14 +39,21 @@ export default class extends Controller {
       [-0.0865, 51.5066],
     ];
 
+    // Ensure that the map loads with the correct bounds
     this.#boundingBox(searchBounds);
-    // Ensure that Hex Grid (and associated fucntions) is only generated once the map has loaded
+
+    // Ensure that Hex Grid (and associated functions) is only generated once the map has loaded
     this.map.on("load", () => {
       this.map.setCenter(this.coordinatesValue);
       this.map.setZoom(13);
       this.#generateHexGrid(searchBounds);
       this.#hexagonClick();
       // this.#sendCoordinates();
+    });
+
+    // Initialise base state for filters
+    Object.keys(this.filtersValue).forEach(filter => {
+      this.selectedFilters[filter] = false;
     });
   }
 
@@ -62,13 +64,15 @@ export default class extends Controller {
       console.log(coord)
      })
       console.log('triggered!')
-      // const response = fetch('http://localhost:3000/highlights', {
-      //   method: 'POST',
-      //   body: formData,
-      //   headers: {
-      //     'X-Requested-With': 'XMLHttpRequest'
-      //   },
-      // });// Dispatch the event globally
+      const response = fetch('http://localhost:3000/highlights', {
+        method: 'POST',
+        body: {
+
+        }
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+      });// Dispatch the event globally
     }
 
 
@@ -114,6 +118,95 @@ export default class extends Controller {
     });
   }
 
+  // Function to handle a user toggling a filter catefory
+  toggleFilter(event) {
+    const filterValue = event.target.dataset.mapFilterValue;
+    const isChecked = event.target.checked;
+
+    // Update the selectedFilters state
+    this.selectedFilters[filterValue] = isChecked;
+
+    // If no filters are selected, reset all hexagons to white
+    if (Object.values(this.selectedFilters).every(val => !val)) {
+      this.greenHexagons = [];
+      this.updateHexagonColour();
+      return;
+    }
+
+    // Re-calculate which hexagons need to be marked as green based on filters now selected
+    this.updateHexagonSelectionPerFilters();
+  }
+
+  // Function to update hexagons based on selected filters
+  updateHexagonSelectionPerFilters() {
+    const hexagonsPerCategory = {};
+    const selectedCategories = Object.keys(this.selectedFilters).filter(category => this.selectedFilters[category]);
+
+    // Function to find each location in a selected category (e.g., every pub) and iterate over each hexagon to check if it contains location instance(s)
+    selectedCategories.forEach(category => {
+      hexagonsPerCategory[category] = new Set();
+
+      this.filtersValue[category].forEach((location) => {
+        this.hexGrid.forEach((hexagon) => {
+          const hexagonPolygon = turf.polygon(hexagon.geometry.coordinates);
+          const locationPoint = turf.point([location.lon, location.lat]);
+
+          if (turf.booleanPointInPolygon(locationPoint, hexagonPolygon)) {
+            hexagonsPerCategory[category].add(hexagon.properties.id);
+          }
+        });
+      });
+    });
+
+    // Find the hexagons which contain an instance of each selected filter (i.e., intersection of all desired categories)
+    let intersection = [...hexagonsPerCategory[selectedCategories[0]]];
+
+    selectedCategories.forEach(category => {
+      intersection = intersection.filter(hexId => hexagonsPerCategory[category].has(hexId));
+    });
+
+    // Update array of Hexagons to be shaded green and call function to update their colour accordingly
+    this.greenHexagons = intersection;
+    this.updateHexagonColour();
+  }
+
+  // Function to update the colour of any hexagons that contain location(s) matching selected filters
+  updateHexagonColour() {
+    // Find map source, checking if a valid source exists
+    const source = this.map.getSource("hexGrid");
+    if (!source) return;
+
+    const hexGridData = source._data.features;
+
+    // Function to reset all hexagons to white
+    hexGridData.forEach((hex) => {
+      hex.properties.fillColor = "#FFFFFF";
+    });
+
+    // Function to updated Hexagons in greenHexagons array to green
+    hexGridData.forEach((hex) => {
+      if (this.greenHexagons.includes(hex.properties.id)) {
+        hex.properties.fillColor = "#25a244";  // Set to green
+      }
+    });
+
+    // Function to pass the Hex Grid map the new data
+    source.setData({
+      type: "FeatureCollection",
+      features: hexGridData
+    });
+
+    // Function to pass the new data to the Hex Grid layer
+    const colorExpression = ["match", ["get", "id"]];
+    hexGridData.forEach((hex) => {
+      colorExpression.push(hex.properties.id, hex.properties.fillColor || "#FFFFFF");
+    });
+    colorExpression.push("#FFFFFF");
+
+    // Function to update the fill colour of the Hex Grid layer
+    this.map.setPaintProperty("hexGridLayer", "fill-color", colorExpression);
+  }
+
   // Function to allow a user to click on a hexagon to see an info pop-up
   #hexagonClick() {
     this.map.on("click", "hexGridLayer", (event) => {
@@ -131,104 +224,5 @@ export default class extends Controller {
           </div>`)
         .addTo(this.map);
     });
-  }
-
-  // Function to handle when a user toggles a filter
-  toggleFilter(event) {
-    const filterValue = event.target.dataset.mapFilterValue;
-    const isChecked = event.target.checked;
-
-    // Update the selectedFilters state
-    this.selectedFilters[filterValue] = isChecked;
-
-    // Reset the colour of any previously coloured hexagons (given selectedFilters has changed) and empty the array they are stored in
-    this.greenHexagons.forEach((hexId) => {
-      this.updateHexagonColor(hexId, "#FFFFFF");
-    });
-    this.greenHexagons = [];
-
-    // Reprocess hexagon colours based on new filters
-    this.updateHexagonsBasedOnFilters();
-  }
-
-  // Function to update the hexagons based on selected filters
-  updateHexagonsBasedOnFilters() {
-    if (this.selectedFilters.pubs) {
-      this.pubsValue.forEach((pub) => this.checkLocationInHexagon(pub, "#25a244"));
-    }
-
-    if (this.selectedFilters.stations) {
-      this.stationsValue.forEach((station) => this.checkLocationInHexagon(station, "#25a244"));
-    }
-  }
-
-  // Function to locate each instance of selected filter category (e.g., every pub) and iterate over each hexagon to check if it contains selected instance location(s)
-  checkLocationInHexagon(location, color) {
-    const locationPoint = turf.point([location.lon, location.lat]);
-    this.hexGrid.forEach((hexagon) => {
-      const hexagonPolygon = turf.polygon(hexagon.geometry.coordinates);
-      const isInside = turf.booleanPointInPolygon(locationPoint, hexagonPolygon);
-
-      // If a hexagon contains an instance location, call function to change it's colour to green
-      if (isInside) {
-        if (!this.greenHexagons.includes(hexagon.properties.id)) {
-          this.updateHexagonColor(hexagon.properties.id, color);
-          this.greenHexagons.push(hexagon.properties.id);
-        }
-      }
-    });
-  }
-
-  // Function to update the colour of any hexagons that contain location(s) matching selecting filters
-  updateHexagonColor() {
-    const source = this.map.getSource("hexGrid");
-
-    if (source) {
-    const hexGridData = source._data.features;
-
-      // Reset the the colour for each hexagon to white
-      hexGridData.forEach((hex) => {
-          hex.properties.fillColor = "#FFFFFF";
-      });
-
-      // Iterate through hexagons to (a) check whether an instances of the selected location(s) is within a hexagon and, if so, (b) change the colour accordingly
-      hexGridData.forEach((hex) => {
-          const isInsidePub = this.pubsValue.some((pub) => {
-              const pubPoint = turf.point([pub.lon, pub.lat]);
-              return turf.booleanPointInPolygon(pubPoint, hex);
-          });
-
-          const isInsideStation = this.stationsValue.some((station) => {
-              const stationPoint = turf.point([station.lon, station.lat]);
-              return turf.booleanPointInPolygon(stationPoint, hex);
-          });
-
-          // Logic to colour hexagons if 100% of selected filters are matched in a given hexagon
-          if (this.selectedFilters.pubs && this.selectedFilters.stations) {
-            if (isInsidePub && isInsideStation) {
-                hex.properties.fillColor = "#25a244";
-            }
-          } else if (this.selectedFilters.pubs && isInsidePub) {
-            hex.properties.fillColor = "#25a244";
-          } else if (this.selectedFilters.stations && isInsideStation) {
-            hex.properties.fillColor = "#25a244";
-          }
-      });
-
-      // Update the Hex Grid source with the new colour data
-      source.setData({
-          type: "FeatureCollection",
-          features: hexGridData
-      });
-
-      // Update the fill color property of the hexagon layer
-      const colorExpression = ["match", ["get", "id"]];
-      hexGridData.forEach((hex) => {
-        colorExpression.push(hex.properties.id, hex.properties.fillColor || "#FFFFFF");
-      });
-      colorExpression.push("#FFFFFF");
-
-      this.map.setPaintProperty("hexGridLayer", "fill-color", colorExpression);
-    }
   }
 }
