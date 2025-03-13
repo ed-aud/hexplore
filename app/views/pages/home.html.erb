@@ -1,14 +1,13 @@
 <div class="home-background">
   <div class="home-container">
     <h1>You pick what matters most to you.<br>We find your hive.</h1>
-    <div class="home-map-container">
-    </div>
+    <div class="home-map-container"></div>
 
     <p>A dynamic mapping solution with integrated AI to help make cities work for you.</p>
 
     <%= form_with(url: hex_grids_path, method: :get) do |f| %>
       <div class="form-input">
-        <%= f.label :address, "Address" %>
+        <%# <%= f.label :address, "Address" %>
         <%= f.text_field :address,
           placeholder: "Enter Address",
           class: "form-control",
@@ -19,10 +18,8 @@
             address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
           }
         %>
+        <%= f.submit "Find Your Hive", class: "btn btn-primary home-button" %>
       </div>
-
-      <%= f.submit "Find Your Hive", class: "btn btn-primary home-button" %>
     <% end %>
-
   </div>
 </div>
