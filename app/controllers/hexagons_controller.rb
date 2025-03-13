@@ -1,6 +1,4 @@
 class HexagonsController < ApplicationController
-  before_action :set_hex_grid, only: %i[new create]
-
   def show
     @hexagon = Hexagon.find(params[:id])
     @markers = [{
@@ -18,8 +16,6 @@ class HexagonsController < ApplicationController
 
   def create
     @hexagon = Hexagon.new(hexagon_params)
-    @hexagon.hex_grid = @hex_grid
-    # raise
     if @hexagon.save
       redirect_to hexagon_path(@hexagon)
     else
@@ -31,10 +27,6 @@ class HexagonsController < ApplicationController
 
   def set_hexagon
     @hexagon = Hexagon.find(params[:id])
-  end
-
-  def set_hex_grid
-    @hex_grid = HexGrid.find(params[:hex_grid_id])
   end
 
   def hexagon_params
