@@ -1,2 +1,0 @@
-class HexGrid < ApplicationRecord
-end

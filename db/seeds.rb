@@ -11,9 +11,7 @@
 puts "Cleaning Database..."
 Hive.destroy_all
 User.destroy_all
-Filter.destroy_all
 Hexagon.destroy_all
-HexGrid.destroy_all
 Poi.destroy_all
 puts "Cleaned Database"
 
@@ -22,21 +20,13 @@ new_user_1 = User.create!(first_name: "Tom", last_name: "Jones", email: "tom@gma
 new_user_2 = User.create!(first_name: "Ben", last_name: "Hill", email: "ben@gmail.com", password: "123456")
 puts "#{User.count} users created"
 
-puts "> Creating Hex Grids..."
-hex_grid = HexGrid.create!(min_lat: 51.2867, min_lon: -0.5103, max_lat: 51.6918, max_lon: 51.6918, hexagon_width: 0.4)
-puts "#{HexGrid.count} users created"
-
 puts "> Creating Hexagons..."
-hexagon = Hexagon.create!(lon: -0.1278, lat: 51.5074, hex_grid: hex_grid)
+hexagon = Hexagon.create!(lon: -0.1278, lat: 51.5074)
 puts "#{Hexagon.count} users created"
 
 puts "> Creating Hives..."
 hive = Hive.create!(name: "Hive Test 01", notes: "Lets see", user: new_user_1, hexagon: hexagon)
 puts "#{Hive.count} users created"
-
-puts "> Creating Filters..."
-filter = Filter.create!(category: "bar", associated_distance: "4", hexagon: hexagon)
-puts "#{Filter.count} users created"
 
 poi = [
   { category: "cafe", name: "The Coffee Room", lat: 51.5273, lon: -0.0383 },
@@ -182,6 +172,21 @@ poi = [
   { category: "gym", name: "Victoria Park", lon: -0.0439, lat: 51.5360 },
   { category: "gym", name: "Westfield Stratford City Gym", lon: -0.0048, lat: 51.5418 },
   { category: "gym", name: "W10 Fitness", lon: -0.2033, lat: 51.5239 },
+  { category: "hospital", name: "Royal London Hospital", lat: 51.5171, lon: -0.0692 },
+  { category: "hospital", name: "St Bartholomew's Hospital", lat: 51.5186, lon: -0.0976 },
+  { category: "hospital", name: "Homerton University Hospital", lat: 51.5373, lon: -0.0520 },
+  { category: "hospital", name: "Newham University Hospital", lat: 51.5224, lon: 0.0427 },
+  { category: "hospital", name: "Whipps Cross University Hospital", lat: 51.5790, lon: 0.0082 },
+  { category: "hospital", name: "Mile End Hospital", lat: 51.5240, lon: -0.0374 },
+  { category: "hospital", name: "Homerton University Hospital", lat: 51.5373, lon: -0.0520 },
+  { category: "hospital", name: "St George's Hospital", lat: 51.4189, lon: -0.1714 },
+  { category: "hospital", name: "King George Hospital", lat: 51.5700, lon: 0.0805 },
+  { category: "hospital", name: "Queen Mary's Hospital, Roehampton", lat: 51.4528, lon: -0.2344 },
+  { category: "hospital", name: "Chelsea and Westminster Hospital", lat: 51.4915, lon: -0.1845 },
+  { category: "hospital", name: "St Thomas' Hospital", lat: 51.4964, lon: -0.1172 },
+  { category: "hospital", name: "Guy's Hospital", lat: 51.5055, lon: -0.0914 },
+  { category: "hospital", name: "King's College Hospital", lat: 51.4752, lon: -0.0866 },
+  { category: "hospital", name: "St Helier Hospital", lat: 51.3583, lon: -0.1797 },
   { category: "park", name: "Barking Park", lat: 51.5419, lon: 0.0847 },
   { category: "park", name: "Barnes Common", lat: 51.4690, lon: -0.2495 },
   { category: "park", name: "Barnet Playing Fields", lat: 51.6483, lon: -0.1981 },
@@ -681,15 +686,72 @@ poi = [
   { category: "station", name: "Wapping", lat: 51.5082, lon: -0.0617 },
   { category: "station", name: "Waterloo", lat: 51.5030, lon: -0.1128 },
   { category: "station", name: "Whitechapel", lat: 51.5194, lon: -0.0615 },
+  { category: "university", name: "University College London", lat: 51.5242, lon: -0.1318 },
+  { category: "university", name: "King's College London", lat: 51.5074, lon: -0.1278 },
+  { category: "university", name: "London School of Economics", lat: 51.5145, lon: -0.1165 },
+  { category: "university", name: "Imperial College London", lat: 51.4980, lon: -0.1743 },
+  { category: "university", name: "Queen Mary University of London", lat: 51.5249, lon: -0.0375 },
+  { category: "university", name: "University of London", lat: 51.5230, lon: -0.1344 },
+  { category: "university", name: "London Metropolitan University", lat: 51.5367, lon: -0.1025 },
+  { category: "university", name: "City, University of London", lat: 51.5220, lon: -0.0960 },
+  { category: "university", name: "University of the Arts London", lat: 51.5319, lon: -0.1175 },
+  { category: "university", name: "Royal Holloway, University of London", lat: 51.4336, lon: -0.5534 },
+  { category: "university", name: "St George's University of London", lat: 51.4194, lon: -0.1754 },
+  { category: "university", name: "Brunel University London", lat: 51.5333, lon: -0.4883 },
+  { category: "university", name: "University of East London", lat: 51.5074, lon: 0.0100 },
+  { category: "university", name: "London South Bank University", lat: 51.4927, lon: -0.1059 },
+  { category: "university", name: "Middlesex University", lat: 51.5941, lon: -0.2277 },
+  { category: "university", name: "University of Westminster", lat: 51.5145, lon: -0.1419 },
+  { category: "university", name: "University of Greenwich", lat: 51.4867, lon: 0.0148 },
+  { category: "wine bar", name: "Noble Rot", lat: 51.5215, lon: -0.1262 },
+  { category: "wine bar", name: "The 10 Cases", lat: 51.5079, lon: -0.1270 },
+  { category: "wine bar", name: "40 Maltby Street", lat: 51.4952, lon: -0.0741 },
+  { category: "wine bar", name: "Compagnie des Vins Surnaturels", lat: 51.4116, lon: -0.1327 },
+  { category: "wine bar", name: "Diogenes the Dog", lat: 51.4956, lon: -0.0770 },
+  { category: "wine bar", name: "Sager + Wilde", lat: 51.5286, lon: -0.0691 },
+  { category: "wine bar", name: "Brilliant Corners", lat: 51.5484, lon: -0.0784 },
+  { category: "wine bar", name: "The Remedy", lat: 51.5233, lon: -0.1053 },
+  { category: "wine bar", name: "Leroy", lat: 51.5261, lon: -0.0787 },
+  { category: "wine bar", name: "The Winemakers Club", lat: 51.5214, lon: -0.1051 },
+  { category: "wine bar", name: "Antidote", lat: 51.5145, lon: -0.1360 },
+  { category: "wine bar", name: "Black Book", lat: 51.4728, lon: -0.1616 },
+  { category: "wine bar", name: "Planque", lat: 51.5249, lon: -0.0662 },
+  { category: "wine bar", name: "Hector's", lat: 51.5457, lon: -0.0807 },
+  { category: "wine bar", name: "Newcomer Wines", lat: 51.5533, lon: -0.1197 },
+  { category: "wine bar", name: "28-50", lat: 51.5056, lon: -0.1467 },
+  { category: "wine bar", name: "Rawduck", lat: 51.5372, lon: -0.0749 },
+  { category: "wine bar", name: "Little Duck - The Picklery", lat: 51.5392, lon: -0.0845 },
+  { category: "wine bar", name: "The Blacksmith and Toffeemaker", lat: 51.5236, lon: -0.1073 },
+  { category: "wine bar", name: "The Fox & Grapes", lat: 51.4244, lon: -0.2002 },
+  { category: "wine bar", name: "The Chelsea Cellar", lat: 51.4912, lon: -0.1745 },
+  { category: "wine bar", name: "Pavilion Wines", lat: 51.4924, lon: -0.1761 },
+  { category: "wine bar", name: "Seed Library", lat: 51.5215, lon: -0.1045 },
+  { category: "wine bar", name: "The Cadogan Arms", lat: 51.4931, lon: -0.1609 },
+  { category: "wine bar", name: "The Wine Library", lat: 51.5177, lon: -0.1509 },
+  { category: "wine bar", name: "The Fox Fine Wine & Spirits", lat: 51.5150, lon: -0.0911 },
+  { category: "wine bar", name: "The Pavilion", lat: 51.4995, lon: -0.1902 },
+  { category: "wine bar", name: "The Northcote", lat: 51.4648, lon: -0.1506 },
+  { category: "wine bar", name: "The Wine & Wallop", lat: 51.5380, lon: -0.1034 },
+  { category: "wine bar", name: "Half Cut Market", lat: 51.5495, lon: -0.1269 },
+  { category: "wine bar", name: "Bruno", lat: 51.5394, lon: -0.0437 },
+  { category: "wine bar", name: "Le Beaujolais", lat: 51.5113, lon: -0.1240 },
+  { category: "wine bar", name: "107 Wine Shop & Bar", lat: 51.5664, lon: -0.0678 },
+  { category: "wine bar", name: "Bar Levan", lat: 51.4682, lon: -0.0754 },
+  { category: "wine bar", name: "Binch", lat: 51.5466, lon: -0.0792 },
+  { category: "wine bar", name: "Oranj", lat: 51.5286, lon: -0.0792 },
+  { category: "wine bar", name: "Godet", lat: 51.5193, lon: -0.1041 },
+  { category: "wine bar", name: "Cadet", lat: 51.5498, lon: -0.0847 },
+  { category: "wine bar", name: "Brat", lat: 51.5260, lon: -0.0790 }
 ]
 
 puts "> Creating POIs..."
-poi.each do |i|
-  Poi.create!(i)
-end
-puts "> #{Poi.where(category: 'cafe').count} cafes created"
-puts "> #{Poi.where(category: 'gym').count} gyms created"
-puts "> #{Poi.where(category: 'park').count} parks created"
-puts "> #{Poi.where(category: 'pub').count} pubs created"
-puts "> #{Poi.where(category: 'restaurant').count} restaurants created"
-puts "> #{Poi.where(category: 'station').count} stations created"
+poi.each { |i| Poi.create!(i) }
+puts "> #{Poi.where(category: "cafe").count} cafes created"
+puts "> #{Poi.where(category: "gym").count} gyms created"
+puts "> #{Poi.where(category: "hospital").count} hospitals created"
+puts "> #{Poi.where(category: "park").count} parks created"
+puts "> #{Poi.where(category: "pub").count} pubs created"
+puts "> #{Poi.where(category: "restaurant").count} restaurants created"
+puts "> #{Poi.where(category: "station").count} stations created"
+puts "> #{Poi.where(category: "university").count} universities created"
+puts "> #{Poi.where(category: "wine bar").count} wine bars created"
