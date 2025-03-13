@@ -11,9 +11,7 @@
 puts "Cleaning Database..."
 Hive.destroy_all
 User.destroy_all
-Filter.destroy_all
 Hexagon.destroy_all
-HexGrid.destroy_all
 Poi.destroy_all
 puts "Cleaned Database"
 
@@ -22,21 +20,13 @@ new_user_1 = User.create!(first_name: "Tom", last_name: "Jones", email: "tom@gma
 new_user_2 = User.create!(first_name: "Ben", last_name: "Hill", email: "ben@gmail.com", password: "123456")
 puts "#{User.count} users created"
 
-puts "> Creating Hex Grids..."
-hex_grid = HexGrid.create!(min_lat: 51.2867, min_lon: -0.5103, max_lat: 51.6918, max_lon: 51.6918, hexagon_width: 0.4)
-puts "#{HexGrid.count} users created"
-
 puts "> Creating Hexagons..."
-hexagon = Hexagon.create!(lon: -0.1278, lat: 51.5074, hex_grid: hex_grid)
+hexagon = Hexagon.create!(lon: -0.1278, lat: 51.5074)
 puts "#{Hexagon.count} users created"
 
 puts "> Creating Hives..."
 hive = Hive.create!(name: "Hive Test 01", notes: "Lets see", user: new_user_1, hexagon: hexagon)
 puts "#{Hive.count} users created"
-
-puts "> Creating Filters..."
-filter = Filter.create!(category: "bar", associated_distance: "4", hexagon: hexagon)
-puts "#{Filter.count} users created"
 
 poi = [
   { category: "cafe", name: "The Coffee Room", lat: 51.5273, lon: -0.0383 },
