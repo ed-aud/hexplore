@@ -7,11 +7,6 @@ export default class extends Controller {
     apiKey: String,
     coordinates: Array,
     filters: Object,
-
-    // Remove when filters working
-    gyms: Array,
-    pubs: Array,
-    stations: Array,
   };
 
   static targets = [
