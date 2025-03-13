@@ -29,7 +29,8 @@ export default class extends Controller {
     });
 
     // Take search coordinates and define a constant Hex Grid & Map load size
-    const centrePoint = this.coordinatesValue
+    let centrePoint = []
+    this.coordinatesValue === null ? centrePoint = [-0.1278, 51.5074] : centrePoint = this.coordinatesValue
     const nwPoint = [(centrePoint[0] + 0.03825), (centrePoint[1] + 0.02395)]
     const sePoint = [(centrePoint[0] - 0.03825), (centrePoint[1] - 0.02395)]
     const searchBounds = [nwPoint, sePoint]
