@@ -5,8 +5,10 @@ import mapboxgl from 'mapbox-gl'
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    hexagonId: Number,
   }
+
   connect() {
     mapboxgl.accessToken = this.apiKeyValue;
     this.map = new mapboxgl.Map({
@@ -15,7 +17,18 @@ export default class extends Controller {
     });
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
+    this.#updateCoordinates();
+    window.addEventListener("hexagon:updateCoordinates", this.updateCoordinates.bind(this))
   }
+
+  disconnect() {
+    window.removeEventListener("hexagon:updateCoordinates", this.updateCoordinates.bind(this))
+  }
+
+  #updateCoordinates(event){
+    const { latitude, longitude } = event.detail
+    console.log("Received coordinates:", latitude, longitude)
+  };
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
