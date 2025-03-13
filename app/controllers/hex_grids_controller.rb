@@ -10,7 +10,7 @@ class HexGridsController < ApplicationController
     categories = Poi.distinct.pluck(:category).sort
 
     @filters = categories.each_with_object({}) do |category, hash|
-      hash[category] = Poi.where(category: category)
+      hash[category] = Poi.where(category: category).map { |poi| { lon: poi.lon, lat: poi.lat } }
     end
 
 

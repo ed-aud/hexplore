@@ -3,7 +3,8 @@
   data-controller="map"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
   data-map-coordinates-value="<%= @coordinates.to_json %>"
-  data-map-filters-vale="<%= @filters.to_json %>"
+  data-map-filters-value="<%= @filters.to_json %>"
+  
 
 
   data-map-gyms-value="<%= @gyms.to_json %>"
@@ -21,7 +22,7 @@
       <% end %>
 
       <br>
-      <p><%= 'Old Filters' %></p>
+      <p><%= 'Old Filters - Remove when filters working' %></p>
       <label><input type="checkbox" data-action="change->map#toggleFilter" data-map-filter-value="pubs">Pub</label>
       <label><input type="checkbox" data-action="change->map#toggleFilter" data-map-filter-value="stations">Station</label>
     </div>
