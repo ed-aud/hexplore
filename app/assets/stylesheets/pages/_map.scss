@@ -1,0 +1,87 @@
+.map-container {
+  display: flex;
+  flex-direction: row;
+  background-color: $white;
+  background-color: #dcf8e1;
+}
+
+.map-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #dcf8e1;
+  width: 30dvw;
+  height: calc(100dvh - 70px);
+  padding: 20px;
+  margin-left: 3px;
+}
+
+.map-step {
+  display: flex;
+}
+
+.hexagon-steps {
+  height: 40px;
+  // margin-left: 5px;
+  margin-right: 15px;
+}
+
+
+.map-filter-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.map-key-container {
+  margin-top: 20px;
+}
+
+.map-key-distance {
+  display: flex;
+  flex-direction: row;
+}
+
+.key-hexagon {
+  height: 25px;
+  margin-left: 5px;
+  margin-right: 15px;
+}
+
+.map-key-distance i {
+  margin-top: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.map-key-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.map-hexgrid-container {
+  background: $white;
+  width: 60dvw;
+  height: calc(100dvh - 110px);
+  margin: 20px;
+}
+
+.clicked-hexagon {
+  text-align: center;
+}
+
+.clicked-hexagon .hexagon-title {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.clicked-hexagon p {
+  font-size: 8px;
+  font-style: italic;
+  margin: 0;
+}
+
+.btn-hexagon {
+  font-size: 12px;
+  margin-top: 10px;
+}
