@@ -32,7 +32,6 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
-      // style: "mapbox://styles/charlieh30/cm87b15it00a301si7xqjayqj"
       // style: "mapbox://styles/mapbox/streets-v10"
       style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
     });
@@ -202,18 +201,14 @@ export default class extends Controller {
     this.map.on("click", "hexGridLayer", (event) => {
       event.preventDefault();
       const clickedHexagonId = event.features[0].properties.id;
-      console.log(clickedHexagonId);
       let hexCoords;
       this.hexGrid.forEach((hexagon) => {
         if (hexagon.properties.id === clickedHexagonId) {
           hexCoords = turf.centroid(hexagon)
-          console.log({hexCoords})
         }
       })
       const coordinates = event.lngLat;
       const coordinates1 = hexCoords;
-
-      // console.log(coordinates1.geometry.coordinates[0]);
 
       new mapboxgl.Popup()
         .setLngLat(coordinates)
