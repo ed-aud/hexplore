@@ -6,12 +6,19 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     coordinates: Array,
+    gyms: Array,
+    pubs: Array,
+    stations: Array,
+    latitude: Number,
+    longitude: Number,
     filters: Object,
+    hexagonId: Number,
   };
 
   static targets = [
     "map",
     "filters",
+    "output",
   ];
 
   // Array(s) / Object(s) to store key Filter, Hex Grid and Hexagon datas
@@ -44,6 +51,12 @@ export default class extends Controller {
       this.map.setZoom(13);
       this.#generateHexGrid(searchBounds);
       this.#hexagonClick();
+      // this.#sendCoordinates();
+    });
+
+    // Initialise base state for filters
+    Object.keys(this.filtersValue).forEach(filter => {
+      this.selectedFilters[filter] = false;
     });
 
     // Initialise base state for filters
@@ -51,6 +64,8 @@ export default class extends Controller {
       this.selectedFilters[filter] = false;
     });
   }
+
+
 
   // Function to define the outer bounds of the base map
   #boundingBox(searchBounds) {
@@ -187,18 +202,38 @@ export default class extends Controller {
     this.map.on("click", "hexGridLayer", (event) => {
       const clickedHexagonId = event.features[0].properties.id;
       const coordinates = event.lngLat;
-
       new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
-          `<div class="clicked-hexagon">
+          `<div class="clicked-hexagon data-controller = "map hexagonMap" data-map-latitude-value="${coordinates.lat.toFixed(5)}" data-map-longitude-value="${coordinates.lng.toFixed(5)}">
             <strong class="hexagon-title">Hive ${clickedHexagonId}</strong>
             <p>(${coordinates.lng.toFixed(5)}, ${coordinates.lat.toFixed(5)})</p>
-            <button class="btn btn-primary btn-hexagon" onclick="window.location.href='/hexagons/5'">
+            <button class="btn btn-primary btn-hexagon"   data-action="click->map#sendCoordinates ">
               View Hive
             </button>
           </div>`)
         .addTo(this.map);
     });
   }
+
+
+  sendCoordinates(){
+    this.map.on("click", (event) => {
+    const coord = event.lngLat;
+    console.log(coord)
+   })
+    console.log('triggered!')
+
+    const requestDetails = {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({"email": emailValue, "password": passwordValue})
+    }
+
+    const response = fetch('http://localhost:3000/highlights',requestDetails).then(response => response.json())
+    .then(data => console.log(data));
+  }
+
 }
+
+//onclick="window.location.href='/hexagon/${hexagonIdValue}'"

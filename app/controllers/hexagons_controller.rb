@@ -1,6 +1,6 @@
 class HexagonsController < ApplicationController
   before_action :set_hex_grid, only: %i[new create]
-
+  # before_action :set_hexagon, only: %i[index]
   def show
     @hexagon = Hexagon.find(params[:id])
     @markers = [{
@@ -27,6 +27,10 @@ class HexagonsController < ApplicationController
   end
 
   private
+
+  def set_hexagon
+    @hexagon = Hexagon.find(params[:id])
+  end
 
   def set_hex_grid
     @hex_grid = HexGrid.find(params[:hex_grid_id])

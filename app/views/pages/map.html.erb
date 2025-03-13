@@ -1,0 +1,32 @@
+
+<div class="hexgrid-container"
+  data-controller="map"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+  data-map-coordinates-value="<%= @coordinates.to_json %>"
+  data-map-filters-value="<%= @filters.to_json %>"
+  data-map-hexagonId-value="<%= @hexagon.to_json %>"
+  >
+  <div class="hexgrid-filters-container">
+    <h2>Filters</h2>
+    <p><em>Select the categories that matter to you. <br> Any hexagons highlighted in green will match your search!</em></p>
+    <div class="map-filter-options">
+      <% @filters.keys.each do |category| %>
+        <label>
+          <input type="checkbox" data-action="change->map#toggleFilter"
+          data-map-filter-value="<%= category %>">
+          <%= category.capitalize %>
+        </label>
+      <% end %>
+    </div>
+  </div>
+  <div class="hexgrid-map-container">
+    <div
+      style="width: 100%; height: 100%;"
+      data-map-target="map"
+      >
+    </div>
+  </div>
+  <div class="hexgrid-key-container">
+    <h2>Key</h2>
+  </div>
+</div>
