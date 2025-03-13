@@ -22,8 +22,15 @@
   width: 75dvh;
   height: 50dvh;
   margin: 0px auto;
-  border: 1px black solid;
-  background-color: white;
+  background-image: url("homepage_map");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.home-search-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .home-button {

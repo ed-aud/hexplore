@@ -1,11 +1,12 @@
 class HexagonsController < ApplicationController
   before_action :set_hex_grid, only: %i[new create]
-  # before_action :set_hexagon, only: %i[index]
+
   def show
     @hexagon = Hexagon.find(params[:id])
     @markers = [{
       lat: @hexagon.lat,
-      lng: @hexagon.lon}]
+      lng: @hexagon.lon
+    }]
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
