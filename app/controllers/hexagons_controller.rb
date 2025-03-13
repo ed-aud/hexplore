@@ -1,17 +1,6 @@
 class HexagonsController < ApplicationController
   before_action :set_hex_grid, only: %i[new create]
   # before_action :set_hexagon, only: %i[index]
-
-  def index
-    @hex_grid = HexGrid.first
-    @hives = Hive.all
-    # @markers = [{
-    #   lat: @hexagon.lat,
-    #   lng: @hexagon.lon}]
-    @questions = Question.all
-    @question = Question.new
-  end
-
   def show
     @hexagon = Hexagon.find(params[:id])
     @markers = [{

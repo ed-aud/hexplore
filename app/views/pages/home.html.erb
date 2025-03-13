@@ -6,7 +6,7 @@
 
     <p>A dynamic mapping solution with integrated AI to help make cities work for you.</p>
 
-    <%= form_with(url: hex_grids_path, method: :get) do |f| %>
+    <%= form_with(url: map_path, method: :get) do |f| %>
       <div class="form-input">
         <%= f.label :address, "Address" %>
         <%= f.text_field :address,

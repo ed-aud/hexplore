@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_12_163818) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_13_151647) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,33 +42,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_12_163818) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "filters", force: :cascade do |t|
-    t.string "category"
-    t.integer "associated_distance"
-    t.bigint "hexagon_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["hexagon_id"], name: "index_filters_on_hexagon_id"
-  end
-
-  create_table "hex_grids", force: :cascade do |t|
-    t.float "min_lat"
-    t.float "max_lat"
-    t.float "min_lon"
-    t.float "max_lon"
-    t.integer "hexagon_width"
-    t.string "hexagons_array"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "hexagons", force: :cascade do |t|
-    t.bigint "hex_grid_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "lat"
     t.float "lon"
-    t.index ["hex_grid_id"], name: "index_hexagons_on_hex_grid_id"
   end
 
   create_table "hives", force: :cascade do |t|
@@ -247,8 +225,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_12_163818) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "filters", "hexagons"
-  add_foreign_key "hexagons", "hex_grids"
   add_foreign_key "hives", "hexagons"
   add_foreign_key "hives", "users"
   add_foreign_key "questions", "users"

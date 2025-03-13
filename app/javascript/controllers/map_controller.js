@@ -12,6 +12,7 @@ export default class extends Controller {
     latitude: Number,
     longitude: Number,
     filters: Object,
+    hexagonId: Number,
   };
 
   static targets = [
@@ -63,24 +64,6 @@ export default class extends Controller {
       this.selectedFilters[filter] = false;
     });
   }
-
-    sendCoordinates(){
-      // const coordinates1 = event.lngLat;
-      this.map.on("click", (event) => {
-      const coord = event.lngLat;
-      console.log(coord)
-     })
-      console.log('triggered!')
-      const response = fetch('http://localhost:3000/highlights', {
-        method: 'POST',
-        body: {
-
-        },
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest'
-        },
-      });// Dispatch the event globally
-    }
 
 
 
@@ -225,11 +208,32 @@ export default class extends Controller {
           `<div class="clicked-hexagon data-controller = "map hexagonMap" data-map-latitude-value="${coordinates.lat.toFixed(5)}" data-map-longitude-value="${coordinates.lng.toFixed(5)}">
             <strong class="hexagon-title">Hive ${clickedHexagonId}</strong>
             <p>(${coordinates.lng.toFixed(5)}, ${coordinates.lat.toFixed(5)})</p>
-            <button class="btn btn-primary btn-hexagon"  onclick="window.location.href='/hexagons'" data-action="click->map#sendCoordinates ">
+            <button class="btn btn-primary btn-hexagon"   data-action="click->map#sendCoordinates ">
               View Hive
             </button>
           </div>`)
         .addTo(this.map);
     });
   }
+
+
+  sendCoordinates(){
+    this.map.on("click", (event) => {
+    const coord = event.lngLat;
+    console.log(coord)
+   })
+    console.log('triggered!')
+
+    const requestDetails = {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({"email": emailValue, "password": passwordValue})
+    }
+
+    const response = fetch('http://localhost:3000/highlights',requestDetails).then(response => response.json())
+    .then(data => console.log(data));
+  }
+
 }
+
+//onclick="window.location.href='/hexagon/${hexagonIdValue}'"
