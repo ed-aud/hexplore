@@ -3,8 +3,10 @@ import mapboxgl from "mapbox-gl"
 
 export default class extends Controller {
   // Location values are retrieving location objects from seed file via Hex Grid controller & Index page
+  // Added coordinates value
   static values = {
     apiKey: String,
+    coordinates: Array,
     gyms: Array,
     pubs: Array,
     stations: Array,
@@ -32,7 +34,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
-      style: "mapbox://styles/mapbox/streets-v10",
+      style: "mapbox://styles/mapbox/streets-v10"
     });
 
     const searchBounds = [
@@ -43,6 +45,8 @@ export default class extends Controller {
     this.#boundingBox(searchBounds);
     // Ensure that Hex Grid (and associated fucntions) is only generated once the map has loaded
     this.map.on("load", () => {
+      this.map.setCenter(this.coordinatesValue);
+      this.map.setZoom(13);
       this.#generateHexGrid(searchBounds);
       this.#hexagonClick();
     });

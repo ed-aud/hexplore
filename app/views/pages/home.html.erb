@@ -3,7 +3,26 @@
     <h1>You pick what matters most to you.<br>We find your hive.</h1>
     <div class="home-map-container">
     </div>
+
     <p>A dynamic mapping solution with integrated AI to help make cities work for you.</p>
-    <%= link_to "Find Your Hive", hex_grids_path, class: "btn btn-primary home-button" %>
+
+    <%= form_with(url: hex_grids_path, method: :get) do |f| %>
+      <div class="form-input">
+        <%= f.label :address, "Address" %>
+        <%= f.text_field :address,
+          placeholder: "Enter Address",
+          class: "form-control",
+          required: true,
+          data: {
+            controller: "address-autocomplete",
+            address_autocomplete_target: "address",
+            address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
+          }
+        %>
+      </div>
+
+      <%= f.submit "Find Your Hive", class: "btn btn-primary home-button" %>
+    <% end %>
+
   </div>
 </div>
