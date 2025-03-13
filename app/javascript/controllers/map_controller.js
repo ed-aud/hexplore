@@ -112,25 +112,17 @@ export default class extends Controller {
     }
 
     // Re-calculate which hexagons need to be marked as green based on filters now selected
-    this.updateHexagonsBasedOnFilters();
+    this.updateHexagonSelectionPerFilters();
   }
 
-  // Function to update the hexagons based on selected filters
-  updateHexagonsBasedOnFilters() {
+  // Function to update hexagons based on selected filters
+  updateHexagonSelectionPerFilters() {
+    const hexagonsPerCategory = {};
     const selectedCategories = Object.keys(this.selectedFilters).filter(category => this.selectedFilters[category]);
 
-    // If no categories are selected, reset all hexagons to white
-    if (selectedCategories.length === 0) {
-      this.greenHexagons = [];
-      this.updateHexagonColour();
-      return;
-    }
-
-    // Track hexagons per category
-    const hexagonsByCategory = {};
-
+    // Function to find each location in a selected category (e.g., every pub) and iterate over each hexagon to check if it contains location instance(s)
     selectedCategories.forEach(category => {
-      hexagonsByCategory[category] = new Set();
+      hexagonsPerCategory[category] = new Set();
 
       this.filtersValue[category].forEach((location) => {
         this.hexGrid.forEach((hexagon) => {
@@ -138,79 +130,58 @@ export default class extends Controller {
           const locationPoint = turf.point([location.lon, location.lat]);
 
           if (turf.booleanPointInPolygon(locationPoint, hexagonPolygon)) {
-            hexagonsByCategory[category].add(hexagon.properties.id);
+            hexagonsPerCategory[category].add(hexagon.properties.id);
           }
         });
       });
     });
 
-    // Find intersection:** Only hexagons appearing in *every* selected category
-    let intersection = [...hexagonsByCategory[selectedCategories[0]]];
+    // Find the hexagons which contain an instance of each selected filter (i.e., intersection of all desired categories)
+    let intersection = [...hexagonsPerCategory[selectedCategories[0]]];
 
     selectedCategories.forEach(category => {
-      intersection = intersection.filter(hexId => hexagonsByCategory[category].has(hexId));
+      intersection = intersection.filter(hexId => hexagonsPerCategory[category].has(hexId));
     });
 
-    // Update the green hexagons list and refresh colors
+    // Update array of Hexagons to be shaded green and call function to update their colour accordingly
     this.greenHexagons = intersection;
-
-    // Check if greenHexagons is not empty before calling updateHexagonColors
-
     this.updateHexagonColour();
-
   }
 
-  // Function to find each location instance of a selected category (e.g., every pub) and iterate over each hexagon to check if it contains instance location(s)
-  checkLocationInHexagon(location, color) {
-    const locationPoint = turf.point([location.lon, location.lat]);
-
-    this.hexGrid.forEach(hexagon => {
-      const hexagonPolygon = turf.polygon(hexagon.geometry.coordinates);
-      const isInside = turf.booleanPointInPolygon(locationPoint, hexagonPolygon);
-
-      // If a hexagon contains an instance location, call function to change it's colour to green
-      if (isInside && !this.greenHexagons.includes(hexagon.properties.id)) {
-        this.updateHexagonColour(hexagon.properties.id, color);
-        this.greenHexagons.push(hexagon.properties.id);
-      }
-    });
-  }
-
-  // Function to update the colour of any hexagons that contain location(s) matching selecting filters
+  // Function to update the colour of any hexagons that contain location(s) matching selected filters
   updateHexagonColour() {
+    // Find map source, checking if a valid source exists
     const source = this.map.getSource("hexGrid");
-
-    // Check if the source exists
     if (!source) return;
 
     const hexGridData = source._data.features;
 
-    // Step 1: Reset all hexagons to white
+    // Function to reset all hexagons to white
     hexGridData.forEach((hex) => {
       hex.properties.fillColor = "#FFFFFF";
     });
 
-    // Step 2: Update hexagons in greenHexagons to green
+    // Function to updated Hexagons in greenHexagons array to green
     hexGridData.forEach((hex) => {
       if (this.greenHexagons.includes(hex.properties.id)) {
         hex.properties.fillColor = "#25a244";  // Set to green
       }
     });
 
-    // Step 3: Update the hexagon source with the new data
+    // Function to pass the Hex Grid map the new data
     source.setData({
       type: "FeatureCollection",
       features: hexGridData
     });
 
-    // Step 4: Apply the updated color information to the hex grid layer
+    // Function to pass the new data to the Hex Grid layer
     const colorExpression = ["match", ["get", "id"]];
     hexGridData.forEach((hex) => {
       colorExpression.push(hex.properties.id, hex.properties.fillColor || "#FFFFFF");
     });
     colorExpression.push("#FFFFFF");
 
-    // Set the fill-color paint property for the hex grid layer
+    // Function to update the fill colour of the Hex Grid layer
     this.map.setPaintProperty("hexGridLayer", "fill-color", colorExpression);
   }
 

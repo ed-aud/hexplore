@@ -3,13 +3,7 @@
   data-controller="map"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
   data-map-coordinates-value="<%= @coordinates.to_json %>"
-  data-map-filters-value="<%= @filters.to_json %>"
-  
-
-
-  data-map-gyms-value="<%= @gyms.to_json %>"
-  data-map-pubs-value="<%= @pubs.to_json %>"
-  data-map-stations-value="<%= @stations.to_json %>">
+  data-map-filters-value="<%= @filters.to_json %>">
   <div class="hexgrid-filters-container">
     <h2>Filters</h2>
     <p><em>Select the categories that matter to you. <br> Any hexagons highlighted in green will match your search!</em></p>
@@ -20,11 +14,6 @@
           <%= category.capitalize %>
         </label>
       <% end %>
-
-      <br>
-      <p><%= 'Old Filters - Remove when filters working' %></p>
-      <label><input type="checkbox" data-action="change->map#toggleFilter" data-map-filter-value="pubs">Pub</label>
-      <label><input type="checkbox" data-action="change->map#toggleFilter" data-map-filter-value="stations">Station</label>
     </div>
   </div>
   <div class="hexgrid-map-container">
