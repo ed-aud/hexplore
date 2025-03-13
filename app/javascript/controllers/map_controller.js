@@ -10,12 +10,14 @@ export default class extends Controller {
     gyms: Array,
     pubs: Array,
     stations: Array,
+    latitude: Number,
+    longitude: Number,
   };
 
   static targets = [
     "map",
     "filters",
-    "output"
+    "output",
   ];
 
   // Create a default state for filters
@@ -49,13 +51,28 @@ export default class extends Controller {
       this.map.setZoom(13);
       this.#generateHexGrid(searchBounds);
       this.#hexagonClick();
+      // this.#sendCoordinates();
     });
-    console.log('hio')
   }
 
-  displayData(){
-    console.log('hio')
-  }
+    sendCoordinates(){
+      // const coordinates1 = event.lngLat;
+      this.map.on("click", (event) => {
+      const coord = event.lngLat;
+      console.log(coord)
+     })
+      console.log('triggered!')
+      // const response = fetch('http://localhost:3000/highlights', {
+      //   method: 'POST',
+      //   body: formData,
+      //   headers: {
+      //     'X-Requested-With': 'XMLHttpRequest'
+      //   },
+      // });// Dispatch the event globally
+    }
+
+
+
   // Function to define the outer bounds of the base map
   #boundingBox(searchBounds) {
     this.map.fitBounds(searchBounds, { padding: 70, maxZoom: 15, duration: 0.3 });
@@ -102,14 +119,13 @@ export default class extends Controller {
     this.map.on("click", "hexGridLayer", (event) => {
       const clickedHexagonId = event.features[0].properties.id;
       const coordinates = event.lngLat;
-
       new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
-          `<div class="clicked-hexagon">
+          `<div class="clicked-hexagon data-controller = "map hexagonMap" data-map-latitude-value="${coordinates.lat.toFixed(5)}" data-map-longitude-value="${coordinates.lng.toFixed(5)}">
             <strong class="hexagon-title">Hive ${clickedHexagonId}</strong>
             <p>(${coordinates.lng.toFixed(5)}, ${coordinates.lat.toFixed(5)})</p>
-            <button class="btn btn-primary btn-hexagon" onclick="window.location.href='/hexagons'">
+            <button class="btn btn-primary btn-hexagon"  onclick="window.location.href='/hexagons'" data-action="click->map#sendCoordinates ">
               View Hive
             </button>
           </div>`)
@@ -149,7 +165,6 @@ export default class extends Controller {
   // Function to locate each instance of selected filter category (e.g., every pub) and iterate over each hexagon to check if it contains selected instance location(s)
   checkLocationInHexagon(location, color) {
     const locationPoint = turf.point([location.lon, location.lat]);
-
     this.hexGrid.forEach((hexagon) => {
       const hexagonPolygon = turf.polygon(hexagon.geometry.coordinates);
       const isInside = turf.booleanPointInPolygon(locationPoint, hexagonPolygon);

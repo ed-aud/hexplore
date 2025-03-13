@@ -1,6 +1,6 @@
 <div class="hexagon-container">
   <div class="hexagon-content-container"
-    data-controller="map"
+    data-controller="hexagonMap"
     data-map-pubs-value="pubs" >
     <div class="hexagon-title-container">
       <div class="hexagon-title-text">
@@ -21,7 +21,7 @@
 
   <div class="hexagon-map-container">
     <div style="width: 100%; height: 400px;"
-      data-controller="hexagonMap"
+      data-controller="map hexagonMap"
       data-hexagonMap-markers-value="<%= @markers.to_json %>"
       data-hexagonMap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>

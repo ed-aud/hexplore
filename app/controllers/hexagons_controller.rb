@@ -5,6 +5,9 @@ class HexagonsController < ApplicationController
   def index
     @hex_grid = HexGrid.first
     @hives = Hive.all
+    # @markers = [{
+    #   lat: @hexagon.lat,
+    #   lng: @hexagon.lon}]
     @questions = Question.all
     @question = Question.new
   end
