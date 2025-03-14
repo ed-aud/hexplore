@@ -101,7 +101,7 @@ export default class extends Controller {
       layout: {},
       paint: {
         "fill-color": "#ffffff",
-        "fill-opacity": 0.6,
+        "fill-opacity": 0.8,
         "fill-outline-color": "#000000",
       },
     });
@@ -175,7 +175,7 @@ export default class extends Controller {
     // Function to updated Hexagons in greenHexagons array to green
     hexGridData.forEach((hex) => {
       if (this.greenHexagons.includes(hex.properties.id)) {
-        hex.properties.fillColor = "#25a244";  // Set to green
+        hex.properties.fillColor = "#9CFBAB";
       }
     });
 

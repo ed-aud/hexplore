@@ -16,6 +16,11 @@
 // @import "pages/hive_index";
 
 // Default styling
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
 body {
   position: relative;
   min-height: 100dvh;
