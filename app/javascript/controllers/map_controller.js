@@ -202,6 +202,7 @@ export default class extends Controller {
     this.map.on("click", "hexGridLayer", (event) => {
       event.preventDefault();
       const clickedHexagonId = event.features[0].properties.id;
+      console.log('look here.......');
       console.log(clickedHexagonId);
       let hexCoords;
       this.hexGrid.forEach((hexagon) => {
@@ -213,8 +214,6 @@ export default class extends Controller {
       const coordinates = event.lngLat;
       const coordinates1 = hexCoords;
 
-      // console.log(coordinates1.geometry.coordinates[0]);
-
       new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
@@ -225,8 +224,8 @@ export default class extends Controller {
               View Hive
             </button>
             <form name="myForm" action="/hexagons" method="post">
-              <input type="text" name="hexagon[lat]" value="${coordinates1.geometry.coordinates[0]}">
-              <input type="text" name="hexagon[lon]" value="${coordinates1.geometry.coordinates[1]}">
+              <input type="text" name="hexagon[lat]" value="${coordinates1.geometry.coordinates[1]}">
+              <input type="text" name="hexagon[lon]" value="${coordinates1.geometry.coordinates[0]}">
               <input type="submit" name="commit" value="View Hive">
             </form>
           </div>`)
