@@ -32,9 +32,8 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
-      // style: "mapbox://styles/charlieh30/cm87b15it00a301si7xqjayqj"
-      style: "mapbox://styles/mapbox/streets-v10"
-      // style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
+      // style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
     });
 
     // Take search coordinates and define a constant Hex Grid & Map load size
@@ -102,7 +101,7 @@ export default class extends Controller {
       layout: {},
       paint: {
         "fill-color": "#ffffff",
-        "fill-opacity": 0.6,
+        "fill-opacity": 0.8,
         "fill-outline-color": "#000000",
       },
     });
@@ -176,7 +175,7 @@ export default class extends Controller {
     // Function to updated Hexagons in greenHexagons array to green
     hexGridData.forEach((hex) => {
       if (this.greenHexagons.includes(hex.properties.id)) {
-        hex.properties.fillColor = "#25a244";  // Set to green
+        hex.properties.fillColor = "#9CFBAB";
       }
     });
 
@@ -202,13 +201,10 @@ export default class extends Controller {
     this.map.on("click", "hexGridLayer", (event) => {
       event.preventDefault();
       const clickedHexagonId = event.features[0].properties.id;
-      console.log('look here.......');
-      console.log(clickedHexagonId);
       let hexCoords;
       this.hexGrid.forEach((hexagon) => {
         if (hexagon.properties.id === clickedHexagonId) {
           hexCoords = turf.centroid(hexagon)
-          console.log({hexCoords})
         }
       })
       const coordinates = event.lngLat;

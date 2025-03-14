@@ -1,61 +1,130 @@
 .map-container {
   display: flex;
   flex-direction: row;
-  background-color: rgba(247,247,247,0.5);
+  background-color: rgb(250, 250, 250);
+  margin: 0 auto;
 }
 
+// Section 1: Map Info (LHS)
 .map-info-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30dvw;
-  height: calc(100dvh - 70px);
+  width: 17dvw;
+  height: calc(100dvh - 110px);
+  margin-top: 20px;
+  margin-left: 20px;
   padding: 20px;
-  margin-left: 3px;
   background-color: #dcf8e1;
+  border-radius: 10px;
+}
+
+.map-info {
+  width: 90%;
+  text-align: center;
+}
+
+.map-steps h2 {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.map-steps p {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.map-steps p {
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 .map-step {
+  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-step p {
+  margin: 0px;
+  font-size: 0.9rem;
+}
+
+.map-step:last-child {
+  padding-bottom: 20px;
+  border-bottom: black 1px dashed;
 }
 
 .hexagon-steps {
-  height: 40px;
-  margin-right: 15px;
-}
-
-
-.map-filter-options {
-  display: flex;
-  flex-direction: column;
+  height: 35px;
+  margin-bottom: 10px;
 }
 
 .map-key-container {
   margin-top: 20px;
 }
 
+.map-keys {
+  text-align: left;
+}
+
+.map-key-item {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
 .map-key-distance {
   display: flex;
   flex-direction: row;
-}
 
-.key-hexagon {
-  height: 25px;
-  margin-left: 5px;
-  margin-right: 15px;
 }
 
 .map-key-distance i {
   margin-top: 4px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-right: 10px;
+}
+
+.map-key-units {
+  display: flex;
+  flex-direction: row;
+}
+
+.map-key-distance-unit {
+  display: flex;
+  flex-direction: row;
+  font-style: italic;
+  padding-top: 1px;
+}
+
+.map-key-distance-unit:first-child {
+  margin-right: 15px;
+}
+
+.map-key-distance-unit p {
+  margin: 0px;
+}
+
+.key-hexagon {
+  height: 30px;
+  margin-right: 10px;
 }
 
 .map-key-item {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
+.map-key-item p {
+  margin: 0px;
+}
+
+// Section 2: Map & Hexagons (Centre)
 .map-hexgrid-container {
   width: 60dvw;
   height: calc(100dvh - 110px);
@@ -81,4 +150,49 @@
 .btn-hexagon {
   font-size: 12px;
   margin-top: 10px;
+}
+
+// Section 3: Map Filters (RHS)
+.map-filter-container {
+  width: 17dvw;
+  height: auto;
+  margin-right: 20px;
+}
+
+.map-filters {
+  width: 90%;
+  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #dcf8e1;
+  border-radius: 10px;
+}
+
+.map-filters h2 {
+  margin: 0px;
+}
+
+.map-filters-search {
+  height: 35px;
+  margin: 15px 0px;
+  border-radius: 5px;
+  border: 2px solid $dark-green;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 0.9rem;
+}
+
+.map-filters-search-item {
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.map-filters-search-tick-box {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: $dark-green;
 }
