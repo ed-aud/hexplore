@@ -7,14 +7,8 @@ class HexagonsController < ApplicationController
       lat: @hexagon.lat,
       lng: @hexagon.lon
     }
-    # },
-    # # {
-
-    # # #  lat: get_lat_lon(@poi)[0].lat,
-    # # #  lng: get_lat_lon(@poi)[0].lng
-    # # }
-    # get_lat_lon(@poi)
     ]
+
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
