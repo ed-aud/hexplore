@@ -18,26 +18,23 @@
       </div>
   </div>
 
-  <div class="hexagon-map-container">
-    <div style="width: 100%; height: 400px;"
-      data-controller="hexagonMap"
-      data-hexagonMap-markers-value="<%= @markers.to_json %>"
-      data-hexagonMap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
-  </div>
-
-  <div class="chatbot-container" data-controller="chatbot">
-    <button id="chat-toggle" class="chat-toggle" data-action="click->chatbot#toggle">
-      💬
-    </button>
-    <div class="chatbot hidden" data-chatbot-target="chatbot">
-      <h1>Chat with us</h1>
-      <div id="questions">
-        <%= render "shared/question", question: @question %>
+  <div class = "map-chatbot-container">
+    <div class="hexagon-map-container">
+      <div style="width: 100%; height: 400px;"
+        data-controller="hexagonMap"
+        data-hexagonMap-markers-value="<%= @markers.to_json %>"
+        data-hexagonMap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
-      <%= render "shared/form", question: @question %>
+    </div>
+
+    <div class="container chatbot" style="width: 100%; height: 400px;">
+      <h4>Chat with Hex</h4>
+      <div id="questions">
+        <%= render "questions/question", question: @question %>
+      </div>
+
+      <%= render "questions/form", question: @question %>
     </div>
   </div>
-
 
 </div>
