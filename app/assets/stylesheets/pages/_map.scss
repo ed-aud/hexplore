@@ -2,13 +2,15 @@
   display: flex;
   flex-direction: row;
   background-color: rgb(250, 250, 250);
+  margin: 0 auto;
 }
 
+// Section 1: Map Info (LHS)
 .map-info-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 15dvw;
+  width: 17dvw;
   height: calc(100dvh - 110px);
   margin-top: 20px;
   margin-left: 20px;
@@ -20,28 +22,6 @@
 .map-info {
   width: 90%;
   text-align: center;
-}
-
-.map-hexgrid-container {
-  width: 60dvw;
-  height: calc(100dvh - 110px);
-  margin: 20px auto;
-}
-
-.map-filter-container {
-  width: 15dvw;
-  height: auto;
-  margin-right: 20px;
-}
-
-.map-filters {
-  width: 90%;
-  margin-top: 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  background-color: #dcf8e1;
-  border-radius: 10px;
 }
 
 .map-steps h2 {
@@ -138,6 +118,13 @@
   margin: 0px;
 }
 
+// Section 2: Map & Hexagons (Centre)
+.map-hexgrid-container {
+  width: 60dvw;
+  height: calc(100dvh - 110px);
+  margin: 20px auto;
+}
+
 .clicked-hexagon {
   text-align: center;
 }
@@ -157,4 +144,33 @@
 .btn-hexagon {
   font-size: 12px;
   margin-top: 10px;
+}
+
+// Section 3: Map Filters (RHS)
+.map-filter-container {
+  width: 17dvw;
+  height: auto;
+  margin-right: 20px;
+}
+
+.map-filters {
+  width: 90%;
+  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #dcf8e1;
+  border-radius: 10px;
+}
+
+.map-filters h2 {
+  margin: 0px;
+}
+
+.map-filters-search {
+  margin: 10px 0px;
+}
+
+.map-filters-search-item {
+  margin: 7px 0px;
 }
