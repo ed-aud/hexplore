@@ -33,8 +33,8 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
       // style: "mapbox://styles/charlieh30/cm87b15it00a301si7xqjayqj"
-      // style: "mapbox://styles/mapbox/streets-v10"
-      style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
+      style: "mapbox://styles/mapbox/streets-v10"
+      // style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
     });
 
     // Take search coordinates and define a constant Hex Grid & Map load size
@@ -213,8 +213,6 @@ export default class extends Controller {
       const coordinates = event.lngLat;
       const coordinates1 = hexCoords;
 
-      // console.log(coordinates1.geometry.coordinates[0]);
-
       new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
@@ -225,8 +223,8 @@ export default class extends Controller {
               View Hive
             </button>
             <form name="myForm" action="/hexagons" method="post">
-              <input type="text" name="hexagon[lat]" value="${coordinates1.geometry.coordinates[0]}">
-              <input type="text" name="hexagon[lon]" value="${coordinates1.geometry.coordinates[1]}">
+              <input type="text" name="hexagon[lat]" value="${coordinates1.geometry.coordinates[1]}">
+              <input type="text" name="hexagon[lon]" value="${coordinates1.geometry.coordinates[0]}">
               <input type="submit" name="commit" value="View Hive">
             </form>
           </div>`)
