@@ -1,5 +1,6 @@
 class HexagonsController < ApplicationController
   def show
+
     @hexagon = Hexagon.find(params[:id])
     @markers = [{
       lat: @hexagon.lat,

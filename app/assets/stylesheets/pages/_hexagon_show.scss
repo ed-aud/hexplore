@@ -39,6 +39,14 @@
 
 .hexagon-map-container{
   margin-top: 32px;
-  width: 40%;
-  height: 600px;
+  width: 100%;
+  height: 400px;
+}
+
+.map-chatbot-container{
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  width: 50%; /* Make the container take up 40% of the page */
+  gap: 16px;
+  margin-bottom: 16px;
 }
