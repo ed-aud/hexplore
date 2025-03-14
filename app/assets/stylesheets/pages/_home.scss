@@ -58,3 +58,26 @@
   font-weight: 400;
   margin-bottom: 25px;
 }
+
+.custom-datalist {
+  position: absolute;
+  z-index: 999;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 300px; /* Match the input field width */
+}
+
+/* Style for the suggestion items (using JavaScript to inject these items into the datalist) */
+.custom-datalist option {
+  padding: 8px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.custom-datalist option:hover {
+  background-color: #f1f1f1;
+}
