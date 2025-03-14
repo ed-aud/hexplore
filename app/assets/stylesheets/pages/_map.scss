@@ -80,6 +80,7 @@
 .map-key-distance {
   display: flex;
   flex-direction: row;
+
 }
 
 .map-key-distance i {
@@ -89,17 +90,22 @@
 
 .map-key-units {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .map-key-distance-unit {
   display: flex;
   flex-direction: row;
   font-style: italic;
+  padding-top: 1px;
+}
+
+.map-key-distance-unit:first-child {
+  margin-right: 15px;
 }
 
 .map-key-distance-unit p {
-  margin: 0;
+  margin: 0px;
 }
 
 .key-hexagon {
@@ -168,9 +174,25 @@
 }
 
 .map-filters-search {
-  margin: 10px 0px;
+  height: 35px;
+  margin: 15px 0px;
+  border-radius: 5px;
+  border: 2px solid $dark-green;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 0.9rem;
 }
 
 .map-filters-search-item {
-  margin: 7px 0px;
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.map-filters-search-tick-box {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: $dark-green;
 }
