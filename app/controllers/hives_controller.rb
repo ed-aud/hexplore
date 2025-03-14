@@ -1,9 +1,10 @@
 class HivesController < ApplicationController
   before_action :set_hive, only: %i[show destroy edit update]
-  before_action :set_hexagon, only: %i[new create show]
+  before_action :set_hexagon, only: %i[new create]
   def index
     @hives = Hive.all
   end
+
   def show
   end
 
