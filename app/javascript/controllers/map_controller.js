@@ -202,6 +202,7 @@ export default class extends Controller {
     this.map.on("click", "hexGridLayer", (event) => {
       event.preventDefault();
       const clickedHexagonId = event.features[0].properties.id;
+      console.log('look here.......');
       console.log(clickedHexagonId);
       let hexCoords;
       this.hexGrid.forEach((hexagon) => {
