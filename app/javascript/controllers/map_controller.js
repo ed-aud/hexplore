@@ -32,8 +32,8 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
-      // style: "mapbox://styles/mapbox/streets-v10"
-      style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
+      style: "mapbox://styles/mapbox/streets-v10"
+      // style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
     });
 
     // Take search coordinates and define a constant Hex Grid & Map load size
@@ -216,13 +216,10 @@ export default class extends Controller {
           `<div class="clicked-hexagon">
             <strong class="hexagon-title">Hive ${clickedHexagonId}</strong>
             <p>(${coordinates1.geometry.coordinates[0]}, ${coordinates1.geometry.coordinates[1]})</p>
-            <button class="btn btn-primary btn-hexagon" >
-              View Hive
-            </button>
             <form name="myForm" action="/hexagons" method="post">
-              <input type="text" name="hexagon[lat]" value="${coordinates1.geometry.coordinates[1]}">
-              <input type="text" name="hexagon[lon]" value="${coordinates1.geometry.coordinates[0]}">
-              <input type="submit" name="commit" value="View Hive">
+              <input type="hidden" name="hexagon[lat]" value="${coordinates1.geometry.coordinates[1]}">
+              <input type="hidden" name="hexagon[lon]" value="${coordinates1.geometry.coordinates[0]}">
+              <input type="submit" name="commit" value="View Hive" class="btn btn-primary btn-hexagon">
             </form>
           </div>`)
         .addTo(this.map);
