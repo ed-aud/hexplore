@@ -2,9 +2,6 @@ class ChatbotJob < ApplicationJob
   queue_as :default
 
   def perform(question)
-    puts "****************"
-    puts "****************"
-    puts "****************"
     @question = question
     chatgpt_response = client.chat(
       parameters: {
@@ -32,9 +29,10 @@ class ChatbotJob < ApplicationJob
     questions = @question.user.questions
     results = []
     results << { role: "system", content: "You are an assistant to help users find locations based on their selected preferences" }
+
     questions.each do |question|
       results << { role: "user", content: question.user_question }
-      vh results << { role: "assistant", content: question.ai_answer || "" }
+      results << { role: "assistant", content: question.ai_answer || "" }
     end
     return results
   end
