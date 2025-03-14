@@ -1,15 +1,12 @@
 class HexagonsController < ApplicationController
   def show
-
     @hexagon = Hexagon.find(params[:id])
     @pois = Poi.all
     @poi = get_points_of_interest(@hexagon.lat, @hexagon.lon)
     @markers = [{
       lat: @hexagon.lat,
       lng: @hexagon.lon
-    },
-    get_lat_lon(@poi),
-  ]
+    }, get_lat_lon(@poi)]
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
