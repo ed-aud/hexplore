@@ -32,8 +32,8 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
-      style: "mapbox://styles/mapbox/streets-v10"
-      // style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
+      // style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
     });
 
     // Take search coordinates and define a constant Hex Grid & Map load size
