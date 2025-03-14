@@ -7,6 +7,11 @@ class HexagonsController < ApplicationController
       lat: @hexagon.lat,
       lng: @hexagon.lon
     },
+    # {
+
+    # #  lat: get_lat_lon(@poi)[0].lat,
+    # #  lng: get_lat_lon(@poi)[0].lng
+    # }
     get_lat_lon(@poi)
     ]
     @hives = Hive.all
@@ -30,11 +35,11 @@ class HexagonsController < ApplicationController
   private
 
   def get_lat_lon(arr)
-    poi = {}
+    poi = []
     arr.each do |el|
-      poi[:lat] = el.lat
-      poi[:lng] = el.lon
+      poi << { lat: el.lat, lng: el.lon }
     end
+    # hiceraise
     return poi
   end
 
