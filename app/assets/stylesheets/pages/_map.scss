@@ -155,7 +155,7 @@
 // Section 3: Map Filters (RHS)
 .map-filter-container {
   width: 17dvw;
-  height: auto;
+  height: calc(100dvh - 110px);
   margin-right: 20px;
 }
 
@@ -184,7 +184,7 @@
 }
 
 .map-filters-search-item {
-  margin: 10px 0px;
+  margin: 6px 0px;
   display: flex;
   align-items: center;
   gap: 10px;
