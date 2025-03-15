@@ -29,8 +29,9 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
-      style: "mapbox://styles/mapbox/streets-v10"
       // style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
+      style: "mapbox://styles/mapbox/streets-v10",
+      minZoom: 12.9,
     });
 
     // Take search coordinates and define a constant Hex Grid & Map load size
@@ -46,8 +47,6 @@ export default class extends Controller {
     // Load the Hex Grid (and associated functions) based on search and once map has loaded
     this.map.on("load", () => {
       this.map.setCenter(this.coordinatesValue);
-      this.map.setZoom(12.85);
-      // this.map.setMaxBounds(searchBounds);
       this.generateHexGrid(searchBounds);
       this.hexagonClick();
     });
