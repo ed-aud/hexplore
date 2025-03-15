@@ -4,48 +4,6 @@
   data-map-coordinates-value="<%= @coordinates.to_json %>"
   data-map-filters-value="<%= @filters.to_json %>"
   data-map-hexagonId-value="<%= @hexagon.to_json %>">
-  <div class="map-info-container">
-    <div class="map-info">
-      <div class="map-steps">
-        <h2>How it works</h2>
-        <p>It's easy as 1, 2, 3!</p>
-        <div class="map-step"><%= image_tag "hexagon_step_1.png", class: "hexagon-steps" %><p>Select the categories that matter most to you</p></div>
-        <div class="map-step"><%= image_tag "hexagon_step_2.png", class: "hexagon-steps" %><p>Watch our map adapt to reveal the areas that best match your needs</p></div>
-        <div class="map-step"><%= image_tag "hexagon_step_3.png", class: "hexagon-steps" %><p>Click on a hexagon to learn more and save it to your hives!</p></div>
-      </div>
-
-
-      <div class="map-key-container">
-        <h2>Key</h2>
-        <div class="map-keys">
-          <div class="map-key-item"><%= image_tag "hexagon_full_match.png", class: "key-hexagon" %><p>Hive meets all of your categories</p></div>
-          <div class="map-key-item"><%= image_tag "hexagon_partial_match.png", class: "key-hexagon" %><p>Hive meets some of your categories</p></div>
-          <div class="map-key-item"><%= image_tag "hexagon_no_match.png", class: "key-hexagon" %><p><em>Hive meets none of your categories</em></p></div>
-          <div class="map-key-distance">
-            <%= image_tag "hexagon_black.png", class: "key-hexagon" %>
-            <div class="map-key-units">
-              <div class="map-key-distance-unit">
-                <i class="fa-solid fa-person-walking"></i>
-                <p>5 mins</p>
-              </div>
-              <div class="map-key-distance-unit">
-                <i class="fa-solid fa-bicycle"></i>
-                <p>1 min</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="map-hexgrid-container">
-    <div
-      class="map"
-      style="width: 100%; height: 100%;"
-      data-map-target="map">
-    </div>
-  </div>
 
   <div class="map-filter-container" data-controller="filter-search">
     <div class="map-filters">
@@ -67,6 +25,48 @@
           <%= category.capitalize %>
         </label>
       <% end %>
+    </div>
+  </div>
+
+  <div class="map-hexgrid-container">
+    <div
+      class="map"
+      style="width: 100%; height: 100%;"
+      data-map-target="map">
+    </div>
+  </div>
+
+  <div class="map-info-container">
+    <div class="map-info">
+      <div class="map-key-container">
+        <h2>Key</h2>
+        <div class="map-keys">
+          <div class="map-key-item"><%= image_tag "hexagon_full_match.png", class: "key-hexagon" %><p>Hive meets all of your categories</p></div>
+          <div class="map-key-item"><%= image_tag "hexagon_partial_match.png", class: "key-hexagon" %><p>Hive meets some of your categories</p></div>
+          <div class="map-key-item"><%= image_tag "hexagon_no_match.png", class: "key-hexagon" %><p><em>Hive meets none of your categories</em></p></div>
+          <div class="map-key-distance">
+            <%= image_tag "hexagon_black.png", class: "key-hexagon" %>
+            <div class="map-key-units">
+              <div class="map-key-distance-unit">
+                <i class="fa-solid fa-person-walking"></i>
+                <p>5 mins</p>
+              </div>
+              <div class="map-key-distance-unit">
+                <i class="fa-solid fa-bicycle"></i>
+                <p>1 min</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-steps">
+        <h2>How it works</h2>
+        <%# <p>It's easy as 1, 2, 3!</p> %>
+        <div class="map-step"><%= image_tag "hexagon_step_1.png", class: "hexagon-steps" %><p>Select the categories that matter most to you</p></div>
+        <div class="map-step"><%= image_tag "hexagon_step_2.png", class: "hexagon-steps" %><p>Watch our map adapt to reveal the areas for you</p></div>
+        <div class="map-step"><%= image_tag "hexagon_step_3.png", class: "hexagon-steps" %><p>Select a hexagon to see more and add it to your hive!</p></div>
+      </div>
     </div>
   </div>
 </div>

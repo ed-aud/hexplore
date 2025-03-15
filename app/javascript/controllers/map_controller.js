@@ -53,7 +53,6 @@ export default class extends Controller {
       // this.map.setMaxBounds(searchBounds);
       this.#generateHexGrid(searchBounds);
       this.#hexagonClick();
-      // this.#sendCoordinates();
     });
 
     // Initialise base state for filters
@@ -215,11 +214,11 @@ export default class extends Controller {
         .setHTML(
           `<div class="clicked-hexagon">
             <strong class="hexagon-title">Hive ${clickedHexagonId}</strong>
-            <p>(${coordinates1.geometry.coordinates[0]}, ${coordinates1.geometry.coordinates[1]})</p>
+            <p>Click here to learn more about this hexagon and add it to your hive!</p>
             <form name="myForm" action="/hexagons" method="post">
               <input type="hidden" name="hexagon[lat]" value="${coordinates1.geometry.coordinates[1]}">
               <input type="hidden" name="hexagon[lon]" value="${coordinates1.geometry.coordinates[0]}">
-              <input type="submit" name="commit" value="View Hive" class="btn btn-primary btn-hexagon">
+              <input type="submit" name="commit" value="View Hexagon" class="btn btn-primary btn-hexagon">
             </form>
           </div>`)
         .addTo(this.map);

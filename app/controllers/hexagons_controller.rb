@@ -6,9 +6,7 @@ class HexagonsController < ApplicationController
     @markers = [{
       lat: @hexagon.lat,
       lng: @hexagon.lon
-    }
-    ]
-
+    }]
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
@@ -34,7 +32,6 @@ class HexagonsController < ApplicationController
     arr.each do |el|
       poi << { lat: el.lat, lng: el.lon }
     end
-    # hiceraise
     return poi
   end
 
