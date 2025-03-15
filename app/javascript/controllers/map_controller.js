@@ -2,7 +2,6 @@ import { Controller } from "@hotwired/stimulus"
 import mapboxgl from "mapbox-gl"
 
 export default class extends Controller {
-  // Location values are retrieving location objects from seed file via Hex Grid controller & Index page
   static values = {
     apiKey: String,
     coordinates: Array,
@@ -18,9 +17,10 @@ export default class extends Controller {
     "output",
   ];
 
-  // Array(s) / Object(s) to store key Filter, Hex Grid and Hexagon datas
+  // Array(s) / Object(s) to store key Filter, Hex Grid and Hexagon data
   hexGrid = [];
-  greenHexagons = [];
+  fullmatchHexagons = [];
+  partialMatchHexagons = [];
   selectedFilters = {};
 
   // Function to load the map and necessary Hex Grid functions on page load
@@ -105,8 +105,6 @@ export default class extends Controller {
 
     // Update the selectedFilters state
     this.selectedFilters[filterValue] = isChecked;
-
-    console.log("Selected Filters after update:", this.selectedFilters);
 
     // If no filters are selected, reset all hexagons to white
     if (Object.values(this.selectedFilters).every(val => !val)) {
