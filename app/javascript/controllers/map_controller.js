@@ -124,39 +124,6 @@ export default class extends Controller {
   }
 
   // Function to update hexagons based on selected filters
-  // updateHexagonSelectionPerFilters() {
-  //   const hexagonsPerCategory = {};
-  //   const selectedCategories = Object.keys(this.selectedFilters).filter(category => this.selectedFilters[category]);
-
-
-  //   selectedCategories.forEach(category => {
-  //     hexagonsPerCategory[category] = new Set();
-
-  //     this.filtersValue[category].forEach((location) => {
-  //       this.hexGrid.forEach((hexagon) => {
-  //         const hexagonPolygon = turf.polygon(hexagon.geometry.coordinates);
-  //         const locationPoint = turf.point([location.lon, location.lat]);
-
-  //         if (turf.booleanPointInPolygon(locationPoint, hexagonPolygon)) {
-  //           hexagonsPerCategory[category].add(hexagon.properties.id);
-  //         }
-  //       });
-  //     });
-  //   });
-
-  //   // Find the hexagons which contain an instance of each selected filter (i.e., intersection of all desired categories)
-  //   let intersection = [...hexagonsPerCategory[selectedCategories[0]]];
-
-  //   selectedCategories.forEach(category => {
-  //     intersection = intersection.filter(hexId => hexagonsPerCategory[category].has(hexId));
-  //   });
-
-  //   // Update array of Hexagons to be shaded green and call function to update their colour accordingly
-  //   this.greenHexagons = intersection;
-  //   this.updateHexagonColour();
-  // }
-
-
   updateHexagonSelectionPerFilters() {
     // Check hexagon match status each time function is called
     this.fullMatchHexagons = [];
