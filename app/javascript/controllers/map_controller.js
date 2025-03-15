@@ -6,13 +6,10 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     coordinates: Array,
-    gyms: Array,
-    pubs: Array,
-    stations: Array,
-    latitude: Number,
-    longitude: Number,
     filters: Object,
     hexagonId: Number,
+    latitude: Number,
+    longitude: Number,
   };
 
   static targets = [
