@@ -16,7 +16,10 @@
         data-filter-search-target="searchTerm">
 
       <% @filters.keys.each do |category| %>
-        <label class="map-filters-search-item" data-filter-search-target="category">
+        <label
+          class="map-filters-search-item"
+          data-filter-search-target="category"
+          data-action="change->filter-search#clearSearch">
           <input
             class="map-filters-search-tick-box"
             type="checkbox"
