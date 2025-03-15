@@ -41,15 +41,15 @@ export default class extends Controller {
     const searchBounds = [nwPoint, sePoint]
 
     // Load the map based on search
-    this.#boundingBox(searchBounds);
+    this.boundingBox(searchBounds);
 
     // Load the Hex Grid (and associated functions) based on search and once map has loaded
     this.map.on("load", () => {
       this.map.setCenter(this.coordinatesValue);
       this.map.setZoom(12.85);
       // this.map.setMaxBounds(searchBounds);
-      this.#generateHexGrid(searchBounds);
-      this.#hexagonClick();
+      this.generateHexGrid(searchBounds);
+      this.hexagonClick();
     });
 
     // Initialise base state for filters
@@ -59,12 +59,12 @@ export default class extends Controller {
   }
 
   // Function to define the outer bounds of the base map
-  #boundingBox(searchBounds) {
+  boundingBox(searchBounds) {
     this.map.fitBounds(searchBounds, { padding: 70, maxZoom: 15, duration: 0.3 });
   }
 
   // Function to generate the base Hex Grid, overlaid onto the same outer bounds as the base map
-  #generateHexGrid(searchBounds) {
+  generateHexGrid(searchBounds) {
     const options = { units: "kilometers" };
     const hexGrid = turf.hexGrid(searchBounds.flat(), 0.4, options);
 
@@ -91,7 +91,7 @@ export default class extends Controller {
       source: "hexGrid",
       layout: {},
       paint: {
-        "fill-color": "#ffffff",
+        "fill-color": "#9CFBAB",
         "fill-opacity": 0.8,
         "fill-outline-color": "#000000",
       },
@@ -168,20 +168,25 @@ export default class extends Controller {
   updateHexagonColour() {
     const source = this.map.getSource("hexGrid");
     const hexGridData = source._data.features;
+    const filtersSelected = Object.values(this.selectedFilters).some(val => val);
 
-    // Function to reset all hexagons to white
+    // Function to reset all hexagons to default colour
     hexGridData.forEach((hex) => {
-      hex.properties.fillColor = "#FFFFFF";
+      hex.properties.fillColor = "#9CFBAB";
     });
 
-    // Function to update the colour of hexagons which have full / partial matches
-    hexGridData.forEach((hex) => {
-      if (this.fullMatchHexagons.includes(hex.properties.id)) {
-        hex.properties.fillColor = "#9CFBAB";
-      } else if (this.partialMatchHexagons.includes(hex.properties.id)) {
-        hex.properties.fillColor = "#C3F9CB";
-      }
-    });
+    // Function to update the colour of each hexagon based on category match(es)
+    if (filtersSelected) {
+      hexGridData.forEach((hex) => {
+        if (this.fullMatchHexagons.includes(hex.properties.id)) {
+          hex.properties.fillColor = "#9CFBAB"; // Full match
+        } else if (this.partialMatchHexagons.includes(hex.properties.id)) {
+          hex.properties.fillColor = "#C3F9CB"; // Partial match
+        } else {
+          hex.properties.fillColor = "#FFFFFF"; // No match
+        }
+      });
+    }
 
     // Function to pass the Hex Grid map the new data
     source.setData({
@@ -192,16 +197,16 @@ export default class extends Controller {
     // Function to pass the new data to the Hex Grid layer
     const colorExpression = ["match", ["get", "id"]];
     hexGridData.forEach((hex) => {
-      colorExpression.push(hex.properties.id, hex.properties.fillColor || "#FFFFFF");
+      colorExpression.push(hex.properties.id, hex.properties.fillColor || "#9CFBAB");
     });
-    colorExpression.push("#FFFFFF");
+    colorExpression.push("#9CFBAB");
 
     // Function to update the fill colour of the Hex Grid layer
     this.map.setPaintProperty("hexGridLayer", "fill-color", colorExpression);
   }
 
   // Function to allow a user to click on a hexagon to see an info pop-up
-  #hexagonClick() {
+  hexagonClick() {
     this.map.on("click", "hexGridLayer", (event) => {
       event.preventDefault();
       const clickedHexagonId = event.features[0].properties.id;
