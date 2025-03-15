@@ -1,14 +1,15 @@
 .hexagon-container{
-  width: 80%;
+  width: 1000px;
   margin: 0 auto;
   min-height: calc(100dvh - 140px);
   display: flex;
+  justify-content: space-between;
 }
 
 .hexagon-content-container{
-  margin-top: 32px;
+  width: 60%;
+  margin-top: 40px;
   padding-right: 16px;
-  width: 100%;
   min-height: calc(100dvh - 140px);
   display: flex;
   flex-direction: column;
@@ -16,9 +17,9 @@
 
 .hexagon-title-container{
   width: 100%;
+  height: 50px;
   display: flex;
   justify-content: space-between;
-  margin-top: 16px;
 }
 
 .hexagon-title-text{
@@ -43,16 +44,20 @@
 }
 
 .hexagon-map-container{
-  margin-top: 32px;
   width: 100%;
-  height: 400px;
+  // height: 600px;
+  margin-top: 20px;
 }
 
-.map-chatbot-container{
+.hexagon-map {
+  margin: 0 auto;
+}
+
+.hexagon-chatbot-container{
+  width: 35%;
+  height: calc(100dvh - 140px);
+  margin-top: 40px;
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  width: 50%; /* Make the container take up 40% of the page */
+  flex-direction: column;
   gap: 16px;
-  margin-bottom: 16px;
-  height: auto;
 }
