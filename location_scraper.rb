@@ -7,29 +7,29 @@ def fetch_locations
   places = [
     # "Bar",
     "Cafe",
-    # "Church",
-    # "Cinema",
-    # # "Cocktail Bar",
-    # # "Deli",
-    # "Gym",
-    # # "Hospital",
-    # # "Market",
-    # # "Massage",
-    # "Museum",
-    # "Mosque",
-    # "Nail Salon",
-    # # "Nightlife",
-    # "Park",
-    # "Pub",
-    # "Restaurant",
-    # "Spa",
-    # "Supermarket",
-    # "Synagogue",
-    # "Temple",
-    # "Theatre",
-    # # "University",
-    # "Wine Bar",
-    # "Yoga"
+    "Church",
+    "Cinema",
+    # "Cocktail Bar",
+    # "Deli",
+    "Gym",
+    # "Hospital",
+    # "Market",
+    # "Massage",
+    "Museum",
+    "Mosque",
+    "Nail Salon",
+    # "Nightlife",
+    "Park",
+    "Pub",
+    "Restaurant",
+    "Spa",
+    "Supermarket",
+    "Synagogue",
+    "Temple",
+    "Theatre",
+    # "University",
+    "Wine Bar",
+    "Yoga"
   ]
 
   # London bounds
@@ -45,7 +45,7 @@ def fetch_locations
   # bounds = [-0.0375, 51.5435, 0.0085, 51.5615]
 
   # Dalston Juntion bounds
-  bounds = [-0.0915, 51.5400, -0.0575, 51.5580]
+  # bounds = [-0.0915, 51.5400, -0.0575, 51.5580]
 
   # Limehouse bouunds
   # bounds = [-0.0505, 51.5105, 0.0045, 51.5285]
