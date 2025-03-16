@@ -62,10 +62,10 @@ def fetch_locations
 
     locations = data["features"].map do |feature|
       {
-        category: place,  # Include the category (e.g., "Cinema") at the start
+        category: place,
         name: feature["properties"]["name"],
-        lat: feature["geometry"]["coordinates"][1],  # Latitude at index 1
-        lon: feature["geometry"]["coordinates"][0]   # Longitude at index 0
+        lat: feature["geometry"]["coordinates"][1],
+        lon: feature["geometry"]["coordinates"][0]
       }
     end
 
