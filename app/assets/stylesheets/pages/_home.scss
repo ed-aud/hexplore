@@ -9,39 +9,12 @@
 
 .home-container {
   width: 1000px;
-  min-height: calc(100dvh - 70px);
   text-align: center;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.home-map-container {
-  width: 75dvh;
-  height: 50dvh;
-  margin: 0px auto;
-  background-image: url("homepage_map");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.home-search-container {
-  display: flex;
-  flex-direction: row;
-}
-
-.home-button {
-  width: 200px;
-  height: 50px;
-  font-size: 20px;
-  font-weight: 600;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .home-container h1 {
@@ -52,11 +25,25 @@
   margin-bottom: 25px;
 }
 
-.home-container p {
-  color: $white;
-  font-size: 16px;
-  font-weight: 400;
-  margin-bottom: 25px;
+.home-search-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-bar {
+  height: 50px;
+  width: 450px;
+  border-radius: 5px;
+}
+
+.btn-home-search {
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+}
+
+.search-icon {
+  font-size: 1.5rem;
 }
 
 .custom-datalist {
@@ -65,19 +52,36 @@
   max-height: 200px;
   overflow-y: auto;
   border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 300px; /* Match the input field width */
+  width: 450px;
 }
 
-/* Style for the suggestion items (using JavaScript to inject these items into the datalist) */
 .custom-datalist option {
-  padding: 8px;
+  padding: 10px;
   background-color: white;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.8rem;
   transition: background-color 0.2s;
+  text-align: left;
 }
 
 .custom-datalist option:hover {
   background-color: #f1f1f1;
+}
+
+.home-map-container {
+  width: 75dvh;
+  height: 50dvh;
+  margin: 0px auto;
+  margin-top: 35px;
+  background-image: url("homepage_map");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.home-container p {
+  color: $white;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 5px;
 }

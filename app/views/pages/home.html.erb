@@ -1,32 +1,29 @@
 <div class="home-background">
   <div class="home-container">
-    <h1>You pick what matters most to you.<br>We find your hive.</h1>
-
+    <h1>You pick the places that matter most to you.<br>We help find you your hive.</h1>
     <form action="/map" method="get" data-turbo="true">
       <div class="home-search-container">
         <div data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-          <input type="text" name="address" id="address" placeholder="Enter Address" class="form-control form-control-lg" required
+          <input
+            type="text"
+            name="address"
+            id="address"
+            placeholder="Enter an address to start finding your hive..."
+            class="form-control search-bar"
+            required
             data-address-autocomplete-target="address"
-            data-action="keyup->address-autocomplete#getSuggestions" >
-          <datalist class="d-block custom-datalist"
-          data-address-autocomplete-target="suggestionsOutput">
+            data-action="keyup->address-autocomplete#getSuggestions">
+          <datalist
+            class="d-block custom-datalist"
+            data-address-autocomplete-target="suggestionsOutput">
           </datalist>
         </div>
-        <button type="submit" class="btn btn-lg">
-          <i class="fa-solid fa-magnifying-glass-location" style="color: #9BF7AB;"></i>
+        <button type="submit" class="btn btn-primary btn-home-search">
+          <i class="fa-solid fa-location-dot search-icon"></i>
         </button>
       </div>
     </form>
-
-    <div class="home-map-container mt-2"></div>
-
-    <p>A dynamic mapping solution with integrated AI to help make cities work for you.</p>
-
-
-
-
-
-
-
+    <div class="home-map-container"></div>
+    <p>A dynamic mapping solution with integrated AI <br>to help London work for you.</p>
   </div>
 </div>
