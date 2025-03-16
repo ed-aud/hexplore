@@ -29,9 +29,8 @@ class HexagonsController < ApplicationController
 
   def create_makers_object(arr)
     poi = []
-    # poi[0] = { lat: @hexagon.lat,
-    #            lng: @hexagon.lon }
-
+    poi[0] = { lat: @hexagon.lat,
+               lng: @hexagon.lon }
     arr.each do |el|
       poi << { lat: el.lat, lng: el.lon }
     end
