@@ -180,7 +180,7 @@ export default class extends Controller {
         if (this.fullMatchHexagons.includes(hex.properties.id)) {
           hex.properties.fillColor = "#9CFBAB";
         } else if (this.partialMatchHexagons.includes(hex.properties.id)) {
-          hex.properties.fillColor = "#DAF6DE";
+          hex.properties.fillColor = "#CCF3D2";
         } else {
           hex.properties.fillColor = "#FFFFFF";
         }
