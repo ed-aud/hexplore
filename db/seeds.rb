@@ -754,16 +754,6 @@ poi = [
   { category: "park", name: "Wapping Green", lat: 51.5073, lon: -0.0653 },
   { category: "park", name: "Wapping Rose Gardens", lat: 51.50368548, lon: -0.05879673 },
   { category: "park", name: "Wapping Woods", lat: 51.50796044, lon: -0.05610956 },
-  { category: "petrol station", name: "Asda Bethnal Green Vallance Road Petrol Filling Station", lat: 51.5215, lon: -0.0620 },
-  { category: "petrol station", name: "Save Service Stations Ltd", lat: 51.5270, lon: -0.0610 },
-  { category: "petrol station", name: "Vallance Service Station", lat: 51.5215, lon: -0.0620 },
-  { category: "petrol station", name: "Shell Service Station", lat: 51.5185, lon: -0.0655 },
-  { category: "petrol station", name: "Shell Old Street", lat: 51.5276, lon: -0.0912 },
-  { category: "petrol station", name: "Tesco Petrol Filling Station", lat: 51.4950, lon: -0.0430 },
-  { category: "petrol station", name: "Jet Petrol Station", lat: 51.5510, lon: -0.0550 },
-  { category: "petrol station", name: "Grove Road Service Station", lat: 51.5285, lon: -0.0400 },
-  { category: "petrol station", name: "BP Service Station", lat: 51.5080, lon: -0.0580 },
-  { category: "petrol station", name: "Texaco City Road", lat: 51.5290, lon: -0.0940 },
   { category: "pub", name: "Angel and Crown", lat: 51.5293599, lon: -0.04529586 },
   { category: "pub", name: "Bebopalula", lat: 51.5538, lon: -0.08829 },
   { category: "pub", name: "Beer Merchants Tap", lat: 51.5441, lon: -0.0238 },
@@ -1849,11 +1839,11 @@ puts "> #{Poi.where(category: "hospital").count} hospitals created"
 puts "> #{Poi.where(category: "mosque").count} mosques created"
 puts "> #{Poi.where(category: "museum").count} museums created"
 puts "> #{Poi.where(category: "park").count} parks created"
-puts "> #{Poi.where(category: "petrol station").count} petrol stations created"
 puts "> #{Poi.where(category: "pub").count} pubs created"
 puts "> #{Poi.where(category: "restaurant").count} restaurants created"
 puts "> #{Poi.where(category: "spa").count} spas created"
 puts "> #{Poi.where(category: "station").count} stations created"
+puts "> #{Poi.where(category: "supermarket").count} supermarkets created"
 puts "> #{Poi.where(category: "synagogue").count} synagogues created"
 puts "> #{Poi.where(category: "temple").count} temples created"
 puts "> #{Poi.where(category: "theatre").count} theatres created"
