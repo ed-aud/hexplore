@@ -91,7 +91,7 @@ export default class extends Controller {
       layout: {},
       paint: {
         "fill-color": "#9CFBAB",
-        "fill-opacity": 0.8,
+        "fill-opacity": 0.65,
         "fill-outline-color": "#000000",
       },
     });
@@ -178,11 +178,11 @@ export default class extends Controller {
     if (filtersSelected) {
       hexGridData.forEach((hex) => {
         if (this.fullMatchHexagons.includes(hex.properties.id)) {
-          hex.properties.fillColor = "#9CFBAB"; // Full match
+          hex.properties.fillColor = "#9CFBAB";
         } else if (this.partialMatchHexagons.includes(hex.properties.id)) {
-          hex.properties.fillColor = "#C3F9CB"; // Partial match
+          hex.properties.fillColor = "#DAF6DE";
         } else {
-          hex.properties.fillColor = "#FFFFFF"; // No match
+          hex.properties.fillColor = "#FFFFFF";
         }
       });
     }
