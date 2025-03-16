@@ -6,6 +6,7 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array,
+    mainMarker: Array,
     hexagonId: Number,
   }
 
@@ -27,6 +28,7 @@ export default class extends Controller {
         .addTo(this.map)
     })
   }
+
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
