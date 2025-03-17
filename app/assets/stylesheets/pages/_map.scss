@@ -7,29 +7,33 @@
 
 // Section 1: Map Filters (LHS)
 .map-filter-container {
-  width: 17dvw;
+  width: 16dvw;
   height: calc(100dvh - 110px);
+  margin-top: 20px;
   margin-left: 20px;
-  // overflow: scroll;
+  // background-color: rgba(220, 248, 225, 1);
+  // border: 0.25px solid rgba(220, 248, 255, 0.5);
+  // border-radius: 10px;
+  background-color: rgba(200, 200, 200, 0.2);
+  border: 0.25px solid rgba(200, 200, 200, 0.5);
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(225, 225, 225, 0.5);
 }
 
 .map-filters {
-  width: 90%;
-  margin-top: 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  background-color: #dcf8e1;
-  border-radius: 10px;
 }
 
 .map-filters h2 {
   margin: 0px;
+  text-align: center;
 }
 
 .map-filters-search {
   height: 35px;
-  margin: 10px 0px;
+  margin: 15px 0px;
   border-radius: 5px;
   border: 2px solid $dark-green;
   padding-left: 10px;
@@ -38,7 +42,7 @@
 }
 
 .map-filters-search-item {
-  margin: 4px 0px;
+  margin: 3px 0px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -88,8 +92,14 @@
   margin-top: 20px;
   margin-right: 20px;
   padding: 20px;
-  background-color: #dcf8e1;
+  // background-color: rgba(176, 229, 255, 0.2);
+  // border: 0.25px solid rgba(176, 229, 255, 0.5);
+  // border-radius: 10px;
+  // box-shadow: 2px 2px 2px rgba(225, 225, 225, 0.5);
+  background-color: rgba(200, 200, 200, 0.2);
+  border: 0.25px solid rgba(200, 200, 200, 0.5);
   border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(225, 225, 225, 0.5);
 }
 
 .map-info {
@@ -107,10 +117,13 @@
 
 .map-key-container h2 {
   text-align: center;
+  margin: 0;
+  padding-bottom: 20px;
 }
 
 .map-keys {
   text-align: left;
+  border-bottom: 1px grey dashed;
 }
 
 .map-key-item {
@@ -126,6 +139,8 @@
 .map-key-distance {
   display: flex;
   flex-direction: row;
+  padding-bottom: 20px;
+  border-bottom: 1px grey dashed;
 }
 
 .map-key-distance i {
@@ -155,6 +170,11 @@
   margin-right: 15px;
 }
 
+.key-hexagon-distance {
+  width: 35px;
+  margin-right: 10px;
+}
+
 .key-hexagon {
   height: 30px;
   margin-right: 10px;
@@ -175,9 +195,10 @@
   text-align: center;
 }
 
-.map-steps h2 {
-  margin-top: 50px;
+.map-steps h4 {
+  margin-top: 20px;
   margin-bottom: 5px;
+  text-align: center;
 }
 
 .map-step {
