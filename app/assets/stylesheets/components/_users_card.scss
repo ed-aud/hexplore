@@ -1,10 +1,10 @@
 .users-card{
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 15px;
+  padding: 10px 25px;
   min-width: 25%;
-  height: 20%;
+  height: auto;
   border-radius: 10px;
   background-color: white;
+  box-shadow: 3px 3px 3px rgba(225, 225, 225, 0.5);;
 }
 
 .hexagon-cards-container {
@@ -12,72 +12,101 @@
   justify-content: flex-start;
   align-items: center;
   height: 50px;
-  margin-bottom: 10px;
+  margin: 0px;
+  margin-bottom: 15px;
 }
 
-/* The hexagon itself */
 .hexagon {
   position: relative;
-  width: 40px;  /* Smaller width */
-  height: 23.09px; /* Adjusted height for smaller hexagon */
-  background-color: #9CFBAB; /* Green color */
-  margin-top: 11.54px; /* Offset to make the hexagon shape */
-  transform: rotate(90deg); /* Rotate to make it a hexagon */
+  width: 40px;
+  height: 23.09px;
+  background-color: $light-green;
+  margin-top: 11.54px;
+  transform: rotate(90deg);
   display: flex;
   justify-content: center;
-  align-items: center; /* Center the content inside */
+  align-items: center;
 }
 
-/* Create the top and bottom triangles */
 .hexagon:before, .hexagon:after {
   content: '';
   position: absolute;
   width: 0;
   height: 0;
-  border-left: 20px solid transparent;  /* Half of the width */
-  border-right: 20px solid transparent; /* Half of the width */
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
 }
 
-/* Top triangle */
 .hexagon:before {
-  top: -11.54px; /* Align with the top of the hexagon */
-  border-bottom: 11.54px solid #9CFBAB; /* Same color as the hexagon */
+  top: -11.54px;
+  border-bottom: 11.54px solid $light-green;
 }
 
-/* Bottom triangle */
 .hexagon:after {
-  bottom: -11.54px; /* Align with the bottom of the hexagon */
-  border-top: 11.54px solid #9CFBAB; /* Same color as the hexagon */
+  bottom: -11.54px;
+  border-top: 11.54px solid $light-green;
 }
 
-/* Text inside the hexagon */
 .hexagon-text {
   position: absolute;
-  font-size: 1rem; /* Smaller font size */
+  font-size: 1rem;
   font-weight: bold;
   text-align: center;
   transform: rotate(-90deg);
   padding-right: 15px;
 }
 
-.users-card-button-container{
-   width: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-
-.users-card-button{
-  width: 45%;
-  height: 35px;
-  border-radius: 5px;
-}
 .users-card-content{
   text-align: left;
   width: 100%;
   height: 10%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
 }
+
+.users-card-content h5 {
+  margin-top: 10px;
+  margin-bottom: 2px;
+  font-size: 1.75rem;
+  color: $dark-green;
+}
+
+.users-card-content h6 {
+  margin: 0px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: $dark-green;
+}
+
+.users-card-content p {
+  margin: 0px;
+  margin-bottom: 10px;
+  font-size: 0.7rem;
+  color: grey;
+}
+
+.edit-profile-icon {
+  color: rgb(175, 175, 175);
+  margin: 17px 0px;
+}
+
+.booking-icon:hover {
+  color: rgb(125, 125, 125);
+  transition: 0.3s;
+}
+
+// .users-card-button-container{
+//    width: 100%;
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+// }
+
+// .users-card-button{
+//   width: 45%;
+//   height: 35px;
+//   border-radius: 5px;
+//   margin-top: 15px;
+//   margin-bottom: 5px;
+// }

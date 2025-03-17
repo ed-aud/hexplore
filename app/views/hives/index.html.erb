@@ -1,13 +1,18 @@
-
-<div class="hives-container">
-<div class="container create-hive-container">
-<h2>My Hive</h2>
-<%= link_to 'Add new hexagon', root_path, class: "btn btn-primary home-button" %>
-</div>
-  <div class="hives-cards-containter">
-    <div class="cards-product-container">
-      <%= render "shared/cards_product" %>
+<div class="hive-container">
+  <div class="hive-info-container">
+    <div class="hive-header-container">
+      <h1>My Hive</h1>
+      <%= link_to root_path do %>
+        <i class="fa-solid fa-plus grow-hive"></i>
+      <% end  %>
     </div>
+
+    <div class="hive-cards-container">
+      <%= render "shared/hive_cards" %>
+    </div>
+  </div>
+
+  <div class="hive-profile-container">
     <%= render "shared/users_card" %>
   </div>
 </div>

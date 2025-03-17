@@ -6,11 +6,16 @@
         </div>
       </div>
     <div class="users-card-content">
-      <h5 class="users-card-title "><%= current_user.first_name %> <%= current_user.last_name  %></h5>
-      <h6 class="users-card-subtitle mb-5 text-body-secondary"><%= current_user.email %></h6>
-    </div>
-    <div class="users-card-button-container">
-      <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary users-card-button" %>
+      <div class="users-card-info">
+        <h5><%= current_user.first_name %> <%= current_user.last_name  %></h5>
+        <h6><%= current_user.email %></h6>
+        <p><%= "Member since #{current_user.created_at.strftime('%B %Y')}" %></p>
+      </div>
+      <div>
+        <%= link_to edit_user_registration_path do %>
+          <i class="fa-solid fa-pencil edit-profile-icon"></i>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
