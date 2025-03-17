@@ -1240,6 +1240,7 @@ poi = [
   { category: "station", name: "Belvedere", lat: 51.4927, lon: 0.1524 },
   { category: "station", name: "Berrylands", lat: 51.3988, lon: -0.2803 },
   { category: "station", name: "Bethnal Green", lat: 51.523, lon: -0.0595 },
+  { category: "station", name: "Bethnal Green Overground", lat: 51.5241, lon: 0.0601 },
   { category: "station", name: "Bexley", lat: 51.4403, lon: 0.1479 },
   { category: "station", name: "Bexleyheath", lat: 51.4635, lon: 0.1338 },
   { category: "station", name: "Bickley", lat: 51.3995, lon: 0.0441 },

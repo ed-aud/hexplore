@@ -1,8 +1,7 @@
 class HexagonsController < ApplicationController
   def show
     @hexagon = Hexagon.find(params[:id])
-    @pois = Poi.all
-    @poi = get_points_of_interest(@hexagon.lat, @hexagon.lon)
+    @poi = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
     @markers = create_makers_object(@poi)
     @hives = Hive.all
     @questions = Question.all
@@ -16,7 +15,7 @@ class HexagonsController < ApplicationController
   def create
     @hexagon = Hexagon.new(hexagon_params)
     if @hexagon.save
-      redirect_to hexagon_path(@hexagon)
+      redirect_to hexagon_path(@hexagon, poi_params: params[:pois])
     else
       render 'new', status: :unprocessable_entity
     end
@@ -29,17 +28,30 @@ class HexagonsController < ApplicationController
     poi[0] = { lat: @hexagon.lat,
                lng: @hexagon.lon }
     arr.each do |el|
-      poi << { lat: el.lat, lng: el.lon, info_window_html: render_to_string(partial: "shared/info_window", locals: {poi: el}) }
+      poi << { lat: el.lat,
+               lng: el.lon,
+               info_window_html: render_to_string(partial: "shared/info_window",
+               locals: { poi: el })
+             }
     end
     return poi
   end
 
-  def get_points_of_interest(lat, lon)
+  def get_points_of_interest(lat, lon, pois)
     min_lat = lat - 0.0018
     min_lon = lon - 0.0029
     max_lat = lat + 0.0018
     max_lon = lon + 0.0029
-    poi = Poi.where(lat: min_lat..max_lat, lon: min_lon..max_lon)
+
+    displayed_locations = []
+
+    selected_categories = pois.split(",")
+    selected_categories.each do |category|
+      displayed_locations << Poi.where(category: category, lat: min_lat..max_lat, lon: min_lon..max_lon)
+    end
+
+    # poi = Poi.where(lat: min_lat..max_lat, lon: min_lon..max_lon)
+    poi = displayed_locations.flatten
     return poi
   end
 
@@ -48,6 +60,6 @@ class HexagonsController < ApplicationController
   end
 
   def hexagon_params
-    params.require(:hexagon).permit(:lat, :lon)
+    params.require(:hexagon).permit(:lat, :lon, :pois)
   end
 end
