@@ -23,7 +23,7 @@ export default class extends Controller {
 
   // Array(s) / Object(s) to store key Filter, Hex Grid and Hexagon datas
   hexGrid = [];
-  greenHexagons = [];
+  matchedHexagons = [];
   selectedFilters = {};
 
   // Function to load the map and necessary Hex Grid functions on page load
@@ -116,7 +116,7 @@ export default class extends Controller {
 
     // If no filters are selected, reset all hexagons to white
     if (Object.values(this.selectedFilters).every(val => !val)) {
-      this.greenHexagons = [];
+      this.matchedHexagons = [];
       this.updateHexagonColour();
       return;
     }
@@ -154,7 +154,7 @@ export default class extends Controller {
     });
 
     // Update array of Hexagons to be shaded green and call function to update their colour accordingly
-    this.greenHexagons = intersection;
+    this.matchedHexagons = intersection;
     this.updateHexagonColour();
   }
 
@@ -171,9 +171,9 @@ export default class extends Controller {
       hex.properties.fillColor = "#9CFBAB";
     });
 
-    // Function to updated Hexagons in greenHexagons array to green
+    // Function to updated Hexagons in matched hexagons array to green
     hexGridData.forEach((hex) => {
-      if (this.greenHexagons.includes(hex.properties.id)) {
+      if (this.matchedHexagons.includes(hex.properties.id)) {
         hex.properties.fillColor = "#9CFBAB";
       } else {
         hex.properties.fillColor = "#FFFFFF"
