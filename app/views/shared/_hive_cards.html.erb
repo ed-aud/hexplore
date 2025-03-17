@@ -1,6 +1,6 @@
 <% hive_counter = 1 %>
 <% @hives.each do |hive| %>
-  <%= link_to hive_path(hive) do %>
+  <%= link_to hive_path(hive), class: "hive-card-link" do %>
     <div class="hive-card">
       <div class="hive-card-image-container">
         <%= image_tag "hexagon_dark_green.png", class: "hive-card-image" %>
