@@ -9,7 +9,7 @@
 .hexagon-content-container{
   width: 60%;
   margin-top: 40px;
-  padding-right: 16px;
+  padding: 20px;
   min-height: calc(100dvh - 140px);
   display: flex;
   flex-direction: column;
@@ -20,6 +20,12 @@
   height: 50px;
   display: flex;
   justify-content: space-between;
+}
+
+.hexagon-non-title-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px rgba(225, 225, 225, 0.5);
 }
 
 .hexagon-title-text{
@@ -40,31 +46,43 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 50px;
-  margin-top: 20px;
-}
-
-.hexagon-content-cards h2 {
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .hexagon-map-container{
   width: 100%;
   margin-top: 20px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .hexagon-shape {
   position: relative;
-  width: 600px;
-  height: 600px;
+  margin: 0 auto;
+  width: 500px;
+  height: 500px;
   background: rgb(218, 215, 215);
+  box-shadow: 3px 3px 3px rgba(225, 225, 225, 0.5);
   -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
   clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
 
 .hexagon-map {
   margin: 0 auto;
+}
+
+.mainMarker{
+  fill: rgb(45, 8, 207);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.matched-locations h2 {
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
 }
 
 .hexagon-chatbot-container{
@@ -76,12 +94,4 @@
   gap: 16px;
   position: sticky;
   top: 100px;
-}
-
-.mainMarker{
-  fill: rgb(45, 8, 207);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
 }
