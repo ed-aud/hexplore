@@ -14,6 +14,13 @@
 .card-product-infos{
   width: 100%;
 }
+
+.card-product:hover {
+  transform: scale(1.02);
+  transition: 0.3s;
+}
+
+
 .card-product-button{
   width: 80px;
   height: 30px;
