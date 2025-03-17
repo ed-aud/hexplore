@@ -1,50 +1,36 @@
-.hives-container{
-  width: 80%;
-  margin: 0 auto;
+.hive-container{
+  width: 1000px;
+  margin: 40px auto;
   display: flex;
   justify-content: space-between;
   align-items: start;
-  flex-direction: column;
 }
 
-.hives-container .booking-icon{
-  justify-self: end;
+.hive-info-container {
+  width: 65%;
 }
 
-.hive-container{
-  border: 1px solid black;
-  margin-bottom: 4px;
+.hive-info-container h1 {
+  margin: 0px;
+  padding: 0px;
 }
 
-.hives-cards-containter{
+.hive-header-container {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-}
-
-.cards-product-container {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin-right: 30px;
-  width: 90%;
 }
 
-.create-hive-container{
+.hive-cards-container {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  margin-top: 50px;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
-@media only screen and (max-width: 720px) {
-  .hives-cards-containter{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  .users-card{
-    min-width: 15%;
-  }
+.hive-profile-container {
+  width: 25%
+}
+
+.home-button {
+  border-radius: 5px;
 }

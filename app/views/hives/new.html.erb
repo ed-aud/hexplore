@@ -1,9 +1,17 @@
-<h1>Hello from inside new Hive page</h1>
+<div class="page-body">
+  <div class="form-container">
+    <h1>Add Hexagon</h1>
 
-<h3>Create your hive</h3>
-
-<%= simple_form_for [@hexagon, @hive] do |f| %>
-  <%= f.input :name, placeholder: "Name" %>
-  <%= f.input :notes, placeholder: "Notes" %>
-  <%= f.submit "Add hive", class: "btn btn-primary form-button" %>
-<% end %>
+    <%= simple_form_for [@hexagon, @hive] do |f| %>
+      <div class="form-inputs">
+        <%= f.input :name,
+                    placeholder: "Name" %>
+        <%= f.input :notes,
+                    placeholder: "Notes" %>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Add", class: "btn btn-primary form-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>

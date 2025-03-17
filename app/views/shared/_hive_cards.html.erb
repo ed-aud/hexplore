@@ -1,0 +1,23 @@
+<% @hives.each do |hive| %>
+  <div class="hive-card">
+    <%= link_to hive_path(hive) do %>
+      <%= image_tag "product_card_img.png", class: "hive-card-image" %>
+
+      <div class="hive-card-info">
+        <h2><%= hive.name %></h2>
+        <p><%= hive.notes %></p>
+
+        <div class="hive-card-button-container">
+          <%= link_to edit_hive_path(hive) do %>
+            <i class="fa-solid fa-pencil booking-icon"></i>
+          <% end %>
+
+          <%= link_to hive_path(hive), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+            <i class="fa-solid fa-trash booking-icon"></i>
+          <% end %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+<% end %>
