@@ -56,45 +56,57 @@
   padding-right: 15px;
 }
 
-.users-card-title {
-  font-size: 1.75rem;
-}
-
-.users-card-subtitle {
-  font-size: 1rem;
-  color: grey;
-}
-
-.users-card-content h5 {
-  font-size: 1.75rem;
-}
-
-.users-card-content h6 {
-  font-size: 1rem;
-  color: grey;
-}
-
-.users-card-button-container{
-   width: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-
-.users-card-button{
-  width: 45%;
-  height: 35px;
-  border-radius: 5px;
-  margin-top: 15px;
-  margin-bottom: 5px;
-}
-
 .users-card-content{
   text-align: left;
   width: 100%;
   height: 10%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
 }
+
+.users-card-content h5 {
+  margin-top: 10px;
+  margin-bottom: 2px;
+  font-size: 1.75rem;
+  color: $dark-green;
+}
+
+.users-card-content h6 {
+  margin: 0px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: $dark-green;
+}
+
+.users-card-content p {
+  margin: 0px;
+  margin-bottom: 10px;
+  font-size: 0.7rem;
+  color: grey;
+}
+
+.edit-profile-icon {
+  color: rgb(175, 175, 175);
+  margin: 17px 0px;
+}
+
+.booking-icon:hover {
+  color: rgb(125, 125, 125);
+  transition: 0.3s;
+}
+
+// .users-card-button-container{
+//    width: 100%;
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+// }
+
+// .users-card-button{
+//   width: 45%;
+//   height: 35px;
+//   border-radius: 5px;
+//   margin-top: 15px;
+//   margin-bottom: 5px;
+// }

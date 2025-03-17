@@ -2,7 +2,9 @@
   <div class="hive-info-container">
     <div class="hive-header-container">
       <h1>My Hive</h1>
-      <%= link_to 'Grow Your Hive', root_path, class: "btn btn-primary home-button" %>
+      <%= link_to root_path do %>
+        <i class="fa-solid fa-plus grow-hive"></i>
+      <% end  %>
     </div>
 
     <div class="hive-cards-container">
