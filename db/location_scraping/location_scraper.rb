@@ -36,7 +36,7 @@ def fetch_locations
   # bounds = [-0.489, 51.28, 0.236, 51.686]
 
   # Bethnal Green bounds
-  # bounds = [-0.068506, 51.502972, -0.032506, 51.538972]
+  bounds = [-0.068506, 51.502972, -0.032506, 51.538972]
 
   # Mile End bounds
   # bounds = [-0.0539, 51.5130, -0.0249, 51.5310]
@@ -55,9 +55,9 @@ def fetch_locations
 
   places.each do |place|
     formatted_place = place.downcase.gsub(' ', '+')
-    url = URI("https://api.mapbox.com/search/searchbox/v1/category/#{formatted_place}?access_token=#{access_token}&language=en&limit=25&bbox=#{bounds.join(',')}")
+    uri = URI("https://api.mapbox.com/search/searchbox/v1/category/#{formatted_place}?access_token=#{access_token}&language=en&limit=25&bbox=#{bounds.join(',')}")
 
-    response = Net::HTTP.get(url)
+    response = Net::HTTP.get(uri)
     data = JSON.parse(response)
 
     locations = data["features"].map do |feature|

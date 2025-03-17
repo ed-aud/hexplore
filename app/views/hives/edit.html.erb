@@ -1,7 +1,17 @@
-<h1>Hi from inside hive edit</h1>
+<div class="page-body">
+  <div class="form-container">
+    <h1>Edit Hexagon</h1>
 
-<%= simple_form_for @hive do |f| %>
-  <%= f.input :name, placeholder: "Name" %>
-  <%= f.input :notes, placeholder: "Notes" %>
-  <%= f.submit "Edit", class: "btn btn-primary form-button" %>
-<% end %>
+    <%= simple_form_for @hive do |f| %>
+      <div class="form-inputs">
+        <%= f.input :name,
+                    placeholder: "Name" %>
+        <%= f.input :notes,
+                    placeholder: "Add any noes" %>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Update", class: "btn btn-primary form-button form-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
