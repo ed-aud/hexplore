@@ -6,6 +6,26 @@ class HexagonsController < ApplicationController
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
+    @fontAwsomeIcons = {
+      pub: 'beer-mug-empty',
+      station: 'train',
+      church: 'church',
+      spa: 'spa',
+      restaurant: 'utensils',
+      park: 'tree-city',
+      gym: 'dumbbell',
+      cafe: 'mug-saucer',
+      supermarket: 'store',
+      cinema: 'film',
+      hospital: 'hospital',
+      mosque: 'mosque',
+      winebar: 'wine-glass',
+      yogastudio: 'hands-praying',
+      synagogue: 'synagogue',
+      museum: 'landmark',
+      university: 'landmark-flag',
+      theatre: 'masks-theater'
+    }
   end
 
   def new
