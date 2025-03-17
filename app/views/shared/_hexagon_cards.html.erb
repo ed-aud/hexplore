@@ -1,6 +1,6 @@
 <% @poi.each do |poi| %>
 <div class="card-product">
-  <%= image_tag("product_card_img.png") %>
+  <%= image_tag("product_card_img.png", class: "hexagon-card-img" )%>
   <div class="card-product-infos">
     <h2><%= poi.category.capitalize %></h2>
     <p><%= poi.name %></p>

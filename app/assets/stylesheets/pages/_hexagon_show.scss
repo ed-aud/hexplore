@@ -38,7 +38,10 @@
 .hexagon-content-cards{
   width: 100%;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
 
 .hexagon-content-cards h2 {
@@ -47,14 +50,14 @@
 
 .hexagon-map-container{
   width: 100%;
-  // height: 600px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin-top: 20px;
 }
 
 .hexagon-shape {
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   background: rgb(218, 215, 215);
   -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
   clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
@@ -81,6 +84,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  position: sticky;
+  top: 100px;
 }
 
 //  .mapboxgl-marker-anchor-center > :first-of-type path {
