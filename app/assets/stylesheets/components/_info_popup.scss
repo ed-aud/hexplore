@@ -1,0 +1,33 @@
+.info-popup{
+  font-size: 1.5rem;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #112201;
+}
+
+.info-popup-title{
+  line-height: 30px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.info-popup-description{
+  margin-top: 16px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.mapboxgl-popup-content{
+  background-color: white;
+  border-radius: 10px;
+}
+
+.mapboxgl-popup-close-button{
+  background-color: #9CFBAB;
+  color: #112201;
+  width: 10%;
+  margin: 6px;
+  border-radius: 20px;
+  font-weight: bolder;
+}

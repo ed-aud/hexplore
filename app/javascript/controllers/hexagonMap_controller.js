@@ -23,7 +23,7 @@ export default class extends Controller {
 
 
   #addMarkersToMap() {
-    const mainPopup = new mapboxgl.Popup().setHTML(`<p>main point</p>`)
+    const mainPopup = new mapboxgl.Popup().setHTML(`<strong class="hexagon-title">Center point</strong>`)
     new mapboxgl.Marker()
       .setLngLat([ this.markersValue[0].lng, this.markersValue[0].lat ])
       .setPopup(mainPopup)
