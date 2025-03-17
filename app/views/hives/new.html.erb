@@ -9,14 +9,8 @@
         <%= f.input :notes,
                     placeholder: "Notes" %>
 
-        <% @poi.map().each do |poi_element| %>
-          <%= f.hidden_field :pois, poi_element %>
+        <%= f.hidden_field :poi, value: @poi %>
 
-          <%= f.hidden_field :pois, value: params[:poi_params] %>
-
-
-
-        <% end %>
       </div>
       <div class="form-actions">
         <%= f.submit "Add", class: "btn btn-primary form-button" %>

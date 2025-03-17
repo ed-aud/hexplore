@@ -7,21 +7,34 @@ class HivesController < ApplicationController
   end
 
   def show
-    @marker = create_makers_object(@poi)
+    @poi = []
+    @markers = []
+
+    @hive.hive_pois.each do |hive_poi|
+      @markers << create_markers(hive_poi)
+      @poi << Poi.find(hive_poi.poi_id)
+    end
   end
 
   def new
     @hive = Hive.new
+    @poi = params[:poi_params]
   end
 
   def create
-    raise
-    @hive = Hive.new(hive_params)
+    if hive_params.include?(:poi)
+      @hive = Hive.new(name: hive_params[:name], notes: hive_params[:notes])
+    else
+      @hive = Hive.new(hive_params)
+    end
     @hive.user = current_user
     @hive.hexagon = @hexagon
 
     if @hive.save
-      redirect_to hexagon_path(@hexagon)
+      hive_params[:poi].split(" ").each do |poi|
+        HivePoi.create!(poi_id: poi.to_i, hive_id: @hive.id)
+      end
+      redirect_to hive_path(@hive)
     else
       render 'new', status: :unprocessable_entity
     end
@@ -34,7 +47,7 @@ class HivesController < ApplicationController
     if @hive.update(hive_params)
       redirect_to hives_path
     else
-      render 'new', status: :unprocessable_entity
+      render 'edit', status: :unprocessable_entity
     end
   end
 
@@ -54,20 +67,26 @@ class HivesController < ApplicationController
   end
 
   def hive_params
-    params.require(:hive).permit(:name, :notes)
+    params.require(:hive).permit(:name, :notes, :poi)
   end
 
-  def create_makers_object(arr)
-    poi = []
-    poi[0] = { lat: @hive.hexagon.lat,
-               lng: @hive.hexagon.lon }
-    arr.each do |el|
-      poi << { lat: el.lat,
-               lng: el.lon,
-               info_window_html: render_to_string(partial: "shared/info_window",
-               locals: { poi: el })
-             }
-    end
-    return poi
+  def create_markers(poi)
+    poi_coordinates = []
+    poi_coordinates << { lat: Poi.find(poi.poi_id).lat, lon: Poi.find(poi.poi_id).lon }
+    return poi_coordinates
   end
+
+  # def create_makers_object(arr)
+  #   poi = []
+  #   poi[0] = { lat: @hive.hexagon.lat,
+  #              lng: @hive.hexagon.lon }
+  #   arr.each do |el|
+  #     poi << { lat: el.lat,
+  #              lng: el.lon,
+  #              info_window_html: render_to_string(partial: "shared/info_window",
+  #              locals: { poi: el })
+  #            }
+  #   end
+  #   return poi
+  # end
 end
