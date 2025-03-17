@@ -1,11 +1,12 @@
 
 <% @poi.each do |poi| %>
 <div class="card-product">
-  <%icon = poi.category%>
-  <i class="fa-solid fa-<%=@fontAwsomeIcons[poi.category.strip.to_sym]%>"></i>
+  <div class="fontawsome-icon-container">
+    <i class="fontawsome-icon fa-solid fa-<%=@fontAwsomeIcons[poi.category.strip.to_sym]%>"></i>
+  </div>
   <div class="card-product-infos">
-    <h2><%= poi.category.capitalize %></h2>
-    <p><%= poi.name %></p>
+    <h5><%= poi.name %></h5>
+    <p><%= poi.category.capitalize %></p>
   </div>
 </div>
 <% end %>
