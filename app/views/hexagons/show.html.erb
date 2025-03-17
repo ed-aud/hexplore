@@ -1,12 +1,11 @@
 <div class="hexagon-container">
   <div class="hexagon-content-container">
     <div class="hexagon-title-container">
-      <div class="hexagon-title-text">
-        <%# <h1>Hexagon</h1> %>
-        <%= link_to "Back", map_path, class: "btn btn-primary back-button" %>
+      <div class="hexagon-title-back-button">
+        <%= link_to "Back", map_path, class: "btn btn-primary btn-hexagon back-button" %>
       </div>
-      <div class="hexagon-title-button">
-        <%= link_to "Add to Hive", new_hexagon_hive_path(@hexagon, poi_params: @poi), class: "btn btn-primary add-button" %>
+      <div class="hexagon-title-add-button">
+        <%= link_to "Add to Hive", new_hexagon_hive_path(@hexagon, poi_params: @poi), class: "btn btn-primary btn-hexagon" %>
       </div>
     </div>
     <div class="hexagon-non-title-container">
@@ -22,7 +21,7 @@
         </div>
       </div>
       <div class="matched-locations">
-        <h2>Matched Locations</h2>
+        <h4>Matched Locations</h4>
         <div class="hexagon-content-cards">
           <%= render "shared/hexagon_cards" %>
         </div>
@@ -32,7 +31,7 @@
 
   <div class = "hexagon-chatbot-container">
     <div class="container chatbot" style="width: 100%; height: 400px;">
-      <h4>Chat with Hex</h4>
+    <h4>Hex, your AI Assistant</h4>
       <div id="questions">
         <%= render "questions/question", question: @question %>
       </div>
