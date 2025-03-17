@@ -7,7 +7,7 @@
 }
 
 .hexagon-content-container{
-  width: 60%;
+  width: 70%;
   margin-top: 40px;
   padding-right: 16px;
   min-height: calc(100dvh - 140px);
@@ -37,6 +37,8 @@
 
 .hexagon-content-cards{
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .hexagon-content-cards h2 {
