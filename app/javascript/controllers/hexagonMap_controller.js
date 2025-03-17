@@ -18,20 +18,32 @@ export default class extends Controller {
     })
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
+    this.#displayPopup();
   }
 
 
   #addMarkersToMap() {
-        this.markersValue.forEach((marker) => {
-        const popup = new mapboxgl.Popup({ closeOnClick: false }).setHTML(marker.info_window_html)
-        new mapboxgl.Marker()
-          .setLngLat([ marker.lng, marker.lat ])
-          .setPopup(popup)
-          .addTo(this.map)
+    const mainPopup = new mapboxgl.Popup().setHTML(`<p>main point</p>`)
+    new mapboxgl.Marker()
+      .setLngLat([ this.markersValue[0].lng, this.markersValue[0].lat ])
+      .setPopup(mainPopup)
+      .addTo(this.map)
+
+     const otherMarkers = this.markersValue.slice(1,)
+      console.log(otherMarkers)
+      otherMarkers.forEach((marker) => {
+      console.log(marker)
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
+      new mapboxgl.Marker()
+      .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup)
+      .addTo(this.map)
     });
   }
 
-
+  #displayPopup(popup){
+    console.log(this.markersValue)
+  }
   // #showPopUps(popup){
   //   this.map.on('mouseenter',(e) => {
   //     popup.addTo(this.map);
