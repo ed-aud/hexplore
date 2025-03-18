@@ -6,7 +6,6 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array,
-    mainMarker: Array,
     hexagonId: Number,
   }
 
@@ -15,12 +14,14 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
+      // style: ""
     })
     this.map.setMinZoom(15);
     this.map.dragPan.disable();
     this.#addMarkersToMap();
-    this.#fitMapToMarkers();
+    this.map.setCenter([ `${this.markersValue[0].lng + 0.001}`, `${this.markersValue[0].lat - 0.0006}` ]);
     this.#displayPopup();
+    console.log(this.markersValue)
   }
 
 
@@ -32,9 +33,7 @@ export default class extends Controller {
       .addTo(this.map)
 
      const otherMarkers = this.markersValue.slice(1,)
-      console.log(otherMarkers)
       otherMarkers.forEach((marker) => {
-      console.log(marker)
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
       new mapboxgl.Marker()
       .setLngLat([ marker.lng, marker.lat ])
@@ -44,7 +43,6 @@ export default class extends Controller {
   }
 
   #displayPopup(popup){
-    console.log(this.markersValue)
   }
   // #showPopUps(popup){
   //   this.map.on('mouseenter',(e) => {
@@ -56,11 +54,4 @@ export default class extends Controller {
   // //     popup.remove();
   // // });
   // }
-
-
-  #fitMapToMarkers() {
-    const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
-  }
 }
