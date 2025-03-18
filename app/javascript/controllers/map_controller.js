@@ -228,7 +228,7 @@ export default class extends Controller {
               <input type="hidden" name="hexagon[lat]" value="${coordinates1.geometry.coordinates[1]}">
               <input type="hidden" name="hexagon[lon]" value="${coordinates1.geometry.coordinates[0]}">
               <input type="hidden" name="pois" value="${selectedFilterArray}">
-              <input type="submit" name="commit" value="View Hexagon" class="btn btn-primary btn-hexagon">
+              <input type="submit" name="commit" value="View Hexagon" class="btn btn-primary btn-hexagon-pop-up">
             </form>
           </div>`)
         .addTo(this.map);
