@@ -5,6 +5,7 @@ class ItinerariesController < ApplicationController
   end
 
   def create
+
     @itinerary = Itinerary.new(hexagon_params)
 
     if @itinerary.save
@@ -13,6 +14,7 @@ class ItinerariesController < ApplicationController
           render turbo_stream: turbo_stream.append(:itineraries, partial: "itineraries/itinerary",
             locals: { itinerary: @itinerary })
         end
+        format.html { redirect_to itineraries_path }
       end
     else
       render 'hexgons/show', status: :unprocessable_entity

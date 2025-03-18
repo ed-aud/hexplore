@@ -6,8 +6,6 @@ class ItineraryJob < ApplicationJob
     @itinerary = itinerary
     @hexagon = Hexagon.find(itinerary.hexagon_id)
 
-    p @hexagon
-
     chatgpt_response = client.chat(
       parameters: {
         model: "gpt-4o-mini",
