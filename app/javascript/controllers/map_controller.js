@@ -45,8 +45,8 @@ export default class extends Controller {
     const searchBounds = [nwPoint, sePoint]
 
     // Formats coordinates to be accepted by setMaxBounds method
-    const nwPointBB = [(centrePoint[0] + 0.0369), (centrePoint[1] + 0.021)]
-    const sePointBB = [(centrePoint[0] - 0.0369), (centrePoint[1] - 0.021)]
+    const nwPointBB = [(centrePoint[0] + 0.04110), (centrePoint[1] + 0.02095)]
+    const sePointBB = [(centrePoint[0] - 0.04110), (centrePoint[1] - 0.02095)]
     const boundingBox = new mapboxgl.LngLatBounds(sePointBB, nwPointBB);
     this.map.setMaxBounds(boundingBox);
 
