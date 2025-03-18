@@ -223,3 +223,32 @@
   height: 35px;
   margin-bottom: 10px;
 }
+
+.search-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.map-filters-search {
+  width: 100%;
+  padding: 8px 30px 8px 10px; /* Adjust padding to prevent overlap */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #777;
+}
+
+.close-btn:hover {
+  color: #333;
+}
