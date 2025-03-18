@@ -1,4 +1,4 @@
-.hexagon-container{
+.hexagon-hive-container{
   width: 1000px;
   margin: 40px auto;
   min-height: calc(100dvh - 140px);
@@ -6,20 +6,24 @@
   justify-content: space-between;
 }
 
-.hexagon-content-container{
+.hexagon-hive-content-container{
   width: 60%;
   min-height: calc(100dvh - 140px);
   display: flex;
   flex-direction: column;
 }
 
-.hexagon-title-container{
+.hexagon-hive-title-container{
   width: 100%;
   height: 50px;
   margin-bottom: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.hexagon-hive-title-text h1 {
+  margin: 0px;
 }
 
 .btn-hexagon {
@@ -42,27 +46,49 @@
   border-color: rgb(175,175,175);
 }
 
-.hexagon-non-title-container {
+.hexagon-hive-show-action-icons {
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+.action-icon {
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: rgb(175,175,175);
+  margin-left: 15px;
+}
+
+.action-icon a {
+  text-decoration: none;
+}
+
+.action-icon:hover {
+  transition: 0.3s;
+  color: $dark-green;
+}
+
+.hexagon-hive-non-title-container {
   background-color: white;
   border-radius: 10px;
   box-shadow: 3px 3px 3px rgba(225, 225, 225, 0.5);
+  padding-bottom: 25px;
 }
 
-.hexagon-title-button{
+.hexagon-hive-title-button{
   height: 50px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.hexagon-content-cards{
+.hexagon-hive-content-cards{
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   margin: 20px;
 }
 
-.hexagon-map-container{
+.hexagon-hive-map-container{
   width: 100%;
   margin-top: 20px;
 }
@@ -78,7 +104,7 @@
   clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
 
-.hexagon-map {
+.hexagon-hive-map {
   margin: 0 auto;
 }
 
@@ -97,7 +123,7 @@
   margin-left: 30px;
 }
 
-.hexagon-chatbot-container {
+.hexagon-hive-chatbot-container {
   width: 32%;
   height: calc(100dvh - 140px);
   display: flex;
@@ -106,7 +132,7 @@
   top: 100px;
 }
 
-.hexagon-chatbot-container h4 {
+.hexagon-hive-chatbot-container h4 {
   text-align: center;
   padding: 10px 0px;
   margin-left: 5px;
@@ -116,6 +142,7 @@
 .chatbot {
   height: 400px;
   background-color: $lightest-green;
+  box-shadow: 3px 3px 3px rgba(225, 225, 225, 0.5);
   border-radius: 10px;
 }
 
