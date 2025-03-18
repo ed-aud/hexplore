@@ -1,18 +1,17 @@
-.info-popup {
-  color: #112201;
+.info-window {
+  color: $dark-green;
   z-index: 999;
 }
 
-.info-popup-category {
-  font-size: 1rem;
+.info-window-category {
+  font-size: 0.75rem;
   text-align: left;
   text-transform: capitalize;
 }
 
-.info-popup-title {
-  font-size: 1.25rem;
+.info-window-title {
+  font-size: 1rem;
   text-align: left;
-  line-height: 30px;
   margin-top: 15px;
   width: 100%;
 }
@@ -20,11 +19,12 @@
 .mapboxgl-popup-content {
   background-color: white;
   border-radius: 10px;
+  padding: 10px;
 }
 
 .mapboxgl-popup-close-button {
-  background-color: #9CFBAB;
-  color: #112201;
+  background-color: $light-green;
+  color: $dark-green;
   width: 20px;
   height: 20px;
   margin: 6px;
@@ -32,6 +32,6 @@
   font-weight: bolder;
 }
 
-.btn-hexagon-pop-up {
+.btn-hexagon-window {
   margin-top: 10px;
 }

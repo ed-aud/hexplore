@@ -135,7 +135,6 @@ export default class extends Controller {
         "fill-blur": 15
       }
     });
-
   }
 
   // Function to handle a user toggling a filter catefory
@@ -146,14 +145,14 @@ export default class extends Controller {
     // Update the selectedFilters state
     this.selectedFilters[filterValue] = isChecked;
 
-    // If no filters are selected, reset all hexagons to white
+    // If no filters are selected, reset all hexagons to green
     if (Object.values(this.selectedFilters).every(val => !val)) {
-      this.matchedHexagons = [];
+      this.matchedHexagons = this.hexGrid.map(hex => hex.properties.id);
       this.updateHexagonColour();
       return;
     }
 
-    // Re-calculate which hexagons need to be marked as green based on filters now selected
+    // Re-calculate which hexagons need to be marked as green based on selected filters
     this.updateHexagonSelectionPerFilters();
   }
 
