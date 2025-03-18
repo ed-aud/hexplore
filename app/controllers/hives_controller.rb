@@ -7,7 +7,7 @@ class HivesController < ApplicationController
   end
 
   def show
-    @poi = []
+    @pois = []
     @markers = []
 
     centre_point = { lat: @hive.hexagon.lat, lon: @hive.hexagon.lon }
@@ -15,7 +15,7 @@ class HivesController < ApplicationController
 
     @hive.hive_pois.each do |hive_poi|
       @markers << create_markers(hive_poi)
-      @poi << Poi.find(hive_poi.poi_id)
+      @pois << Poi.find(hive_poi.poi_id)
     end
 
     @category_icons = {
@@ -42,7 +42,7 @@ class HivesController < ApplicationController
 
   def new
     @hive = Hive.new
-    @poi = params[:poi_params]
+    @pois = params[:poi_params]
   end
 
   def create

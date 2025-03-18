@@ -1,8 +1,8 @@
 class HexagonsController < ApplicationController
   def show
     @hexagon = Hexagon.find(params[:id])
-    @poi = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
-    @markers = create_markers(@poi)
+    @pois = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
+    @markers = create_markers(@pois)
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
