@@ -1,0 +1,40 @@
+.about-page-container {
+  width: 1000px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-container {
+  width: 60%;
+  padding: 10px;
+  border-radius: 10px;
+  padding-bottom: 20px;
+
+  h2 {
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  h4 {
+    margin-top: 30px;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+}
+
+.contact-container {
+  width: 32%;
+  padding: 10px;
+  background-color: $lightest-green;
+  border-radius: 10px;
+
+  h2 {
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+}

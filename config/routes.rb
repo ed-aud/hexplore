@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: "pages#home"
   get "map", to: "pages#map", as: :map
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get "about", to: "pages#about", as: :about
 
   resources :hexagons, only: %i[index show create new] do
     resources :hives, only: %i[new create]
