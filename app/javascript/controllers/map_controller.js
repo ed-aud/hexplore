@@ -35,7 +35,6 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
       style: "mapbox://styles/mapbox/streets-v10"
-      // style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
     });
 
     // Take search coordinates and define a constant Hex Grid & Map load size
@@ -46,21 +45,16 @@ export default class extends Controller {
     const searchBounds = [nwPoint, sePoint]
 
     // Formats coordinates to be accepted by setMaxBounds method
-    const nwPointBB = [(centrePoint[0] + 0.0369), (centrePoint[1] + 0.021)]
-    const sePointBB = [(centrePoint[0] - 0.0369), (centrePoint[1] - 0.021)]
+    const nwPointBB = [(centrePoint[0] + 0.04110), (centrePoint[1] + 0.02095)]
+    const sePointBB = [(centrePoint[0] - 0.04110), (centrePoint[1] - 0.02095)]
     const boundingBox = new mapboxgl.LngLatBounds(sePointBB, nwPointBB);
-    this.map.setMaxBounds(boundingBox);
 
     // Load the map based on search
-    // this.boundingBox(searchBounds);
-
+    this.map.setMaxBounds(boundingBox);
 
     // Load the Hex Grid (and associated functions) based on search and once map has loaded
     this.map.on("load", () => {
-      // this.map.setCenter(this.coordinatesValue);
-      // this.map.setZoom(12.85);
       this.generateHexGrid(searchBounds);
-      // this.#addMarkerToMap();
       this.hexagonClick();
       this.toggleFilterOnReload();
 
@@ -77,12 +71,6 @@ export default class extends Controller {
       this.selectedFilters[filter] = false;
     });
   }
-
-  // Function to define the outer bounds of the base map
-  // boundingBox(searchBounds) {
-    // this.map.fitBounds(searchBounds, { padding: 70, maxZoom: 15, duration: 0.3 });
-    // this.map.setMinZoom(12.85);
-  // }
 
   // Function to generate the base Hex Grid, overlaid onto the same outer bounds as the base map
   generateHexGrid(searchBounds) {
@@ -150,15 +138,7 @@ export default class extends Controller {
         "fill-outline-color": "#000000"
       }
     });
-
   }
-
-  // #addMarkerToMap() {
-  //   console.log(this.markerValue)
-  //   new mapboxgl.Marker()
-  //     .setLngLat([ this.markerValue.lat, this.markerValue.lng ])
-  //     .addTo(this.map)
-  // }
 
   // Function to handle a user toggling a filter catefory
   toggleFilter(event) {
@@ -167,16 +147,15 @@ export default class extends Controller {
 
     // Update the selectedFilters state
     this.selectedFilters[filterValue] = isChecked;
-    console.log('look here')
-    console.log(filterValue)
+
     // If no filters are selected, reset all hexagons to white
     if (Object.values(this.selectedFilters).every(val => !val)) {
-      this.matchedHexagons = [];
+      this.matchedHexagons = this.hexGrid.map(hex => hex.properties.id);
       this.updateHexagonColour();
       return;
     }
 
-    // Re-calculate which hexagons need to be marked as green based on filters now selected
+    // Re-calculate which hexagons need to be marked as green based on selected filters
     this.updateHexagonSelectionPerFilters();
   }
 

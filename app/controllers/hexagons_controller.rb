@@ -1,12 +1,12 @@
 class HexagonsController < ApplicationController
   def show
     @hexagon = Hexagon.find(params[:id])
-    @poi = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
-    @markers = create_markers_object(@poi)
+    @pois = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
+    @markers = create_markers(@pois)
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
-    @categoryIcons = {
+    @category_icons = {
       pub: 'beer-mug-empty',
       station: 'train',
       church: 'church',
@@ -47,16 +47,14 @@ class HexagonsController < ApplicationController
 
   private
 
-  def create_markers_object(arr)
+  def create_markers(array)
     poi = []
     poi[0] = { lat: @hexagon.lat,
-               lng: @hexagon.lon }
-    arr.each do |el|
-      poi << { lat: el.lat,
-               lng: el.lon,
-               info_window_html: render_to_string(partial: "shared/info_window",
-               locals: { poi: el })
-             }
+               lon: @hexagon.lon }
+    array.each do |element|
+      poi << { lat: element.lat,
+               lon: element.lon,
+               info_window_html: render_to_string(partial: "shared/info_window", locals: { poi: element }) }
     end
     return poi
   end

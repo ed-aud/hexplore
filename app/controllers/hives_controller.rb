@@ -7,15 +7,18 @@ class HivesController < ApplicationController
   end
 
   def show
-    @poi = []
+    @pois = []
     @markers = []
+
+    centre_point = { lat: @hive.hexagon.lat, lon: @hive.hexagon.lon }
+    @markers << centre_point
 
     @hive.hive_pois.each do |hive_poi|
       @markers << create_markers(hive_poi)
-      @poi << Poi.find(hive_poi.poi_id)
+      @pois << Poi.find(hive_poi.poi_id)
     end
 
-    @categoryIcons = {
+    @category_icons = {
       pub: 'beer-mug-empty',
       station: 'train',
       church: 'church',
@@ -39,7 +42,7 @@ class HivesController < ApplicationController
 
   def new
     @hive = Hive.new
-    @poi = params[:poi_params]
+    @pois = params[:poi_params]
   end
 
   def create
@@ -92,8 +95,10 @@ class HivesController < ApplicationController
   end
 
   def create_markers(poi)
-    poi_coordinates = []
-    poi_coordinates << { lat: Poi.find(poi.poi_id).lat, lon: Poi.find(poi.poi_id).lon }
+    poi_instance = Poi.find(poi.poi_id)
+    poi_coordinates = { lat: poi_instance.lat,
+                        lon: poi_instance.lon,
+                        info_window_html: render_to_string(partial: "shared/info_window", locals: { poi: poi_instance }) }
     return poi_coordinates
   end
 end

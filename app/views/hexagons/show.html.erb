@@ -9,7 +9,7 @@
       </div>
       <div class="hexagon-hive-title-buttons">
         <h3 class="add-button-title"> Add to Hive </h3>
-        <%= link_to new_hexagon_hive_path(@hexagon, poi_params: @poi) do %>
+        <%= link_to new_hexagon_hive_path(@hexagon, poi_params: @pois) do %>
           <i class="fa-solid fa-plus hexagon-hive-title-button add-button"></i>
         <% end  %>
       </div>
@@ -20,9 +20,9 @@
           <div
             class="hexagon-hive-map"
             style="width: 600px; height: 600px"
-            data-controller="hexagonMap"
-            data-hexagonMap-markers-value="<%= @markers.to_json %>"
-            data-hexagonMap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            data-controller="hexagon-hive-show-map"
+            data-hexagon-hive-show-map-markers-value="<%= @markers.to_json %>"
+            data-hexagon-hive-show-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
         </div>
       </div>
