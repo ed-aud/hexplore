@@ -3,73 +3,144 @@ require 'json'
 require 'uri'
 require 'dotenv/load'
 
+# def fetch_locations
+#   places = [
+#     # "Bar",
+#     "Cafe",
+#     "Church",
+#     "Cinema",
+#     # "Cocktail Bar",
+#     # "Deli",
+#     "Gym",
+#     # "Hospital",
+#     # "Market",
+#     # "Massage",
+#     "Museum",
+#     "Mosque",
+#     "Nail Salon",
+#     # "Nightlife",
+#     "Park",
+#     "Pub",
+#     "Restaurant",
+#     "Spa",
+#     "Supermarket",
+#     "Synagogue",
+#     "Temple",
+#     "Theatre",
+#     # "University",
+#     "Wine Bar",
+#     "Yoga"
+#   ]
+
+#   # London bounds
+#   # bounds = [-0.489, 51.28, 0.236, 51.686]
+
+#   # Bethnal Green bounds
+#   bounds = [-0.068506, 51.502972, -0.032506, 51.538972]
+
+#   # Mile End bounds
+#   # bounds = [-0.0539, 51.5130, -0.0249, 51.5310]
+
+#   # Hackney Wick bounds
+#   # bounds = [-0.0375, 51.5435, 0.0085, 51.5615]
+
+#   # Dalston Juntion bounds
+#   # bounds = [-0.0915, 51.5400, -0.0575, 51.5580]
+
+#   # Limehouse bouunds
+#   # bounds = [-0.0505, 51.5105, 0.0045, 51.5285]
+
+#   access_token = ENV['MAPBOX_API_KEY']
+#   all_locations = []
+
+#   places.each do |place|
+#     formatted_place = place.downcase.gsub(' ', '+')
+#     uri = URI("https://api.mapbox.com/search/searchbox/v1/category/#{formatted_place}?access_token=#{access_token}&language=en&limit=25&bbox=#{bounds.join(',')}")
+
+#     response = Net::HTTP.get(uri)
+#     data = JSON.parse(response)
+
+#     locations = data["features"].map do |feature|
+#       {
+#         category: place,
+#         name: feature["properties"]["name"],
+#         lat: feature["geometry"]["coordinates"][1],
+#         lon: feature["geometry"]["coordinates"][0]
+#       }
+#     end
+
+#     all_locations.concat(locations)
+#   end
+
+#   puts all_locations
+# end
+
+
 def fetch_locations
   places = [
-    # "Bar",
-    "Cafe",
-    "Church",
-    "Cinema",
-    # "Cocktail Bar",
-    # "Deli",
-    "Gym",
-    # "Hospital",
-    # "Market",
-    # "Massage",
-    "Museum",
-    "Mosque",
-    "Nail Salon",
-    # "Nightlife",
-    "Park",
-    "Pub",
-    "Restaurant",
-    "Spa",
-    "Supermarket",
-    "Synagogue",
-    "Temple",
-    "Theatre",
-    # "University",
-    "Wine Bar",
-    "Yoga"
-  ]
-
-  # London bounds
-  # bounds = [-0.489, 51.28, 0.236, 51.686]
-
-  # Bethnal Green bounds
-  bounds = [-0.068506, 51.502972, -0.032506, 51.538972]
-
-  # Mile End bounds
-  # bounds = [-0.0539, 51.5130, -0.0249, 51.5310]
-
-  # Hackney Wick bounds
-  # bounds = [-0.0375, 51.5435, 0.0085, 51.5615]
-
-  # Dalston Juntion bounds
-  # bounds = [-0.0915, 51.5400, -0.0575, 51.5580]
-
-  # Limehouse bouunds
-  # bounds = [-0.0505, 51.5105, 0.0045, 51.5285]
-
+        # # "Bar",
+        "Cafe",
+        # "Church",
+        # "Cinema",
+        # # "Cocktail Bar",
+        # # "Deli",
+        # "Gym",
+        # # "Hospital",
+        # # "Market",
+        # # "Massage",
+        # "Museum",
+        # "Mosque",
+        # "Nail Salon",
+        # # "Nightlife",
+        "Park",
+        "Pub",
+        "Station",
+        # "Restaurant",
+        # "Spa",
+        # "Supermarket",
+        # "Synagogue",
+        # "Temple",
+        # "Theatre",
+        # # "University",
+        # "Wine Bar",
+        # "Yoga"
+      ]
   access_token = ENV['MAPBOX_API_KEY']
   all_locations = []
 
-  places.each do |place|
-    formatted_place = place.downcase.gsub(' ', '+')
-    uri = URI("https://api.mapbox.com/search/searchbox/v1/category/#{formatted_place}?access_token=#{access_token}&language=en&limit=25&bbox=#{bounds.join(',')}")
+  centre_point = [-0.04063119, 51.52406612]
 
-    response = Net::HTTP.get(uri)
-    data = JSON.parse(response)
+  # Define bounding box points
+  nw_point = [centre_point[0] + 0.03825, centre_point[1] + 0.02395]
+  se_point = [centre_point[0] - 0.03825, centre_point[1] - 0.02395]
 
-    locations = data["features"].map do |feature|
-      {
-        category: place,
-        name: feature["properties"]["name"],
-        lat: feature["geometry"]["coordinates"][1],
-        lon: feature["geometry"]["coordinates"][0]
-      }
+  lon_step = 0.005 # Approx. 400m in longitude at London's latitude
+  lat_step = 0.0036 # Approx. 400m in latitude
+
+  # Iterate over the bounding box in 400m steps
+  (se_point[1]..nw_point[1]).step(lat_step) do |lat|
+    (se_point[0]..nw_point[0]).step(lon_step) do |lon|
+      bounds = [lon, lat, lon + lon_step, lat + lat_step] # Mini bounding box
+
+      places.each do |place|
+        formatted_place = place.downcase.gsub(' ', '+')
+        uri = URI("https://api.mapbox.com/search/searchbox/v1/category/#{formatted_place}?access_token=#{access_token}&language=en&limit=25&bbox=#{bounds.join(',')}")
+
+        response = Net::HTTP.get(uri)
+        data = JSON.parse(response)
+
+        locations = data["features"]&.map do |feature|
+          {
+            category: place,
+            name: feature["properties"]["name"],
+            lat: feature["geometry"]["coordinates"][1],
+            lon: feature["geometry"]["coordinates"][0]
+          }
+        end || []
+
+        all_locations.concat(locations)
+      end
     end
-
-    all_locations.concat(locations)
   end
 
   puts all_locations
