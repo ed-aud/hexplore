@@ -15,6 +15,8 @@ class HivesController < ApplicationController
       @poi << Poi.find(hive_poi.poi_id)
     end
 
+    # raise
+
     @categoryIcons = {
       pub: 'beer-mug-empty',
       station: 'train',
@@ -92,8 +94,26 @@ class HivesController < ApplicationController
   end
 
   def create_markers(poi)
-    poi_coordinates = []
-    poi_coordinates << { lat: Poi.find(poi.poi_id).lat, lon: Poi.find(poi.poi_id).lon }
+    # poi_coordinates = []
+    # poi_coordinates << { lat: Poi.find(poi.poi_id).lat,
+    #                      lon: Poi.find(poi.poi_id).lon }
+    poi_coordinates = { lat: Poi.find(poi.poi_id).lat,
+                        lon: Poi.find(poi.poi_id).lon }
     return poi_coordinates
   end
+
+
+  # def create_markers_object(arr)
+  #   poi = []
+  #   poi[0] = { lat: @hexagon.lat,
+  #              lng: @hexagon.lon }
+  #   arr.each do |el|
+  #     poi << { lat: el.lat,
+  #              lng: el.lon,
+  #              info_window_html: render_to_string(partial: "shared/info_window",
+  #              locals: { poi: el })
+  #            }
+  #   end
+  #   return poi
+  # end
 end
