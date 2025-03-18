@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl'
 
-// Connects to data-controller="hexagon-show-map"
 export default class extends Controller {
   static values = {
     apiKey: String,
@@ -22,14 +21,14 @@ export default class extends Controller {
   }
 
   addMarkersToMap() {
-    const mainPopup = new mapboxgl.Popup().setHTML(`<strong class="hexagon-title">Center point</strong>`)
+    // Set hexagon centre point as the centre of the map (w/o marker)
     new mapboxgl.Marker()
       .setLngLat([ this.markersValue[0].lon, this.markersValue[0].lat ])
-      .setPopup(mainPopup)
-      .addTo(this.map)
 
-     const otherMarkers = this.markersValue.slice(1,)
-      otherMarkers.forEach((marker) => {
+    // Add all matched POIs to map with a marker
+    const otherMarkers = this.markersValue.slice(1)
+
+    otherMarkers.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
       new mapboxgl.Marker()
       .setLngLat([ marker.lon, marker.lat ])
