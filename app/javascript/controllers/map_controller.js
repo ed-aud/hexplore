@@ -144,7 +144,8 @@ export default class extends Controller {
       paint: {
         "fill-color": "rgba(250, 250, 250, 0.8)",
         "fill-opacity": 1,
-        "fill-blur": 15
+        "fill-blur": 15,
+        "fill-outline-color": "#000000" 
       }
     });
 
