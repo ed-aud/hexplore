@@ -26,4 +26,15 @@
 
 .footer-links a:hover {
   opacity: 1;
+  transition: 0.3s;
+}
+
+.footer-icon {
+  opacity: 0.45;
+  height: 15px;
+}
+
+.footer-icon a:hover {
+  opacity: 1;
+  transition: 0.3s;
 }

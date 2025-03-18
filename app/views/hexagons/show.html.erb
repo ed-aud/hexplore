@@ -11,15 +11,15 @@
     <div class="hexagon-shape">
       <div
         class="hexagon-map"
-        style="width: 500px; height: 500px"
+        style="width: 600px; height: 600px"
         data-controller="hexagonMap"
         data-hexagonMap-markers-value="<%= @markers.to_json %>"
         data-hexagonMap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
 
-    <div class="hexagon-content-cards">
       <h2>Matched Locations</h2>
+    <div class="hexagon-content-cards">
         <%= render "shared/hexagon_cards" %>
     </div>
   </div>

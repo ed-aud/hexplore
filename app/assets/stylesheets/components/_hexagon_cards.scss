@@ -1,17 +1,38 @@
 .card-product {
   overflow: hidden;
-  width: 90%;
-  height: 120px;
+  width: 30%;
+  height: 100px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
+  flex-direction: row;
   align-items: center;
   margin-bottom: 10px;
   border-radius: 10px;
+  margin-right: 20px;
+  padding: 10px;
+  text-align: center;
 }
+
+.fontawsome-icon{
+  color: #9CFBAB;
+  font-size: 1.6rem;
+}
+// .fontawsome-icon-container{
+//   border-right: 2px solid black;
+//   padding-right: 20px;
+// }
+
 .card-product-infos{
   width: 100%;
 }
+
+.card-product:hover {
+  transform: scale(1.02);
+  transition: 0.3s;
+}
+
+
 .card-product-button{
   width: 80px;
   height: 30px;
@@ -39,16 +60,14 @@
   justify-content: flex-start;
 }
 
-.card-product img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
+// .card-product img {
+//   height: 100%;
+//   width: 120px;
+//   object-fit: cover;
+// }
 
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
+.card-product h5 {
+  text-align: center;
 }
 
 .card-product p {
@@ -64,4 +83,10 @@
 }
 .chatbot{
   height: 400px;
+}
+
+.hexagon-card-img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }

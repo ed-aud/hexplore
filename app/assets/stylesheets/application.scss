@@ -24,7 +24,9 @@
 body {
   position: relative;
   min-height: 100dvh;
-  font-family: "Inter", Helvetica, sans-serif;
+  // font-family: "Inter", Helvetica, sans-serif;
+  font-family: "Oxanium", sans-serif;
+  font-optical-sizing: auto;
   display: flex;
   flex-direction: column;
   padding-bottom: 0;

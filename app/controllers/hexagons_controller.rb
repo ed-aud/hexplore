@@ -4,22 +4,32 @@ class HexagonsController < ApplicationController
 
     @pois = Poi.all
     @poi = get_points_of_interest(@hexagon.lat, @hexagon.lon)
-
-
     @markers = create_makers_object(@poi)
-
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
     @itinerary = Itinerary.new
-    # if @itinerary.ai_answer.present?
-    # respond_to do |format|
-    #   format.turbo_stream do
-    #     render turbo_stream: turbo_stream.append(:itineraries, partial: "itineraries/itinerary",
-    #       locals: { itinerary: @itinerary })
-    #   end
-    # end
-    # end
+
+    @fontAwsomeIcons = {
+      pub: 'beer-mug-empty',
+      station: 'train',
+      church: 'church',
+      spa: 'spa',
+      restaurant: 'utensils',
+      park: 'tree-city',
+      gym: 'dumbbell',
+      cafe: 'mug-saucer',
+      supermarket: 'store',
+      cinema: 'film',
+      hospital: 'hospital',
+      mosque: 'mosque',
+      winebar: 'wine-glass',
+      yogastudio: 'hands-praying',
+      synagogue: 'synagogue',
+      museum: 'landmark',
+      university: 'landmark-flag',
+      theatre: 'masks-theater'
+    }
   end
 
   def new
@@ -44,7 +54,7 @@ class HexagonsController < ApplicationController
     poi[0] = { lat: @hexagon.lat,
                lng: @hexagon.lon }
     arr.each do |el|
-      poi << { lat: el.lat, lng: el.lon }
+      poi << { lat: el.lat, lng: el.lon, info_window_html: render_to_string(partial: "shared/info_window", locals: {poi: el}) }
     end
     return poi
   end
