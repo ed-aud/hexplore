@@ -27,20 +27,33 @@
   width: 100%;
   padding-left: 15px;
   text-align: left;
+
+  h5 {
+    font-size: 1rem;
+    text-align: left;
+    margin: 0px;
+  }
+
+  p {
+    font-size: 0.8rem;
+    line-height: 1;
+    opacity: .7;
+    margin-bottom: 5px;
+  }
 }
 
-.card-product-info h5 {
-  font-size: 1rem;
-  text-align: left;
-  margin: 0px;
-}
+// .card-product-info h5 {
+//   font-size: 1rem;
+//   text-align: left;
+//   margin: 0px;
+// }
 
-.card-product-info p {
-  font-size: 0.8rem;
-  line-height: 1;
-  opacity: .7;
-  margin-bottom: 5px;
-}
+// .card-product-info p {
+//   font-size: 0.8rem;
+//   line-height: 1;
+//   opacity: .7;
+//   margin-bottom: 5px;
+// }
 
 // .card-product-button {
 //   width: 80px;

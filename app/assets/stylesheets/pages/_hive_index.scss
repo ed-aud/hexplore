@@ -8,21 +8,21 @@
 
 .hive-info-container {
   width: 60%;
-}
 
-.hive-info-container h1 {
-  margin: 0px;
-  padding: 0px;
+  h4 {
+    margin: 0px;
+    padding: 0px;
+  }
 }
 
 .hive-header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
 
-.hive-header-container a {
-  text-decoration: none;
+  a {
+    text-decoration: none;
+  }
 }
 
 .hexagon-hive-title-button {

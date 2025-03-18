@@ -20,23 +20,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
 
-.hexagon-hive-title-container h1, h3 {
-  margin: 0px;
-}
+  h1, h3 {
+    margin: 0px;
+  }
 
-.hexagon-hive-title-container h3 {
-  font-size: 1.5rem;
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .add-button-title {
+    margin-right: 15px;
+  }
+
+  .back-button-title {
+    margin-left: 15px;
+  }
 }
 
 .hexagon-hive-title-buttons {
   display: flex;
   align-items: center;
-}
 
-.hexagon-hive-title-buttons a {
-  text-decoration: none;
+  a {
+    text-decoration: none;
+  }
 }
 
 // Mirrored in hive_index.scss
@@ -56,14 +64,6 @@
   background-color: $light-green;
 }
 
-.add-button-title {
-  margin-right: 15px;
-}
-
-.back-button-title {
-  margin-left: 15px;
-}
-
 .back-button {
   color: white !important;
   background-color: grey !important;
@@ -72,14 +72,6 @@
 .back-button:hover {
   transition: 0.3s;
   color: black !important;
-}
-
-.btn-hexagon {
-  height: 40px;
-  width: 150px;
-  margin: 0px !important;
-  border-radius: 5px;
-  margin-bottom: 20px;
 }
 
 .back-button {
@@ -104,10 +96,10 @@
   text-decoration: none;
   color: rgb(175,175,175);
   margin-left: 15px;
-}
 
-.action-icon a {
-  text-decoration: none;
+  a {
+    text-decoration: none;
+  }
 }
 
 .action-icon:hover {
@@ -131,7 +123,6 @@
 
 .hexagon-hive-content-cards{
   display: none;
-  // display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 20px;
@@ -165,14 +156,6 @@
   cursor: pointer;
 }
 
-.matched-locations h4 {
-  text-align: left;
-  width: fit-content;
-  // margin-top: 20px;
-  // margin-bottom: 10px;
-  // margin-left: 30px;
-}
-
 .matched-locations-header {
   margin-top: 20px;
   margin-bottom: 10px;
@@ -181,6 +164,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  h4 {
+    text-align: left;
+    width: fit-content;
+  }
 }
 
 #toggle-locations-button {
@@ -189,10 +177,10 @@
   font-size: 1.6em;
   cursor: pointer;
   margin-left: 10px;
-}
 
-#toggle-locations-button i {
-  color: #333;
+  i {
+    color: $dark-green
+  }
 }
 
 // Further Chatbot styling in _questions.scss
