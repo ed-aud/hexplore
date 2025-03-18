@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "map", to: "pages#map", as: :map
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  # resources :pages, only:
   resources :hexagons, only: %i[index show create new] do
     resources :hives, only: %i[new create]
   end

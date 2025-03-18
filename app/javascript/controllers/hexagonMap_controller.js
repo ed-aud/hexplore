@@ -40,6 +40,7 @@ export default class extends Controller {
       .setPopup(popup)
       .addTo(this.map)
     });
+    console.log(this.params);
   }
 
   #displayPopup(popup){
