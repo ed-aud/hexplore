@@ -142,7 +142,7 @@ export default class extends Controller {
       },
       layout: {},
       paint: {
-        "fill-color": "rgba(250, 250, 250, 0.3)",
+        "fill-color": "rgba(250, 250, 250, 0.9)",
         "fill-opacity": 1,
         "fill-outline-color": "#000000"
       }
