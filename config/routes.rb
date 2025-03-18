@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "map", to: "pages#map", as: :map
   get "about", to: "pages#about", as: :about
 
+  # resources :pages, only:
   resources :hexagons, only: %i[index show create new] do
     resources :hives, only: %i[new create]
   end

@@ -2,7 +2,7 @@
   <div class="hexagon-hive-content-container">
     <div class="hexagon-hive-title-container">
       <div class="hexagon-hive-title-buttons">
-        <%= link_to map_path do %>
+        <%= link_to map_path(address: @myparam[:address], filters: @clickedFilters[:poi_params]) do %>
           <i class="fa-solid fa-arrow-left hexagon-hive-title-button back-button"></i>
         <% end  %>
         <h3 class="back-button-title">Back to Map</h3>

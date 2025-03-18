@@ -20,6 +20,7 @@ export default class extends Controller {
     "map",
     "filters",
     "output",
+    "inputChecked"
   ];
 
   // Array(s) / Object(s) to store key Filter, Hex Grid and Hexagon datas
@@ -55,6 +56,8 @@ export default class extends Controller {
     this.map.on("load", () => {
       this.generateHexGrid(searchBounds);
       this.hexagonClick();
+      this.toggleFilterOnReload();
+
     });
 
 
@@ -130,9 +133,9 @@ export default class extends Controller {
       },
       layout: {},
       paint: {
-        "fill-color": "rgba(250, 250, 250, 0.8)",
+        "fill-color": "rgba(250, 250, 250, 0.9)",
         "fill-opacity": 1,
-        "fill-blur": 15
+        "fill-outline-color": "#000000"
       }
     });
   }
@@ -145,7 +148,7 @@ export default class extends Controller {
     // Update the selectedFilters state
     this.selectedFilters[filterValue] = isChecked;
 
-    // If no filters are selected, reset all hexagons to green
+    // If no filters are selected, reset all hexagons to white
     if (Object.values(this.selectedFilters).every(val => !val)) {
       this.matchedHexagons = this.hexGrid.map(hex => hex.properties.id);
       this.updateHexagonColour();
@@ -156,6 +159,28 @@ export default class extends Controller {
     this.updateHexagonSelectionPerFilters();
   }
 
+  toggleFilterOnReload(event) {
+    // Get the current URL params
+    let params = new URLSearchParams(window.location.href);
+    // split params array into individual values
+    const filtersValue = params.get('filters').split(' ')[0].split(',')
+    filtersValue.forEach(element => {
+      this.inputCheckedTargets.forEach((target)=>{
+        // condition to check if filters value is equal with target data set
+        // check box if it is
+        if(target.dataset.mapFilterValue === element){
+          target.checked = true;
+          this.selectedFilters[target.dataset.mapFilterValue] = true;
+        }
+      })
+    })
+    if (Object.values(this.selectedFilters).every(val => !val)) {
+      this.matchedHexagons = [];
+      this.updateHexagonColour();
+      return;
+    }
+    this.updateHexagonSelectionPerFilters();
+  }
   // Function to update hexagons based on selected filters
   updateHexagonSelectionPerFilters() {
     const hexagonsPerCategory = {};
@@ -249,6 +274,7 @@ export default class extends Controller {
         value === true && selectedFilterArray.push(key)
       })
 
+
       new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
@@ -256,6 +282,7 @@ export default class extends Controller {
             <strong class="hexagon-title">Hive ${clickedHexagonId}</strong>
             <p>Click here to learn more about this hexagon and add it to your hive!</p>
             <form name="myForm" action="/hexagons" method="post">
+              <input type="hidden" name="myparam" value="${window.location.search}">
               <input type="hidden" name="hexagon[lat]" value="${coordinates1.geometry.coordinates[1]}">
               <input type="hidden" name="hexagon[lon]" value="${coordinates1.geometry.coordinates[0]}">
               <input type="hidden" name="pois" value="${selectedFilterArray}">
@@ -264,5 +291,6 @@ export default class extends Controller {
           </div>`)
         .addTo(this.map);
     });
+    console.log(window.location.search);
   }
 }
