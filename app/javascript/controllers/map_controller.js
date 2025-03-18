@@ -6,6 +6,7 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     coordinates: Array,
+    marker: Object,
     gyms: Array,
     pubs: Array,
     stations: Array,
@@ -32,8 +33,8 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
-      style: "mapbox://styles/mapbox/streets-v10"
-      // style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
+      // style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
     });
 
     // Take search coordinates and define a constant Hex Grid & Map load size
@@ -44,21 +45,24 @@ export default class extends Controller {
     const searchBounds = [nwPoint, sePoint]
 
     // Formats coordinates to be accepted by setMaxBounds method
-    const nwPointBB = [(centrePoint[0] + 0.0415), (centrePoint[1] + 0.021)]
-    const sePointBB = [(centrePoint[0] - 0.0415), (centrePoint[1] - 0.021)]
+    const nwPointBB = [(centrePoint[0] + 0.0369), (centrePoint[1] + 0.021)]
+    const sePointBB = [(centrePoint[0] - 0.0369), (centrePoint[1] - 0.021)]
     const boundingBox = new mapboxgl.LngLatBounds(sePointBB, nwPointBB);
     this.map.setMaxBounds(boundingBox);
 
     // Load the map based on search
     // this.boundingBox(searchBounds);
 
+
     // Load the Hex Grid (and associated functions) based on search and once map has loaded
     this.map.on("load", () => {
       // this.map.setCenter(this.coordinatesValue);
       // this.map.setZoom(12.85);
       this.generateHexGrid(searchBounds);
+      // this.#addMarkerToMap();
       this.hexagonClick();
     });
+
 
     // Initialise base state for filters
     Object.keys(this.filtersValue).forEach(filter => {
@@ -110,7 +114,48 @@ export default class extends Controller {
         "fill-outline-color": "#000000",
       },
     });
+
+
+    const fullScreenPolygon = turf.polygon([
+      [
+        [-180, 90],
+        [180, 90],
+        [180, -90],
+        [-180, -90],
+        [-180, 90]
+      ],
+    ]);
+
+    const hexGridPolygons = turf.multiPolygon(
+      hexGridWithIds.map(hex => hex.geometry.coordinates)
+    );
+
+    const maskPolygon = turf.difference(fullScreenPolygon, hexGridPolygons);
+
+    // Add the outer blur layer (the mask)
+    this.map.addLayer({
+      id: "outerBlur",
+      type: "fill",
+      source: {
+        type: "geojson",
+        data: maskPolygon
+      },
+      layout: {},
+      paint: {
+        "fill-color": "rgba(250, 250, 250, 0.8)",
+        "fill-opacity": 1,
+        "fill-blur": 15
+      }
+    });
+
   }
+
+  // #addMarkerToMap() {
+  //   console.log(this.markerValue)
+  //   new mapboxgl.Marker()
+  //     .setLngLat([ this.markerValue.lat, this.markerValue.lng ])
+  //     .addTo(this.map)
+  // }
 
   // Function to handle a user toggling a filter catefory
   toggleFilter(event) {
