@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def map
     @hexagons = Hexagon.all
-
+    @params =  params[:address]
     # Retrieve distinct categories from the POI database and create a Filters hash to pass to HTML & JS
     categories = Poi.distinct.pluck(:category).sort
 
