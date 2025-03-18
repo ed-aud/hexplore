@@ -19,6 +19,7 @@ export default class extends Controller {
     "map",
     "filters",
     "output",
+    "inputChecked"
   ];
 
   // Array(s) / Object(s) to store key Filter, Hex Grid and Hexagon datas
@@ -53,7 +54,8 @@ export default class extends Controller {
       // this.map.setMaxBounds(searchBounds);
       this.generateHexGrid(searchBounds);
       this.hexagonClick();
-      this.toggleFilter(event);
+      this.toggleFilterOnReload();
+
     });
 
     // Initialise base state for filters
@@ -114,7 +116,8 @@ export default class extends Controller {
 
     // Update the selectedFilters state
     this.selectedFilters[filterValue] = isChecked;
-
+    console.log('look here')
+    console.log(filterValue)
     // If no filters are selected, reset all hexagons to white
     if (Object.values(this.selectedFilters).every(val => !val)) {
       this.matchedHexagons = [];
@@ -126,6 +129,28 @@ export default class extends Controller {
     this.updateHexagonSelectionPerFilters();
   }
 
+  toggleFilterOnReload(event) {
+    // Get the current URL params
+    let params = new URLSearchParams(window.location.href);
+    // split params array into individual values
+    const filtersValue = params.get('filters').split(' ')[0].split(',')
+    filtersValue.forEach(element => {
+      this.inputCheckedTargets.forEach((target)=>{
+        // condition to check if filters value is equal with target data set
+        // check box if it is
+        if(target.dataset.mapFilterValue === element){
+          target.checked = true;
+          this.selectedFilters[target.dataset.mapFilterValue] = true;
+        }
+      })
+    })
+    if (Object.values(this.selectedFilters).every(val => !val)) {
+      this.matchedHexagons = [];
+      this.updateHexagonColour();
+      return;
+    }
+    this.updateHexagonSelectionPerFilters();
+  }
   // Function to update hexagons based on selected filters
   updateHexagonSelectionPerFilters() {
     const hexagonsPerCategory = {};

@@ -26,7 +26,8 @@ class HexagonsController < ApplicationController
       university: 'landmark-flag',
       theatre: 'masks-theater'
     }
-    @myparam = params[:address][9..].gsub('+', ' ').gsub('%', ' ')
+    @myparam = { address: params[:address][9..].gsub('+', ' ').gsub('%', ' ')}
+    @clickedFilters = {poi_params: params[:poi_params]}
     # raise
   end
 
@@ -83,6 +84,6 @@ class HexagonsController < ApplicationController
   end
 
   def hexagon_params
-    params.require(:hexagon).permit(:lat, :lon, :pois, :myparam)
+    params.require(:hexagon).permit(:lat, :lon, :pois, :myparam, :clickedFilters)
   end
 end

@@ -2,7 +2,7 @@
   <div class="hexagon-content-container">
     <div class="hexagon-title-container">
       <div class="hexagon-title-back-button">
-        <%= link_to "Back", map_path(address: @myparam), class: "btn btn-primary btn-hexagon back-button" %>
+        <%= link_to "Back", map_path(address: @myparam[:address], filters: @clickedFilters[:poi_params]), class: "btn btn-primary btn-hexagon back-button" %>
       </div>
       <div class="hexagon-title-add-button">
         <%= link_to "Add to Hive", new_hexagon_hive_path(@hexagon, poi_params: @poi), class: "btn btn-primary btn-hexagon" %>
