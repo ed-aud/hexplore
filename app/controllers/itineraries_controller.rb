@@ -1,20 +1,24 @@
 class ItinerariesController < ApplicationController
   def index
-    # @itineraries = current_user.itineraries
+    hexagon = Hexagon.find(params[:id])
+    @itineraries = hexagon.itineraries
     @itinerary = Itinerary.new # for form
   end
 
   def create
-
+    hexagon = Hexagon.find(hexagon_params[:hexagon_id])
+    @itineraries = hexagon.itineraries
     @itinerary = Itinerary.new(hexagon_params)
-
     if @itinerary.save
       respond_to do |format|
+        # format.html
+        # format.turbo_stream
         format.turbo_stream do
           render turbo_stream: turbo_stream.append(:itineraries, partial: "itineraries/itinerary",
             locals: { itinerary: @itinerary })
         end
-        format.html { redirect_to itineraries_path }
+        format.html { redirect_to itineraries_path(id: hexagon) }
+        # format.html { redirect_to hexagon_path(hexagon) } THIS LOOPS!!!
       end
     else
       render 'hexgons/show', status: :unprocessable_entity
