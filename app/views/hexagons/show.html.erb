@@ -1,18 +1,24 @@
-<div class="hexagon-container">
-  <div class="hexagon-content-container">
-    <div class="hexagon-title-container">
-      <div class="hexagon-title-back-button">
-        <%= link_to "Back", map_path, class: "btn btn-primary btn-hexagon back-button" %>
+<div class="hexagon-hive-container">
+  <div class="hexagon-hive-content-container">
+    <div class="hexagon-hive-title-container">
+      <div class="hexagon-hive-title-buttons">
+        <%= link_to map_path do %>
+          <i class="fa-solid fa-arrow-left hexagon-hive-title-button back-button"></i>
+        <% end  %>
+        <h3 class="back-button-title">Back to Map</h3>
       </div>
-      <div class="hexagon-title-add-button">
-        <%= link_to "Add to Hive", new_hexagon_hive_path(@hexagon, poi_params: @poi), class: "btn btn-primary btn-hexagon" %>
+      <div class="hexagon-hive-title-buttons">
+        <h3 class="add-button-title"> Add to Hive </h3>
+        <%= link_to new_hexagon_hive_path(@hexagon, poi_params: @poi) do %>
+          <i class="fa-solid fa-plus hexagon-hive-title-button add-button"></i>
+        <% end  %>
       </div>
     </div>
-    <div class="hexagon-non-title-container">
-      <div class="hexagon-map-container">
+    <div class="hexagon-hive-non-title-container">
+      <div class="hexagon-hive-map-container">
         <div class="hexagon-shape">
           <div
-            class="hexagon-map"
+            class="hexagon-hive-map"
             style="width: 600px; height: 600px"
             data-controller="hexagonMap"
             data-hexagonMap-markers-value="<%= @markers.to_json %>"
@@ -20,18 +26,24 @@
           </div>
         </div>
       </div>
-      <div class="matched-locations">
-        <h4>Matched Locations</h4>
-        <div class="hexagon-content-cards">
-          <%= render "shared/hexagon_cards" %>
+      <div class="matched-locations" data-controller="toggle-locations">
+        <div class="matched-locations-header">
+          <h4>Your Matched Locations</h4>
+          <button id="toggle-locations-button" data-action="click->toggle-locations#toggle">
+            <i class="fa-solid fa-plus" data-toggle-locations-target="icon"></i>
+          </button>
+        </div>
+        <div class="hexagon-hive-content-cards" data-toggle-locations-target="body">
+          <%= render "shared/hexagon_hive_location_cards" %>
         </div>
       </div>
     </div>
   </div>
 
-  <div class = "hexagon-chatbot-container">
+  <div class = "hexagon-hive-chatbot-container">
     <div class="container chatbot" style="width: 100%; height: 400px;">
-    <h4>Hex, your AI Assistant</h4>
+    <h4>Hi, Hex 👋</h4>
+    <p>An AI assistant to help you find your hive!</p>
       <div id="questions">
         <%= render "questions/question", question: @question %>
       </div>
