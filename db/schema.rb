@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_13_151647) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_17_143945) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_13_151647) do
     t.datetime "updated_at", null: false
     t.float "lat"
     t.float "lon"
+  end
+
+  create_table "hive_pois", force: :cascade do |t|
+    t.bigint "hive_id", null: false
+    t.bigint "poi_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hive_id"], name: "index_hive_pois_on_hive_id"
+    t.index ["poi_id"], name: "index_hive_pois_on_poi_id"
   end
 
   create_table "hives", force: :cascade do |t|
@@ -225,6 +234,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_13_151647) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "hive_pois", "hives"
+  add_foreign_key "hive_pois", "pois"
   add_foreign_key "hives", "hexagons"
   add_foreign_key "hives", "users"
   add_foreign_key "questions", "users"

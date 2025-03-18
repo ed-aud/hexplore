@@ -1,34 +1,37 @@
-.info-popup{
-  font-size: 1.5rem;
-  margin-top: 30px;
-  margin-bottom: 10px;
-  text-align: center;
+.info-popup {
   color: #112201;
   z-index: 999;
 }
 
-.info-popup-title{
-  line-height: 30px;
-  margin-top: 20px;
-  width: 100%;
-}
-
-.info-popup-description{
-  margin-top: 16px;
-  text-align: center;
+.info-popup-category {
+  font-size: 1rem;
+  text-align: left;
   text-transform: capitalize;
 }
 
-.mapboxgl-popup-content{
+.info-popup-title {
+  font-size: 1.25rem;
+  text-align: left;
+  line-height: 30px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.mapboxgl-popup-content {
   background-color: white;
   border-radius: 10px;
 }
 
-.mapboxgl-popup-close-button{
+.mapboxgl-popup-close-button {
   background-color: #9CFBAB;
   color: #112201;
-  width: 10%;
+  width: 20px;
+  height: 20px;
   margin: 6px;
-  border-radius: 20px;
+  border-radius: 25px;
   font-weight: bolder;
+}
+
+.btn-hexagon-pop-up {
+  margin-top: 10px;
 }

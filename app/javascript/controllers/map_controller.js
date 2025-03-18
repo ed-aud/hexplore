@@ -2,13 +2,17 @@ import { Controller } from "@hotwired/stimulus"
 import mapboxgl from "mapbox-gl"
 
 export default class extends Controller {
+  // Location values are retrieving location objects from seed file via Hex Grid controller & Index page
   static values = {
     apiKey: String,
     coordinates: Array,
-    filters: Object,
-    hexagonId: Number,
+    gyms: Array,
+    pubs: Array,
+    stations: Array,
     latitude: Number,
     longitude: Number,
+    filters: Object,
+    hexagonId: Number,
   };
 
   static targets = [
@@ -17,10 +21,9 @@ export default class extends Controller {
     "output",
   ];
 
-  // Array(s) / Object(s) to store key Filter, Hex Grid and Hexagon data
+  // Array(s) / Object(s) to store key Filter, Hex Grid and Hexagon datas
   hexGrid = [];
-  fullmatchHexagons = [];
-  partialMatchHexagons = [];
+  matchedHexagons = [];
   selectedFilters = {};
 
   // Function to load the map and necessary Hex Grid functions on page load
@@ -29,9 +32,8 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
-      // style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7",
-      style: "mapbox://styles/mapbox/streets-v10",
-      minZoom: 12.9,
+      // style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/ed-aud/cm87nbprq00bf01sa1he6eva7"
     });
 
     // Take search coordinates and define a constant Hex Grid & Map load size
@@ -47,8 +49,15 @@ export default class extends Controller {
     // Load the Hex Grid (and associated functions) based on search and once map has loaded
     this.map.on("load", () => {
       this.map.setCenter(this.coordinatesValue);
+      this.map.setZoom(12.85);
+      // this.map.setMaxBounds(searchBounds);
       this.generateHexGrid(searchBounds);
       this.hexagonClick();
+    });
+
+    // Initialise base state for filters
+    Object.keys(this.filtersValue).forEach(filter => {
+      this.selectedFilters[filter] = false;
     });
 
     // Initialise base state for filters
@@ -65,7 +74,7 @@ export default class extends Controller {
   // Function to generate the base Hex Grid, overlaid onto the same outer bounds as the base map
   generateHexGrid(searchBounds) {
     const options = { units: "kilometers" };
-    const hexGrid = turf.hexGrid(searchBounds.flat(), 0.4, options);
+    const hexGrid = turf.hexGrid(searchBounds.flat(), 0.35, options);
 
     // Ensure each hexagon has a unique ID stored in its properties to retrieve later when looking for matches
     const hexGridWithIds = hexGrid.features.map((feature, index) => {
@@ -107,8 +116,7 @@ export default class extends Controller {
 
     // If no filters are selected, reset all hexagons to white
     if (Object.values(this.selectedFilters).every(val => !val)) {
-      this.fullMatchHexagons = [];
-      this.partialMatchHexagons = [];
+      this.matchedHexagons = [];
       this.updateHexagonColour();
       return;
     }
@@ -119,73 +127,58 @@ export default class extends Controller {
 
   // Function to update hexagons based on selected filters
   updateHexagonSelectionPerFilters() {
-    // Check hexagon match status each time function is called
-    this.fullMatchHexagons = [];
-    this.partialMatchHexagons = [];
-
-    // Track all selected categories and create an object to track whether a hexagon matches given filter(s)
-    const selectedCategories = Object.keys(this.selectedFilters).filter(category => this.selectedFilters[category] === true);
-    const hexagonCategoryMatchStatus = {};
+    const hexagonsPerCategory = {};
+    const selectedCategories = Object.keys(this.selectedFilters).filter(category => this.selectedFilters[category]);
 
     // Function to find each location in a selected category (e.g., every pub) and iterate over each hexagon to check if it contains location instance(s)
     selectedCategories.forEach(category => {
+      hexagonsPerCategory[category] = new Set();
+
       this.filtersValue[category].forEach((location) => {
         this.hexGrid.forEach((hexagon) => {
           const hexagonPolygon = turf.polygon(hexagon.geometry.coordinates);
           const locationPoint = turf.point([location.lon, location.lat]);
 
-          // If location instance(s) present in a hexagon, assign a 'true' value to this hexagon for the given category.
           if (turf.booleanPointInPolygon(locationPoint, hexagonPolygon)) {
-            const hexId = hexagon.properties.id;
-
-            if (!hexagonCategoryMatchStatus[hexId]) {
-                hexagonCategoryMatchStatus[hexId] = {};
-            }
-            hexagonCategoryMatchStatus[hexId][category] = true;
+            hexagonsPerCategory[category].add(hexagon.properties.id);
           }
         });
       });
     });
 
-    // Iterate over the category match status for each hexagon and evaluate whether a hexagon matches all / some / no selected categories
-    Object.keys(hexagonCategoryMatchStatus).forEach(hexId => {
-      const matchedFilters = Object.keys(hexagonCategoryMatchStatus[hexId]);
-      const matchCount = matchedFilters.length;
+    // Find the hexagons which contain an instance of each selected filter (i.e., intersection of all desired categories)
+    let intersection = [...hexagonsPerCategory[selectedCategories[0]]];
 
-      if (matchCount === selectedCategories.length) {
-        this.fullMatchHexagons.push(Number(hexId));
-      } else if (matchCount > 0 && matchCount < selectedCategories.length) {
-        this.partialMatchHexagons.push(Number(hexId));
-      }
+    selectedCategories.forEach(category => {
+      intersection = intersection.filter(hexId => hexagonsPerCategory[category].has(hexId));
     });
 
-    // Update the hexagon colours based on the categorized match counts
+    // Update array of Hexagons to be shaded green and call function to update their colour accordingly
+    this.matchedHexagons = intersection;
     this.updateHexagonColour();
   }
 
   // Function to update the colour of any hexagons that contain location(s) matching selected filters
   updateHexagonColour() {
+    // Find map source, checking if a valid source exists
     const source = this.map.getSource("hexGrid");
-    const hexGridData = source._data.features;
-    const filtersSelected = Object.values(this.selectedFilters).some(val => val);
+    if (!source) return;
 
-    // Function to reset all hexagons to default colour
+    const hexGridData = source._data.features;
+
+    // Function to reset all hexagons to white
     hexGridData.forEach((hex) => {
       hex.properties.fillColor = "#9CFBAB";
     });
 
-    // Function to update the colour of each hexagon based on category match(es)
-    if (filtersSelected) {
-      hexGridData.forEach((hex) => {
-        if (this.fullMatchHexagons.includes(hex.properties.id)) {
-          hex.properties.fillColor = "#9CFBAB";
-        } else if (this.partialMatchHexagons.includes(hex.properties.id)) {
-          hex.properties.fillColor = "#CCF3D2";
-        } else {
-          hex.properties.fillColor = "#FFFFFF";
-        }
-      });
-    }
+    // Function to updated Hexagons in matched hexagons array to green
+    hexGridData.forEach((hex) => {
+      if (this.matchedHexagons.includes(hex.properties.id)) {
+        hex.properties.fillColor = "#9CFBAB";
+      } else {
+        hex.properties.fillColor = "#FFFFFF"
+      }
+    });
 
     // Function to pass the Hex Grid map the new data
     source.setData({
@@ -208,6 +201,7 @@ export default class extends Controller {
   hexagonClick() {
     this.map.on("click", "hexGridLayer", (event) => {
       event.preventDefault();
+
       const clickedHexagonId = event.features[0].properties.id;
       let hexCoords;
       this.hexGrid.forEach((hexagon) => {
@@ -215,8 +209,14 @@ export default class extends Controller {
           hexCoords = turf.centroid(hexagon)
         }
       })
+
       const coordinates = event.lngLat;
       const coordinates1 = hexCoords;
+      const selectedFilterArray = []
+
+      Object.entries(this.selectedFilters).filter(([key, value]) => {
+        value === true && selectedFilterArray.push(key)
+      })
 
       new mapboxgl.Popup()
         .setLngLat(coordinates)
@@ -227,7 +227,8 @@ export default class extends Controller {
             <form name="myForm" action="/hexagons" method="post">
               <input type="hidden" name="hexagon[lat]" value="${coordinates1.geometry.coordinates[1]}">
               <input type="hidden" name="hexagon[lon]" value="${coordinates1.geometry.coordinates[0]}">
-              <input type="submit" name="commit" value="View Hexagon" class="btn btn-primary btn-hexagon">
+              <input type="hidden" name="pois" value="${selectedFilterArray}">
+              <input type="submit" name="commit" value="View Hexagon" class="btn btn-primary btn-hexagon-pop-up">
             </form>
           </div>`)
         .addTo(this.map);
