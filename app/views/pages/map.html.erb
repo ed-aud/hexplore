@@ -3,18 +3,21 @@
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
   data-map-coordinates-value="<%= @coordinates.to_json %>"
   data-map-filters-value="<%= @filters.to_json %>"
-  data-map-hexagonId-value="<%= @hexagon.to_json %>">
+  data-map-hexagonId-value="<%= @hexagon.to_json %>"
+  data-map-marker-value="<%= @marker.to_json %>">
 
   <div class="map-filter-container" data-controller="filter-search">
     <div class="map-filters">
       <h2>Categories</h2>
-      <input
-        class="map-filters-search"
-        type="text"
-        placeholder="Search..."
-        data-action="keyup->filter-search#search"
-        data-filter-search-target="searchTerm">
-
+      <div class = "search-container">
+        <input
+          class="map-filters-search"
+          type="text"
+          placeholder="Search..."
+          data-action="keyup->filter-search#search"
+          data-filter-search-target="searchTerm">
+        <button class="close-btn" data-action="click->filter-search#clearSearch">✖</button>
+      </div>
       <% @filters.keys.each do |category| %>
         <label
           class="map-filters-search-item"
@@ -57,9 +60,9 @@
               </div>
             </div>
           </div>
-          <div class="map-key-item"><%= image_tag "hexagon_full_match.png", class: "key-hexagon" %><p>Hive meets all of your categories</p></div>
-          <div class="map-key-item"><%= image_tag "hexagon_partial_match.png", class: "key-hexagon" %><p>Hive meets some of your categories</p></div>
-          <div class="map-key-item"><%= image_tag "hexagon_no_match.png", class: "key-hexagon" %><p><em>Hive meets none of your categories</em></p></div>
+          <div class="map-key-item"><%= image_tag "hexagon_full_match.png", class: "key-hexagon" %><p>Hexagon meets your categories</p></div>
+          <%# <div class="map-key-item"><%= image_tag "hexagon_partial_match.png", class: "key-hexagon"<p>Hive meets some of your categories</p></div> %>
+          <div class="map-key-item"><%= image_tag "hexagon_no_match.png", class: "key-hexagon" %><p><em>Hexagon doesn't meet your categories</em></p></div>
         </div>
       </div>
 

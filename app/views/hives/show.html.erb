@@ -1,31 +1,51 @@
-<h1>Hoxton</h1>
-<h3>East London</h3>
-<%# <%= link_to 'Add to My Hives', new_hexagon_hive_path [@hexagon, @hive] %> %>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget libero metus. Nam interdum enim non dui euismod consectetur. Sed mauris massa, efficitur ut nisl vitae, egestas sagittis orci. Praesent tempus maximus libero sed lobortis. Vivamus ultricies sollicitudin sollicitudin. Curabitur euismod egestas eros a laoreet. Praesent posuere urna non mi eleifend sollicitudin. Vivamus vel dignissim dolor, at hendrerit metus. Integer sagittis ultrices mollis. Donec vulputate ligula nisi.</p>
-<h2>Matched Locations</h2>
-<h3>Parks</h3>
-<img src="" alt="park image">
-<h4>Hoxton Park</h4>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget libero metus. Nam interdum enim non dui euismod consectetur.</p>
-<img src="" alt="park image">
-<h4>Shoredicth Park</h4>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget libero metus. Nam interdum enim non dui euismod consectetur.</p>
-<h3>Cafes</h3>
-<img src="" alt="cafe image">
-<h4>Cates</h4>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget libero metus. Nam interdum enim non dui euismod consectetur.</p>
-<img src="" alt="cafe image">
-<h4>Farbique</h4>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget libero metus. Nam interdum enim non dui euismod consectetur.</p>
-<img src="" alt="hexagon-map-image">
-<h3>Matched</h3>
-<button>Bus Stop</button>
-<button>Cafe</button>
-<button>Gym</button>
-<button>Park</button>
-<button>Train Station</button>
-<h3>Unmatched</h3>
-<button>Pharmacy</button>
-<h4>Chat to Hex</h4>
-<p>raesent posuere urna non mi eleifend sollicitudin. Vivamus vel dignissim dolor, at hendrerit metus. Integer sagittis ultrices mollis. Donec vulputate ligula nisi</p>
-<div>Hexagon image</div>
+<div class="hexagon-hive-container">
+  <div class="hexagon-hive-content-container">
+    <div class="hexagon-hive-title-container">
+      <div class="hexagon-hive-title-text">
+        <h1><%= @hive.name %></h1>
+      </div>
+      <div class="hexagon-hive-show-action-icons">
+        <%= link_to edit_hive_path(@hive) do %>
+          <i class="fa-solid fa-pencil action-icon"></i>
+        <% end %>
+        <%= link_to hive_path(@hive), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+          <i class="fa-solid fa-trash action-icon"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class="hexagon-hive-non-title-container">
+      <div class="hexagon-hive-map-container">
+        <div class="hexagon-shape">
+          <div
+            class="hexagon-hive-map"
+            style="width: 600px; height: 600px"
+            data-controller="hexagonMap"
+            data-hexagonMap-markers-value="<%= @markers.to_json %>"
+            data-hexagonMap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+        </div>
+      </div>
+      <div class="matched-locations" data-controller="toggle-locations">
+        <div class="matched-locations-header">
+          <h4>Your Matched Locations</h4>
+          <button id="toggle-locations-button" data-action="click->toggle-locations#toggle">
+            <i class="fa-solid fa-plus" data-toggle-locations-target="icon"></i>
+          </button>
+        </div>
+        <div class="hexagon-hive-content-cards" data-toggle-locations-target="body">
+          <%= render "shared/hexagon_hive_location_cards" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class = "hexagon-hive-chatbot-container">
+    <div class="container chatbot" style="width: 100%; height: 400px;">
+    <h4>Hex, your AI Assistant</h4>
+      <div id="questions">
+        <%# <%= render "questions/question", question: @question %>
+      </div>
+      <%# <%= render "questions/form", question: @question %>
+    </div>
+  </div>
+</div>

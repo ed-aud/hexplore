@@ -8,6 +8,9 @@
                     placeholder: "Name" %>
         <%= f.input :notes,
                     placeholder: "Notes" %>
+
+        <%= f.hidden_field :poi, value: @poi %>
+
       </div>
       <div class="form-actions">
         <%= f.submit "Add", class: "btn btn-primary form-button" %>

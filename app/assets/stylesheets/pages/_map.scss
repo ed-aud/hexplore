@@ -17,7 +17,7 @@
   background-color: rgba(200, 200, 200, 0.2);
   border: 0.25px solid rgba(200, 200, 200, 0.5);
   border-radius: 10px;
-  box-shadow: 3px 3px 3px rgba(225, 225, 225, 0.5);;
+  box-shadow: 3px 3px 3px rgba(225, 225, 225, 0.5);
 }
 
 .map-filters {
@@ -45,13 +45,13 @@
   margin: 3px 0px;
   display: flex;
   align-items: center;
-  gap: 10px;
   font-size: 1rem;
 }
 
 .map-filters-search-tick-box {
   width: 15px;
   height: 15px;
+  margin-right: 5px;
   cursor: pointer;
   accent-color: $dark-green;
 }
@@ -76,12 +76,15 @@
 .clicked-hexagon p {
   font-size: 0.85rem;
   font-style: italic;
+  text-align: center;
   margin: 0;
+  margin-top: 10px;
 }
 
 .btn-hexagon {
   font-size: 1rem;
   font-weight: 500;
+  text-align: center;
   margin-top: 20px;
 }
 
@@ -118,7 +121,7 @@
 .map-key-container h2 {
   text-align: center;
   margin: 0;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 
 .map-keys {
@@ -127,8 +130,8 @@
 }
 
 .map-key-item {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   font-style: italic;
 }
 
@@ -139,7 +142,7 @@
 .map-key-distance {
   display: flex;
   flex-direction: row;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   border-bottom: 1px grey dashed;
 }
 
@@ -196,7 +199,7 @@
 }
 
 .map-steps h4 {
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 5px;
   text-align: center;
 }
@@ -219,4 +222,33 @@
 .hexagon-steps {
   height: 35px;
   margin-bottom: 10px;
+}
+
+.search-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.map-filters-search {
+  width: 100%;
+  padding: 8px 30px 8px 10px; /* Adjust padding to prevent overlap */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #777;
+}
+
+.close-btn:hover {
+  color: #333;
 }

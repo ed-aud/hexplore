@@ -21,5 +21,10 @@ class PagesController < ApplicationController
     data = JSON.parse(response.body)
 
     @coordinates = data["features"][0]["geometry"]["coordinates"]
+
+    @marker = {
+      lat: @coordinates[0],
+      lng: @coordinates[1]
+    }
   end
 end

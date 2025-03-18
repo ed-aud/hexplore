@@ -7,18 +7,31 @@
 }
 
 .hive-info-container {
-  width: 65%;
-}
+  width: 60%;
 
-.hive-info-container h1 {
-  margin: 0px;
-  padding: 0px;
+  h4 {
+    margin: 0px;
+    padding: 0px;
+  }
 }
 
 .hive-header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.hexagon-hive-title-button {
+  font-size: 1.25rem;
+  color: $light-green;
+  background-color: $dark-green;
+  height: 30px;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .hive-cards-container {
@@ -28,16 +41,8 @@
 }
 
 .hive-profile-container {
-  width: 25%
-}
-
-.home-button {
-  border-radius: 5px;
-}
-
-.grow-hive {
-  font-size: 2rem;
-  background-color: $dark-green;
-  padding: 5px;
-  border-radius: 10px;
+  width: 32%;
+  position: sticky;
+  top: 110px;
+  align-self: flex-start;
 }

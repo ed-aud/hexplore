@@ -25,7 +25,10 @@ hexagon = Hexagon.create!(lon: -0.1278, lat: 51.5074)
 puts "#{Hexagon.count} users created"
 
 puts "> Creating Hives..."
-hive = Hive.create!(name: "Hive Test 01", notes: "Lets see", user: new_user_1, hexagon: hexagon)
+Hive.create!(name: "Hammersmith Grove", notes: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", user: new_user_1, hexagon: hexagon)
+Hive.create!(name: "Brackenbury Village", notes: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", user: new_user_1, hexagon: hexagon)
+Hive.create!(name: "Askew Road", notes: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", user: new_user_1, hexagon: hexagon)
+Hive.create!(name: "Stamford Brook", notes: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", user: new_user_2, hexagon: hexagon)
 puts "#{Hive.count} users created"
 
 poi = [
@@ -1240,6 +1243,7 @@ poi = [
   { category: "station", name: "Belvedere", lat: 51.4927, lon: 0.1524 },
   { category: "station", name: "Berrylands", lat: 51.3988, lon: -0.2803 },
   { category: "station", name: "Bethnal Green", lat: 51.523, lon: -0.0595 },
+  { category: "station", name: "Bethnal Green Overground", lat: 51.5241, lon: 0.0601 },
   { category: "station", name: "Bexley", lat: 51.4403, lon: 0.1479 },
   { category: "station", name: "Bexleyheath", lat: 51.4635, lon: 0.1338 },
   { category: "station", name: "Bickley", lat: 51.3995, lon: 0.0441 },
