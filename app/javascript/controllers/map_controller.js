@@ -218,7 +218,7 @@ export default class extends Controller {
         value === true && selectedFilterArray.push(key)
       })
 
-{/* <input type="hidden" name="myparam " value="${window.location.search}">' */}
+
       new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
@@ -226,7 +226,7 @@ export default class extends Controller {
             <strong class="hexagon-title">Hive ${clickedHexagonId}</strong>
             <p>Click here to learn more about this hexagon and add it to your hive!</p>
             <form name="myForm" action="/hexagons" method="post">
-
+              <input type="hidden" name="myparam" value="${window.location.search}">
               <input type="hidden" name="hexagon[lat]" value="${coordinates1.geometry.coordinates[1]}">
               <input type="hidden" name="hexagon[lon]" value="${coordinates1.geometry.coordinates[0]}">
               <input type="hidden" name="pois" value="${selectedFilterArray}">

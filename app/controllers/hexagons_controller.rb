@@ -26,6 +26,9 @@ class HexagonsController < ApplicationController
       university: 'landmark-flag',
       theatre: 'masks-theater'
     }
+    address_formatted = params[:address][9..].gsub(/[^a-zA-Z0-9\s]/, '').gsub("+", "%20")
+    @myparam = params[:address][9..].gsub('+', ' ')
+    # raise
   end
 
   def new
@@ -35,10 +38,11 @@ class HexagonsController < ApplicationController
   def create
     @hexagon = Hexagon.new(hexagon_params)
     if @hexagon.save
-      redirect_to hexagon_path(@hexagon, poi_params: params[:pois])
+      redirect_to hexagon_path(@hexagon, poi_params: params[:pois], address: params[:myparam])
     else
       render 'new', status: :unprocessable_entity
     end
+    # raise
   end
 
   private
@@ -80,6 +84,6 @@ class HexagonsController < ApplicationController
   end
 
   def hexagon_params
-    params.require(:hexagon).permit(:lat, :lon, :pois)
+    params.require(:hexagon).permit(:lat, :lon, :pois, :myparam)
   end
 end
