@@ -8,13 +8,15 @@
   <div class="map-filter-container" data-controller="filter-search">
     <div class="map-filters">
       <h2>Categories</h2>
-      <input
-        class="map-filters-search"
-        type="text"
-        placeholder="Search..."
-        data-action="keyup->filter-search#search"
-        data-filter-search-target="searchTerm">
-
+      <div class = "search-container">
+        <input
+          class="map-filters-search"
+          type="text"
+          placeholder="Search..."
+          data-action="keyup->filter-search#search"
+          data-filter-search-target="searchTerm">
+        <button class="close-btn" data-action="click->filter-search#clearSearch">✖</button>
+      </div>
       <% @filters.keys.each do |category| %>
         <label
           class="map-filters-search-item"
