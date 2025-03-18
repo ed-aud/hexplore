@@ -6,6 +6,7 @@ class HexagonsController < ApplicationController
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
+    @itinerary = Itinerary.new
     @category_icons = {
       pub: 'beer-mug-empty',
       station: 'train',
@@ -28,7 +29,6 @@ class HexagonsController < ApplicationController
     }
     @myparam = { address: params[:address][9..].gsub('+', ' ').gsub('%', ' ')}
     @clickedFilters = {poi_params: params[:poi_params]}
-    # raise
   end
 
   def new
