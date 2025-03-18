@@ -1,25 +1,16 @@
 class HexagonsController < ApplicationController
   def show
     @hexagon = Hexagon.find(params[:id])
-<<<<<<< HEAD
 
     @pois = Poi.all
-    @poi = get_points_of_interest(@hexagon.lat, @hexagon.lon)
-    @markers = create_makers_object(@poi)
-    @hives = Hive.all
-    @questions = Question.all
-    @question = Question.new
     @itinerary = Itinerary.new
 
-    @fontAwsomeIcons = {
-=======
     @poi = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
     @markers = create_markers_object(@poi)
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
     @categoryIcons = {
->>>>>>> main
       pub: 'beer-mug-empty',
       station: 'train',
       church: 'church',
@@ -48,13 +39,7 @@ class HexagonsController < ApplicationController
   def create
     @hexagon = Hexagon.new(hexagon_params)
     if @hexagon.save
-<<<<<<< HEAD
-      # @itinerary = Itinerary.create(user: current_user)
-      # ItineraryJob.set(wait: 2.second).perform_later(@hexagon, @itinerary)
-      redirect_to hexagon_path(@hexagon)
-=======
       redirect_to hexagon_path(@hexagon, poi_params: params[:pois])
->>>>>>> main
     else
       render 'new', status: :unprocessable_entity
     end
