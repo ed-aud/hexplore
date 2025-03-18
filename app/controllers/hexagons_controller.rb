@@ -1,6 +1,7 @@
 class HexagonsController < ApplicationController
   def show
     @hexagon = Hexagon.find(params[:id])
+
     @pois = Poi.all
     @poi = get_points_of_interest(@hexagon.lat, @hexagon.lon)
 
@@ -10,6 +11,15 @@ class HexagonsController < ApplicationController
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
+    @itinerary = Itinerary.new
+    # if @itinerary.ai_answer.present?
+    # respond_to do |format|
+    #   format.turbo_stream do
+    #     render turbo_stream: turbo_stream.append(:itineraries, partial: "itineraries/itinerary",
+    #       locals: { itinerary: @itinerary })
+    #   end
+    # end
+    # end
   end
 
   def new
@@ -19,6 +29,8 @@ class HexagonsController < ApplicationController
   def create
     @hexagon = Hexagon.new(hexagon_params)
     if @hexagon.save
+      # @itinerary = Itinerary.create(user: current_user)
+      # ItineraryJob.set(wait: 2.second).perform_later(@hexagon, @itinerary)
       redirect_to hexagon_path(@hexagon)
     else
       render 'new', status: :unprocessable_entity

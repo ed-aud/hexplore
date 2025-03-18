@@ -27,6 +27,16 @@
   <div class = "hexagon-chatbot-container">
     <div class="container chatbot" style="width: 100%; height: 400px;">
       <h4>Chat with Hex</h4>
+
+      <div data-controller="auto-submit">
+      <%= form_with url: itineraries_path, method: :post, data: { auto_submit_target: "form", turbo_stream: true }, format: :turbo_stream, style: "display: none;" do %>
+          <%= hidden_field_tag 'itinerary[hexagon_id]', @hexagon.id %>
+          <%= submit_tag "Generate Itinerary",  style: "display: none;" %>
+        <% end %>
+      </div>
+      <div class="" id="itineraries">
+        <%= render "itineraries/itinerary", itinerary: @itinerary %>
+      </div>
       <div id="questions">
         <%= render "questions/question", question: @question %>
       </div>
