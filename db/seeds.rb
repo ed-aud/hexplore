@@ -464,28 +464,27 @@ lat_step = 0.0036
       end || []
 
       poi << location
-      # all_locations.concat(locations)
     end
   end
 end
 
 puts "> Creating POIs..."
 poi.each { |i| Poi.create!(i) }
-puts "> #{Poi.where(category: "bar").count} bar created"
-puts "> #{Poi.where(category: "cafe").count} cafes created"
-puts "> #{Poi.where(category: "cinema").count} cinemas created"
-puts "> #{Poi.where(category: "church").count} churches created"
-puts "> #{Poi.where(category: "gym").count} gyms created"
-puts "> #{Poi.where(category: "hospital").count} hospitals created"
-puts "> #{Poi.where(category: "market").count} markets created"
-puts "> #{Poi.where(category: "mosque").count} mosques created"
-puts "> #{Poi.where(category: "museum").count} museums created"
-puts "> #{Poi.where(category: "park").count} parks created"
-puts "> #{Poi.where(category: "pub").count} pubs created"
-puts "> #{Poi.where(category: "restaurant").count} restaurants created"
-puts "> #{Poi.where(category: "station").count} stations created"
-puts "> #{Poi.where(category: "supermarket").count} supermarkets created"
-puts "> #{Poi.where(category: "synagogue").count} synagogues created"
-puts "> #{Poi.where(category: "theatre").count} theatres created"
-puts "> #{Poi.where(category: "university").count} universities created"
-puts "> #{Poi.where(category: "yoga studio").count} yoga studios created"
+puts "> #{Poi.where(category: 'bar').count} bar created"
+puts "> #{Poi.where(category: 'cafe').count} cafes created"
+puts "> #{Poi.where(category: 'cinema').count} cinemas created"
+puts "> #{Poi.where(category: 'church').count} churches created"
+puts "> #{Poi.where(category: 'gym').count} gyms created"
+puts "> #{Poi.where(category: 'hospital').count} hospitals created"
+puts "> #{Poi.where(category: 'market').count} markets created"
+puts "> #{Poi.where(category: 'mosque').count} mosques created"
+puts "> #{Poi.where(category: 'museum').count} museums created"
+puts "> #{Poi.where(category: 'park').count} parks created"
+puts "> #{Poi.where(category: 'pub').count} pubs created"
+puts "> #{Poi.where(category: 'restaurant').count} restaurants created"
+puts "> #{Poi.where(category: 'station').count} stations created"
+puts "> #{Poi.where(category: 'supermarket').count} supermarkets created"
+puts "> #{Poi.where(category: 'synagogue').count} synagogues created"
+puts "> #{Poi.where(category: 'theatre').count} theatres created"
+puts "> #{Poi.where(category: 'university').count} universities created"
+puts "> #{Poi.where(category: 'yoga studio').count} yoga studios created"
