@@ -1,54 +1,101 @@
 .chatbot {
-  background: white;
-  height: calc(100vh - 75px);
+  height: calc(100dvh - 110px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
+  background: $lightest-green;
+  box-shadow: 3px 3px 3px rgba(225, 225, 225, 0.5);
+  border-radius: 10px;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 
   h4 {
-    border-bottom: 1px solid $gray-200;
-    margin-bottom: 0;
-    padding: 1rem;
+    font-size: 1.5rem;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  p {
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-bottom: 5px;
   }
 
   #questions {
     height: 100%;
     overflow: scroll;
-    padding: 1rem;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 0.5rem;
   }
 
   .question {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 
   .user-question, .ai-answer {
     border-radius: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 12px;
     padding: 0.5rem;
-    max-width: 70%;
+    max-width: 75%;
     width: fit-content;
     word-wrap: break-word;
   }
 
   .user-question {
-    align-self: flex-start;
+    align-self: flex-end;
     background: $light-green;
     color: $black;
   }
 
   .ai-answer {
-    align-self: flex-end;
+    align-self: flex-start;
     background: $gray-200;
   }
 
   #new_question {
-    border-top: 1px solid $gray-200;
-    padding: 1rem;
+    margin-top: 6px;
+    margin-left: 6px;
+    margin-right: 6px;
 
     .form-group {
       margin-bottom: 0;
     }
+  }
+
+  .chatbot-question-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .form-control {
+    font-size: 0.8rem;
+    width: 215px;
+  }
+
+  .chatbot-send {
+    height: 50%;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    background-color: $dark-green;
+    color: $light-green;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: none;
+  }
+
+  .chatbot-send:hover {
+    transition: 0.3s;
+    color: $dark-green;
+    background-color: $light-green;
   }
 }

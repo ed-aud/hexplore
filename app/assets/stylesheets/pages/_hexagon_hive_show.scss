@@ -147,29 +147,12 @@
   color: #333;
 }
 
+// Further Chatbot styling in _questions.scss
 .hexagon-hive-chatbot-container {
   width: 32%;
   height: calc(100dvh - 140px);
   display: flex;
   flex-direction: column;
   position: sticky;
-  top: 100px;
-}
-
-.hexagon-hive-chatbot-container h4 {
-  text-align: center;
-  padding: 10px 0px;
-  margin-left: 5px;
-  margin-bottom: 15px;
-}
-
-.chatbot {
-  height: 400px;
-  background-color: $lightest-green;
-  box-shadow: 3px 3px 3px rgba(225, 225, 225, 0.5);
-  border-radius: 10px;
-}
-
-#questions {
-  font-size: 1rem;
+  top: 110px;
 }
