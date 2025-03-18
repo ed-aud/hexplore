@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_17_163653) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_17_143945) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,14 +67,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_17_163653) do
     t.datetime "updated_at", null: false
     t.index ["hexagon_id"], name: "index_hives_on_hexagon_id"
     t.index ["user_id"], name: "index_hives_on_user_id"
-  end
-
-  create_table "itineraries", force: :cascade do |t|
-    t.string "ai_answer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "hexagon_id", null: false
-    t.index ["hexagon_id"], name: "index_itineraries_on_hexagon_id"
   end
 
   create_table "pois", force: :cascade do |t|
@@ -246,7 +238,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_17_163653) do
   add_foreign_key "hive_pois", "pois"
   add_foreign_key "hives", "hexagons"
   add_foreign_key "hives", "users"
-  add_foreign_key "itineraries", "hexagons"
   add_foreign_key "questions", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
