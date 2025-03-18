@@ -18,30 +18,30 @@ export default class extends Controller {
     })
     this.map.setMinZoom(15);
     this.map.dragPan.disable();
-    // this.#addMarkersToMap();
+    this.#addMarkersToMap();
     this.#fitMapToMarkers();
     this.#displayPopup();
   }
 
 
-  // #addMarkersToMap() {
-  //   const mainPopup = new mapboxgl.Popup().setHTML(`<strong class="hexagon-title">Center point</strong>`)
-  //   new mapboxgl.Marker()
-  //     .setLngLat([ this.markersValue[0].lng, this.markersValue[0].lat ])
-  //     .setPopup(mainPopup)
-  //     .addTo(this.map)
+  #addMarkersToMap() {
+    const mainPopup = new mapboxgl.Popup().setHTML(`<strong class="hexagon-title">Center point</strong>`)
+    new mapboxgl.Marker()
+      .setLngLat([ this.markersValue[0].lng, this.markersValue[0].lat ])
+      .setPopup(mainPopup)
+      .addTo(this.map)
 
-  //    const otherMarkers = this.markersValue.slice(1,)
-  //     console.log(otherMarkers)
-  //     otherMarkers.forEach((marker) => {
-  //     console.log(marker)
-  //     const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
-  //     new mapboxgl.Marker()
-  //     .setLngLat([ marker.lng, marker.lat ])
-  //     .setPopup(popup)
-  //     .addTo(this.map)
-  //   });
-  // }
+     const otherMarkers = this.markersValue.slice(1,)
+      console.log(otherMarkers)
+      otherMarkers.forEach((marker) => {
+      console.log(marker)
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
+      new mapboxgl.Marker()
+      .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup)
+      .addTo(this.map)
+    });
+  }
 
   #displayPopup(popup){
     console.log(this.markersValue)

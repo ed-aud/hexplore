@@ -18,6 +18,7 @@
           data-filter-search-target="searchTerm">
         <button class="close-btn" data-action="click->filter-search#clearSearch">✖</button>
       </div>
+      <button class="deselect-filters-btn" data-action="click->filter-search#deselectAll"> Deselect Filters </button>
       <% @filters.keys.each do |category| %>
         <label
           class="map-filters-search-item"
@@ -27,6 +28,7 @@
             class="map-filters-search-tick-box"
             type="checkbox"
             data-action="change->map#toggleFilter"
+            data-filter-search-target="checkbox"
             data-map-filter-value="<%= category %>">
           <%= category.capitalize %>
         </label>
