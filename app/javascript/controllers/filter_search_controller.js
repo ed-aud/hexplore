@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["searchTerm", "category"]
+  static targets = ["searchTerm", "category", "checkbox", "reset"]
 
   // Function to search through category filters and display only ones which match search
   search() {
@@ -19,5 +19,12 @@ export default class extends Controller {
     this.categoryTargets.forEach(category => {
       category.style.display = "block"
     })
+  }
+
+  deselectAll() {
+    this.checkboxTargets.forEach(checkbox => {
+      checkbox.checked = false
+      checkbox.dispatchEvent(new Event("change", { bubbles: true }))
+    });
   }
 }

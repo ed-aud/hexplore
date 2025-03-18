@@ -18,6 +18,7 @@
   border: 0.25px solid rgba(200, 200, 200, 0.5);
   border-radius: 10px;
   box-shadow: 3px 3px 3px rgba(225, 225, 225, 0.5);
+  overflow-y: auto; /* Enables vertical scrolling */
 }
 
 .map-filters {
@@ -43,7 +44,7 @@
 
 .map-filters-search-item {
   margin: 3px 0px;
-  display: flex;
+  // display: flex;
   align-items: center;
   font-size: 1rem;
 }
@@ -222,4 +223,46 @@
 .hexagon-steps {
   height: 35px;
   margin-bottom: 10px;
+}
+
+.search-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.map-filters-search {
+  width: 100%;
+  padding: 8px 30px 8px 10px; /* Adjust padding to prevent overlap */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #777;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+.deselect-btn {
+  margin-top: 5px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding: 4px 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.deselect-btn:hover {
+  background-color: #ddd;
+  color: #000;
 }

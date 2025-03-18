@@ -1,12 +1,12 @@
 class HexagonsController < ApplicationController
   def show
     @hexagon = Hexagon.find(params[:id])
-    @poi = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
-    @markers = create_markers_object(@poi)
+    @pois = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
+    @markers = create_markers(@pois)
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
-    @fontAwsomeIcons = {
+    @category_icons = {
       pub: 'beer-mug-empty',
       station: 'train',
       church: 'church',
@@ -26,6 +26,9 @@ class HexagonsController < ApplicationController
       university: 'landmark-flag',
       theatre: 'masks-theater'
     }
+    @myparam = { address: params[:address][9..].gsub('+', ' ').gsub('%', ' ')}
+    @clickedFilters = {poi_params: params[:poi_params]}
+    # raise
   end
 
   def new
@@ -35,24 +38,23 @@ class HexagonsController < ApplicationController
   def create
     @hexagon = Hexagon.new(hexagon_params)
     if @hexagon.save
-      redirect_to hexagon_path(@hexagon, poi_params: params[:pois])
+      redirect_to hexagon_path(@hexagon, poi_params: params[:pois], address: params[:myparam])
     else
       render 'new', status: :unprocessable_entity
     end
+    # raise
   end
 
   private
 
-  def create_markers_object(arr)
+  def create_markers(array)
     poi = []
     poi[0] = { lat: @hexagon.lat,
-               lng: @hexagon.lon }
-    arr.each do |el|
-      poi << { lat: el.lat,
-               lng: el.lon,
-               info_window_html: render_to_string(partial: "shared/info_window",
-               locals: { poi: el })
-             }
+               lon: @hexagon.lon }
+    array.each do |element|
+      poi << { lat: element.lat,
+               lon: element.lon,
+               info_window_html: render_to_string(partial: "shared/info_window", locals: { poi: element }) }
     end
     return poi
   end
@@ -70,7 +72,6 @@ class HexagonsController < ApplicationController
       displayed_locations << Poi.where(category: category, lat: min_lat..max_lat, lon: min_lon..max_lon)
     end
 
-    # poi = Poi.where(lat: min_lat..max_lat, lon: min_lon..max_lon)
     poi = displayed_locations.flatten
     return poi
   end
@@ -80,6 +81,6 @@ class HexagonsController < ApplicationController
   end
 
   def hexagon_params
-    params.require(:hexagon).permit(:lat, :lon, :pois)
+    params.require(:hexagon).permit(:lat, :lon, :pois, :myparam, :clickedFilters)
   end
 end
