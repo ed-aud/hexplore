@@ -6,7 +6,7 @@ class HexagonsController < ApplicationController
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
-    @fontAwsomeIcons = {
+    @categoryIcons = {
       pub: 'beer-mug-empty',
       station: 'train',
       church: 'church',
@@ -74,7 +74,6 @@ class HexagonsController < ApplicationController
       displayed_locations << Poi.where(category: category, lat: min_lat..max_lat, lon: min_lon..max_lon)
     end
 
-    # poi = Poi.where(lat: min_lat..max_lat, lon: min_lon..max_lon)
     poi = displayed_locations.flatten
     return poi
   end

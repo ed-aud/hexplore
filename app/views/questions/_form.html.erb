@@ -4,11 +4,8 @@
     action: "turbo:submit-end->reset-form#reset"
   }
 } do |f| %>
-  <div class="input-group mb-3 w-100">
-    <div class="form-floating">
-      <%= f.input :user_question, label: false, wrapper: false %>
-      <%= f.label :user_question, "Your question" %>
-    </div>
-    <%= f.submit "Ask", id: "new-question-button", class: "btn btn-primary" %>
+  <div class="chatbot-question-box">
+    <%= f.input :user_question, label: false, placeholder: "Ask Hex a question!", class: "form-question" %>
+    <%= f.submit "↑", id: "new-question-button", class: "btn btn-primary chatbot-send" %>
   </div>
 <% end %>
