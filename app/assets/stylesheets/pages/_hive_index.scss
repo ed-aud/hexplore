@@ -21,6 +21,19 @@
   align-items: center;
 }
 
+.hive-header-container a {
+  text-decoration: none;
+}
+
+.hexagon-hive-title-button {
+  font-size: 1.25rem;
+  color: $light-green;
+  background-color: $dark-green;
+  height: 30px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
 .hive-cards-container {
   display: flex;
   flex-direction: column;
@@ -32,15 +45,4 @@
   position: sticky;
   top: 110px;
   align-self: flex-start;
-}
-
-.home-button {
-  border-radius: 5px;
-}
-
-.grow-hive {
-  font-size: 2rem;
-  background-color: $dark-green;
-  padding: 5px;
-  border-radius: 10px;
 }

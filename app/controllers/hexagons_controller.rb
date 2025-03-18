@@ -6,7 +6,6 @@ class HexagonsController < ApplicationController
     @hives = Hive.all
     @questions = Question.all
     @question = Question.new
-
     @categoryIcons = {
       pub: 'beer-mug-empty',
       station: 'train',

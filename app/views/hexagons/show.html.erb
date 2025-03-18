@@ -1,11 +1,17 @@
 <div class="hexagon-hive-container">
   <div class="hexagon-hive-content-container">
     <div class="hexagon-hive-title-container">
-      <div class="hexagon-hive-title-back-button">
-        <%= link_to "Back", map_path, class: "btn btn-primary btn-hexagon back-button" %>
+      <div class="hexagon-hive-title-buttons">
+        <%= link_to map_path do %>
+          <i class="fa-solid fa-arrow-left hexagon-hive-title-button back-button"></i>
+        <% end  %>
+        <h3 class="back-button-title">Back to Map</h3>
       </div>
-      <div class="hexagon-hive-title-add-button">
-        <%= link_to "Add to Hive", new_hexagon_hive_path(@hexagon, poi_params: @poi), class: "btn btn-primary btn-hexagon" %>
+      <div class="hexagon-hive-title-buttons">
+        <h3 class="add-button-title"> Add to Hive </h3>
+        <%= link_to new_hexagon_hive_path(@hexagon, poi_params: @poi) do %>
+          <i class="fa-solid fa-plus hexagon-hive-title-button add-button"></i>
+        <% end  %>
       </div>
     </div>
     <div class="hexagon-hive-non-title-container">

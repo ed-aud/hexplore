@@ -22,8 +22,56 @@
   align-items: center;
 }
 
-.hexagon-hive-title-text h1 {
+.hexagon-hive-title-container h1, h3 {
   margin: 0px;
+}
+
+.hexagon-hive-title-container h3 {
+  font-size: 1.5rem;
+}
+
+.hexagon-hive-title-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.hexagon-hive-title-buttons a {
+  text-decoration: none;
+}
+
+// Mirrored in hive_index.scss
+.hexagon-hive-title-button {
+  font-size: 1.25rem;
+  color: $light-green;
+  background-color: $dark-green;
+  height: 30px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+
+.hexagon-hive-title-button:hover {
+  transition: 0.3s;
+  color: $dark-green;
+  background-color: $light-green;
+}
+
+.add-button-title {
+  margin-right: 15px;
+}
+
+.back-button-title {
+  margin-left: 15px;
+}
+
+.back-button {
+  color: white !important;
+  background-color: grey !important;
+}
+
+.back-button:hover {
+  transition: 0.3s;
+  color: black !important;
 }
 
 .btn-hexagon {
