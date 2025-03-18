@@ -19,5 +19,6 @@ class PagesController < ApplicationController
     response = Net::HTTP.get_response(uri)
     data = JSON.parse(response.body)
     @coordinates = data["features"][0]["geometry"]["coordinates"]
+    # raise
   end
 end

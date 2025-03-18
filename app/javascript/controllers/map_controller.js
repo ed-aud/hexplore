@@ -53,6 +53,7 @@ export default class extends Controller {
       // this.map.setMaxBounds(searchBounds);
       this.generateHexGrid(searchBounds);
       this.hexagonClick();
+      this.toggleFilter(event);
     });
 
     // Initialise base state for filters

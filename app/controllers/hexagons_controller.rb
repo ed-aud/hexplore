@@ -26,8 +26,7 @@ class HexagonsController < ApplicationController
       university: 'landmark-flag',
       theatre: 'masks-theater'
     }
-    address_formatted = params[:address][9..].gsub(/[^a-zA-Z0-9\s]/, '').gsub("+", "%20")
-    @myparam = params[:address][9..].gsub('+', ' ')
+    @myparam = params[:address][9..].gsub('+', ' ').gsub('%', ' ')
     # raise
   end
 
