@@ -17,7 +17,7 @@ class HexagonsController < ApplicationController
       park: 'tree-city',
       gym: 'dumbbell',
       cafe: 'mug-saucer',
-      supermarket: 'store',
+      market: 'store',
       cinema: 'film',
       hospital: 'hospital',
       mosque: 'mosque',
