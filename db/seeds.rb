@@ -469,7 +469,14 @@ lat_step = 0.0036
 end
 
 puts "> Creating POIs..."
+
+# Create each POI instance
 poi.each { |i| Poi.create!(i) }
+# Update POI category names
+# Poi.where("LOWER(category) = ?", "subway station").find_each do |poi|
+#   poi.update(category: "station")
+# end
+
 puts "> #{Poi.where(category: 'bar').count} bar created"
 puts "> #{Poi.where(category: 'cafe').count} cafes created"
 puts "> #{Poi.where(category: 'cinema').count} cinemas created"
