@@ -90,11 +90,11 @@
     font-weight: bold;
     font-size: 1.2rem;
     border: none;
-  }
 
-  .chatbot-send:hover {
-    transition: 0.3s;
-    color: $dark-green;
-    background-color: $light-green;
+    &:hover {
+      transition: 0.3s;
+      color: $dark-green;
+      background-color: $light-green;
+    }
   }
 }

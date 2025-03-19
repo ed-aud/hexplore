@@ -14,6 +14,7 @@
         <% end  %>
       </div>
     </div>
+    
     <div class="hexagon-hive-non-title-container">
       <div class="hexagon-hive-map-container">
         <div class="hexagon-shape">
@@ -26,6 +27,7 @@
           </div>
         </div>
       </div>
+
       <div class="matched-locations" data-controller="toggle-locations">
         <div class="matched-locations-header">
           <h4>Your Matched Locations</h4>
@@ -51,16 +53,13 @@
           <%= render "itineraries/itinerary", itinerary: @itinerary %>
         </div>
       </div>
-
     </div>
   </div>
 
   <div class = "hexagon-hive-chatbot-container">
     <div class="container chatbot" style="width: 100%; height: 400px;">
-
       <h4>Hi, Hex 👋</h4>
       <p>An AI assistant to help you find your hive!</p>
-
       <div id="questions">
         <%= render "questions/question", question: @question %>
       </div>
