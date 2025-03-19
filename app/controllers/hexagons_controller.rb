@@ -27,7 +27,10 @@ class HexagonsController < ApplicationController
       museum: 'landmark',
       university: 'landmark-flag',
       theatre: 'masks-theater',
-      deli: 'bowl-food'
+      deli: 'bowl-food',
+      bar: 'champagne-glasses',
+      supermarket: 'shop',
+      school: 'school-flag'
     }
     @myparam = { address: params[:address][9..].gsub('+', ' ').gsub('%', ' ') }
     @clickedFilters = { poi_params: params[:poi_params] }
