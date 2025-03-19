@@ -8,32 +8,39 @@
 
   <div class="map-filter-container" data-controller="filter-search">
     <div class="map-filters">
-      <h2>Categories</h2>
-      <div class = "search-container">
-        <input
-          class="map-filters-search"
-          type="text"
-          placeholder="Search..."
-          data-action="keyup->filter-search#search"
-          data-filter-search-target="searchTerm">
-        <button class="close-btn" data-action="click->filter-search#clearSearch">✖</button>
-      </div>
-      <% @filters.keys.each do |category| %>
-        <label
-          class="map-filters-search-item"
-          data-filter-search-target="category"
-          data-action="change->filter-search#clearSearch">
+      <div class="search-header">
+        <h2>Categories</h2>
+        <div class = "search-container">
           <input
-            class="map-filters-search-tick-box"
-            type="checkbox"
-            data-action="change->map#toggleFilter"
-            data-filter-search-target="checkbox"
-            data-map-target="inputChecked"
-            data-map-filter-value="<%= category %>">
-          <%= category.capitalize %>
-        </label>
-      <% end %>
-      <button class="deselect-btn" data-action="click->filter-search#deselectAll"> Deselect All </button>
+            class="map-filters-search"
+            type="text"
+            placeholder="Search..."
+            data-action="keyup->filter-search#search"
+            data-filter-search-target="searchTerm">
+          <button class="close-btn" data-action="click->filter-search#clearSearch">✖</button>
+        </div>
+      </div>
+      <div class="map-categories-list">
+        <% @filters.keys.each do |category| %>
+          <div class="checkbox-wrapper-2 map-filter-search-category">
+            <label
+              class="map-filters-search-item"
+              data-filter-search-target="category"
+              data-action="change->filter-search#clearSearch">
+              <%= category.capitalize %>
+            </label>
+            <input
+              class="map-filters-search-tick-box sc-gJwTLC ikxBAC"
+              type="checkbox"
+              data-action="change->map#toggleFilter"
+              data-filter-search-target="checkbox"
+              data-map-target="inputChecked"
+              data-map-filter-value="<%= category %>"
+            >
+          </div>
+        <% end %>
+        <button class="deselect-btn" data-action="click->filter-search#deselectAll"> Deselect All </button>
+      </div>
     </div>
   </div>
 
