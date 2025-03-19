@@ -468,7 +468,7 @@ lat_step = 0.0036
 end
 
 # Remove any duplicate values from MapBox Search API
-poi.uniq { |object| [object[:category], object[:name], object[:lat], object[:lon]] }
+# poi.uniq { |object| [object[:category], object[:name], object[:lat], object[:lon]] }
 
 puts "> Creating POIs..."
 
