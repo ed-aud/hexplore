@@ -9,7 +9,7 @@ export default class extends Controller {
 
     this.categoryTargets.forEach(category => {
       let categoryLetters = category.textContent.toLowerCase()
-      category.style.display = categoryLetters.includes(searchQuery) ? "block" : "none";
+      category.parentNode.style.display = categoryLetters.includes(searchQuery) ? "block" : "none";
     });
   }
 
