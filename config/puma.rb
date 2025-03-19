@@ -34,5 +34,5 @@ plugin :tmp_restart
 pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
 
 # if ENV['RAILS_ENV'] == 'development'
-#   plugin :solid_queue
+  plugin :solid_queue
 # end

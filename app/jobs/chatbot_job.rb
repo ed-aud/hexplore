@@ -40,5 +40,4 @@ class ChatbotJob < ApplicationJob
     end
     return results
   end
-
 end
