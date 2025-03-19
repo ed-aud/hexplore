@@ -13,24 +13,20 @@
   height: 50px;
 }
 
-.navbar-brand:hover {
-  color: white;
-}
-
 .nav-item {
   padding-right: 20px;
-}
 
-.nav-item:last-child {
-  padding: 0px;
+  &:last-child {
+    padding: 0px;
+  }
 }
 
 .nav-link {
   color: $light-green;
-}
 
-.nav-link:hover {
-  color: white;
+  &:hover {
+    color: white;
+  }
 }
 
 .initials-avatar {
