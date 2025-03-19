@@ -7,7 +7,7 @@
         <%= f.input :name,
                     placeholder: "Name" %>
         <%= f.input :notes,
-                    placeholder: "Notes" %>
+                    placeholder: "Notes", value: @itinerary&.ai_answer %>
 
         <%= f.hidden_field :poi, value: @pois %>
 

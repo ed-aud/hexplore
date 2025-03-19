@@ -38,11 +38,14 @@ class HivesController < ApplicationController
       university: 'landmark-flag',
       theatre: 'masks-theater'
     }
+
   end
 
   def new
     @hive = Hive.new
     @pois = params[:poi_params]
+    latest_itinerary = @hexagon.itineraries.last
+    @hive.notes = latest_itinerary&.ai_answer
   end
 
   def create

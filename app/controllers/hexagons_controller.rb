@@ -1,4 +1,5 @@
 class HexagonsController < ApplicationController
+
   def show
     @hexagon = Hexagon.find(params[:id])
     @pois = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
@@ -16,7 +17,7 @@ class HexagonsController < ApplicationController
       park: 'tree-city',
       gym: 'dumbbell',
       cafe: 'mug-saucer',
-      supermarket: 'store',
+      market: 'store',
       cinema: 'film',
       hospital: 'hospital',
       mosque: 'mosque',
@@ -25,12 +26,14 @@ class HexagonsController < ApplicationController
       synagogue: 'synagogue',
       museum: 'landmark',
       university: 'landmark-flag',
-      theatre: 'masks-theater'
+      theatre: 'masks-theater',
+      deli: 'bowl-food',
+      bar: 'champagne-glasses',
+      supermarket: 'shop',
+      school: 'school-flag'
     }
-    @myparam = { address: params[:address][9..].gsub('+', ' ').gsub('%', ' ')}
-
-    @clickedFilters = {poi_params: params[:poi_params]}
-
+    @myparam = { address: params[:address][9..].gsub('+', ' ').gsub('%', ' ') }
+    @clickedFilters = { poi_params: params[:poi_params] }
   end
 
   def new

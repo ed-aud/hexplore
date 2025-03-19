@@ -191,6 +191,26 @@
   }
 }
 
+.hive-notes {
+  background-color: $lightest-green;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  height: calc(100dvh - 140px);
+  overflow: scroll;
+
+  h4 {
+    margin-bottom: 20px;
+    font-size: 1.75rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+}
+
 // Further Chatbot styling in _questions.scss
 .hexagon-hive-chatbot-container {
   width: 32%;

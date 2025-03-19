@@ -1,22 +1,17 @@
 class PagesController < ApplicationController
+  skip_before_action :authenticate_user!
+  
   def home
   end
 
   def map
-
     @hexagons = Hexagon.all
     @params =  params[:address]
     # Retrieve distinct categories from the POI database and create a Filters hash to pass to HTML & JS
     categories = Poi.distinct.pluck(:category).sort
-
     @filters = categories.each_with_object({}) do |category, hash|
       hash[category] = Poi.where(category: category).map { |poi| { lon: poi.lon, lat: poi.lat } }
     end
-
-    #  @clickedFilters = Hexagon.myparam
-
-    # raise
-
     # Retrieve the search address from params (pushed from Home) and then retrieve the associated coordinates
     address = params[:address]
     address_formatted = address.gsub(/[^a-zA-Z0-9\s]/, '').gsub(" ", "%20")

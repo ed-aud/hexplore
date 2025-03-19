@@ -1,7 +1,13 @@
 <% @pois.each do |poi| %>
   <div class="card-product">
     <div class="fontawsome-icon-container">
+      <% if poi.category.strip == 'yoga studio' %>
+      <i class="fontawsome-icon fa-solid fa-hands-praying"></i>
+      <% elsif poi.category.strip == 'wine bar' %>
+      <i class="fontawsome-icon fa-solid fa-wine-glass"></i>
+      <% else %>
       <i class="fontawsome-icon fa-solid fa-<%=@category_icons[poi.category.strip.to_sym]%>"></i>
+      <% end %>
     </div>
     <div class="card-product-info">
       <p><%= poi.category.capitalize %></p>

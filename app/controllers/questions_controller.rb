@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  skip_before_action :authenticate_user!
+  
   def index
     @questions = current_user.questions
     @question = Question.new # for form
