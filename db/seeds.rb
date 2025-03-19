@@ -404,27 +404,27 @@ poi = [
 ]
 
 # Location categories for MapBox query
-places = ["Bar",
-          "Cafe",
-          "Church",
-          "Cinema",
-          "Cocktail Bar",
-          "Deli",
-          "Gym",
-          "Hospital",
-          "Market",
-          "Museum",
-          "Mosque",
-          "Park",
-          "Pub",
-          "Spa",
-          "Station",
-          "Restaurant",
-          "Supermarket",
-          "Synagogue",
-          "Theatre",
-          "University",
-          "Wine Bar"]
+categories = ["Bar",
+              "Cafe",
+              "Church",
+              "Cinema",
+              "Cocktail Bar",
+              "Deli",
+              "Gym",
+              "Hospital",
+              "Market",
+              "Museum",
+              "Mosque",
+              "Park",
+              "Pub",
+              "Spa",
+              "Station",
+              "Restaurant",
+              "Supermarket",
+              "Synagogue",
+              "Theatre",
+              "University",
+              "Wine Bar"]
 
 access_token = ENV['MAPBOX_API_KEY']
 
@@ -447,16 +447,16 @@ lat_step = 0.0036
   (se_point[0]..nw_point[0]).step(lon_step) do |lon|
     bounds = [lon, lat, lon + lon_step, lat + lat_step]
 
-    places.each do |place|
-      formatted_place = place.downcase.gsub(' ', '+')
-      uri = URI("https://api.mapbox.com/search/searchbox/v1/category/#{formatted_place}?access_token=#{access_token}&language=en&limit=25&bbox=#{bounds.join(',')}")
+    categories.each do |category|
+      formatted_category = category.downcase.gsub(' ', '+')
+      uri = URI("https://api.mapbox.com/search/searchbox/v1/category/#{formatted_category}?access_token=#{access_token}&language=en&limit=25&bbox=#{bounds.join(',')}")
 
       response = Net::HTTP.get(uri)
       data = JSON.parse(response)
 
       location = data["features"]&.map do |feature|
         {
-          category: place.downcase,
+          category: category.downcase,
           name: feature["properties"]["name"],
           lat: feature["geometry"]["coordinates"][1],
           lon: feature["geometry"]["coordinates"][0]
@@ -467,6 +467,9 @@ lat_step = 0.0036
     end
   end
 end
+
+# Remove any duplicate values from MapBox Search API
+poi.uniq { |object| [object[:category], object[:name], object[:lat], object[:lon]] }
 
 puts "> Creating POIs..."
 

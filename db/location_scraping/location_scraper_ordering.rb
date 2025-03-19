@@ -4,7 +4,7 @@ places = [
 ]
 
 def order_and_remove_duplicates(array)
-  array.uniq { |object| [object[:category], object[:name], object[:lat], object[:lon]]  }
+  array.uniq { |object| [object[:category], object[:name], object[:lat], object[:lon]] }
      .sort_by { |object| object[:name] }
 end
 
