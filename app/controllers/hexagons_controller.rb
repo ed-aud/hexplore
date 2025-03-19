@@ -1,4 +1,6 @@
 class HexagonsController < ApplicationController
+  skip_before_action :authenticate_user!
+  
   def show
     @hexagon = Hexagon.find(params[:id])
     @pois = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
