@@ -79,12 +79,7 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary: &primary_production
-    <<: *default
-    database: hexplore_production
-    username: hexplore
-    password: <%= ENV["HEXPLORE_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: hexplore_production_cache
-    migrations_paths: db/cache_migrate
+  <<: *default
+  database: hexplore_production
+  username: hexplore
+  password: <%= ENV["HEXPLORE_DATABASE_PASSWORD"] %>
