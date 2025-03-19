@@ -208,7 +208,7 @@
   overflow: scroll;
 
   h4 {
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     font-size: 1.75rem;
   }
 
@@ -239,4 +239,13 @@
   border: none;
   font-size: 2.4em;
   cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.spinner {
+  background: none;
+  border: none;
+  font-size: 1.4em;
+  cursor: pointer;
+  margin-bottom: 8px;
 }

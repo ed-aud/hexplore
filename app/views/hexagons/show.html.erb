@@ -43,9 +43,11 @@
       <div class="matched-locations" data-controller="toggle-locations" data-controller="auto-submit">
         <div class="matched-locations-header">
           <h4>Itinerary to Explore the Area</h4>
-          <%= form_with model: @itinerary, method: :post do %>
+          <%= form_with model: @itinerary, method: :post, data: { controller: "itinerary-button" } do %>
             <%= hidden_field_tag 'itinerary[hexagon_id]', @hexagon.id %>
-            <%= submit_tag "+", class: "plus" %>
+            <%= button_tag type: 'submit', class:"spinner", data: { action: "click->itinerary-button#disableButton" } do %>
+              <i class="fa-solid fa-spinner"></i>
+            <% end %>
           <% end %>
         </div>
 
