@@ -147,7 +147,7 @@ export default class extends Controller {
 
     // Update the selectedFilters state
     this.selectedFilters[filterValue] = isChecked;
-
+    // debugger
     // If no filters are selected, reset all hexagons to white
     if (Object.values(this.selectedFilters).every(val => !val)) {
       this.matchedHexagons = this.hexGrid.map(hex => hex.properties.id);
@@ -180,12 +180,15 @@ export default class extends Controller {
       return;
     }
     this.updateHexagonSelectionPerFilters();
+    // removes from the params filters from previous searches
+    const url = new URL(window.location.href);
+    url.searchParams.delete('filters');
+    window.history.replaceState({}, '', url);
   }
   // Function to update hexagons based on selected filters
   updateHexagonSelectionPerFilters() {
     const hexagonsPerCategory = {};
     const selectedCategories = Object.keys(this.selectedFilters).filter(category => this.selectedFilters[category]);
-
     // Function to find each location in a selected category (e.g., every pub) and iterate over each hexagon to check if it contains location instance(s)
     selectedCategories.forEach(category => {
       hexagonsPerCategory[category] = new Set();
