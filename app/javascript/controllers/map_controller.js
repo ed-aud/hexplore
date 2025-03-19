@@ -59,8 +59,6 @@ export default class extends Controller {
       this.toggleFilterOnReload();
 
     });
-
-
     // Initialise base state for filters
     Object.keys(this.filtersValue).forEach(filter => {
       this.selectedFilters[filter] = false;
@@ -144,10 +142,9 @@ export default class extends Controller {
   toggleFilter(event) {
     const filterValue = event.target.dataset.mapFilterValue;
     const isChecked = event.target.checked;
-
     // Update the selectedFilters state
     this.selectedFilters[filterValue] = isChecked;
-
+    // debugger
     // If no filters are selected, reset all hexagons to white
     if (Object.values(this.selectedFilters).every(val => !val)) {
       this.matchedHexagons = this.hexGrid.map(hex => hex.properties.id);
@@ -164,14 +161,21 @@ export default class extends Controller {
     let params = new URLSearchParams(window.location.href);
     // split params array into individual values
     const filtersValue = params.get('filters').split(' ')[0].split(',')
+    console.log(filtersValue)
     filtersValue.forEach(element => {
+      console.log('element....')
+      console.log(element)
       this.inputCheckedTargets.forEach((target)=>{
         // condition to check if filters value is equal with target data set
         // check box if it is
-        if(target.dataset.mapFilterValue === element){
+        if (
+          target.dataset.mapFilterValue.includes(element) || // Matches partial values
+          element.includes(target.dataset.mapFilterValue)    // Matches the other way around
+        ) {
           target.checked = true;
           this.selectedFilters[target.dataset.mapFilterValue] = true;
         }
+
       })
     })
     if (Object.values(this.selectedFilters).every(val => !val)) {
@@ -180,12 +184,15 @@ export default class extends Controller {
       return;
     }
     this.updateHexagonSelectionPerFilters();
+    // removes from the params filters from previous searches
+    const url = new URL(window.location.href);
+    url.searchParams.delete('filters');
+    window.history.replaceState({}, '', url);
   }
   // Function to update hexagons based on selected filters
   updateHexagonSelectionPerFilters() {
     const hexagonsPerCategory = {};
     const selectedCategories = Object.keys(this.selectedFilters).filter(category => this.selectedFilters[category]);
-
     // Function to find each location in a selected category (e.g., every pub) and iterate over each hexagon to check if it contains location instance(s)
     selectedCategories.forEach(category => {
       hexagonsPerCategory[category] = new Set();
