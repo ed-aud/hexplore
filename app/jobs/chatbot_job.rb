@@ -17,7 +17,8 @@ class ChatbotJob < ApplicationJob
     Turbo::StreamsChannel.broadcast_update_to(
       "question_#{@question.id}",
       target: "question_#{@question.id}",
-      partial: "questions/question", locals: { question: question })
+      partial: "questions/question", locals: { question: question }
+    )
   end
 
   private
