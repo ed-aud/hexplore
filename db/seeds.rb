@@ -426,11 +426,11 @@ poi = [
   { category: "university", name: "University of the Arts London", lat: 51.5319, lon: -0.1175 },
   { category: "university", name: "University of West London", lat: 51.50711002, lon: -0.30320932 },
   { category: "university", name: "University of Westminster", lat: 51.5145, lon: -0.1419 },
-  # { category: "yoga studio", name: "Yoganest at St Margaret's House", lat: 51.5275, lon: -0.0575 },
-  # { category: "yoga studio", name: "London Buddhist Centre", lat: 51.5270, lon: -0.0630 },
-  # { category: "yoga studio", name: "Hotpod Yoga Hackney", lat: 51.5395, lon: -0.0580 },
-  # { category: "yoga studio", name: "MoreYoga Aldgate", lat: 51.5155, lon: -0.0710 },
-  # { category: "yoga studio", name: "Anjani Kundalini Yoga", lat: 51.5275, lon: -0.0330 }
+  { category: "yoga studio", name: "Yoganest at St Margaret's House", lat: 51.5275, lon: -0.0575 },
+  { category: "yoga studio", name: "London Buddhist Centre", lat: 51.5270, lon: -0.0630 },
+  { category: "yoga studio", name: "Hotpod Yoga Hackney", lat: 51.5395, lon: -0.0580 },
+  { category: "yoga studio", name: "MoreYoga Aldgate", lat: 51.5155, lon: -0.0710 },
+  { category: "yoga studio", name: "Anjani Kundalini Yoga", lat: 51.5275, lon: -0.0330 }
 ]
 
 # Location categories for MapBox query
@@ -454,8 +454,7 @@ categories = ["Bar",
               "Supermarket",
               "Synagogue",
               "Theatre",
-              "Wine Bar",
-              "Yoga Studio"]
+              "Wine Bar"]
 
 access_token = ENV['MAPBOX_API_KEY']
 
