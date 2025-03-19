@@ -2,6 +2,7 @@ class ChatbotJob < ApplicationJob
   queue_as :default
 
   def perform(question)
+    puts "Connected to ChatJob!!!!"
     @question = question
     chatgpt_response = client.chat(
       parameters: {
