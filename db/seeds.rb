@@ -11,7 +11,6 @@
 require 'net/http'
 require 'json'
 require 'uri'
-require 'dotenv/load'
 
 puts "Cleaning Database..."
 Hive.destroy_all
@@ -27,14 +26,14 @@ puts "#{User.count} users created"
 
 puts "> Creating Hexagons..."
 hexagon = Hexagon.create!(lon: -0.1278, lat: 51.5074)
-puts "#{Hexagon.count} users created"
+puts "#{Hexagon.count} hexagons created"
 
 puts "> Creating Hives..."
 Hive.create!(name: "Hammersmith Grove", notes: "A a lively and well-connected street stretching from Hammersmith's bustling center towards Shepherd's Bush. Lined with charming period buildings, independent cafés, and stylish eateries, the area is a favorite among professionals and young families. You'll find popular spots like Café Plum and Betty Blythe offering great coffee and brunch, while restaurants such as The Grove and Honest Burgers cater to food lovers. Hammersmith Grove's proximity to major transport hubs makes it a convenient base, with easy access to the River Thames for scenic walks or a visit to the nearby Eventim Apollo for live entertainment.", user: new_user_1, hexagon: hexagon)
 Hive.create!(name: "Brackenbury Village", notes: "One of West London's hidden gems, known for its peaceful, village-like atmosphere and picturesque Victorian houses. Nestled between Hammersmith and Shepherd's Bush, it offers a quieter alternative to the busier surrounding areas. The heart of the village is home to charming local businesses like the Brackenbury Wine Rooms and the family-run Sisi Hardware. There are several green spaces nearby, perfect for a leisurely stroll, and top-rated gastropubs such as The Anglesea Arms provide a cozy retreat. Its strong sense of community and excellent schools make Brackenbury Village a desirable residential spot.", user: new_user_1, hexagon: hexagon)
 Hive.create!(name: "Askew Road", notes: "A a vibrant and evolving high street running through the heart of Shepherd's Bush, known for its mix of independent shops, artisan cafés, and local markets. The area has a creative and eclectic feel, with businesses like Laveli Bakery offering freshly baked goods and The Ginger Pig providing high-quality meats. The Eagle pub is a local favorite for its relaxed beer garden, while The Becklow Social and The Pocket Watch add to the thriving bar scene. Just a short walk from Ravenscourt Park and Wendell Park, Askew Road is a great place to explore for both shopping and socializing.", user: new_user_1, hexagon: hexagon)
 Hive.create!(name: "Stamford Brook", notes: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", user: new_user_2, hexagon: hexagon)
-puts "#{Hive.count} users created"
+puts "#{Hive.count} hives created"
 
 # Static seed data [DO NOT DELETE]
 poi = [
@@ -396,6 +395,37 @@ poi = [
   { category: "station", name: "Woodford", lat: 51.6091, lon: 0.0194 },
   { category: "station", name: "Woolwich Arsenal", lat: 51.4865, lon: 0.0753 },
   { category: "station", name: "Worcester Park", lat: 51.3809, lon: -0.2467 },
+  { category: "university", name: "Birkbeck University of London", lat: 51.52182083, lon: -0.13026062 },
+  { category: "university", name: "Brunel University of London", lat: 51.53220582, lon: -0.47281261 },
+  { category: "university", name: "City, University of London", lat: 51.52793979, lon: -0.1024275 },
+  { category: "university", name: "Goldsmiths University of London", lat: 51.47427099, lon: -0.0354102 },
+  { category: "university", name: "Imperial College London", lat: 51.49882576, lon: -0.17487385 },
+  { category: "university", name: "King's College London", lat: 51.51152015, lon: -0.1159189 },
+  { category: "university", name: "King's College London Guy's Campus", lat: 51.50327244, lon: -0.08801505 },
+  { category: "university", name: "London Business School", lat: 51.52616039, lon: -0.16074339 },
+  { category: "university", name: "London College of Communication", lat: 51.49477679, lon: -0.10171832 },
+  { category: "university", name: "London Metropolitan University", lat: 51.5367, lon: -0.1025 },
+  { category: "university", name: "London School of Economics and Political Science", lat: 51.51439495, lon: -0.11645645 },
+  { category: "university", name: "London South Bank University", lat: 51.4927, lon: -0.1059 },
+  { category: "university", name: "London Waterloo Academy", lat: 51.50098773, lon: -0.10419004 },
+  { category: "university", name: "Mont Rose College", lat: 51.57642347, lon: 0.06431406 },
+  { category: "university", name: "Middlesex University London", lat: 51.58975717, lon: -0.22930074 },
+  { category: "university", name: "North London Dental Centre", lat: 51.62555005, lon: -0.15153672 },
+  { category: "university", name: "Queen Mary University of London", lat: 51.52406612, lon: -0.04063119 },
+  # { category: "university", name: "Queen Mary University of London", lat: 51.5249, lon: -0.0375 },
+  { category: "university", name: "Ravensbourne University London", lat: 51.50180427, lon: 0.00573262 },
+  { category: "university", name: "Royal Holloway, University of London", lat: 51.4336, lon: -0.5534 },
+  { category: "university", name: "SOAS University of London", lat: 51.52224417, lon: -0.12910926 },
+  { category: "university", name: "St George's University of London", lat: 51.4194, lon: -0.1754 },
+  { category: "university", name: "The Open University", lat: 51.54090984, lon: -0.14324587 },
+  { category: "university", name: "University College London", lat: 51.52455474, lon: -0.1340401 },
+  { category: "university", name: "University of East London", lat: 51.50762374, lon: 0.06506186 },
+  { category: "university", name: "University of Greenwich", lat: 51.48296821, lon: -0.00631243 },
+  { category: "university", name: "University of London", lat: 51.52292438, lon: -0.13096647 },
+  { category: "university", name: "University of Roehampton London", lat: 51.45634271, lon: -0.24464416 },
+  { category: "university", name: "University of the Arts London", lat: 51.5319, lon: -0.1175 },
+  { category: "university", name: "University of West London", lat: 51.50711002, lon: -0.30320932 },
+  { category: "university", name: "University of Westminster", lat: 51.5145, lon: -0.1419 },
   { category: "yoga studio", name: "Yoganest at St Margaret's House", lat: 51.5275, lon: -0.0575 },
   { category: "yoga studio", name: "London Buddhist Centre", lat: 51.5270, lon: -0.0630 },
   { category: "yoga studio", name: "Hotpod Yoga Hackney", lat: 51.5395, lon: -0.0580 },
@@ -404,27 +434,27 @@ poi = [
 ]
 
 # Location categories for MapBox query
-places = ["Bar",
-          "Cafe",
-          "Church",
-          "Cinema",
-          "Cocktail Bar",
-          "Deli",
-          "Gym",
-          "Hospital",
-          "Market",
-          "Museum",
-          "Mosque",
-          "Park",
-          "Pub",
-          "Spa",
-          "Station",
-          "Restaurant",
-          "Supermarket",
-          "Synagogue",
-          "Theatre",
-          "University",
-          "Wine Bar"]
+categories = ["Bar",
+              "Cafe",
+              "Church",
+              "Cinema",
+              "Cocktail Bar",
+              "Deli",
+              "Gym",
+              "Hospital",
+              "Market",
+              "Museum",
+              "Mosque",
+              "Park",
+              "Pub",
+              "Spa",
+              "Station",
+              "Restaurant",
+              "School",
+              "Supermarket",
+              "Synagogue",
+              "Theatre",
+              "Wine Bar"]
 
 access_token = ENV['MAPBOX_API_KEY']
 
@@ -447,29 +477,40 @@ lat_step = 0.0036
   (se_point[0]..nw_point[0]).step(lon_step) do |lon|
     bounds = [lon, lat, lon + lon_step, lat + lat_step]
 
-    places.each do |place|
-      formatted_place = place.downcase.gsub(' ', '+')
-      uri = URI("https://api.mapbox.com/search/searchbox/v1/category/#{formatted_place}?access_token=#{access_token}&language=en&limit=25&bbox=#{bounds.join(',')}")
+    categories.each do |category|
+      formatted_category = category.downcase.gsub(' ', '+')
+      uri = URI("https://api.mapbox.com/search/searchbox/v1/category/#{formatted_category}?access_token=#{access_token}&language=en&limit=25&bbox=#{bounds.join(',')}")
 
       response = Net::HTTP.get(uri)
       data = JSON.parse(response)
 
       location = data["features"]&.map do |feature|
         {
-          category: place.downcase,
-          name: feature["properties"]["name"],
-          lat: feature["geometry"]["coordinates"][1],
-          lon: feature["geometry"]["coordinates"][0]
+          category: category.downcase || "",
+          name: feature["properties"]["name"] || "",
+          lat: feature["geometry"]["coordinates"][1] || 0,
+          lon: feature["geometry"]["coordinates"][0] || 0
         }
-      end || []
+      end
 
       poi << location
     end
   end
 end
 
+# Remove any duplicate values from MapBox Search API
+# poi.uniq { |object| [object[:category], object[:name], object[:lat], object[:lon]] }
+# poi.filter { |object| object[:category].length.positive? }
+
+
 puts "> Creating POIs..."
+# Create each POI instance
 poi.each { |i| Poi.create!(i) }
+# Update POI category names
+# Poi.where("LOWER(category) = ?", "subway station").find_each do |poi|
+#   poi.update(category: "station")
+# end
+
 puts "> #{Poi.where(category: 'bar').count} bar created"
 puts "> #{Poi.where(category: 'cafe').count} cafes created"
 puts "> #{Poi.where(category: 'cinema').count} cinemas created"
@@ -482,9 +523,11 @@ puts "> #{Poi.where(category: 'museum').count} museums created"
 puts "> #{Poi.where(category: 'park').count} parks created"
 puts "> #{Poi.where(category: 'pub').count} pubs created"
 puts "> #{Poi.where(category: 'restaurant').count} restaurants created"
+puts "> #{Poi.where(category: 'school').count} schools created"
 puts "> #{Poi.where(category: 'station').count} stations created"
 puts "> #{Poi.where(category: 'supermarket').count} supermarkets created"
 puts "> #{Poi.where(category: 'synagogue').count} synagogues created"
 puts "> #{Poi.where(category: 'theatre').count} theatres created"
 puts "> #{Poi.where(category: 'university').count} universities created"
+puts "> #{Poi.where(category: 'wine bar').count} wine bars created"
 puts "> #{Poi.where(category: 'yoga studio').count} yoga studios created"

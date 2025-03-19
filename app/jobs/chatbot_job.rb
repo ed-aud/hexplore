@@ -2,6 +2,7 @@ class ChatbotJob < ApplicationJob
   queue_as :default
 
   def perform(question)
+    puts "Connected to ChatJob!!!!"
     @question = question
     chatgpt_response = client.chat(
       parameters: {
@@ -12,11 +13,14 @@ class ChatbotJob < ApplicationJob
     new_content = chatgpt_response["choices"][0]["message"]["content"]
 
     question.update(ai_answer: new_content)
+    puts "New content: #{new_content}"
 
     Turbo::StreamsChannel.broadcast_update_to(
       "question_#{@question.id}",
       target: "question_#{@question.id}",
-      partial: "questions/question", locals: { question: question })
+      partial: "questions/question", locals: { question: question }
+    )
+    puts "Turbo complete"
   end
 
   private
@@ -36,5 +40,4 @@ class ChatbotJob < ApplicationJob
     end
     return results
   end
-
 end
