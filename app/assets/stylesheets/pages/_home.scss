@@ -59,6 +59,12 @@
     border: 1px solid rgb(222, 226, 230);
     border-left: none;
   }
+
+  &:active {
+    background-color: rgb(175,175,175);
+    border: 1px solid rgb(222, 226, 230);
+    border-left: none;
+  }
 }
 
 .search-icon {
