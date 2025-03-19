@@ -9,16 +9,16 @@
   margin-bottom: 20px;
   border-radius: 10px;
   position: relative;
+
+  &:hover {
+    transform: scale(1.01);
+    transition: 0.3s;
+  }
 }
 
 .hive-card-link {
   text-decoration: none;
   color: inherit;
-}
-
-.hive-card:hover {
-  transform: scale(1.01);
-  transition: 0.3s;
 }
 
 .hive-card-image-container {
@@ -42,30 +42,30 @@
 
 .hive-card-info {
   height: 105px;
-  width: 70%;
+  width: 78%;
   text-align: left;
   display: flex;
   padding: 15px;
-}
 
-.hive-card-info-text {
-  text-align: left;
-}
+  h2 {
+    color: $dark-green;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    text-align: left;
+  }
 
-.hive-card-info h2 {
-  color: $dark-green;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0;
-  text-align: left;
-}
+  p {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    opacity: 0.7;
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
 
-.hive-card-info p {
-  font-size: 0.75rem;
-  line-height: 1.4;
-  opacity: 0.7;
-  margin-bottom: 0;
-  margin-top: 8px;
+  .hive-card-info-text {
+    text-align: left;
+  }
 }
 
 .truncate-text-lines{
@@ -73,27 +73,4 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.hive-card-info-buttons {
-  position: absolute;
-  right: 1.5%;
-  bottom: 5%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-
-.booking-icon {
-  color: rgb(175, 175, 175);
-}
-
-.booking-icon:hover {
-  color: rgb(125, 125, 125);
-  transition: 0.3s;
-}
-
-.booking-icon:last-child {
-  margin-left: 10px;
-  margin-right: 5px;
 }
