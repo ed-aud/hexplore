@@ -59,8 +59,6 @@ export default class extends Controller {
       this.toggleFilterOnReload();
 
     });
-
-
     // Initialise base state for filters
     Object.keys(this.filtersValue).forEach(filter => {
       this.selectedFilters[filter] = false;
@@ -144,7 +142,6 @@ export default class extends Controller {
   toggleFilter(event) {
     const filterValue = event.target.dataset.mapFilterValue;
     const isChecked = event.target.checked;
-
     // Update the selectedFilters state
     this.selectedFilters[filterValue] = isChecked;
     // debugger
@@ -164,14 +161,21 @@ export default class extends Controller {
     let params = new URLSearchParams(window.location.href);
     // split params array into individual values
     const filtersValue = params.get('filters').split(' ')[0].split(',')
+    console.log(filtersValue)
     filtersValue.forEach(element => {
+      console.log('element....')
+      console.log(element)
       this.inputCheckedTargets.forEach((target)=>{
         // condition to check if filters value is equal with target data set
         // check box if it is
-        if(target.dataset.mapFilterValue === element){
+        if (
+          target.dataset.mapFilterValue.includes(element) || // Matches partial values
+          element.includes(target.dataset.mapFilterValue)    // Matches the other way around
+        ) {
           target.checked = true;
           this.selectedFilters[target.dataset.mapFilterValue] = true;
         }
+
       })
     })
     if (Object.values(this.selectedFilters).every(val => !val)) {
