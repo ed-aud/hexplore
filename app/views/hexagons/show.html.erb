@@ -40,7 +40,7 @@
 
       <div class="matched-locations" data-controller="toggle-locations" data-controller="auto-submit">
         <div class="matched-locations-header">
-          <h4>How to Spend a Day</h4>
+          <h4>Itinerary to Explore the Area</h4>
           <%= form_with model: @itinerary, method: :post do %>
             <%= hidden_field_tag 'itinerary[hexagon_id]', @hexagon.id %>
             <%= submit_tag "+", class: "plus" %>

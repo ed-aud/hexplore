@@ -2,6 +2,6 @@
     <div id="<%= dom_id(itinerary) %>" class="itinerary">
       <%= turbo_stream_from dom_id(itinerary) %>
 
-      <p class="itinerary-answer"><%= itinerary.ai_answer || "Creating itinerary ..." %></p>
+      <p class="itinerary-answer"><%= itinerary.ai_answer || "Creating your itinerary..." %></p>
     </div>
   <% end %>
