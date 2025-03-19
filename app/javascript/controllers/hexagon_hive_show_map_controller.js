@@ -16,6 +16,7 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
     })
     this.map.scrollZoom.disable();
+    this.map.dragPan.disable();
     this.addMarkersToMap();
     this.fitMapToMarkers();
   }

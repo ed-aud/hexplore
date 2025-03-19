@@ -19,7 +19,7 @@
 }
 
 .map-filters {
-  padding: 0px 20px 20px 20px;
+  padding: 0px 20px 10px 20px;
   display: flex;
   flex-direction: column;
 
@@ -85,17 +85,45 @@
 .map-filters-search-tick-box {
 }
 
+// .deselect-btn {
+//   margin-top: 5px;
+//   border: 1px solid #000000;
+//   border-radius: 5px;
+//   padding: 4px 8px;
+//   transition: background-color 0.3s ease, color 0.3s ease;
+// }
+
+// .deselect-btn:hover {
+//   background-color: #ddd;
+//   color: #000;
+// }
+.deselect {
+  display: flex;
+  justify-content: center;
+}
+
 .deselect-btn {
+  display: inline-block;
   margin-top: 5px;
-  border: 1px solid #000000;
-  border-radius: 5px;
-  padding: 4px 8px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 1px solid #000;
+  border-radius: 6px;
+  padding: 6px 12px;
+  background-color: transparent;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .deselect-btn:hover {
-  background-color: #ddd;
-  color: #000;
+  background-color: $dark-green;
+  color: #FFFFFF;
+  border-color: #333;
+}
+
+.deselect-btn:active {
+  background-color: #F0F0F0;
+  color: #FFFFFF;
+  transform: scale(0.98);
 }
 
 // Section 2: Map & Hexagons (Centre)
