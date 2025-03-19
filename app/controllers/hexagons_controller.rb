@@ -27,7 +27,8 @@ class HexagonsController < ApplicationController
       theatre: 'masks-theater'
     }
     @myparam = { address: params[:address][9..].gsub('+', ' ').gsub('%', ' ')}
-    @clickedFilters = {poi_params: params[:poi_params]}
+    # raise
+    @clickedFilters = { poi_params: params[:poi_params] }
     # raise
   end
 
