@@ -11,7 +11,6 @@
 require 'net/http'
 require 'json'
 require 'uri'
-require 'dotenv/load'
 
 puts "Cleaning Database..."
 Hive.destroy_all
