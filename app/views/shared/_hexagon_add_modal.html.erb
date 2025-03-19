@@ -1,0 +1,28 @@
+<div class="modal fade" id="hexagonShowModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"       aria-hidden="true" data-controller="hexagon-modal"
+data-hexagon-modal-target="modalPartial">
+  <div class="modal-dialog" role="document" data-hexagon-modal-target="modalPartial">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+      </div>
+      <div class="modal-body">
+
+        <%= simple_form_for [@hexagon, @hive] do |f| %>
+        <div class="form-inputs">
+          <%= f.input :name,
+                      placeholder: "Name" %>
+          <%= f.input :notes,
+                      placeholder: "Notes", value: @itinerary&.ai_answer %>
+          <%= f.hidden_field :poi, value: @pois %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "Add", class: "btn btn-primary form-button" %>
+        </div>
+       <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-action="click->hexagon-modal#closeModal" class="btn btn-secondary" data-dismiss="modal" data-hexagon-modal-target="closeModal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

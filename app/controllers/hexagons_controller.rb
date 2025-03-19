@@ -5,6 +5,7 @@ class HexagonsController < ApplicationController
     @pois = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
     @markers = create_markers(@pois)
     @hives = Hive.all
+    @hive = Hive.new
     @questions = Question.all
     @question = Question.new
     @itinerary = Itinerary.new
