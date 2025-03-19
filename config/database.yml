@@ -81,6 +81,7 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %> # this was just added
+  pool: 10
   database: hexplore_production
   username: hexplore
   password: <%= ENV["HEXPLORE_DATABASE_PASSWORD"] %>
