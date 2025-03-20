@@ -45,7 +45,7 @@
   </div>
   <div class = "hexagon-hive-chatbot-container">
     <div class="hive-notes">
-      <h4>Day Itinerary Notes</h4>
+      <h4>Local Itinerary</h4>
       <% if @hive.notes.present? %>
         <%= content_tag(:div) do %>
           <%= content_tag(:p, @hive.notes.split("\n\n").first) %> <!-- Intro paragraph -->
