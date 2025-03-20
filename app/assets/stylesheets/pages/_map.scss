@@ -5,196 +5,12 @@
   margin: 0 auto;
 }
 
-// Section 1: Map Filters (LHS)
-.map-filter-container {
-  width: 16dvw;
-  height: calc(100dvh - 110px);
-  margin-top: 20px;
-  margin-left: 20px;
-  background-color: rgba(200, 200, 200, 0.2);
-  border: 0.25px solid rgba(200, 200, 200, 0.5);
-  border-radius: 10px;
-  box-shadow: 3px 3px 3px rgba(225, 225, 225, 0.5);
-  overflow-y: auto;
-}
-
-.map-filters {
-  padding: 0px 20px 10px 20px;
-  display: flex;
-  flex-direction: column;
-
-  h2 {
-    margin: 0px;
-    text-align: center;
-  }
-}
-
-.search-header {
-  position: sticky;
-  top: 0px;
-  padding-top: 20px;
-  background-color: #F0F0F0;
-  z-index: 10;
-}
-
-.search-container {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-}
-
-.map-filters-search {
-  height: 35px;
-  width: 100%;
-  margin: 15px 0px;
-  margin-bottom: 10px;
-  padding: 8px 30px 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 0.85rem;
-}
-
-.close-btn {
-  position: absolute;
-  right: 10px;
-  top: 54%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #777;
-
-  &:hover {
-    color: #333333;
-  }
-}
-
-.map-filter-search-category {
-  display: flex;
-  justify-content: space-between;
-  margin: 7px 0px;
-  padding: 0px 5px;
-}
-
-.checkbox-wrapper input[type=checkbox] {
-  cursor: default;
-}
-
-.checkbox-wrapper .toggle {
-  appearance: none;
-  background-color: #dfe1e4;
-  border-radius: 72px;
-  border-style: none;
-  flex-shrink: 0;
-  height: 20px;
-  margin: 0;
-  position: relative;
-  width: 30px;
-  transition: all 100ms ease-out;
-
-  &:hover {
-    background-color: #c9cbcd;
-    transition-duration: 0s;
-  }
-
-  &:checked {
-    background-color: $dark-green;
-  }
-
-  &:checked::after {
-    background-color: #fff;
-    left: 13px;
-  }
-
-  &::before {
-    bottom: -6px;
-    content: "";
-    left: -6px;
-    position: absolute;
-    right: -6px;
-    top: -6px;
-  }
-
-  &::after {
-    transition: all 100ms ease-out;
-    background-color: #fff;
-    border-radius: 50%;
-    content: "";
-    height: 14px;
-    left: 3px;
-    position: absolute;
-    top: 3px;
-    width: 14px;
-  }
-}
-
-.deselect {
-  display: flex;
-  justify-content: center;
-}
-
-.deselect-btn {
-  display: inline-block;
-  margin-top: 5px;
-  border: 1px solid #000;
-  border-radius: 6px;
-  padding: 6px 12px;
-  background-color: transparent;
-  color: #000;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: $dark-green;
-    color: #FFFFFF;
-    border-color: #333;
-  }
-
-  &:active {
-    background-color: #F0F0F0;
-    color: #FFFFFF;
-    transform: scale(0.98);
-  }
-}
-
-// Section 2: Map & Hexagons (Centre)
-.map-hexgrid-container {
-  width: 60dvw;
-  height: calc(100dvh - 110px);
-  margin: 20px auto;
-}
-
-.clicked-hexagon {
-  text-align: center;
-
-  p {
-    font-size: 0.85rem;
-    text-align: center;
-    margin: 0;
-    margin-top: 20px;
-  }
-}
-
-.btn-hexagon-pop-up {
-  font-size: 0.9rem;
-  margin-top: 15px;
-  margin-bottom: 5px;
-}
-
-
-.btn-hexagon {
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: center;
-  margin-top: 20px;
-}
-
-// Section 3: Map Info (RHS)
+// Section 1: Map Info (LHS)
 .map-info-container {
   width: 17dvw;
   height: calc(100dvh - 110px);
   margin-top: 20px;
-  margin-right: 20px;
+  margin-left: 20px;
   padding: 20px;
   background-color: rgba(200, 200, 200, 0.2);
   border: 0.25px solid rgba(200, 200, 200, 0.5);
@@ -217,13 +33,13 @@
   h2 {
     text-align: center;
     margin: 0;
-    padding-bottom: 30px;
+    padding-top: 30px;
+    border-top: 1px grey dashed;
   }
 }
 
 .map-keys {
   text-align: left;
-  border-bottom: 1px grey dashed;
 }
 
 .map-key-item {
@@ -239,8 +55,7 @@
 .map-key-distance {
   display: flex;
   flex-direction: row;
-  padding-bottom: 30px;
-  border-bottom: 1px grey dashed;
+  padding-top: 35px;
 
   i {
     margin-right: 10px;
@@ -294,9 +109,10 @@
 
 .map-steps {
   text-align: center;
+  margin-bottom: 40px;
 
-  h4 {
-    margin-top: 30px;
+  h2 {
+    // margin-top: 15px;
     margin-bottom: 5px;
     text-align: center;
   }
@@ -320,4 +136,184 @@
 .hexagon-steps {
   height: 35px;
   margin-bottom: 10px;
+}
+
+// Section 2: Map & Hexagons (Centre)
+.map-hexgrid-container {
+  width: 60dvw;
+  height: calc(100dvh - 110px);
+  margin: 20px auto;
+}
+
+.clicked-hexagon {
+  text-align: center;
+
+  p {
+    font-size: 0.85rem;
+    text-align: center;
+    margin: 0;
+    margin-top: 20px;
+  }
+}
+
+.btn-hexagon-pop-up {
+  font-size: 0.9rem;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+
+.btn-hexagon {
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 20px;
+}
+
+// Section 3: Map Filters (RHS)
+.map-filter-container {
+  width: 16dvw;
+  height: calc(100dvh - 110px);
+  margin-top: 20px;
+  margin-right: 20px;
+  background-color: rgba(200, 200, 200, 0.2);
+  border: 0.25px solid rgba(200, 200, 200, 0.5);
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px rgba(225, 225, 225, 0.5);
+  overflow-y: auto;
+}
+
+.map-filters {
+  padding: 0px 20px 10px 20px;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    margin: 0px;
+    text-align: center;
+  }
+}
+
+.search-header {
+  position: sticky;
+  top: 0px;
+  padding-top: 20px;
+  background-color: #F0F0F0;
+  z-index: 10;
+}
+
+.search-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.map-filters-search {
+  height: 35px;
+  width: 100%;
+  margin: 15px 0px;
+  margin-bottom: 2px;
+  padding: 8px 30px 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 54%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #777;
+
+  &:hover {
+    color: #333333;
+  }
+}
+
+.deselect-all {
+  padding: 0px 5px;
+  margin-bottom: 5px;
+  text-align: left;
+
+  a {
+    text-decoration: none;
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+    color: rgb(150,150,150);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transition: 0.3s ease;
+      color: rgb(100,100,100);
+    }
+
+    &:active {
+      color: rgb(100,100,100);
+      transform: scale(0.99);
+    }
+  }
+}
+
+.map-filter-search-category {
+  display: flex;
+  justify-content: space-between;
+  margin: 7px 0px;
+  padding: 0px 5px;
+}
+
+.checkbox-wrapper input[type=checkbox] {
+  cursor: default;
+}
+
+.checkbox-wrapper .toggle {
+  appearance: none;
+  background-color: #dfe1e4;
+  border-radius: 72px;
+  border-style: none;
+  flex-shrink: 0;
+  height: 20px;
+  margin: 0;
+  position: relative;
+  width: 30px;
+  transition: all 100ms ease-out;
+
+  &:hover {
+    background-color: #c9cbcd;
+    transition-duration: 0s;
+  }
+
+  &:checked {
+    background-color: $dark-green;
+  }
+
+  &:checked::after {
+    background-color: #fff;
+    left: 13px;
+  }
+
+  &::before {
+    bottom: -6px;
+    content: "";
+    left: -6px;
+    position: absolute;
+    right: -6px;
+    top: -6px;
+  }
+
+  &::after {
+    transition: all 100ms ease;
+    background-color: #fff;
+    border-radius: 50%;
+    content: "";
+    height: 14px;
+    left: 3px;
+    position: absolute;
+    top: 3px;
+    width: 14px;
+  }
 }
