@@ -62,7 +62,7 @@
   border-radius: 10px;
 
   &:hover {
-    transition: 0.3s;
+    transition: 0.3s ease;
     color: $dark-green;
     background-color: $light-green;
   }
@@ -73,7 +73,7 @@
   background-color: grey !important;
 
   &:hover {
-    transition: 0.3s;
+    transition: 0.3s ease;
     color: black !important;
     background-color: rgb(200,200,200)!important;
   }
@@ -85,17 +85,11 @@
   border-color: rgb(200, 200, 200);
 
   &:hover {
-    transition: 0.3s;
+    transition: 0.3s ease;
     background-color: rgb(175,175,175);
     border-color: rgb(175,175,175);
   }
 }
-
-// .back-button:hover {
-//   transition: 0.3s;
-//   background-color: rgb(175,175,175);
-//   border-color: rgb(175,175,175);
-// }
 
 .hexagon-hive-show-action-icons {
   text-decoration: none;
@@ -118,7 +112,7 @@
   }
 
   &:hover {
-    transition: 0.3s;
+    transition: 0.3s ease;
     color: rgb(125, 125, 125);
   }
 }
@@ -210,11 +204,11 @@
   padding-right: 20px;
   border-radius: 10px;
   height: calc(100dvh - 140px);
-  overflow: scroll;
+  overflow-y: scroll;
 
   h4 {
     color: $dark-green;
-    // margin-bottom: 20px;
+    margin-bottom: 20px;
     font-size: 1.75rem;
   }
 

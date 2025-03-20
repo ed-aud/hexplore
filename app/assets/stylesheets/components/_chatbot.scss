@@ -26,7 +26,7 @@
 
   #questions {
     height: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
     background-color: white;
     border-radius: 10px;
     margin-top: 0.5rem;
@@ -35,8 +35,7 @@
   .question {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-left: 5px;
     margin-right: 5px;
   }
@@ -99,7 +98,7 @@
     border: none;
 
     &:hover {
-      transition: 0.3s;
+      transition: 0.3s ease;
       color: $dark-green;
       background-color: $light-green;
     }
