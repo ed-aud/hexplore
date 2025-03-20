@@ -57,13 +57,15 @@ class HivesController < ApplicationController
     @hive.user = current_user
     @hive.hexagon = @hexagon
 
+    # raise
     if @hive.save
+      p hive_params[:poi]
       hive_params[:poi].split(" ").each do |poi|
         HivePoi.create!(poi_id: poi.to_i, hive_id: @hive.id)
       end
       redirect_to hive_path(@hive)
-    else
-      render 'new', status: :unprocessable_entity
+      else
+        render status: :unprocessable_entity
     end
   end
 
