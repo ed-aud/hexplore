@@ -23,7 +23,10 @@ export default class extends Controller {
   #addMarkersToMap() {
     this.hexagonMarkersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.hive_info_window_html)
-      new mapboxgl.Marker()
+      const customMarker = document.createElement("div")
+      customMarker.innerHTML = marker.hexagon_marker_html
+
+      new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lon, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)

@@ -9,7 +9,7 @@ class HivesController < ApplicationController
       {
         lat: hive.hexagon.lat,
         lon: hive.hexagon.lon,
-        # marker_html: render_to_string(partial: "shared/marker", locals: { category: poi[:category], category_icons: @category_icons }),
+        hexagon_marker_html: render_to_string(partial: "shared/hexagon_marker"),
         hive_info_window_html: render_to_string(partial: "shared/hive_info_window", locals: { hive: hive })
       }
     end
@@ -77,7 +77,7 @@ class HivesController < ApplicationController
       hive_params[:poi].split(" ").each do |poi|
         HivePoi.create!(poi_id: poi.to_i, hive_id: @hive.id)
       end
-      redirect_to hive_path(@hive)
+      redirect_to hives_path
     else
       render status: :unprocessable_entity
     end

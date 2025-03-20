@@ -13,6 +13,7 @@
   padding-right: 1.2rem;
 
   h4 {
+    color: $dark-green;
     font-size: 1.5rem;
     margin: 0px;
     padding: 0px;
@@ -77,9 +78,14 @@
   }
 
   .form-control {
+    margin-top: 5px;
     font-size: 0.8rem;
     width: 215px;
     resize: none;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 3px 3px 3px rgba(225, 225, 225, 0.25);
   }
 
   .chatbot-send {

@@ -12,10 +12,9 @@ data-hexagon-modal-target="modalPartial">
           <%= f.input :name,
                       placeholder: "Name" %>
           <%= f.input :notes,
-                    placeholder: "Notes",
-                    value: @hive.notes,
-
-                    input_html: { style: "min-height: 400px;" } %>
+                      placeholder: "Your notes",
+                      value: @hive.notes,
+                      input_html: { class: "auto-expand form-control", rows: 1, style: "min-height: 400px;" } %>
           <div class="modal-form-actions">
             <%= f.submit "Update", class: "btn btn-primary form-button" %>
           </div>
