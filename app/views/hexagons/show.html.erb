@@ -50,8 +50,8 @@
           <h4>Generate an Itinerary</h4>
           <%= form_with model: @itinerary, method: :post, data: { controller: "itinerary-button" } do %>
             <%= hidden_field_tag 'itinerary[hexagon_id]', @hexagon.id %>
-            <%= button_tag type: 'submit', class:"spinner", data: { action: "click->itinerary-button#disableButton" } do %>
-              <i class="fa-solid fa-spinner"></i>
+            <%= button_tag type: 'submit', class:"spinner", data: { action: "click->itinerary-button#activateButton" } do %>
+              <i class="fa-solid fa-rocket" data-itinerary-button-target="icon"></i>
             <% end %>
           <% end %>
         </div>
