@@ -462,14 +462,19 @@ access_token = ENV['MAPBOX_API_KEY']
 # Charing Cross coords
 # centre_point = 	[-0.1278, 51.5074]
 
+# Distance of ~10km in each direction from centre point
+# lat_distance = 0.0901
+# lon_distance = 0.1399
+
+# Define bounding box points with equal width and height
+# nw_point = [centre_point[0] + lon_distance, centre_point[1] + lat_distance]
+# se_point = [centre_point[0] - lon_distance, centre_point[1] - lat_distance]
+
 # Queen Mary University coords
 centre_point = [-0.04063119, 51.52406612]
 
 # Distance of ~4km in each direction from centre point
 radial_width = 0.03590
-
-# Distance of ~8km in each direction from centre point
-# radial_width = 0.07180
 
 # Define bounding box points with equal width and height
 nw_point = [centre_point[0] + radial_width, centre_point[1] + radial_width]
