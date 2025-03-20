@@ -14,27 +14,27 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-}
 
-.footer-links a {
-  color: $light-green;
-  opacity: 0.45;
-  text-decoration: none;
-  font-size: 16px;
-  padding: 0px 20px;
-}
+  a {
+    color: $light-green;
+    opacity: 0.45;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 0px 20px;
 
-.footer-links a:hover {
-  opacity: 1;
-  transition: 0.3s;
+    &:hover {
+      opacity: 1;
+    transition: 0.3s;
+    }
+  }
 }
 
 .footer-icon {
   opacity: 0.45;
   height: 15px;
-}
 
-.footer-icon a:hover {
-  opacity: 1;
-  transition: 0.3s;
+  a:hover {
+    opacity: 1;
+    transition: 0.3s;
+  }
 }
