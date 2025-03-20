@@ -3,7 +3,7 @@ data-hexagon-modal-target="modalPartial">
   <div class="modal-dialog" role="document" data-hexagon-modal-target="modalPartial">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add to Hive</h5>
       </div>
       <div class="modal-body">
 
@@ -15,14 +15,15 @@ data-hexagon-modal-target="modalPartial">
                       placeholder: "Notes", value: @itinerary&.ai_answer %>
           <%= f.hidden_field :poi, value: @pois %>
         </div>
-        <div class="form-actions">
-          <%= f.submit "Add", class: "btn btn-primary form-button" %>
-        </div>
-       <% end %>
+
       </div>
       <div class="modal-footer">
+         <div class="form-actions">
+        <%= f.submit "Add", class: "btn btn-primary form-button" %>
         <button type="button" data-action="click->hexagon-modal#closeModal" class="btn btn-secondary" data-dismiss="modal" data-hexagon-modal-target="closeModal">Close</button>
+        </div>
       </div>
+       <% end %>
     </div>
   </div>
 </div>
