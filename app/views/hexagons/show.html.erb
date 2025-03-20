@@ -1,17 +1,21 @@
 <div class="hexagon-hive-container">
   <div class="hexagon-hive-content-container">
     <div class="hexagon-hive-title-container">
-      <div class="hexagon-hive-title-buttons">
+      <div class="hexagon-hive-title-buttons" data-controller="hexagon-modal">
         <%= link_to map_path(address: @myparam[:address], filters: @clickedFilters[:poi_params]) do %>
           <i class="fa-solid fa-arrow-left hexagon-hive-title-button back-button"></i>
         <% end %>
         <h3 class="back-button-title">Back to Map</h3>
       </div>
-      <div class="hexagon-hive-title-buttons">
-        <h3 class="add-button-title"> Add to Hive </h3>
-        <%= link_to new_hexagon_hive_path(@hexagon, poi_params: @pois) do %>
-          <i class="fa-solid fa-plus hexagon-hive-title-button add-button"></i>
-        <% end  %>
+      <div class="hexagon-hive-title-buttons" data-controller="hexagon-modal">
+        <i class="fa-solid fa-plus hexagon-hive-title-button add-button"
+          data-bs-toggle="modal"
+          data-bs-target="#hexagonShowModal"
+          data-hexagon-modal-target="modalButton"
+          data-action="click->hexagon-modal#expandModal"></i>
+        <div class="rendered-modal" data-hexagon-modal-target="modalPartial">
+          <%= render 'shared/hexagon_add_modal' %>
+        </div>
       </div>
     </div>
 
