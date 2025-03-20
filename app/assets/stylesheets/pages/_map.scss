@@ -8,7 +8,8 @@
 // Section 1: Map Info (LHS)
 .map-info-container {
   width: 17dvw;
-  height: calc(100dvh - 110px);
+  height: auto;
+  max-height: calc(100dvh - 110px);
   margin-top: 20px;
   margin-left: 20px;
   padding: 20px;
