@@ -63,6 +63,7 @@ class HivesController < ApplicationController
   end
 
   def create
+
     if hive_params.include?(:poi)
       @hive = Hive.new(name: hive_params[:name], notes: hive_params[:notes])
     else
@@ -75,7 +76,7 @@ class HivesController < ApplicationController
       hive_params[:poi].split(" ").each do |poi|
         HivePoi.create!(poi_id: poi.to_i, hive_id: @hive.id)
       end
-      redirect_to hive_path(@hive)
+      redirect_to hives_path
     else
       render status: :unprocessable_entity
     end

@@ -16,7 +16,7 @@
         <%= simple_form_for [@hexagon, @hive] do |f| %>
         <div class="form-inputs">
           <%= f.input :name,
-                      placeholder: "Name" %>
+                      placeholder: "Name your hexagon" %>
           <%= f.hidden_field :notes,
                              placeholder: "Notes", value: @itinerary&.ai_answer %>
           <%= f.hidden_field :poi, value: @pois.map { |poi| poi.id } %>

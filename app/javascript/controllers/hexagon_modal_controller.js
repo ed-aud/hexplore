@@ -11,5 +11,4 @@ export default class extends Controller {
     let modal = document.getElementById('hexagonShowModal');
     this.bootstrapModal.hide();
   }
-
 }
