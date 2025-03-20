@@ -26,4 +26,5 @@ export default class extends Controller {
   //   console.log('Create hive method triggred')
   //   console.log(this.nameTarget.value)
   // }
+
 }
