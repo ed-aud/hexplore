@@ -14,11 +14,12 @@
 
   <div class="hive-profile-container">
     <%= render "shared/users_card" %>
-    <div class="hive-index-map-container">
+    <div class="hive-index-map-container mt-3">
         <div
           class="hive-index-map"
           style="width: 320px; height: 320px"
           data-controller="hive-index-map"
+          data-hive-index-map-hexagon-markers-value="<%=  @hexagon_markers.to_json %>"
           data-hive-index-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
