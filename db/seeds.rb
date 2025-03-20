@@ -493,12 +493,12 @@ lat_step = 0.0036
 
       location = data["features"]&.map do |feature|
         {
-          category: category.downcase || "",
-          name: feature["properties"]["name"] || "",
-          lat: feature["geometry"]["coordinates"][1] || 0,
-          lon: feature["geometry"]["coordinates"][0] || 0
+          category: category.downcase,
+          name: feature["properties"]["name"],
+          lat: feature["geometry"]["coordinates"][1],
+          lon: feature["geometry"]["coordinates"][0]
         }
-      end
+      end || []
 
       poi << location
     end
