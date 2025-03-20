@@ -5,7 +5,7 @@
         <%= link_to map_path(address: @myparam[:address], filters: @clickedFilters[:poi_params]) do %>
           <i class="fa-solid fa-arrow-left hexagon-hive-title-button back-button"></i>
         <% end %>
-        <h3 class="back-button-title">Back to Map</h3>
+        <h3 class="back-button-title">Refine Search</h3>
       </div>
       <div class="hexagon-hive-title-buttons" data-controller="hexagon-modal">
         <h3 class="add-button-title">Add to Hive</h3>
@@ -47,7 +47,7 @@
 
       <div class="matched-locations" data-controller="toggle-locations" data-controller="auto-submit">
         <div class="matched-locations-header">
-          <h4>Generate a Local Itinerary</h4>
+          <h4>Generate an Itinerary</h4>
           <%= form_with model: @itinerary, method: :post, data: { controller: "itinerary-button" } do %>
             <%= hidden_field_tag 'itinerary[hexagon_id]', @hexagon.id %>
             <%= button_tag type: 'submit', class:"spinner", data: { action: "click->itinerary-button#disableButton" } do %>

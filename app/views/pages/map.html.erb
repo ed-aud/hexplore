@@ -6,55 +6,14 @@
   data-map-hexagonId-value="<%= @hexagon.to_json %>"
   data-map-marker-value="<%= @marker.to_json %>">
 
-  <div class="map-filter-container" data-controller="filter-search">
-    <div class="map-filters">
-      <div class="search-header">
-        <h2>Categories</h2>
-        <div class = "search-container">
-          <input
-            class="map-filters-search"
-            type="text"
-            placeholder="Search..."
-            data-action="keyup->filter-search#search"
-            data-filter-search-target="searchTerm">
-          <button class="close-btn" data-action="click->filter-search#clearSearch"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-      </div>
-      <div class="map-categories-list">
-        <% @filters.keys.each do |category| %>
-          <div class="checkbox-wrapper-2 map-filter-search-category">
-            <label
-              class="map-filters-search-item"
-              data-filter-search-target="category"
-              data-action="change->filter-search#clearSearch">
-              <%= category.capitalize %>
-            </label>
-            <input
-              class="map-filters-search-tick-box sc-gJwTLC ikxBAC"
-              type="checkbox"
-              data-action="change->map#toggleFilter"
-              data-filter-search-target="checkbox"
-              data-map-target="inputChecked"
-              data-map-filter-value="<%= category %>"
-            >
-          </div>
-        <% end %>
-        <div class="deselect">
-        <button class="deselect-btn" data-action="click->filter-search#deselectAll"> Deselect All </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="map-hexgrid-container">
-    <div
-      class="map"
-      style="width: 100%; height: 100%;"
-      data-map-target="map">
-    </div>
-  </div>
-
   <div class="map-info-container">
+    <div class="map-steps">
+      <h2>How it Works</h2>
+      <%# <p>It's easy as 1, 2, 3!</p> %>
+      <div class="map-step"><%= image_tag "hexagon_step_1.png", class: "hexagon-steps" %><p>Select the categories that matter most to you</p></div>
+      <div class="map-step"><%= image_tag "hexagon_step_2.png", class: "hexagon-steps" %><p>Watch our map adapt to reveal the areas for you</p></div>
+      <div class="map-step"><%= image_tag "hexagon_step_3.png", class: "hexagon-steps" %><p>Click on a hexagon to see more and add it to your hive!</p></div>
+    </div>
     <div class="map-info">
       <div class="map-key-container">
         <h2>Key</h2>
@@ -77,13 +36,53 @@
           <div class="map-key-item"><%= image_tag "hexagon_no_match.png", class: "key-hexagon" %><p><em>Hexagon doesn't meet your categories</em></p></div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="map-steps">
-        <h4>How it works</h4>
-        <%# <p>It's easy as 1, 2, 3!</p> %>
-        <div class="map-step"><%= image_tag "hexagon_step_1.png", class: "hexagon-steps" %><p>Select the categories that matter most to you</p></div>
-        <div class="map-step"><%= image_tag "hexagon_step_2.png", class: "hexagon-steps" %><p>Watch our map adapt to reveal the areas for you</p></div>
-        <div class="map-step"><%= image_tag "hexagon_step_3.png", class: "hexagon-steps" %><p>Select a hexagon to see more and add it to your hive!</p></div>
+  <div class="map-hexgrid-container">
+    <div
+      class="map"
+      style="width: 100%; height: 100%;"
+      data-map-target="map">
+    </div>
+  </div>
+
+  <div class="map-filter-container" data-controller="filter-search">
+    <div class="map-filters">
+      <div class="search-header">
+        <h2>Filters</h2>
+        <div class = "search-container">
+          <input
+            class="map-filters-search"
+            type="text"
+            placeholder="Search..."
+            data-action="keyup->filter-search#search"
+            data-filter-search-target="searchTerm">
+          <button class="close-btn" data-action="click->filter-search#clearSearch"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="deselect-all">
+          <a class="deselect-all-link" data-action="click->filter-search#deselectAll">Deselect all</a>
+        </div>
+      </div>
+      <div class="map-categories-list">
+        <% @filters.keys.each do |category| %>
+          <div class="checkbox-wrapper map-filter-search-category">
+            <label
+              class="map-filters-search-item"
+              data-filter-search-target="category"
+              data-action="change->filter-search#clearSearch">
+              <%= category.capitalize %>
+            </label>
+            <input
+              class="map-filters-search-tick-box toggle"
+              type="checkbox"
+              data-action="change->map#toggleFilter"
+              data-filter-search-target="checkbox"
+              data-map-target="inputChecked"
+              data-map-filter-value="<%= category %>"
+            >
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

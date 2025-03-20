@@ -295,6 +295,5 @@ export default class extends Controller {
           </div>`)
         .addTo(this.map);
     });
-    console.log(window.location.search);
   }
 }

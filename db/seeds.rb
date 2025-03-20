@@ -459,12 +459,21 @@ access_token = ENV['MAPBOX_API_KEY']
 # London bounds
 # bounds = [-0.489, 51.28, 0.236, 51.686]
 
-# Queen Mary Uni coords
+# Charing Cross coords
+# centre_point = 	[-0.1278, 51.5074]
+
+# Queen Mary University coords
 centre_point = [-0.04063119, 51.52406612]
 
-# Define bounding box points
-nw_point = [centre_point[0] + 0.03825, centre_point[1] + 0.02395]
-se_point = [centre_point[0] - 0.03825, centre_point[1] - 0.02395]
+# Distance of ~4km in each direction from centre point
+radial_width = 0.03590
+
+# Distance of ~8km in each direction from centre point
+# radial_width = 0.07180
+
+# Define bounding box points with equal width and height
+nw_point = [centre_point[0] + radial_width, centre_point[1] + radial_width]
+se_point = [centre_point[0] - radial_width, centre_point[1] - radial_width]
 
 # Steps of ~400m in lat / lon to mirror size of hexagons
 lon_step = 0.005
@@ -495,11 +504,6 @@ lat_step = 0.0036
     end
   end
 end
-
-# Remove any duplicate values from MapBox Search API
-# poi.uniq { |object| [object[:category], object[:name], object[:lat], object[:lon]] }
-# poi.filter { |object| object[:category].length.positive? }
-
 
 puts "> Creating POIs..."
 # Create each POI instance

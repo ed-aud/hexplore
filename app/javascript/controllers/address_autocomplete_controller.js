@@ -5,10 +5,6 @@ export default class extends Controller {
   static values = { apiKey: String };
   static targets = ["address", "suggestionsOutput"]
 
-  connect() {
-    console.log("connected")
-  }
-
   getSuggestions() {
 
     let suggestions = []
@@ -41,26 +37,3 @@ export default class extends Controller {
   }
 
 }
-
-// MapboxGeocoder
-// export default class extends Controller {
-//   static values = { apiKey: String }
-
-//   static targets = ["address"]
-
-//   connect() {
-//     console.log("connected")
-//     this.geocoder = new MapboxGeocoder({
-//       accessToken: this.apiKeyValue,
-//       types: "country,region,place,postcode,locality,neighborhood,address"
-//     })
-//     console.log(this.geocoder)
-//     console.log(this.element)
-//     console.log(this.addressTarget)
-//     this.geocoder.addTo(this.element)
-//   }
-
-//   disconnect() {
-//     this.geocoder.onRemove()
-//   }
-// }
