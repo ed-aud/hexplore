@@ -70,7 +70,9 @@ class HivesController < ApplicationController
     end
     @hive.user = current_user
     @hive.hexagon = @hexagon
-
+    latest_itinerary = @hexagon.itineraries.last
+    @hive.notes = latest_itinerary&.ai_answer
+    # raise
     if @hive.save
       hive_params[:poi].split(" ").each do |poi|
         HivePoi.create!(poi_id: poi.to_i, hive_id: @hive.id)
@@ -79,6 +81,7 @@ class HivesController < ApplicationController
     else
       render status: :unprocessable_entity
     end
+
   end
 
   def edit

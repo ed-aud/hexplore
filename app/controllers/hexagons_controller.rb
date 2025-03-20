@@ -47,6 +47,9 @@ class HexagonsController < ApplicationController
 
     @myparam = { address: params[:address][9..].gsub('+', ' ').gsub('%', ' ') }
     @clickedFilters = { poi_params: params[:poi_params] }
+    # latest_itinerary = @hexagon.itineraries.last
+    # raise
+    # @hive.notes = latest_itinerary&.ai_answer
   end
 
   def new
