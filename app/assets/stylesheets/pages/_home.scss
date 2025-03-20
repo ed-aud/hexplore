@@ -60,7 +60,7 @@
   }
 
   &:hover, &:active {
-    transition: 0.3s;
+    transition: 0.3s ease;
     background-color: $dark-green;
     border: 0.5px solid $lightest-green;
 
@@ -84,7 +84,7 @@
   background-color: white;
   cursor: pointer;
   font-size: 0.8rem;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s ease;
   text-align: left;
 
   &:hover {
