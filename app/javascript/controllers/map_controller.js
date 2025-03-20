@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import mapboxgl from "mapbox-gl"
 
 export default class extends Controller {
-  // Location values are retrieving location objects from seed file via Hex Grid controller & Index page
+  // Location values are retrieving location objects from seed file via Pages controller & Index page
   static values = {
     apiKey: String,
     coordinates: Array,
@@ -73,7 +73,7 @@ export default class extends Controller {
   // Function to generate the base Hex Grid, overlaid onto the same outer bounds as the base map
   generateHexGrid(searchBounds) {
     const options = { units: "kilometers" };
-    const hexGrid = turf.hexGrid(searchBounds.flat(), 0.35, options);
+    const hexGrid = turf.hexGrid(searchBounds.flat(), 0.4, options);
 
     // Ensure each hexagon has a unique ID stored in its properties to retrieve later when looking for matches
     const hexGridWithIds = hexGrid.features.map((feature, index) => {
@@ -98,8 +98,8 @@ export default class extends Controller {
       source: "hexGrid",
       layout: {},
       paint: {
-        "fill-color": "#9CFBAB",
-        "fill-opacity": 0.65,
+        "fill-color": "#92E6A7",
+        "fill-opacity": 0.4,
         "fill-outline-color": "#000000",
       },
     });
@@ -157,20 +157,16 @@ export default class extends Controller {
   }
 
   toggleFilterOnReload(event) {
-    // Get the current URL params
+    // Get the current URL params & split into individual values
     let params = new URLSearchParams(window.location.href);
-    // split params array into individual values
     const filtersValue = params.get('filters').split(' ')[0].split(',')
-    console.log(filtersValue)
+
+    // Function to check if filters value is equal with target data set (and check box if it is)
     filtersValue.forEach(element => {
-      console.log('element....')
-      console.log(element)
       this.inputCheckedTargets.forEach((target)=>{
-        // condition to check if filters value is equal with target data set
-        // check box if it is
         if (
-          target.dataset.mapFilterValue.includes(element) || // Matches partial values
-          element.includes(target.dataset.mapFilterValue)    // Matches the other way around
+          target.dataset.mapFilterValue.includes(element) ||
+          element.includes(target.dataset.mapFilterValue)
         ) {
           target.checked = true;
           this.selectedFilters[target.dataset.mapFilterValue] = true;
@@ -184,15 +180,18 @@ export default class extends Controller {
       return;
     }
     this.updateHexagonSelectionPerFilters();
-    // removes from the params filters from previous searches
+
+    // Remove previous search filters from params
     const url = new URL(window.location.href);
     url.searchParams.delete('filters');
     window.history.replaceState({}, '', url);
   }
+
   // Function to update hexagons based on selected filters
   updateHexagonSelectionPerFilters() {
     const hexagonsPerCategory = {};
     const selectedCategories = Object.keys(this.selectedFilters).filter(category => this.selectedFilters[category]);
+
     // Function to find each location in a selected category (e.g., every pub) and iterate over each hexagon to check if it contains location instance(s)
     selectedCategories.forEach(category => {
       hexagonsPerCategory[category] = new Set();
@@ -231,13 +230,13 @@ export default class extends Controller {
 
     // Function to reset all hexagons to white
     hexGridData.forEach((hex) => {
-      hex.properties.fillColor = "#9CFBAB";
+      hex.properties.fillColor = "#92E6A7";
     });
 
     // Function to updated Hexagons in matched hexagons array to green
     hexGridData.forEach((hex) => {
       if (this.matchedHexagons.includes(hex.properties.id)) {
-        hex.properties.fillColor = "#9CFBAB";
+        hex.properties.fillColor = "#92E6A7";
       } else {
         hex.properties.fillColor = "#FFFFFF"
       }

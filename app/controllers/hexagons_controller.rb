@@ -1,5 +1,4 @@
 class HexagonsController < ApplicationController
-
   def show
     @hexagon = Hexagon.find(params[:id])
     @pois = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
@@ -74,7 +73,7 @@ class HexagonsController < ApplicationController
 
     selected_categories = pois.split(",")
     selected_categories.each do |category|
-      displayed_locations << Poi.where(category: category, lat: min_lat..max_lat, lon: min_lon..max_lon)
+      displayed_locations << Poi.where(category: category, lat: min_lat..max_lat, lon: min_lon..max_lon).first(4)
     end
 
     poi = displayed_locations.flatten

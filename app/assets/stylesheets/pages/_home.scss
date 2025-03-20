@@ -54,26 +54,19 @@
   border-radius: 0px 5px 5px 0px;
   background-color: white;
 
-  &:hover {
-    background-color: white;
-    border: 1px solid rgb(222, 226, 230);
-    border-left: none;
+  .search-icon {
+    font-size: 1.5rem;
+    color: $dark-green;
   }
 
-  &:active {
-    background-color: rgb(175,175,175);
-    border: 1px solid rgb(222, 226, 230);
-    border-left: none;
-  }
-}
-
-.search-icon {
-  font-size: 1.5rem;
-  color: $dark-green;
-
-  &:hover {
+  &:hover, &:active {
     transition: 0.3s;
-    color: $light-green;
+    background-color: $dark-green;
+    border: 0.5px solid $lightest-green;
+
+    .search-icon {
+      color: $light-green;
+    }
   }
 }
 
