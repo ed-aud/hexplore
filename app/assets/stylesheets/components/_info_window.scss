@@ -23,15 +23,16 @@
 }
 
 .mapboxgl-popup-close-button {
-  background-color: $light-green;
-  color: $dark-green;
+  color: $light-green;
+  background-color: $dark-green;
   width: 20px;
   height: 20px;
   margin: 6px;
   border-radius: 25px;
   font-weight: bolder;
-}
 
-.btn-hexagon-pop-up {
-  margin-top: 15px;
+  &:hover {
+    color: $dark-green;
+    background-color: $light-green;
+  }
 }

@@ -1,7 +1,18 @@
   <% if itinerary.id != nil %>
     <div id="<%= dom_id(itinerary) %>" class="itinerary">
       <%= turbo_stream_from dom_id(itinerary) %>
+      <% if itinerary.ai_answer.present? %>
+        <%= content_tag(:div, class: "itinerary-answer") do %>
+          <%= content_tag(:p, itinerary.ai_answer.split("\n\n").first) %> <!-- Intro paragraph -->
 
-      <p class="itinerary-answer"><%= itinerary.ai_answer || "Creating your itinerary..." %></p>
+          <%= content_tag(:ul) do %>
+            <%= itinerary.ai_answer.scan(/-\s(.+)/).map do |bullet|
+                  content_tag(:li, bullet.first)
+              end.join.html_safe %>
+          <% end %>
+
+          <%= content_tag(:p, itinerary.ai_answer.split("\n\n").last) %> <!-- Final tips paragraph -->
+        <% end %>
+      <% end %>
     </div>
   <% end %>
