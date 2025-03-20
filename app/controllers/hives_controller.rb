@@ -4,6 +4,15 @@ class HivesController < ApplicationController
 
   def index
     @hives = Hive.all
+
+    @hexagon_markers = @hives.map do |hive|
+      {
+        lat: hive.hexagon.lat,
+        lon: hive.hexagon.lon,
+        # marker_html: render_to_string(partial: "shared/marker", locals: { category: poi[:category], category_icons: @category_icons }),
+        hive_info_window_html: render_to_string(partial: "shared/hive_info_window", locals: { hive: hive })
+      }
+    end
   end
 
   def show
