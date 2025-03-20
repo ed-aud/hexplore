@@ -31,7 +31,7 @@ class HivesController < ApplicationController
       park: 'tree-city',
       gym: 'dumbbell',
       cafe: 'mug-saucer',
-      supermarket: 'store',
+      market: 'store',
       cinema: 'film',
       hospital: 'hospital',
       mosque: 'mosque',
@@ -40,7 +40,11 @@ class HivesController < ApplicationController
       synagogue: 'synagogue',
       museum: 'landmark',
       university: 'landmark-flag',
-      theatre: 'masks-theater'
+      theatre: 'masks-theater',
+      deli: 'bowl-food',
+      bar: 'champagne-glasses',
+      supermarket: 'shop',
+      school: 'school-flag'
     }
 
     @centre_marker = { lat: @hive.hexagon.lat, lon: @hive.hexagon.lon }
