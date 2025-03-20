@@ -64,9 +64,6 @@ class HivesController < ApplicationController
 
   def create
 
-    latest_itinerary = @hexagon.itineraries.last
-    @hive.notes = latest_itinerary&.ai_answer
-    raise
     if hive_params.include?(:poi)
       @hive = Hive.new(name: hive_params[:name], notes: hive_params[:notes])
     else
