@@ -62,8 +62,8 @@ class HivesController < ApplicationController
         HivePoi.create!(poi_id: poi.to_i, hive_id: @hive.id)
       end
       redirect_to hive_path(@hive)
-    else
-      render 'new', status: :unprocessable_entity
+      else
+        render status: :unprocessable_entity
     end
   end
 
@@ -72,7 +72,7 @@ class HivesController < ApplicationController
 
   def update
     if @hive.update(hive_params)
-      redirect_to hives_path
+      redirect_to hive_path(@hive)
     else
       render 'edit', status: :unprocessable_entity
     end

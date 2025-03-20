@@ -17,6 +17,7 @@
         <%= simple_form_for [@hexagon, @hive] do |f| %>
         <div class="form-inputs">
           <%= f.input :name,
+<<<<<<< HEAD
                       placeholder: "" %>
           <%= f.hidden_field :notes,
                              placeholder: "Notes", value: @itinerary&.ai_answer %>
@@ -24,6 +25,16 @@
           <div class="modal-form-actions">
             <%= f.submit "Add", class: "btn btn-primary form-button" %>
           </div>
+=======
+                      placeholder: "Name" %>
+          <%#= f.input :notes,
+                      placeholder: "Notes", value: @itinerary&.ai_answer %>
+          <%= f.hidden_field :poi, value: @pois.map {|poi| poi.id} %>
+         <div class="modal-form-actions">
+          <%= f.submit "Add Hive", class: "btn btn-primary form-button" %>
+         <button type="button" data-action="click->hexagon-modal#closeModal" class="btn btn-primary form-button" data-dismiss="modal" data-hexagon-modal-target="closeModal">Close</button>
+        </div>
+>>>>>>> main
         </div>
        <% end %>
       </div>
