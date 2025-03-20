@@ -63,6 +63,7 @@ class HivesController < ApplicationController
   end
 
   def create
+
     if hive_params.include?(:poi)
       @hive = Hive.new(name: hive_params[:name], notes: hive_params[:notes])
     else
