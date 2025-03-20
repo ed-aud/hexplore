@@ -6,7 +6,7 @@ export default class extends Controller {
   disableButton(event) {
     const icon = event.target
     icon.classList.add("fa-spin-pulse");
-    icon.style.setProperty("--fa-animation-iteration-count", "5");
+    icon.style.setProperty("--fa-animation-iteration-count", "8");
 
     icon.addEventListener('animationend', () => {
       icon.disabled = true;

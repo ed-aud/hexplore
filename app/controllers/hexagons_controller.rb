@@ -3,7 +3,6 @@ class HexagonsController < ApplicationController
     @hexagon = Hexagon.find(params[:id])
     @pois = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
 
-
     @hives = Hive.all
     @hive = Hive.new
     @questions = Question.all
@@ -61,7 +60,6 @@ class HexagonsController < ApplicationController
     else
       render 'new', status: :unprocessable_entity
     end
-    # raise
   end
 
   private
