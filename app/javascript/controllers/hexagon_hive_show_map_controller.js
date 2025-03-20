@@ -10,13 +10,11 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log(this.markersValue)
-    console.log(this.centreMarkerValue)
     mapboxgl.accessToken = this.apiKeyValue;
     this.map = new mapboxgl.Map({
       container: this.element,
-      // style: "mapbox://styles/ed-aud/cm87nbe8100b401qz9zgzfjf7",
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/ed-aud/cm87nbe8100b401qz9zgzfjf7",
+      // style: "mapbox://styles/mapbox/streets-v10"
     })
     this.map.scrollZoom.disable();
     this.map.dragPan.disable();
@@ -25,16 +23,12 @@ export default class extends Controller {
   }
 
   addMarkersToMap() {
-    // Physical Centre Marker
-    // new mapboxgl.Marker()
-    // .setLngLat([ this.centreMarkerValue.lon, this.centreMarkerValue.lat ])
-    // .addTo(this.map)
-
     // All POI markers
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
 
       const customMarker = document.createElement("div")
+      customMarker.classList.add("map-markers")
       customMarker.innerHTML = marker.marker_html
 
       customMarker.style.width = "30px";

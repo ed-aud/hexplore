@@ -8,13 +8,8 @@ class HivesController < ApplicationController
 
   def show
     @pois = []
-    @markers = []
-
-    centre_point = { lat: @hive.hexagon.lat, lon: @hive.hexagon.lon }
-    @markers << centre_point
 
     @hive.hive_pois.each do |hive_poi|
-      @markers << create_markers(hive_poi)
       @pois << Poi.find(hive_poi.poi_id)
     end
 
@@ -39,6 +34,16 @@ class HivesController < ApplicationController
       theatre: 'masks-theater'
     }
 
+    @centre_marker = { lat: @hive.hexagon.lat, lon: @hive.hexagon.lon }
+    @markers = @pois.map do |poi|
+      {
+        lat: poi[:lat],
+        lon: poi[:lon],
+        category: poi[:category],
+        marker_html: render_to_string(partial: "shared/marker", locals: { category: poi[:category], category_icons: @category_icons }),
+        info_window_html: render_to_string(partial: "shared/info_window", locals: { poi: poi })
+      }
+    end
   end
 
   def new
@@ -62,8 +67,8 @@ class HivesController < ApplicationController
         HivePoi.create!(poi_id: poi.to_i, hive_id: @hive.id)
       end
       redirect_to hive_path(@hive)
-      else
-        render status: :unprocessable_entity
+    else
+      render status: :unprocessable_entity
     end
   end
 
@@ -97,11 +102,11 @@ class HivesController < ApplicationController
     params.require(:hive).permit(:name, :notes, :poi)
   end
 
-  def create_markers(poi)
-    poi_instance = Poi.find(poi.poi_id)
-    poi_coordinates = { lat: poi_instance.lat,
-                        lon: poi_instance.lon,
-                        info_window_html: render_to_string(partial: "shared/info_window", locals: { poi: poi_instance }) }
-    return poi_coordinates
-  end
+  # def create_markers(poi)
+  #   poi_instance = Poi.find(poi.poi_id)
+  #   poi_coordinates = { lat: poi_instance.lat,
+  #                       lon: poi_instance.lon,
+  #                       info_window_html: render_to_string(partial: "shared/info_window", locals: { poi: poi_instance }) }
+  #   return poi_coordinates
+  # end
 end

@@ -3,17 +3,17 @@ data-hexagon-modal-target="modalPartial">
   <div class="modal-dialog" role="document" data-hexagon-modal-target="modalPartial">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add to Hive</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Hexagon</h5>
+        <button type="button" data-action="click->hexagon-modal#closeModal" class="close-button" data-dismiss="modal" data-hexagon-modal-target="closeModal"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div class="modal-body">
         <%= simple_form_for  @hive do |f| %>
         <div class="form-inputs">
           <%= f.input :name,
                       placeholder: "Name" %>
-         <div class="modal-form-actions">
-          <%= f.submit "Edit Hive", class: "btn btn-primary form-button" %>
-         <button type="button" data-action="click->hexagon-modal#closeModal" class="btn btn-primary form-button" data-dismiss="modal" data-hexagon-modal-target="closeModal">Close</button>
-        </div>
+          <div class="modal-form-actions">
+            <%= f.submit "Update", class: "btn btn-primary form-button" %>
+          </div>
         </div>
        <% end %>
       </div>
