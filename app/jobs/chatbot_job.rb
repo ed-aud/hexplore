@@ -32,7 +32,7 @@ class ChatbotJob < ApplicationJob
   def questions_formatted_for_openai
     questions = @question.user.questions
     results = []
-    results << { role: "system", content: "You are an assistant to help users find locations based on their selected preferences. Remove any text styling from your responses (such as ** or ##)." }
+    results << { role: "system", content: "You are an assistant to help users find locations based on their selected preferences. Remove any text styling from your responses, and you MUST not include ** or ##" }
 
     questions.each do |question|
       results << { role: "user", content: question.user_question }

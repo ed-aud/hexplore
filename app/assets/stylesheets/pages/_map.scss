@@ -63,13 +63,10 @@
   border: none;
   cursor: pointer;
   color: #777;
-}
 
-.close-btn:hover {
-  color: #333;
-}
-
-.map-categories-list {
+  &:hover {
+    color: #333333;
+  }
 }
 
 .map-filter-search-category {
@@ -78,25 +75,6 @@
   margin: 7px 0px;
   padding: 0px 5px;
 }
-
-.map-filters-search-item {
-}
-
-.map-filters-search-tick-box {
-}
-
-// .deselect-btn {
-//   margin-top: 5px;
-//   border: 1px solid #000000;
-//   border-radius: 5px;
-//   padding: 4px 8px;
-//   transition: background-color 0.3s ease, color 0.3s ease;
-// }
-
-// .deselect-btn:hover {
-//   background-color: #ddd;
-//   color: #000;
-// }
 
 .deselect {
   display: flex;
@@ -113,18 +91,18 @@
   color: #000;
   cursor: pointer;
   transition: all 0.3s ease;
-}
 
-.deselect-btn:hover {
-  background-color: $dark-green;
-  color: #FFFFFF;
-  border-color: #333;
-}
+  &:hover {
+    background-color: $dark-green;
+    color: #FFFFFF;
+    border-color: #333;
+  }
 
-.deselect-btn:active {
-  background-color: #F0F0F0;
-  color: #FFFFFF;
-  transform: scale(0.98);
+  &:active {
+    background-color: #F0F0F0;
+    color: #FFFFFF;
+    transform: scale(0.98);
+  }
 }
 
 // Section 2: Map & Hexagons (Centre)
