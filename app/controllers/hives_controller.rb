@@ -9,7 +9,7 @@ class HivesController < ApplicationController
       {
         lat: hive.hexagon.lat,
         lon: hive.hexagon.lon,
-        # marker_html: render_to_string(partial: "shared/marker", locals: { category: poi[:category], category_icons: @category_icons }),
+        hexagon_marker_html: render_to_string(partial: "shared/hexagon_marker"),
         hive_info_window_html: render_to_string(partial: "shared/hive_info_window", locals: { hive: hive })
       }
     end

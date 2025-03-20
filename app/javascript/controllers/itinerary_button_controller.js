@@ -2,15 +2,16 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="itinerary-button"
 export default class extends Controller {
+  static targets = ["icon"]
 
-  disableButton(event) {
-    const icon = event.target
-    icon.classList.add("fa-spin-pulse");
-    icon.style.setProperty("--fa-animation-iteration-count", "8");
+  activateButton() {
+    this.iconTarget.classList.remove("fa-rocket");
+    this.iconTarget.classList.add("fa-spinner", "fa-spin");
+    this.iconTarget.style.setProperty("--fa-animation-iteration-count", "8");
 
-    icon.addEventListener('animationend', () => {
-      icon.disabled = true;
-      icon.classList.add("opacity-50", "cursor-not-allowed");
+    this.iconTarget.addEventListener('animationend', () => {
+      this.iconTarget.classList.remove("fa-spinner", "fa-spin");
+      this.iconTarget.classList.add("fa-check");
     })
   }
 }
