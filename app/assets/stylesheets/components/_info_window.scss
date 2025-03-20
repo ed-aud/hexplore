@@ -16,6 +16,13 @@
   width: 100%;
 }
 
+.info-window-title-small {
+  font-size: 1rem;
+  text-align: left;
+  margin-top: 15px;
+  width: 100%;
+}
+
 .mapboxgl-popup-content {
   background-color: white;
   border-radius: 10px;
@@ -35,4 +42,11 @@
     color: $dark-green;
     background-color: $light-green;
   }
+}
+
+.hive-index-info-window {
+  height: 100px;
+}
+
+.hive-index-info-window-title {
 }
