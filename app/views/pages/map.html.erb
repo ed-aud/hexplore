@@ -22,7 +22,7 @@
       </div>
       <div class="map-categories-list">
         <% @filters.keys.each do |category| %>
-          <div class="checkbox-wrapper-2 map-filter-search-category">
+          <div class="checkbox-wrapper map-filter-search-category">
             <label
               class="map-filters-search-item"
               data-filter-search-target="category"
@@ -30,7 +30,7 @@
               <%= category.capitalize %>
             </label>
             <input
-              class="map-filters-search-tick-box sc-gJwTLC ikxBAC"
+              class="map-filters-search-tick-box toggle"
               type="checkbox"
               data-action="change->map#toggleFilter"
               data-filter-search-target="checkbox"
