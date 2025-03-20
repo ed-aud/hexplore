@@ -1,13 +1,15 @@
 class HexagonsController < ApplicationController
-
   def show
     @hexagon = Hexagon.find(params[:id])
     @pois = get_points_of_interest(@hexagon.lat, @hexagon.lon, params[:poi_params])
-    @markers = create_markers(@pois)
+
+
     @hives = Hive.all
+    @hive = Hive.new
     @questions = Question.all
     @question = Question.new
     @itinerary = Itinerary.new
+
     @category_icons = {
       pub: 'beer-mug-empty',
       station: 'train',
@@ -32,6 +34,18 @@ class HexagonsController < ApplicationController
       supermarket: 'shop',
       school: 'school-flag'
     }
+
+    @centre_marker = create_markers(@pois)[0]
+    @markers = @pois.map do |poi|
+      {
+        lat: poi[:lat],
+        lon: poi[:lon],
+        category: poi[:category],
+        marker_html: render_to_string(partial: "shared/marker", locals: { category: poi[:category], category_icons: @category_icons }),
+        info_window_html: render_to_string(partial: "shared/info_window", locals: {poi: poi})
+      }
+    end
+
     @myparam = { address: params[:address][9..].gsub('+', ' ').gsub('%', ' ') }
     @clickedFilters = { poi_params: params[:poi_params] }
   end
@@ -74,7 +88,7 @@ class HexagonsController < ApplicationController
 
     selected_categories = pois.split(",")
     selected_categories.each do |category|
-      displayed_locations << Poi.where(category: category, lat: min_lat..max_lat, lon: min_lon..max_lon)
+      displayed_locations << Poi.where(category: category, lat: min_lat..max_lat, lon: min_lon..max_lon).first(4)
     end
 
     poi = displayed_locations.flatten

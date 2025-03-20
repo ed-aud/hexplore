@@ -1,20 +1,24 @@
 <div class="hexagon-hive-container">
   <div class="hexagon-hive-content-container">
     <div class="hexagon-hive-title-container">
-      <div class="hexagon-hive-title-buttons">
+      <div class="hexagon-hive-title-buttons" data-controller="hexagon-modal">
         <%= link_to map_path(address: @myparam[:address], filters: @clickedFilters[:poi_params]) do %>
           <i class="fa-solid fa-arrow-left hexagon-hive-title-button back-button"></i>
         <% end %>
         <h3 class="back-button-title">Back to Map</h3>
       </div>
-      <div class="hexagon-hive-title-buttons">
-        <h3 class="add-button-title"> Add to Hive </h3>
-        <%= link_to new_hexagon_hive_path(@hexagon, poi_params: @pois) do %>
-          <i class="fa-solid fa-plus hexagon-hive-title-button add-button"></i>
-        <% end  %>
+      <div class="hexagon-hive-title-buttons" data-controller="hexagon-modal">
+        <i class="fa-solid fa-plus hexagon-hive-title-button add-button"
+          data-bs-toggle="modal"
+          data-bs-target="#hexagonShowModal"
+          data-hexagon-modal-target="modalButton"
+          data-action="click->hexagon-modal#expandModal"></i>
+        <div class="rendered-modal" data-hexagon-modal-target="modalPartial">
+          <%= render 'shared/hexagon_add_modal' %>
+        </div>
       </div>
     </div>
-    
+
     <div class="hexagon-hive-non-title-container">
       <div class="hexagon-hive-map-container">
         <div class="hexagon-shape">
@@ -22,6 +26,7 @@
             class="hexagon-hive-map"
             style="width: 600px; height: 600px"
             data-controller="hexagon-hive-show-map"
+            data-hexagon-hive-show-map-centre-marker-value="<%=  @centre_marker.to_json %>"
             data-hexagon-hive-show-map-markers-value="<%= @markers.to_json %>"
             data-hexagon-hive-show-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
@@ -30,7 +35,7 @@
 
       <div class="matched-locations" data-controller="toggle-locations">
         <div class="matched-locations-header">
-          <h4>Your Matched Locations</h4>
+          <h4>Recommended Matched Locations</h4>
           <button id="toggle-locations-button" data-action="click->toggle-locations#toggle">
             <i class="fa-solid fa-plus" data-toggle-locations-target="icon"></i>
           </button>
@@ -42,7 +47,7 @@
 
       <div class="matched-locations" data-controller="toggle-locations" data-controller="auto-submit">
         <div class="matched-locations-header">
-          <h4>Itinerary to Explore the Area</h4>
+          <h4>Generate a Local Itinerary</h4>
           <%= form_with model: @itinerary, method: :post, data: { controller: "itinerary-button" } do %>
             <%= hidden_field_tag 'itinerary[hexagon_id]', @hexagon.id %>
             <%= button_tag type: 'submit', class:"spinner", data: { action: "click->itinerary-button#disableButton" } do %>

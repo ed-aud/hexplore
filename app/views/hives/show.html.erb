@@ -4,14 +4,19 @@
       <div class="hexagon-hive-title-text">
         <h1><%= @hive.name %></h1>
       </div>
-      <div class="hexagon-hive-show-action-icons">
-        <%= link_to edit_hive_path(@hive) do %>
-          <i class="fa-solid fa-pencil action-icon"></i>
-        <% end %>
+
+      <div class="hexagon-hive-show-action-icons" data-controller="hexagon-modal">
+        <i class="fa-solid fa-pencil action-icon"
+           data-bs-toggle="modal"
+           data-bs-target="#hexagonShowModal"></i>
+        <div class="rendered-modal" data-hexagon-modal-target="modalPartial">
+          <%= render 'shared/hive_edit_modal' %>
+        </div>
         <%= link_to hive_path(@hive), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
           <i class="fa-solid fa-trash action-icon"></i>
         <% end %>
       </div>
+
     </div>
     <div class="hexagon-hive-non-title-container">
       <div class="hexagon-hive-map-container">
@@ -20,6 +25,7 @@
             class="hexagon-hive-map"
             style="width: 600px; height: 600px"
             data-controller="hexagon-hive-show-map"
+            data-hexagon-hive-show-map-centre-marker-value="<%=  @centre_marker.to_json %>"
             data-hexagon-hive-show-map-markers-value="<%= @markers.to_json %>"
             data-hexagon-hive-show-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
@@ -41,7 +47,18 @@
   <div class = "hexagon-hive-chatbot-container">
     <div class="hive-notes">
       <h4>Hive Notes</h4>
-      <p><%= @hive.notes %></p>
+      <% if @hive.notes.present? %>
+        <%= content_tag(:div) do %>
+          <%= content_tag(:p, @hive.notes.split("\n\n").first) %> <!-- Intro paragraph -->
+
+          <%= content_tag(:ul) do %>
+            <%= @hive.notes.scan(/-\s(.+)/).map do |bullet|
+                  content_tag(:li, bullet.first)
+              end.join.html_safe %>
+          <% end %>
+          <%# <%= content_tag(:p, @hive.notes.split("\n\n").last) %> <!-- Final tips paragraph -->
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

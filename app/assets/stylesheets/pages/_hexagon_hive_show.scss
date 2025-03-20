@@ -99,7 +99,8 @@
 .hexagon-hive-show-action-icons {
   text-decoration: none;
   margin-right: 5px;
-
+  display: flex;
+  justify-content: space-between;
   a {
     text-decoration: none;
   }
@@ -213,6 +214,10 @@
   }
 
   p {
+    font-size: 0.8rem;
+  }
+
+  ul {
     font-size: 0.8rem;
   }
 }

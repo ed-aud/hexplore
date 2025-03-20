@@ -1,11 +1,23 @@
 <%= simple_form_for question, html: {
   data: {
     controller: "reset-form",
-    action: "turbo:submit-end->reset-form#reset"
+    controller: "chatbot",
+    action: "turbo:submit-end->reset-form#reset",
+    action: "keyup->chatbot#submit"
   }
 } do |f| %>
   <div class="chatbot-question-box">
-    <%= f.input :user_question, label: false, placeholder: "Ask Hex a question!", class: "form-question" %>
-    <%= f.submit "↑", id: "new-question-button", class: "btn btn-primary chatbot-send" %>
+    <%= f.input :user_question,
+          label: false,
+          placeholder: "Ask Hex a question!",
+          class: "form-question",
+          autocomplete: "off",
+          data: {  } %>
+
+    <%= f.button :submit, "↑",
+          id: "new-question-button",
+          class: "btn btn-primary chatbot-send",
+          type: "submit",
+          data: { chatbot_target: "submit" } %>
   </div>
 <% end %>

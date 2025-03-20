@@ -1,0 +1,8 @@
+<% case category %>
+  <% when "yoga studio" %>
+    <i class="fas fa-hands-praying"></i>
+  <% when "wine bar" %>
+    <i class="fas fa-wine-glass"></i>
+  <% else %>
+    <i class="fas fa-<%= category_icons[category.strip.to_sym] %>"></i>
+<% end %>
