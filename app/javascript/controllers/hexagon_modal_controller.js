@@ -10,31 +10,20 @@ export default class extends Controller {
     console.log(this.bootstrapModal);
   }
 
-  expandModal(event){
-    event.preventDefault();
-    console.log("expandModal function triggred")
-    console.log(this.modalButtonTarget);
-
-  }
+  // expandModal(event){
+  //   event.preventDefault();
+  //   console.log("expandModal function triggred")
+  //   console.log(this.modalButtonTarget);
+  // }
   closeModal(){
     console.log("closeModal function triggred")
     let modal = document.getElementById('hexagonShowModal');
     this.bootstrapModal.hide();
   }
 
-  createHive(event){
-    event.preventDefault();
-    console.log('Create hive method triggred')
-    console.log(this.nameTarget.value)
-
-    // fetch("/hexagons", {
-    //   method: "POST", // Could be dynamic with Stimulus values
-    //   headers: { "Accept": "application/json" },
-    //   body: new FormData(this.addHiveFormTarget)
-    // })
-    //   .then(response => response.json())
-    //   .then((data) => {
-    //     console.log(data)
-    //   })
-  }
+  // createHive(event){
+  //   event.preventDefault();
+  //   console.log('Create hive method triggred')
+  //   console.log(this.nameTarget.value)
+  // }
 }

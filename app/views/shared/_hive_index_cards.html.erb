@@ -12,9 +12,9 @@
           <p class="truncate-text-lines"><%= hive.notes %></p>
         </div>
         <div class="hive-card-info-buttons">
-          <%= link_to edit_hive_path(hive) do %>
+          <%#= link_to edit_hive_path(hive) do %>
             <i class="fa-solid fa-pencil booking-icon"></i>
-          <% end %>
+          <%# end %>
           <%= link_to hive_path(hive), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
             <i class="fa-solid fa-trash booking-icon"></i>
           <% end %>
