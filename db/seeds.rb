@@ -343,7 +343,7 @@ poi = [
   { category: "station", name: "Russell Square", lat: 51.5242, lon: -0.1253 },
   { category: "station", name: "Shadwell", lat: 51.5107, lon: -0.0458 },
   { category: "station", name: "Shepherd's Bush", lat: 51.5042, lon: -0.2207 },
-  { category: "station", name: "Shoreditch High Street", lat: 51.5235, lon: -0.0755 },
+  { category: "station", name: "Shoreditch High Street", lat: 51.5235, lon: -0.0750 },
   { category: "station", name: "Sidcup", lat: 51.4219, lon: 0.1189 },
   { category: "station", name: "Silvertown", lat: 51.5107, lon: -0.0395 },
   { category: "station", name: "South Acton", lat: 51.4971, lon: -0.2749 },
