@@ -57,9 +57,7 @@ class HivesController < ApplicationController
     @hive.user = current_user
     @hive.hexagon = @hexagon
 
-    # raise
     if @hive.save
-      p hive_params[:poi]
       hive_params[:poi].split(" ").each do |poi|
         HivePoi.create!(poi_id: poi.to_i, hive_id: @hive.id)
       end
@@ -74,7 +72,7 @@ class HivesController < ApplicationController
 
   def update
     if @hive.update(hive_params)
-      redirect_to hives_path
+      redirect_to hive_path(@hive)
     else
       render 'edit', status: :unprocessable_entity
     end
