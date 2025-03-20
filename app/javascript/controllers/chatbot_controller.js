@@ -2,10 +2,12 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="reset-form"
 export default class extends Controller {
-  static targets = ["chatbot"]
+  static targets = ["submit"]
 
-  toggle() {
-    console.log("hello")
-    this.chatbotTarget.classList.toggle("hidden");
+  submit(event) {
+    if (event.key === "Enter") {
+      this.submitTarget.click();
+      this.element.reset()
+    }
   }
 }
