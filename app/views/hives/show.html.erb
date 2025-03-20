@@ -45,8 +45,19 @@
   </div>
   <div class = "hexagon-hive-chatbot-container">
     <div class="hive-notes">
-      <h4>Day Itinerary</h4>
-      <p><%= @hive.notes %></p>
+      <h4>Day Itinerary Notes</h4>
+      <% if @hive.notes.present? %>
+        <%= content_tag(:div) do %>
+          <%= content_tag(:p, @hive.notes.split("\n\n").first) %> <!-- Intro paragraph -->
+
+          <%= content_tag(:ul) do %>
+            <%= @hive.notes.scan(/-\s(.+)/).map do |bullet|
+                  content_tag(:li, bullet.first)
+              end.join.html_safe %>
+          <% end %>
+          <%# <%= content_tag(:p, @hive.notes.split("\n\n").last) %> <!-- Final tips paragraph -->
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
