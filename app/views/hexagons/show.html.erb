@@ -14,7 +14,7 @@
         <% end  %>
       </div>
     </div>
-    
+
     <div class="hexagon-hive-non-title-container">
       <div class="hexagon-hive-map-container">
         <div class="hexagon-shape">
@@ -22,6 +22,7 @@
             class="hexagon-hive-map"
             style="width: 600px; height: 600px"
             data-controller="hexagon-hive-show-map"
+            data-hexagon-hive-show-map-centre-marker-value="<%=  @centre_marker.to_json %>"
             data-hexagon-hive-show-map-markers-value="<%= @markers.to_json %>"
             data-hexagon-hive-show-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
