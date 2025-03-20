@@ -4,6 +4,11 @@ class HivesController < ApplicationController
 
   def index
     @hives = Hive.all
+    @hexagon_markers = []
+    @hives.each do |hive|
+      hexagons = []
+      hexagons << Hive.find(hive[:hexagon_id])
+    end
   end
 
   def show
