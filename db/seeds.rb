@@ -35,98 +35,98 @@ puts "#{Hive.count} hives created"
 
 # Static seed data [DO NOT DELETE]
 poi = [
-  { category: "gym", name: "Anytime Fitness", lon: -0.0297, lat: 51.5248 },
-  { category: "gym", name: "Anytime Fitness Hackney", lon: -0.0471, lat: 51.5497 },
-  { category: "gym", name: "Anytime Fitness London Fields", lon: -0.0623, lat: 51.5452 },
-  { category: "gym", name: "Anytime Fitness Mile End", lon: -0.0405, lat: 51.5224 },
-  { category: "gym", name: "Anytime Fitness Stepney", lon: -0.0412, lat: 51.5209 },
-  { category: "gym", name: "Barry's Bootcamp East London", lon: -0.0810, lat: 51.5206 },
-  { category: "gym", name: "Barry's Bootcamp London", lon: -0.1463, lat: 51.5264 },
-  { category: "gym", name: "Bethnal Green Leisure Centre", lon: -0.0534, lat: 51.5238 },
-  { category: "gym", name: "Bethnal Green Weightlifting Club", lon: -0.0446, lat: 51.5236 },
-  { category: "gym", name: "Bow Community Fitness", lon: -0.0277, lat: 51.5234 },
-  { category: "gym", name: "BXR London", lon: -0.1562, lat: 51.5242 },
-  { category: "gym", name: "Cyclebar Soho", lon: -0.1391, lat: 51.5141 },
-  { category: "gym", name: "CrossFit 1971", lon: -0.0693, lat: 51.5142 },
-  { category: "gym", name: "CrossFit Bethnal Green", lon: -0.0481, lat: 51.5227 },
-  { category: "gym", name: "CrossFit London Fields", lon: -0.0570, lat: 51.5443 },
-  { category: "gym", name: "CrossFit Mile End", lon: -0.0317, lat: 51.5264 },
-  { category: "gym", name: "CrossFit Stepney", lon: -0.0410, lat: 51.5216 },
-  { category: "gym", name: "David Lloyd Canary Wharf", lon: -0.0187, lat: 51.5071 },
-  { category: "gym", name: "Energie Fitness Club", lon: -0.0491, lat: 51.5421 },
-  { category: "gym", name: "Fieldworks Gym", lon: -0.0674, lat: 51.5483 },
-  { category: "gym", name: "Fitness 4 Less", lon: -0.1033, lat: 51.4938 },
-  { category: "gym", name: "Fitness First Bethnal Green", lon: -0.0512, lat: 51.5220 },
-  { category: "gym", name: "Fitness First Hackney", lon: -0.0581, lat: 51.5444 },
-  { category: "gym", name: "Fitness First Mile End", lon: -0.0290, lat: 51.5251 },
-  { category: "gym", name: "Fitness First Shoreditch", lon: -0.0794, lat: 51.5200 },
-  { category: "gym", name: "Fitness First Stepney", lon: -0.0402, lat: 51.5220 },
-  { category: "gym", name: "Fitness First London Fields", lon: -0.0543, lat: 51.5435 },
-  { category: "gym", name: "Fitness First Stepney", lon: -0.0402, lat: 51.5220 },
-  { category: "gym", name: "Fitness4Less Bow", lon: -0.0237, lat: 51.5225 },
-  { category: "gym", name: "Fitness4Less Mile End", lon: -0.0372, lat: 51.5257 },
-  { category: "gym", name: "Fitness4Less Southwark", lon: -0.1033, lat: 51.4938 },
-  { category: "gym", name: "Fitness4Less Stepney", lon: -0.0387, lat: 51.5221 },
-  { category: "gym", name: "Fit4Less Tower Hamlets", lon: -0.0429, lat: 51.5172 },
-  { category: "gym", name: "F45 Dalston", lon: -0.0767, lat: 51.5496 },
-  { category: "gym", name: "F45 Bow", lon: -0.0205, lat: 51.5223 },
-  { category: "gym", name: "F45 Training Hackney", lon: -0.0549, lat: 51.5426 },
-  { category: "gym", name: "F45 Training London Bridge", lon: -0.0824, lat: 51.5059 },
-  { category: "gym", name: "F45 Training Shoreditch", lon: -0.0843, lat: 51.5250 },
-  { category: "gym", name: "Gymbox Bethnal Green", lon: -0.0455, lat: 51.5228 },
-  { category: "gym", name: "Gymbox Hackney", lon: -0.0463, lat: 51.5486 },
-  { category: "gym", name: "Gymbox Holborn", lon: -0.1176, lat: 51.5186 },
-  { category: "gym", name: "Gymbox Kings Cross", lon: -0.1229, lat: 51.5315 },
-  { category: "gym", name: "Gymbox London Fields", lon: -0.0535, lat: 51.5423 },
-  { category: "gym", name: "Gymbox Mile End", lon: -0.0302, lat: 51.5229 },
-  { category: "gym", name: "Gymbox Stepney", lon: -0.0399, lat: 51.5215 },
-  { category: "gym", name: "Hackney Fitness Club", lon: -0.0482, lat: 51.5479 },
-  { category: "gym", name: "Hackney Fitness Centre", lon: -0.0598, lat: 51.5423 },
-  { category: "gym", name: "London Aquatics Centre", lon: -0.0165, lat: 51.5372 },
-  { category: "gym", name: "London Fields Fitness Studio", lon: -0.0574, lat: 51.5364 },
-  { category: "gym", name: "London Fields Fitness Centre", lon: -0.0543, lat: 51.5435 },
-  { category: "gym", name: "London Fitness Mile End", lon: -0.0307, lat: 51.5226 },
-  { category: "gym", name: "London Metropolitan University Gym", lon: -0.1042, lat: 51.5532 },
-  { category: "gym", name: "Mile End Fitness Centre", lon: -0.0312, lat: 51.5221 },
-  { category: "gym", name: "Mile End Park Leisure Centre", lon: -0.0291, lat: 51.5283 },
-  { category: "gym", name: "Metropolitan Gym", lon: -0.1041, lat: 51.5134 },
-  { category: "gym", name: "Nuffield Health Mile End", lon: -0.0395, lat: 51.5275 },
-  { category: "gym", name: "Nuffield Health Shoreditch Fitness & Wellbeing Gym", lon: -0.0776, lat: 51.5253 },
-  { category: "gym", name: "Nuffield Health Stepney", lon: -0.0421, lat: 51.5203 },
-  { category: "gym", name: "PureGym Aldgate", lon: -0.0746, lat: 51.5145 },
-  { category: "gym", name: "PureGym Aldgate East", lon: -0.0673, lat: 51.5144 },
-  { category: "gym", name: "PureGym Bow", lon: -0.0206, lat: 51.5228 },
-  { category: "gym", name: "PureGym Hackney", lon: -0.0522, lat: 51.5489 },
-  { category: "gym", name: "PureGym London Borough", lon: -0.0878, lat: 51.5016 },
-  { category: "gym", name: "PureGym London Great Portland Street", lon: -0.1404, lat: 51.5183 },
-  { category: "gym", name: "PureGym Mile End", lon: -0.0331, lat: 51.5200 },
-  { category: "gym", name: "PureGym Stepney", lon: -0.0408, lat: 51.5211 },
-  { category: "gym", name: "Qmotion Sport & Fitness Centre", lon: -0.0369, lat: 51.5243 },
-  { category: "gym", name: "Reebok CrossFit 3D", lon: -0.0752, lat: 51.5160 },
-  { category: "gym", name: "SoulCycle East London", lon: -0.0807, lat: 51.5237 },
-  { category: "gym", name: "SPACe", lon: -0.0473, lat: 51.5345 },
-  { category: "gym", name: "Sweat by BXR", lon: -0.1581, lat: 51.5233 },
-  { category: "gym", name: "Sweat by Bow", lon: -0.0272, lat: 51.5209 },
-  { category: "gym", name: "The Foundry Bethnal Green", lon: -0.0458, lat: 51.5225 },
-  { category: "gym", name: "The Foundry Climbing Centre", lon: -0.1040, lat: 51.5223 },
-  { category: "gym", name: "The Foundry Hackney", lon: -0.0427, lat: 51.5495 },
-  { category: "gym", name: "The Foundry Mile End", lon: -0.0324, lat: 51.5278 },
-  { category: "gym", name: "The Foundry Stepney", lon: -0.0399, lat: 51.5215 },
-  { category: "gym", name: "The Gym Group Bethnal Green", lon: -0.0576, lat: 51.5222 },
-  { category: "gym", name: "The Gym Group Bow", lon: -0.0270, lat: 51.5227 },
-  { category: "gym", name: "The Gym Group Bow Road", lon: -0.0274, lat: 51.5238 },
-  { category: "gym", name: "The Gym Group Hackney", lon: -0.0528, lat: 51.5406 },
-  { category: "gym", name: "The Gym Group London Angel", lon: -0.1055, lat: 51.5331 },
-  { category: "gym", name: "The Gym Group London Fields", lon: -0.0543, lat: 51.5435 },
-  { category: "gym", name: "The Gym Group Oxford Street", lon: -0.1421, lat: 51.5174 },
-  { category: "gym", name: "The Gym Group Stepney", lon: -0.0395, lat: 51.5202 },
-  { category: "gym", name: "The Gym Group Waterloo", lon: -0.1102, lat: 51.5051 },
-  { category: "gym", name: "The Gym Group Bloomsbury", lon: -0.1307, lat: 51.5218 },
-  { category: "gym", name: "The Healthy Living Gym", lon: -0.0499, lat: 51.5218 },
-  { category: "gym", name: "The Third Space Shoreditch", lon: -0.0846, lat: 51.5228 },
-  { category: "gym", name: "Victoria Park", lon: -0.0439, lat: 51.5360 },
-  { category: "gym", name: "Westfield Stratford City Gym", lon: -0.0048, lat: 51.5418 },
-  { category: "gym", name: "W10 Fitness", lon: -0.2033, lat: 51.5239 },
+  # { category: "gym", name: "Anytime Fitness", lon: -0.0297, lat: 51.5248 },
+  # { category: "gym", name: "Anytime Fitness Hackney", lon: -0.0471, lat: 51.5497 },
+  # { category: "gym", name: "Anytime Fitness London Fields", lon: -0.0623, lat: 51.5452 },
+  # { category: "gym", name: "Anytime Fitness Mile End", lon: -0.0405, lat: 51.5224 },
+  # { category: "gym", name: "Anytime Fitness Stepney", lon: -0.0412, lat: 51.5209 },
+  # { category: "gym", name: "Barry's Bootcamp East London", lon: -0.0810, lat: 51.5206 },
+  # { category: "gym", name: "Barry's Bootcamp London", lon: -0.1463, lat: 51.5264 },
+  # { category: "gym", name: "Bethnal Green Leisure Centre", lon: -0.0534, lat: 51.5238 },
+  # { category: "gym", name: "Bethnal Green Weightlifting Club", lon: -0.0446, lat: 51.5236 },
+  # { category: "gym", name: "Bow Community Fitness", lon: -0.0277, lat: 51.5234 },
+  # { category: "gym", name: "BXR London", lon: -0.1562, lat: 51.5242 },
+  # { category: "gym", name: "Cyclebar Soho", lon: -0.1391, lat: 51.5141 },
+  # { category: "gym", name: "CrossFit 1971", lon: -0.0693, lat: 51.5142 },
+  # { category: "gym", name: "CrossFit Bethnal Green", lon: -0.0481, lat: 51.5227 },
+  # { category: "gym", name: "CrossFit London Fields", lon: -0.0570, lat: 51.5443 },
+  # { category: "gym", name: "CrossFit Mile End", lon: -0.0317, lat: 51.5264 },
+  # { category: "gym", name: "CrossFit Stepney", lon: -0.0410, lat: 51.5216 },
+  # { category: "gym", name: "David Lloyd Canary Wharf", lon: -0.0187, lat: 51.5071 },
+  # { category: "gym", name: "Energie Fitness Club", lon: -0.0491, lat: 51.5421 },
+  # { category: "gym", name: "Fieldworks Gym", lon: -0.0674, lat: 51.5483 },
+  # { category: "gym", name: "Fitness 4 Less", lon: -0.1033, lat: 51.4938 },
+  # { category: "gym", name: "Fitness First Bethnal Green", lon: -0.0512, lat: 51.5220 },
+  # { category: "gym", name: "Fitness First Hackney", lon: -0.0581, lat: 51.5444 },
+  # { category: "gym", name: "Fitness First Mile End", lon: -0.0290, lat: 51.5251 },
+  # { category: "gym", name: "Fitness First Shoreditch", lon: -0.0794, lat: 51.5200 },
+  # { category: "gym", name: "Fitness First Stepney", lon: -0.0402, lat: 51.5220 },
+  # { category: "gym", name: "Fitness First London Fields", lon: -0.0543, lat: 51.5435 },
+  # { category: "gym", name: "Fitness First Stepney", lon: -0.0402, lat: 51.5220 },
+  # { category: "gym", name: "Fitness4Less Bow", lon: -0.0237, lat: 51.5225 },
+  # { category: "gym", name: "Fitness4Less Mile End", lon: -0.0372, lat: 51.5257 },
+  # { category: "gym", name: "Fitness4Less Southwark", lon: -0.1033, lat: 51.4938 },
+  # { category: "gym", name: "Fitness4Less Stepney", lon: -0.0387, lat: 51.5221 },
+  # { category: "gym", name: "Fit4Less Tower Hamlets", lon: -0.0429, lat: 51.5172 },
+  # { category: "gym", name: "F45 Dalston", lon: -0.0767, lat: 51.5496 },
+  # { category: "gym", name: "F45 Bow", lon: -0.0205, lat: 51.5223 },
+  # { category: "gym", name: "F45 Training Hackney", lon: -0.0549, lat: 51.5426 },
+  # { category: "gym", name: "F45 Training London Bridge", lon: -0.0824, lat: 51.5059 },
+  # { category: "gym", name: "F45 Training Shoreditch", lon: -0.0843, lat: 51.5250 },
+  # { category: "gym", name: "Gymbox Bethnal Green", lon: -0.0455, lat: 51.5228 },
+  # { category: "gym", name: "Gymbox Hackney", lon: -0.0463, lat: 51.5486 },
+  # { category: "gym", name: "Gymbox Holborn", lon: -0.1176, lat: 51.5186 },
+  # { category: "gym", name: "Gymbox Kings Cross", lon: -0.1229, lat: 51.5315 },
+  # { category: "gym", name: "Gymbox London Fields", lon: -0.0535, lat: 51.5423 },
+  # { category: "gym", name: "Gymbox Mile End", lon: -0.0302, lat: 51.5229 },
+  # { category: "gym", name: "Gymbox Stepney", lon: -0.0399, lat: 51.5215 },
+  # { category: "gym", name: "Hackney Fitness Club", lon: -0.0482, lat: 51.5479 },
+  # { category: "gym", name: "Hackney Fitness Centre", lon: -0.0598, lat: 51.5423 },
+  # { category: "gym", name: "London Aquatics Centre", lon: -0.0165, lat: 51.5372 },
+  # { category: "gym", name: "London Fields Fitness Studio", lon: -0.0574, lat: 51.5364 },
+  # { category: "gym", name: "London Fields Fitness Centre", lon: -0.0543, lat: 51.5435 },
+  # { category: "gym", name: "London Fitness Mile End", lon: -0.0307, lat: 51.5226 },
+  # { category: "gym", name: "London Metropolitan University Gym", lon: -0.1042, lat: 51.5532 },
+  # { category: "gym", name: "Mile End Fitness Centre", lon: -0.0312, lat: 51.5221 },
+  # { category: "gym", name: "Mile End Park Leisure Centre", lon: -0.0291, lat: 51.5283 },
+  # { category: "gym", name: "Metropolitan Gym", lon: -0.1041, lat: 51.5134 },
+  # { category: "gym", name: "Nuffield Health Mile End", lon: -0.0395, lat: 51.5275 },
+  # { category: "gym", name: "Nuffield Health Shoreditch Fitness & Wellbeing Gym", lon: -0.0776, lat: 51.5253 },
+  # { category: "gym", name: "Nuffield Health Stepney", lon: -0.0421, lat: 51.5203 },
+  # { category: "gym", name: "PureGym Aldgate", lon: -0.0746, lat: 51.5145 },
+  # { category: "gym", name: "PureGym Aldgate East", lon: -0.0673, lat: 51.5144 },
+  # { category: "gym", name: "PureGym Bow", lon: -0.0206, lat: 51.5228 },
+  # { category: "gym", name: "PureGym Hackney", lon: -0.0522, lat: 51.5489 },
+  # { category: "gym", name: "PureGym London Borough", lon: -0.0878, lat: 51.5016 },
+  # { category: "gym", name: "PureGym London Great Portland Street", lon: -0.1404, lat: 51.5183 },
+  # { category: "gym", name: "PureGym Mile End", lon: -0.0331, lat: 51.5200 },
+  # { category: "gym", name: "PureGym Stepney", lon: -0.0408, lat: 51.5211 },
+  # { category: "gym", name: "Qmotion Sport & Fitness Centre", lon: -0.0369, lat: 51.5243 },
+  # { category: "gym", name: "Reebok CrossFit 3D", lon: -0.0752, lat: 51.5160 },
+  # { category: "gym", name: "SoulCycle East London", lon: -0.0807, lat: 51.5237 },
+  # { category: "gym", name: "SPACe", lon: -0.0473, lat: 51.5345 },
+  # { category: "gym", name: "Sweat by BXR", lon: -0.1581, lat: 51.5233 },
+  # { category: "gym", name: "Sweat by Bow", lon: -0.0272, lat: 51.5209 },
+  # { category: "gym", name: "The Foundry Bethnal Green", lon: -0.0458, lat: 51.5225 },
+  # { category: "gym", name: "The Foundry Climbing Centre", lon: -0.1040, lat: 51.5223 },
+  # { category: "gym", name: "The Foundry Hackney", lon: -0.0427, lat: 51.5495 },
+  # { category: "gym", name: "The Foundry Mile End", lon: -0.0324, lat: 51.5278 },
+  # { category: "gym", name: "The Foundry Stepney", lon: -0.0399, lat: 51.5215 },
+  # { category: "gym", name: "The Gym Group Bethnal Green", lon: -0.0576, lat: 51.5222 },
+  # { category: "gym", name: "The Gym Group Bow", lon: -0.0270, lat: 51.5227 },
+  # { category: "gym", name: "The Gym Group Bow Road", lon: -0.0274, lat: 51.5238 },
+  # { category: "gym", name: "The Gym Group Hackney", lon: -0.0528, lat: 51.5406 },
+  # { category: "gym", name: "The Gym Group London Angel", lon: -0.1055, lat: 51.5331 },
+  # { category: "gym", name: "The Gym Group London Fields", lon: -0.0543, lat: 51.5435 },
+  # { category: "gym", name: "The Gym Group Oxford Street", lon: -0.1421, lat: 51.5174 },
+  # { category: "gym", name: "The Gym Group Stepney", lon: -0.0395, lat: 51.5202 },
+  # { category: "gym", name: "The Gym Group Waterloo", lon: -0.1102, lat: 51.5051 },
+  # { category: "gym", name: "The Gym Group Bloomsbury", lon: -0.1307, lat: 51.5218 },
+  # { category: "gym", name: "The Healthy Living Gym", lon: -0.0499, lat: 51.5218 },
+  # { category: "gym", name: "The Third Space Shoreditch", lon: -0.0846, lat: 51.5228 },
+  # { category: "gym", name: "Victoria Park", lon: -0.0439, lat: 51.5360 },
+  # { category: "gym", name: "Westfield Stratford City Gym", lon: -0.0048, lat: 51.5418 },
+  # { category: "gym", name: "W10 Fitness", lon: -0.2033, lat: 51.5239 },
   { category: "station", name: "Abbey Road", lat: 51.53195199547294, lon: 0.0037233710983363 },
   { category: "station", name: "Abbey Wood", lat: 51.49078429543708, lon: 0.1202719706406512 },
   { category: "station", name: "Acton Central", lat: 51.508757351253415, lon: -0.2634301953256889 },
@@ -817,11 +817,11 @@ poi = [
   { category: "university", name: "University of the Arts London", lat: 51.5319, lon: -0.1175 },
   { category: "university", name: "University of West London", lat: 51.50711002, lon: -0.30320932 },
   { category: "university", name: "University of Westminster", lat: 51.5145, lon: -0.1419 },
-  { category: "yoga studio", name: "Yoganest at St Margaret's House", lat: 51.5275, lon: -0.0575 },
-  { category: "yoga studio", name: "London Buddhist Centre", lat: 51.5270, lon: -0.0630 },
-  { category: "yoga studio", name: "Hotpod Yoga Hackney", lat: 51.5395, lon: -0.0580 },
-  { category: "yoga studio", name: "MoreYoga Aldgate", lat: 51.5155, lon: -0.0710 },
-  { category: "yoga studio", name: "Anjani Kundalini Yoga", lat: 51.5275, lon: -0.0330 }
+  # { category: "yoga studio", name: "Yoganest at St Margaret's House", lat: 51.5275, lon: -0.0575 },
+  # { category: "yoga studio", name: "London Buddhist Centre", lat: 51.5270, lon: -0.0630 },
+  # { category: "yoga studio", name: "Hotpod Yoga Hackney", lat: 51.5395, lon: -0.0580 },
+  # { category: "yoga studio", name: "MoreYoga Aldgate", lat: 51.5155, lon: -0.0710 },
+  # { category: "yoga studio", name: "Anjani Kundalini Yoga", lat: 51.5275, lon: -0.0330 }
 ]
 
 # Location categories for MapBox query
@@ -831,23 +831,29 @@ categories = ["Art Gallery",
               "Church",
               "Cinema",
               "Climbing Gym",
-              "Cocktail Bar",
+              "Concert Hall",
               "Deli",
+              "Fitness Center",
               "Gym",
               "Hospital",
+              "Library",
               "Market",
               "Museum",
               "Mosque",
+              "Nightclub",
               "Park",
+              "Post Office",
               "Pub",
               "Spa",
               "Station",
               "Restaurant",
               "School",
+              "Stadium",
               "Supermarket",
               "Synagogue",
               "Theatre",
-              "Wine Bar"]
+              "Wine Bar",
+              "Yoga Studio"]
 
 access_token = ENV['MAPBOX_API_KEY']
 
@@ -885,7 +891,8 @@ lat_step = 0.0036
     bounds = [lon, lat, lon + lon_step, lat + lat_step]
 
     categories.each do |category|
-      formatted_category = category.downcase.gsub(' ', '+')
+      # formatted_category = category.downcase.gsub(' ', '+')
+      formatted_category = category.downcase.gsub(' ', '_')
       uri = URI("https://api.mapbox.com/search/searchbox/v1/category/#{formatted_category}?access_token=#{access_token}&language=en&limit=25&bbox=#{bounds.join(',')}")
 
       response = Net::HTTP.get(uri)
@@ -905,28 +912,32 @@ lat_step = 0.0036
   end
 end
 
-puts "> Creating POIs..."
 # Create each POI instance
+puts "> Creating POIs..."
 poi.each { |i| Poi.create!(i) }
-# Update POI category names
-# Poi.where("LOWER(category) = ?", "subway station").find_each do |poi|
-#   poi.update(category: "station")
-# end
 
+puts "> #{Poi.where(category: 'art gallery').count} art galleries created"
 puts "> #{Poi.where(category: 'bar').count} bar created"
 puts "> #{Poi.where(category: 'cafe').count} cafes created"
 puts "> #{Poi.where(category: 'cinema').count} cinemas created"
 puts "> #{Poi.where(category: 'church').count} churches created"
+puts "> #{Poi.where(category: 'climbing gym').count} climbing gyms created"
+puts "> #{Poi.where(category: 'concert hall').count} concert halls created"
+puts "> #{Poi.where(category: 'fitness center').count} fitness centers created"
 puts "> #{Poi.where(category: 'gym').count} gyms created"
 puts "> #{Poi.where(category: 'hospital').count} hospitals created"
+puts "> #{Poi.where(category: 'library').count} libraries created"
 puts "> #{Poi.where(category: 'market').count} markets created"
 puts "> #{Poi.where(category: 'mosque').count} mosques created"
 puts "> #{Poi.where(category: 'museum').count} museums created"
+puts "> #{Poi.where(category: 'nightclub').count} nightclubs created"
 puts "> #{Poi.where(category: 'park').count} parks created"
+puts "> #{Poi.where(category: 'post office').count} post offices created"
 puts "> #{Poi.where(category: 'pub').count} pubs created"
 puts "> #{Poi.where(category: 'restaurant').count} restaurants created"
 puts "> #{Poi.where(category: 'school').count} schools created"
 puts "> #{Poi.where(category: 'station').count} stations created"
+puts "> #{Poi.where(category: 'stadium').count} stadia created"
 puts "> #{Poi.where(category: 'supermarket').count} supermarkets created"
 puts "> #{Poi.where(category: 'synagogue').count} synagogues created"
 puts "> #{Poi.where(category: 'theatre').count} theatres created"
