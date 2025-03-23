@@ -1,12 +1,22 @@
 <% @pois.each do |poi| %>
   <div class="card-product">
     <div class="fontawsome-icon-container">
-      <% if poi.category.strip == 'yoga studio' %>
-      <i class="fontawsome-icon fa-solid fa-hands-praying"></i>
+      <% if poi.category.strip == 'art gallery' %>
+        <i class="fa-solid fa-palette"></i>
+      <% elsif poi.category.strip == 'climbing gym' %>
+        <i class="fa-solid fa-mountain"></i>
+      <% elsif poi.category.strip == 'concert hall' %>
+        <i class="fa-solid fa-music"></i>
+      <% elsif poi.category.strip == 'fitness center' %>
+        <i class="fa-solid fa-dumbbell"></i>
+      <% elsif poi.category.strip == 'post office' %>
+        <i class="fa-solid fa-box"></i>
       <% elsif poi.category.strip == 'wine bar' %>
-      <i class="fontawsome-icon fa-solid fa-wine-glass"></i>
+        <i class="fontawsome-icon fa-solid fa-wine-glass"></i>
+      <% elsif poi.category.strip == 'yoga studio' %>
+        <i class="fontawsome-icon fa-solid fa-hands-praying"></i>
       <% else %>
-      <i class="fontawsome-icon fa-solid fa-<%=@category_icons[poi.category.strip.to_sym]%>"></i>
+        <i class="fontawsome-icon fa-solid fa-<%=@category_icons[poi.category.strip.to_sym]%>"></i>
       <% end %>
     </div>
     <div class="card-product-info">
