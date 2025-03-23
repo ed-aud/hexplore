@@ -21,7 +21,6 @@ puts "Cleaned Database"
 
 puts "> Creating Users..."
 new_user_1 = User.create!(first_name: "Tom", last_name: "Jones", email: "tom@gmail.com", password: "123456")
-new_user_2 = User.create!(first_name: "Ben", last_name: "Hill", email: "ben@gmail.com", password: "123456")
 puts "#{User.count} users created"
 
 puts "> Creating Hexagons..."
@@ -30,7 +29,6 @@ puts "#{Hexagon.count} hexagons created"
 
 puts "> Creating Hives..."
 Hive.create!(name: "Charing Cross", notes: "Charing Cross is a central and historic area in London, known for its iconic Charing Cross railway station and proximity to Trafalgar Square. It serves as a key transport hub with connections to the South of England and the London Underground. Nearby landmarks include The National Gallery, Admiralty Arch, and St. Martin-in-the-Fields. With its mix of history, culture, shopping, and entertainment, Charing Cross is one of London's most visited and vibrant districts.", user: new_user_1, hexagon: hexagon)
-Hive.create!(name: "Stamford Brook", notes: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", user: new_user_2, hexagon: hexagon)
 puts "#{Hive.count} hives created"
 
 # Static seed data [DO NOT DELETE]

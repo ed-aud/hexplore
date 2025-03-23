@@ -1,6 +1,61 @@
 require 'net/http'
 require 'json'
 require 'uri'
+require 'dotenv/load'
+
+poi = []
+
+categories = ["Art Gallery",
+  "Bar",
+  "Cafe",
+  "Church",
+  "Cinema",
+  "Climbing Gym",
+  "Concert Hall",
+  "Deli",
+  "Fitness Center",
+  "Gym",
+  "Hospital",
+  "Library",
+  "Market",
+  "Museum",
+  "Mosque",
+  "Nightclub",
+  "Park",
+  "Post Office",
+  "Pub",
+  "Spa",
+  "Station",
+  "Restaurant",
+  "School",
+  "Stadium",
+  "Supermarket",
+  "Synagogue",
+  "Theatre",
+  "Wine Bar",
+  "Yoga Studio"]
+
+access_token = ENV['MAPBOX_API_KEY']
+
+categories.each do |category|
+  formatted_category = category.downcase.gsub(' ', '_')
+  uri = URI("https://api.mapbox.com/search/searchbox/v1/category/#{formatted_category}?access_token=#{access_token}&language=en&limit=25&bbox=-0.1351,51.5029,-0.1205,51.5119")
+  response = Net::HTTP.get(uri)
+  data = JSON.parse(response)
+
+  location = data["features"]&.map do |feature|
+    {
+      category: category.downcase,
+      name: feature["properties"]["name"],
+      lat: feature["geometry"]["coordinates"][1],
+      lon: feature["geometry"]["coordinates"][0]
+    }
+  end || []
+
+  poi << location
+end
+
+puts poi
 
 # def fetch_locations
 #   places = [
@@ -176,64 +231,3 @@ require 'uri'
 # data = JSON.parse(response)
 
 # p data
-
-
-poi = []
-# Location categories for MapBox query
-categories = [
-  "Bar",
- "Gym",
-            "Climbing Gym",
-            "Fitness Center",
-            "Subway Station",
-            "Train Station",
-            "Transportation",
-            "Public Transit Station",
-            "Art Gallery",
-            "Concert Hall",
-            "Library",
-            "Night Club",
-            "Nightclub",
-            "Bank",
-            "Post Office",
-            "Church",]
-
-access_token = ENV['MAPBOX_API_KEY']
-
-# Queen Mary University coords
-centre_point = [-0.04063119, 51.52406612]
-
-# Distance of ~4km in each direction from centre point
-nw_point = [centre_point[0] + 0.02, centre_point[1] + 0.01]
-  se_point = [centre_point[0] - 0.02, centre_point[1] - 0.01]
-
-  lon_step = 0.01 # Approx. 400m in longitude at London's latitude
-  lat_step = 0.005 # Approx. 400m in latitude
-
-# Iterate over the bounding box in 400m steps
-(se_point[1]..nw_point[1]).step(lat_step) do |lat|
-(se_point[0]..nw_point[0]).step(lon_step) do |lon|
-bounds = [lon, lat, lon + lon_step, lat + lat_step]
-
-categories.each do |category|
-formatted_category = category.downcase.gsub(' ', '_')
-uri = URI("https://api.mapbox.com/search/searchbox/v1/category/#{formatted_category}?access_token=#{access_token}&language=en&limit=25&bbox=#{bounds.join(',')}")
-
-response = Net::HTTP.get(uri)
-data = JSON.parse(response)
-
-location = data["features"]&.map do |feature|
-{
-category: category.downcase,
-name: feature["properties"]["name"],
-lat: feature["geometry"]["coordinates"][1],
-lon: feature["geometry"]["coordinates"][0]
-}
-end || []
-
-poi << location
-end
-end
-end
-
-puts poi

@@ -1,6 +1,7 @@
 .navbar-hexplore {
   justify-content: space-between;
   background: $dark-green;
+  width: 100%;
   height: 70px;
   padding: 0px 10px;
 }
@@ -48,4 +49,11 @@
 // Remove default Boostrap arrow next to user initials
 #navbarDropdown::after {
   display: none !important;
+}
+
+@media (max-width: 768px) {
+}
+
+// Tablet-first design
+@media (max-width: 1024px) {
 }
