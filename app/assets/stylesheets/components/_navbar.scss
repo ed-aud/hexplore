@@ -52,6 +52,31 @@
 }
 
 @media (max-width: 768px) {
+  .navbar-hexplore {
+    height: 50px;
+  }
+
+  .navbar-logo {
+    height: 35px;
+  }
+
+  .navbar-toggler {
+    height: 35px;
+  }
+
+  .navbar-toggler-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: $dark-green;
+    z-index: 1000; 
+  }
 }
 
 // Tablet-first design
