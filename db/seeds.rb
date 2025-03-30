@@ -232,7 +232,6 @@ poi = [
   { category: "station", name: "Caterham", lat: 51.28216269622904, lon: -0.0786072982130977 },
   { category: "station", name: "Catford", lat: 51.444264871170326, lon: -0.0265384985567016 },
   { category: "station", name: "Catford Bridge", lat: 51.44469458702001, lon: -0.0248218759100756 },
-  { category: "station", name: "Centrale", lat: 51.37576730003021, lon: -0.1038881032216323 },
   { category: "station", name: "Chadwell Heath", lat: 51.56804709196961, lon: 0.1289011125681798 },
   { category: "station", name: "Chafford Hundred", lat: 51.485554969647055, lon: 0.2874757055480307 },
   { category: "station", name: "Chalfont and Latimer", lat: 51.66790656389214, lon: -0.5610677589431823 },
