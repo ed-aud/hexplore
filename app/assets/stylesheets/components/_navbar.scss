@@ -51,6 +51,7 @@
   display: none !important;
 }
 
+// Mobile design
 @media (max-width: 768px) {
   .navbar-hexplore {
     height: 50px;
@@ -79,6 +80,6 @@
   }
 }
 
-// Tablet-first design
+// Tablet design
 @media (max-width: 1024px) {
 }

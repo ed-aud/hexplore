@@ -31,7 +31,7 @@
 
 .footer-icon {
   opacity: 0.45;
-  height: 15px;
+  height: 16px;
 
   a:hover {
     opacity: 1;
@@ -39,9 +39,21 @@
   }
 }
 
+// Mobile design
 @media (max-width: 768px) {
+  .footer {
+    min-height: 50px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+  }
+
+  .footer-icon {
+    height: 12px;
+  }
 }
 
-// Tablet-first design
+// Tablet design
 @media (max-width: 1024px) {
 }

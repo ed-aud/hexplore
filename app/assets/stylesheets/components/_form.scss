@@ -62,3 +62,17 @@
   width: 100%;
   background-color: rgba(128,128,128,0.6);
 }
+
+// Mobile design
+@media (max-width: 768px) {
+  .form-container {
+    width: 80%
+  }
+}
+
+// Tablet design
+@media (max-width: 1024px) {
+  .form-container {
+    width: 50%
+  }
+}

@@ -103,7 +103,7 @@
   background-repeat: no-repeat;
 }
 
-// Mobile-first design
+// Mobile design
 @media (max-width: 768px) {
   .home-container {
     width: 100%;
@@ -142,6 +142,10 @@
     width: 70dvw;
   }
 
+  .home-background {
+    min-height: calc(100dvh - 50px);
+  }
+
   .home-map-container {
     margin: 0px;
     width: 100%;
@@ -150,6 +154,6 @@
   }
 }
 
-// Tablet-first design
+// Tablet design
 @media (max-width: 1024px) {
 }
