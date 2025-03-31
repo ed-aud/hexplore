@@ -42,3 +42,26 @@
     margin-bottom: 5px;
   }
 }
+
+// Tablet design
+@media (max-width: 1024px) {
+}
+
+// Mobile design
+@media (max-width: 768px) {
+  .card-product {
+    width: 125px;
+    height: 60px;
+    padding: 6px;
+
+    i {
+      font-size: 1rem;
+    }
+  }
+
+  .card-product-info {
+    h5 {
+      font-size: 0.7rem;
+    }
+  }
+}

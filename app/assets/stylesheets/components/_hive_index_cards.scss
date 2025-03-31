@@ -82,12 +82,15 @@
 // Mobile design
 @media (max-width: 768px) {
   .hive-card {
-    width: 50px;
     height: 105px;
+  }
 
-    .hive-number {
-      font-size: 1rem;
-    }
+  .hive-card-image {
+    width: 60px;
+  }
+
+  .hive-number {
+    font-size: 1.2rem;
   }
 
   .hive-card-info {
@@ -102,7 +105,7 @@
     }
 
     h2 {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
     }
 
     p {

@@ -96,6 +96,8 @@
   margin-right: 5px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  
   a {
     text-decoration: none;
   }
@@ -213,11 +215,11 @@
   }
 
   p {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 
   ul {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 }
 
@@ -269,12 +271,24 @@
   }
 
   .hexagon-hive-title-container {
+    .hexagon-hive-title-button {
+      font-size: 1rem;
+    }
+
     .add-button-title {
-      margin-right: 5px,
+      margin-right: 10px,
     }
 
     .back-button-title {
-      margin-left: 5px;
+      margin-left: 10px;
+    }
+
+    .action-icon {
+      font-size: 1rem;
+    }
+
+    h1 {
+      font-size: 1.7rem;
     }
     
     h3 {
@@ -297,6 +311,10 @@
       font-size: 1.15rem;
       margin-bottom: 0px;
     }
+  }
+
+  .hexagon-hive-content-cards {
+    justify-content: center;;
   }
 
   .hexagon-hive-chatbot-container {
