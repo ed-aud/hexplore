@@ -104,3 +104,16 @@
     }
   }
 }
+
+// Tablet design
+@media (max-width: 1024px) {
+}
+
+// Mobile design
+@media (max-width: 768px) {
+  .chatbot {
+    .form-control {
+      width: 260px;
+    }
+  }
+}

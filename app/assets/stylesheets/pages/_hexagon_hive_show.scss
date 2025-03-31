@@ -221,7 +221,7 @@
   }
 }
 
-// Further Chatbot styling in _questions.scss
+// Further Chatbot styling in _chatbot.scss
 .hexagon-hive-chatbot-container {
   width: 32%;
   height: calc(100dvh - 140px);
@@ -252,4 +252,52 @@
   font-size: 1.4em;
   cursor: pointer;
   margin-bottom: 8px;
+}
+
+// Tablet design
+@media (max-width: 1024px) {
+}
+
+// Mobile design
+@media (max-width: 768px) {
+  .hexagon-hive-container {
+    width: auto;
+    min-height: calc(100dvh - 100px);
+    margin: 40px 0px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hexagon-hive-title-container {
+    h3 {
+      font-size: 1.3rem;
+    }
+  }
+
+  .hexagon-hive-content-container {
+    width: 90dvw;
+    min-height: auto;
+  }
+
+  .hexagon-shape {
+    width: 300px;
+    height: 300px;
+  }
+
+  .matched-locations-header {
+    h4 {
+      font-size: 1.15rem;
+      margin-bottom: 0px;
+    }
+  }
+
+  .hexagon-hive-chatbot-container {
+    width: 90dvw;
+    margin-top: 20px;
+  }
+
+  .hive-notes {
+    height: auto;
+    padding: 20px;
+  }
 }
