@@ -362,7 +362,7 @@
 
   .mobile-controls {
     position: fixed;
-    top: 70px; /* Adjust based on navbar height */
+    top: 70px;
     left: 10px;
     display: flex;
     flex-direction: column;
@@ -371,17 +371,13 @@
   }
 
   .mobile-controls i {
-    font-size: 24px;
-    background: #fff;
-    padding: 10px;
+    font-size: 16px;
+    color: $light-green;
+    background: $dark-green;
+    padding: 5px;
     border-radius: 50%;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    transition: background 0.3s;
-  }
-
-  .mobile-controls i:hover {
-    background: #f0f0f0;
   }
 
   .overlay {
