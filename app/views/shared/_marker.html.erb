@@ -1,8 +1,18 @@
 <% case category %>
-  <% when "yoga studio" %>
-    <i class="fas fa-hands-praying"></i>
+  <% when "art gallery" %>
+    <i class="fa-solid fa-palette"></i>
+  <% when "climbing gym" %>
+    <i class="fa-solid fa-mountain"></i>
+  <% when "concert hall" %>
+    <i class="fa-solid fa-music"></i>
+  <% when "fitness center" %>
+    <i class="fa-solid fa-dumbbell"></i>
+  <% when "post office" %>
+    <i class="fa-solid fa-box"></i>
   <% when "wine bar" %>
     <i class="fas fa-wine-glass"></i>
+  <% when "yoga studio" %>
+    <i class="fas fa-hands-praying"></i>
   <% else %>
     <i class="fas fa-<%= category_icons[category.strip.to_sym] %>"></i>
 <% end %>

@@ -1,6 +1,7 @@
 .navbar-hexplore {
   justify-content: space-between;
   background: $dark-green;
+  width: 100%;
   height: 70px;
   padding: 0px 10px;
 }
@@ -23,10 +24,6 @@
 
 .nav-link {
   color: $light-green;
-
-  &:hover {
-    color: white;
-  }
 }
 
 .initials-avatar {
@@ -45,7 +42,59 @@
   user-select: none;
 }
 
-// Remove default Boostrap arrow next to user initials
 #navbarDropdown::after {
   display: none !important;
+}
+
+// Tablet design
+@media (max-width: 1024px) {
+}
+
+// Mobile design
+@media (max-width: 768px) {
+  .navbar-hexplore {
+    height: 50px;
+  }
+
+  .navbar-logo {
+    height: 35px;
+  }
+
+  .navbar-toggler {
+    height: 35px;
+    background: none !important;
+    border: none;
+    box-shadow: none;
+    padding: 0px;
+
+    i {
+      font-size: 24px;
+      color: $light-green;
+    }
+  }
+
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: $dark-green;
+    z-index: 1000; 
+  }
+
+  .initials-avatar {
+    display: none !important;
+  }
+
+  .nav-item {
+    padding-right: 20px;
+
+    &:last-child {
+      padding-right: 20px;
+    }
+  }
+
+  .nav-link {
+    text-align: right;
+  }
 }

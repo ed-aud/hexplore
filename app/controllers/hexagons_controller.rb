@@ -10,28 +10,35 @@ class HexagonsController < ApplicationController
     @itinerary = Itinerary.new
 
     @category_icons = {
-      pub: 'beer-mug-empty',
-      station: 'train',
-      church: 'church',
-      spa: 'spa',
-      restaurant: 'utensils',
-      park: 'tree-city',
-      gym: 'dumbbell',
-      cafe: 'mug-saucer',
-      market: 'store',
-      cinema: 'film',
-      hospital: 'hospital',
-      mosque: 'mosque',
-      winebar: 'wine-glass',
-      yogastudio: 'hands-praying',
-      synagogue: 'synagogue',
-      museum: 'landmark',
-      university: 'landmark-flag',
-      theatre: 'masks-theater',
-      deli: 'bowl-food',
+      artgallery: 'palette',
       bar: 'champagne-glasses',
+      cafe: 'mug-saucer',
+      church: 'church',
+      cinema: 'film',
+      climbinggym: 'mountain',
+      concerthall: 'music',
+      deli: 'bowl-food',
+      fitnesscenter: 'dumbbell',
+      gym: 'dumbbell',
+      hospital: 'hospital',
+      library: 'book',
+      market: 'store',
+      mosque: 'mosque',
+      museum: 'landmark',
+      park: 'tree-city',
+      postoffice: 'box',
+      pub: 'beer-mug-empty',
+      restaurant: 'utensils',
+      school: 'school-flag',
+      spa: 'spa',
+      stadium: 'futbol',
+      station: 'train',
       supermarket: 'shop',
-      school: 'school-flag'
+      synagogue: 'synagogue',
+      theatre: 'masks-theater',
+      university: 'landmark-flag',
+      winebar: 'wine-glass',
+      yogastudio: 'hands-praying'
     }
 
     @centre_marker = create_markers(@pois)[0]
@@ -47,9 +54,6 @@ class HexagonsController < ApplicationController
 
     @myparam = { address: params[:address][9..].gsub('+', ' ').gsub('%', ' ') }
     @clickedFilters = { poi_params: params[:poi_params] }
-    # latest_itinerary = @hexagon.itineraries.last
-    # raise
-    # @hive.notes = latest_itinerary&.ai_answer
   end
 
   def new
@@ -89,10 +93,10 @@ class HexagonsController < ApplicationController
 
     selected_categories = pois.split(",")
     selected_categories.each do |category|
-      displayed_locations << Poi.where(category: category, lat: min_lat..max_lat, lon: min_lon..max_lon).first(4)
+      displayed_locations.concat(Poi.where(category: category, lat: min_lat..max_lat, lon: min_lon..max_lon))
     end
 
-    poi = displayed_locations.flatten
+    poi = displayed_locations.uniq { |i| i.name }
     return poi
   end
 

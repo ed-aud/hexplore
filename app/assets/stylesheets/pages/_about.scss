@@ -69,3 +69,51 @@
     border: none;
   }
 }
+
+// Mobile design
+@media (max-width: 768px) {
+  .about-page-container {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .about-container {
+    width: 100%;
+    padding: 0px 20px 20px 20px;
+
+    h2 {
+      font-size: 1.7rem;
+    }
+
+    h4 {
+      font-size: 1.3rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
+  }
+
+  .contact-container {
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 20px;
+    padding: 20px;
+
+    h2 {
+      font-size: 1.7rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+// Tablet design
+@media (max-width: 1024px) {
+  .about-page-container {
+    width: 100%;
+    padding: 0px 20px;
+  }
+}

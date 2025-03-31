@@ -1,6 +1,6 @@
 <div class="home-background">
   <div class="home-container">
-    <h1>You pick the places that matter most.<br>We help you find your hive.</h1>
+    <h1>You pick the places that matter most. <span class="hide-on-mobile"><br></span>We help you find your hive.</h1>
     <form action="/map" method="get" data-turbo="true">
       <div class="home-search-container">
         <div data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -24,6 +24,6 @@
       </div>
     </form>
     <div class="home-map-container"></div>
-    <p>Our dynamic mapping solution with integrated AI <br>helps London work for you</p>
+    <p>Our dynamic mapping solution with integrated AI <span class="hide-on-mobile"><br></span>helps London work for you</p>
   </div>
 </div>

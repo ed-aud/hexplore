@@ -35,7 +35,7 @@
 
       <div class="matched-locations" data-controller="toggle-locations">
         <div class="matched-locations-header">
-          <h4>Recommended Matched Locations</h4>
+          <h4>Matched Locations</h4>
           <button id="toggle-locations-button" data-action="click->toggle-locations#toggle">
             <i class="fa-solid fa-plus" data-toggle-locations-target="icon"></i>
           </button>
@@ -61,26 +61,6 @@
         </div>
       </div>
     </div>
-
-    <div class="hexagon-hive-title-container">
-      <div class="hexagon-hive-title-buttons" data-controller="hexagon-modal">
-        <%= link_to map_path(address: @myparam[:address], filters: @clickedFilters[:poi_params]) do %>
-          <i class="fa-solid fa-arrow-left hexagon-hive-title-button back-button"></i>
-        <% end %>
-        <h3 class="back-button-title">Refine Search</h3>
-      </div>
-      <div class="hexagon-hive-title-buttons" data-controller="hexagon-modal">
-        <h3 class="add-button-title">Add to Hive</h3>
-        <i class="fa-solid fa-plus hexagon-hive-title-button add-button"
-          data-bs-toggle="modal"
-          data-bs-target="#hexagonShowModal"
-          data-hexagon-modal-target="modalButton"></i>
-        <div class="rendered-modal" data-hexagon-modal-target="modalPartial">
-          <%= render 'shared/hexagon_add_modal' %>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <div class = "hexagon-hive-chatbot-container">
