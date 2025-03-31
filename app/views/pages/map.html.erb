@@ -1,10 +1,17 @@
 <div class="map-container"
-  data-controller="map"
+  data-controller="map map-menu-toggle"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
   data-map-coordinates-value="<%= @coordinates.to_json %>"
   data-map-filters-value="<%= @filters.to_json %>"
   data-map-hexagonId-value="<%= @hexagon.to_json %>"
   data-map-marker-value="<%= @marker.to_json %>">
+
+  <div class="mobile-controls">
+    <i class="fa-solid fa-filter" data-action="click->map-menu-toggle#toggleFilters"></i>
+    <i class="fa-solid fa-circle-info" data-action="click->map-menu-toggle#toggleInfo"></i>
+  </div>
+
+  <div class="overlay" data-map-menu-toggle-target="overlay"></div>
 
   <div class="map-info-container">
     <div class="map-steps">
@@ -47,7 +54,7 @@
     </div>
   </div>
 
-  <div class="map-filter-container" data-controller="filter-search">
+  <div class="map-filters-container" data-controller="filter-search">
     <div class="map-filters">
       <div class="search-header">
         <h2>Filters</h2>

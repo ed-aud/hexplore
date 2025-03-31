@@ -27,6 +27,7 @@
 
   &:hover {
     color: white;
+    transition: transform 0.3s ease;
   }
 }
 
@@ -46,7 +47,6 @@
   user-select: none;
 }
 
-// Remove default Boostrap arrow next to user initials
 #navbarDropdown::after {
   display: none !important;
 }
@@ -60,14 +60,21 @@
   .navbar-logo {
     height: 35px;
   }
-
+  
   .navbar-toggler {
     height: 35px;
+    border: none;
+    background: none;
   }
 
   .navbar-toggler-icon {
-    width: 25px;
-    height: 25px;
+    font-size: 24px;
+    color: $light-green;
+
+    &:hover {
+      color: white;
+      transition: transform 0.3s ease;
+    }
   }
 
   .navbar-collapse {
