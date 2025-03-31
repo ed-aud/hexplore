@@ -6,7 +6,7 @@
   data-map-hexagonId-value="<%= @hexagon.to_json %>"
   data-map-marker-value="<%= @marker.to_json %>">
 
-  <div class="mobile-controls">
+  <div class="mobile-controls" data-map-menu-toggle-target="mobileControls">
     <i class="fa-solid fa-filter" data-action="click->map-menu-toggle#toggleFilters"></i>
     <i class="fa-solid fa-circle-info" data-action="click->map-menu-toggle#toggleInfo"></i>
   </div>
