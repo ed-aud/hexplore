@@ -95,3 +95,14 @@
     transition: 0.3s ease;
   }
 }
+
+// Tablet design
+@media (max-width: 1024px) {
+}
+
+// Mobile design
+@media (max-width: 768px) {
+  .users-card {
+    display: none;
+  }
+}

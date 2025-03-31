@@ -67,3 +67,19 @@
   margin-top: 20px;
   overflow: hidden;
 }
+
+@media (max-width: 1024px) {
+}
+
+// Mobile design
+@media (max-width: 768px) {
+  .hive-container {
+    width: auto;
+    margin: 40px 20px;
+    flex-direction: column;
+  }
+
+  .hive-info-container, .hive-profile-container {
+    width: 90dvw;
+  }
+}

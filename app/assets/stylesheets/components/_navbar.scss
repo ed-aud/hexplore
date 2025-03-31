@@ -24,11 +24,6 @@
 
 .nav-link {
   color: $light-green;
-
-  &:hover {
-    color: white;
-    transition: transform 0.3s ease;
-  }
 }
 
 .initials-avatar {
@@ -51,6 +46,10 @@
   display: none !important;
 }
 
+// Tablet design
+@media (max-width: 1024px) {
+}
+
 // Mobile design
 @media (max-width: 768px) {
   .navbar-hexplore {
@@ -60,20 +59,16 @@
   .navbar-logo {
     height: 35px;
   }
-  
+
   .navbar-toggler {
     height: 35px;
+    background: none !important;
     border: none;
-    background: none;
-  }
+    box-shadow: none;
 
-  .navbar-toggler-icon {
-    font-size: 24px;
-    color: $light-green;
-
-    &:hover {
-      color: white;
-      transition: transform 0.3s ease;
+    i {
+      font-size: 24px;
+      color: $light-green;
     }
   }
 
@@ -85,8 +80,13 @@
     background-color: $dark-green;
     z-index: 1000; 
   }
-}
 
-// Tablet design
-@media (max-width: 1024px) {
+  .initials-avatar {
+    display: none !important;
+  }
+
+  .nav-link {
+    text-align: right;
+    margin-right: 20px;
+  }
 }

@@ -74,3 +74,26 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+// Tablet design
+@media (max-width: 1024px) {
+}
+
+// Mobile design
+@media (max-width: 768px) {
+  .hive-card-info {
+    padding-right: 25px;
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    p {
+      font-size: 0.7rem;
+    }
+  }
+
+  .truncate-text-lines {
+    -webkit-line-clamp: 3;
+  }
+}

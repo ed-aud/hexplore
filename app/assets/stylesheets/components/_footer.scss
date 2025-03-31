@@ -39,6 +39,10 @@
   }
 }
 
+// Tablet design
+@media (max-width: 1024px) {
+}
+
 // Mobile design
 @media (max-width: 768px) {
   .footer {
@@ -52,8 +56,4 @@
   .footer-icon {
     height: 12px;
   }
-}
-
-// Tablet design
-@media (max-width: 1024px) {
 }

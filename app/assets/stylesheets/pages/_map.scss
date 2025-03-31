@@ -335,6 +335,10 @@
   }
 }
 
+// Tablet design
+@media (max-width: 1024px) {
+}
+
 // Mobile design
 @media (max-width: 768px) {
   .map-container {
@@ -347,7 +351,7 @@
     top: 0;
     left: -100%;
     width: 80dvw;
-    height: calc(100vh - 110px);
+    height: calc(100dvh - 50px);
     margin: 0px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -358,6 +362,7 @@
   .map-filters-container.open,
   .map-info-container.open {
     left: 0;
+    transform: translateX(0);
   }
 
   .mobile-controls {
@@ -382,20 +387,19 @@
 
   .overlay {
     position: fixed;
-    top: 0;
+    top: 50px;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    z-index: 900;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out;
   }
 
   .overlay.active {
-    opacity: 1;
-    visibility: visible;
+    display: block;
   }
 
   .map-filters {
@@ -407,8 +411,4 @@
   .map-hexgrid-container {
     width: 100dvw;
   }
-}
-
-// Tablet design
-@media (max-width: 1024px) {
 }
