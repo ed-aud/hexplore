@@ -80,6 +80,18 @@
   .about-container {
     width: 100%;
     padding: 0px 20px 20px 20px;
+
+    h2 {
+      font-size: 1.7rem;
+    }
+
+    h4 {
+      font-size: 1.3rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
   }
 
   .contact-container {
@@ -88,6 +100,13 @@
     margin-top: 20px;
     padding: 20px;
 
+    h2 {
+      font-size: 1.7rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
   }
 }
 

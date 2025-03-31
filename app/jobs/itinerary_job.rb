@@ -8,7 +8,7 @@ class ItineraryJob < ApplicationJob
 
     chatgpt_response = client.chat(
       parameters: {
-        model: "gpt-4o-mini",
+        model: "gpt-4o",
         messages: itinerary_formatted_for_openai
       }
     )

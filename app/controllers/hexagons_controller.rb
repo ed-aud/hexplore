@@ -54,9 +54,6 @@ class HexagonsController < ApplicationController
 
     @myparam = { address: params[:address][9..].gsub('+', ' ').gsub('%', ' ') }
     @clickedFilters = { poi_params: params[:poi_params] }
-    # latest_itinerary = @hexagon.itineraries.last
-    # raise
-    # @hive.notes = latest_itinerary&.ai_answer
   end
 
   def new
@@ -96,10 +93,10 @@ class HexagonsController < ApplicationController
 
     selected_categories = pois.split(",")
     selected_categories.each do |category|
-      displayed_locations << Poi.where(category: category, lat: min_lat..max_lat, lon: min_lon..max_lon).first(4)
+      displayed_locations.concat(Poi.where(category: category, lat: min_lat..max_lat, lon: min_lon..max_lon))
     end
 
-    poi = displayed_locations.flatten
+    poi = displayed_locations.uniq { |i| i.name }
     return poi
   end
 

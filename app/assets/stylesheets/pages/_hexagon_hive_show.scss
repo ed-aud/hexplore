@@ -269,6 +269,14 @@
   }
 
   .hexagon-hive-title-container {
+    .add-button-title {
+      margin-right: 5px,
+    }
+
+    .back-button-title {
+      margin-left: 5px;
+    }
+    
     h3 {
       font-size: 1.3rem;
     }
@@ -293,6 +301,7 @@
 
   .hexagon-hive-chatbot-container {
     width: 90dvw;
+    height: auto;
     margin-top: 20px;
   }
 

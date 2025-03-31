@@ -85,6 +85,14 @@
     display: none !important;
   }
 
+  .nav-item {
+    padding-right: 15px;
+
+    &:last-child {
+      padding-right: 15px;
+    }
+  }
+
   .nav-link {
     text-align: right;
     margin-right: 20px;

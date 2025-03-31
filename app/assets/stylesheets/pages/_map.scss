@@ -32,7 +32,6 @@
 }
 
 .map-info {
-  width: 90%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -348,11 +347,12 @@
   .map-filters-container,
   .map-info-container {
     position: fixed;
-    top: 0;
+    top: 50px;
     left: -100%;
     width: 80dvw;
     height: calc(100dvh - 50px);
     margin: 0px;
+    background-color: #FAF9F6;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     transition: left 0.3s ease-in-out;
@@ -363,6 +363,7 @@
   .map-info-container.open {
     left: 0;
     transform: translateX(0);
+    margin-top: 20px;
   }
 
   .mobile-controls {
@@ -403,8 +404,12 @@
   }
 
   .map-filters {
+    .search-header {
+      background-color: #FAF9F6;
+    }
+
     h2 {
-      display: none;
+      text-align: left;
     }
   }
 
