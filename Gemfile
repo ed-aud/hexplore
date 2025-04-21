@@ -37,7 +37,7 @@ gem "bootsnap", require: false
 
 # Project Gems:
 gem "autoprefixer-rails"
-gem "bootstrap", "~> 5.2"
+gem "bootstrap", "~> 5.3"
 gem "cloudinary"
 gem "devise"
 gem "font-awesome-sass", "~> 6.1"
